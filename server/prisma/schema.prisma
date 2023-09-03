@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int         @id @default(autoincrement())
+  email   String?     @unique
+  name    String?
+  posts   Post[]
+  ratings Rating[]
+  events  UserEvent[]
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
+
+model Movie {
+  id          String      @id
+  title       String
+  year        Int
+  description String?
+  poster_path String?
+  genres      Genre[]
+  ratings     Rating[]
+  events      UserEvent[]
+}
+
+model Genre {
+  id     Int         @id @default(autoincrement())
+  name   String      @unique
+  movies Movie[]
+  events UserEvent[]
+}
+
+model Rating {
+  id        Int      @id @default(autoincrement())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  movie     Movie    @relation(fields: [movieId], references: [id])
+  movieId   String
+  rating    Int
+  createdAt DateTime @default(now())
+}
+
+// Пользователь может просматривать либо фильм либо целую категорию
+model UserEvent {
+  id        Int       @id @default(autoincrement())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+  movie     Movie?    @relation(fields: [movieId], references: [id])
+  movieId   String
+  genre     Genre?    @relation(fields: [genreId], references: [id])
+  genreId   Int
+  event     TypeEvent
+  createdAt DateTime  @default(now())
+}
+
+enum TypeEvent {
+  GENRE_VIEW
+  DETAILS
+  MORE_DETAILS
+  ADD_TO_LIST
+  BUY
+}
