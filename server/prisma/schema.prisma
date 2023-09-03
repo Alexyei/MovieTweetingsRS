@@ -62,11 +62,12 @@ model UserEvent {
   user      User      @relation(fields: [userId], references: [id])
   userId    Int
   movie     Movie?    @relation(fields: [movieId], references: [id])
-  movieId   String
+  movieId   String?
   genre     Genre?    @relation(fields: [genreId], references: [id])
-  genreId   Int
+  genreId   Int?
   event     TypeEvent
   createdAt DateTime  @default(now())
+  sessionId Int?
 }
 
 enum TypeEvent {

@@ -8,7 +8,8 @@
     "dev": "nodemon src/app.ts",
     "popm": "ts-node src/seeders/populate_movies.ts",
     "popmd": "ts-node src/seeders/populate_movies_descriptions.ts",
-    "popr": "ts-node src/seeders/populate_ratings.ts"
+    "popr": "ts-node src/seeders/populate_ratings.ts",
+    "popl": "ts-node src/seeders/populate_logs.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,12 +21,15 @@
     "express": "^4.18.2",
     "node-fetch": "^3.3.2",
     "progress": "^2.0.3",
+    "random": "^4.1.0",
+    "random-seed": "^0.3.0",
     "winston": "^3.10.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^20.5.7",
     "@types/progress": "^2.0.5",
+    "@types/random-seed": "^0.3.3",
     "nodemon": "^3.0.1",
     "prisma": "^5.2.0",
     "ts-node": "^10.9.1",
