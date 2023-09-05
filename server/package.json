@@ -9,7 +9,9 @@
     "popm": "ts-node src/seeders/populate_movies.ts",
     "popmd": "ts-node src/seeders/populate_movies_descriptions.ts",
     "popr": "ts-node src/seeders/populate_ratings.ts",
-    "popl": "ts-node src/seeders/populate_logs.ts"
+    "popl": "ts-node src/seeders/populate_logs.ts",
+    "buiir": "ts-node src/builders/calculate_implicit_ratings.ts",
+    "buiirtd": "ts-node src/builders/calculate_implicit_ratings_timedecay.ts"
   },
   "keywords": [],
   "author": "",

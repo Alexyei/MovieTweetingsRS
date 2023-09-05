@@ -156,7 +156,7 @@ class User {
     // public events: { [p: number]: any[] };
     public purchasedFilms: any[];
     constructor(user_id:number, action:number, drama:number, comedy:number) {
-        this.sessionId = Math.floor(random.random() * 1000000);
+        this.sessionId = random.range(1000000);
         this.userId = user_id;
         this.likes = { action: action, drama: drama, comedy: comedy };
         // this.events = { [this.sessionId]: [] };
@@ -166,7 +166,7 @@ class User {
 
     get_session_id() {
         // сессии имитирую различные устройства одного пользователя
-        if (Math.floor(random.random() * 100) > 90) {
+        if (random.range(100) >= 90) {
             this.sessionId += 1;
             // this.events[this.sessionId] = [];
         }
@@ -180,7 +180,7 @@ class User {
 }
 
 function sample(dictionary: { [x:string]:number }) {
-    const random_number = Math.floor(random.random() * 100);
+    const random_number = random.intBetween(1,100);
     let index = 0;
     for (const [key, value] of Object.entries(dictionary)) {
         index += value;
@@ -189,6 +189,7 @@ function sample(dictionary: { [x:string]:number }) {
             return key;
         }
     }
+    console.log('errro')
 }
 
 function select_film(user:User) {
@@ -196,7 +197,10 @@ function select_film(user:User) {
     const interested_films = films[genre];
     let film_id = '';
     while (film_id === '') {
-        const film_candidate = interested_films[Math.floor(random.random() * interested_films.length)];
+        const film_candidate = interested_films[random.range(interested_films.length)];
+
+        const hasSameElements = interested_films.every(element => user.purchasedFilms.includes(element));
+        // console.log(hasSameElements)
         // if (!user.events[user.sessionId].includes(film_candidate)) {
         //     film_id = film_candidate;
         // }
@@ -225,7 +229,7 @@ async function flushDB(){
 }
 
 async function populate(){
-    const number_of_events = 100000
+    const number_of_events = 20000
     console.log("Generating Data");
     const users = [
         new User(400001, 20, 30, 50),
@@ -242,8 +246,9 @@ async function populate(){
     for (let i = 0; i < number_of_events; i++) {
         const randomUserId = random.range(users.length);
         const user = users[randomUserId];
-        const selectedFilm = select_film(user);
         const selectedAction = select_action();
+        const selectedFilm = select_film(user);
+
         if (selectedAction === "BUY") {
             // if (!user.events[user.sessionId]) {
             //     user.events[user.sessionId] = [];

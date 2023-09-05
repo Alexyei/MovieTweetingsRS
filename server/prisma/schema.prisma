@@ -47,13 +47,14 @@ model Genre {
 }
 
 model Rating {
-  id        Int      @id @default(autoincrement())
-  author    User     @relation(fields: [authorId], references: [id])
+  id        Int        @id @default(autoincrement())
+  author    User       @relation(fields: [authorId], references: [id])
   authorId  Int
-  movie     Movie    @relation(fields: [movieId], references: [id])
+  movie     Movie      @relation(fields: [movieId], references: [id])
   movieId   String
   rating    Int
-  createdAt DateTime @default(now())
+  type      RatingType @default(EXPLICIT)
+  createdAt DateTime   @default(now())
 }
 
 // Пользователь может просматривать либо фильм либо целую категорию
@@ -76,4 +77,9 @@ enum TypeEvent {
   MORE_DETAILS
   ADD_TO_LIST
   BUY
+}
+
+enum RatingType {
+  EXPLICIT
+  IMPLICIT
 }
