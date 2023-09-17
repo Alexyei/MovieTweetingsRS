@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "npx prisma migrate dev --name=rating_type",
+    "test": "vitest",
     "dev": "nodemon src/app.ts",
     "popm": "ts-node src/seeders/populate_movies.ts",
     "popmd": "ts-node src/seeders/populate_movies_descriptions.ts",
@@ -35,6 +36,8 @@
     "nodemon": "^3.0.1",
     "prisma": "^5.2.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.3",
+    "vitest-mock-extended": "^1.2.1"
   }
 }

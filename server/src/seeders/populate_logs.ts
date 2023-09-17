@@ -1,7 +1,9 @@
-import {PrismaClient, TypeEvent} from "@prisma/client";
+import {PrismaClient, Rating, TypeEvent} from "@prisma/client";
+import { Prisma } from '@prisma/client'
 import ProgressBar from "progress";
 import {createBasicLogger} from "../logger/basic_logger";
 import random_gen from "random-seed"
+
 const logger = createBasicLogger("logs")
 const prisma = new PrismaClient()
 const random = random_gen.create('0')
@@ -130,35 +132,38 @@ const films = {
         , '2250912']
 }
 
-async function checkAllFilmsExists(){
-    for (const key of Object.keys(films)){
+async function checkAllFilmsExists() {
+    for (const key of Object.keys(films)) {
         const ids = films[key as keyof typeof films]
         const movies = await prisma.movie.findMany({
-            where: { id: {in: ids}}
+            where: {id: {in: ids}}
         })
-        logger.log('info',[key, ids.length, movies.length])
+        logger.log('info', [key, ids.length, movies.length])
         if (ids.length !== movies.length) throw Error("Film not found")
     }
 }
-async function addUsers(ids: number[]){
-    for (let id of ids){
+
+async function addUsers(ids: number[]) {
+    for (let id of ids) {
         await prisma.user.upsert({
-            where: { id },
-            create: { id },
+            where: {id},
+            create: {id},
             update: {},
         })
     }
 }
+
 class User {
     private sessionId: number;
     public userId: number;
     private readonly likes: { drama: number; comedy: number; action: number };
     // public events: { [p: number]: any[] };
     public purchasedFilms: any[];
-    constructor(user_id:number, action:number, drama:number, comedy:number) {
+
+    constructor(user_id: number, action: number, drama: number, comedy: number) {
         this.sessionId = random.range(1000000);
         this.userId = user_id;
-        this.likes = { action: action, drama: drama, comedy: comedy };
+        this.likes = {action: action, drama: drama, comedy: comedy};
         // this.events = { [this.sessionId]: [] };
         this.purchasedFilms = []
 
@@ -175,12 +180,12 @@ class User {
     }
 
     select_genre() {
-        return sample(this.likes)  as 'drama' | 'action' | 'comedy';
+        return sample(this.likes) as 'drama' | 'action' | 'comedy';
     }
 }
 
-function sample(dictionary: { [x:string]:number }) {
-    const random_number = random.intBetween(1,100);
+function sample(dictionary: { [x: string]: number }) {
+    const random_number = random.intBetween(1, 100);
     let index = 0;
     for (const [key, value] of Object.entries(dictionary)) {
         index += value;
@@ -192,7 +197,7 @@ function sample(dictionary: { [x:string]:number }) {
     console.log('errro')
 }
 
-function select_film(user:User) {
+function select_film(user: User) {
     const genre = user.select_genre()
     const interested_films = films[genre];
     let film_id = '';
@@ -224,11 +229,11 @@ function select_action() {
     return sample(actions) as keyof typeof actions;
 }
 
-async function flushDB(){
+async function flushDB() {
     await prisma.userEvent.deleteMany()
 }
 
-async function populate(){
+async function populate() {
     const number_of_events = 20000
     console.log("Generating Data");
     const users = [
@@ -241,7 +246,7 @@ async function populate(){
     ]
     console.log("Simulating " + users.length + " visitors");
 
-    const progressBar = new ProgressBar(":bar :current/:total", { total: number_of_events });
+    const progressBar = new ProgressBar(":bar :current/:total", {total: number_of_events});
 
     for (let i = 0; i < number_of_events; i++) {
         const randomUserId = random.range(users.length);
@@ -256,7 +261,7 @@ async function populate(){
             // user.events[user.sessionId].push(selectedFilm);
             user.purchasedFilms.push(selectedFilm)
         }
-        logger.log('info',"user id " + user.userId + " selects film " + selectedFilm + " and " + selectedAction);
+        logger.log('info', "user id " + user.userId + " selects film " + selectedFilm + " and " + selectedAction);
 
 
         const userEvent = await prisma.userEvent.create({
@@ -267,7 +272,7 @@ async function populate(){
                 userId: user.userId
             }
         })
-        logger.log('info',userEvent);
+        logger.log('info', userEvent);
         progressBar.tick()
 
         // logger.log('info',"users\n");
@@ -283,5 +288,30 @@ async function populate(){
 
 }
 
+async function getExplicitRatingsWithoutImplicit() {
+    // const ratings = await prisma.rating.findMany({
+    //     where: {
+    //         type: 'EXPLICIT',
+    //         NOT: {
+    //             id: {
+    //                 in: {
+    //                     select: {
+    //                         id: true,
+    //                     },
+    //                     where: {
+    //                         type: 'IMPLICIT',
+    //                     },
+    //                 },
+    //             },
+    //         },
+    //     },
+    // });
+    const ratings = await prisma.$queryRaw<Rating[]>(Prisma.sql`SELECT * FROM "Rating" r WHERE type = 'EXPLICIT' OR (type = 'IMPLICIT' AND (SELECT COUNT(*) FROM "Rating" WHERE "authorId" = r."authorId" AND "movieId" = r."movieId" AND type = 'EXPLICIT') = 0)`)
+    // const ratings = await prisma.$queryRaw<Rating[]>`SELECT * FROM "Rating"`
+    return ratings;
+}
 
-checkAllFilmsExists().then(()=>addUsers([400001,400002,400003,400004,400005,400006])).then(flushDB).then(populate)
+
+// getExplicitRatingsWithoutImplicit().then(ratings=>console.log(ratings))
+
+checkAllFilmsExists().then(() => addUsers([400001, 400002, 400003, 400004, 400005, 400006])).then(flushDB).then(populate)

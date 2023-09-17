@@ -14,18 +14,8 @@ model User {
   id      Int         @id @default(autoincrement())
   email   String?     @unique
   name    String?
-  posts   Post[]
   ratings Rating[]
   events  UserEvent[]
-}
-
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
 }
 
 model Movie {
@@ -70,6 +60,61 @@ model UserEvent {
   createdAt DateTime  @default(now())
   sessionId Int?
 }
+
+// --------------------------------TESTING--------------------------------
+
+model TestUser {
+  id      Int             @id @default(autoincrement())
+  email   String?         @unique
+  name    String?
+  ratings TestRating[]
+  events  TestUserEvent[]
+}
+
+model TestMovie {
+  id          String          @id
+  title       String
+  year        Int
+  description String?
+  poster_path String?
+  genres      TestGenre[]
+  ratings     TestRating[]
+  events      TestUserEvent[]
+}
+
+model TestGenre {
+  id     Int             @id @default(autoincrement())
+  name   String          @unique
+  movies TestMovie[]
+  events TestUserEvent[]
+}
+
+model TestRating {
+  id        Int        @id @default(autoincrement())
+  author    TestUser   @relation(fields: [authorId], references: [id])
+  authorId  Int
+  movie     TestMovie  @relation(fields: [movieId], references: [id])
+  movieId   String
+  rating    Int
+  type      RatingType @default(EXPLICIT)
+  createdAt DateTime   @default(now())
+}
+
+// Пользователь может просматривать либо фильм либо целую категорию
+model TestUserEvent {
+  id        Int        @id @default(autoincrement())
+  user      TestUser   @relation(fields: [userId], references: [id])
+  userId    Int
+  movie     TestMovie? @relation(fields: [movieId], references: [id])
+  movieId   String?
+  genre     TestGenre? @relation(fields: [genreId], references: [id])
+  genreId   Int?
+  event     TypeEvent
+  createdAt DateTime   @default(now())
+  sessionId Int?
+}
+
+// --------------------------------ENUMS--------------------------------
 
 enum TypeEvent {
   GENRE_VIEW
