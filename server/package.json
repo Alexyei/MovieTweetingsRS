@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "studio": "npx prisma studio",
     "migrate": "npx prisma migrate dev --name=rating_type",
     "test": "vitest",
     "dev": "nodemon src/app.ts",

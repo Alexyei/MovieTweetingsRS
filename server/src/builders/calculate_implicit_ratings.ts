@@ -102,11 +102,11 @@ async function calculateImplicitRatings() {
 }
 
 async function flushDB() {
-    // await prisma.rating.deleteMany({
-    //     where: {
-    //         type: "IMPLICIT"
-    //     }
-    // })
+    await prisma.rating.deleteMany({
+        where: {
+            type: "IMPLICIT"
+        }
+    })
 }
 
 flushDB().then(calculateImplicitRatings)
