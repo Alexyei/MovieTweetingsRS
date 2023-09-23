@@ -3,6 +3,7 @@ import path from "path";
 import { PrismaClient } from '@prisma/client'
 import bodyParser from "body-parser";
 import {createBasicLogger} from "./logger/basic_logger";
+import {PopularityRecommender} from "./recommenders/popularity_recommender";
 
 
 const prisma = new PrismaClient()
@@ -15,8 +16,13 @@ app.use(bodyParser.json())
 
 app.use('/static', express.static(path.join(__dirname, 'src/public')));
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+app.get('/rec/pop/score/:userId/:movieId', async (req, res) => {
+    const score = await new PopularityRecommender().predictScore( Number(req.params.userId), req.params.movieId)
+    res.send(score)
+})
+app.get('/rec/pop/user/:userId', async (req, res) => {
+    const movies = await new PopularityRecommender().recommendItems( Number(req.params.userId), 20)
+    res.send(movies)
 })
 
 app.post('/user', async (req, res) => {
