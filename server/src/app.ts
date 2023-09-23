@@ -20,8 +20,12 @@ app.get('/rec/pop/score/:userId/:movieId', async (req, res) => {
     const score = await new PopularityRecommender().predictScore( Number(req.params.userId), req.params.movieId)
     res.send(score)
 })
-app.get('/rec/pop/user/:userId', async (req, res) => {
+app.get('/rec/pop/nrating/:userId', async (req, res) => {
     const movies = await new PopularityRecommender().recommendItems( Number(req.params.userId), 20)
+    res.send(movies)
+})
+app.get('/rec/pop/npurchases/:userId', async (req, res) => {
+    const movies = await new PopularityRecommender().recommendBestSellers( Number(req.params.userId), 20)
     res.send(movies)
 })
 
