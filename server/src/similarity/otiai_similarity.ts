@@ -1,7 +1,7 @@
 import {dotDivide, dotMultiply, map, matrix, Matrix, multiply, sqrt, sum, transpose} from "mathjs";
 import {stdRow, sumRow} from "../utils/math";
 
-function normalizeRatings(ratings:number[][]){
+export function normalizeRatings(ratings:number[][]){
     return ratings.map((userRow) => {
         const sum = sumRow(userRow)
         const num = userRow.filter(el => el > 0).length

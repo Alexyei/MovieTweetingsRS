@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "studio": "npx prisma studio",
-    "migrate": "npx prisma migrate dev --name=rating_type",
+    "migrate": "npx prisma migrate dev --name=similarity_rename",
     "test": "vitest",
     "dev": "nodemon src/app.ts",
     "popm": "ts-node src/seeders/populate_movies.ts",
@@ -13,7 +13,9 @@
     "popr": "ts-node src/seeders/populate_ratings.ts",
     "popl": "ts-node src/seeders/populate_logs.ts",
     "buiir": "ts-node src/builders/calculate_implicit_ratings.ts",
-    "buiirtd": "ts-node src/builders/calculate_implicit_ratings_timedecay.ts"
+    "buiirtd": "ts-node src/builders/calculate_implicit_ratings_timedecay.ts",
+    "bui_om_sim": "ts-node src/builders/scripts/calculate_movies_otiai_similarity_runner.ts",
+    "bui_ou_sim": "ts-node src/builders/scripts/calculate_users_otiai_similarity_runner.ts"
   },
   "keywords": [],
   "author": "",

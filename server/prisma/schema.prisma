@@ -11,15 +11,17 @@ datasource db {
 }
 
 model User {
-  id      Int         @id @default(autoincrement())
-  email   String?     @unique
+  id      Int               @id @default(autoincrement())
+  email   String?           @unique
   name    String?
   ratings Rating[]
   events  UserEvent[]
+  sources UsersSimilarity[] @relation("SourceRelation")
+  targets UsersSimilarity[] @relation("TargetRelation")
 }
 
 model Movie {
-  id          String      @id
+  id          String             @id
   title       String
   year        Int
   description String?
@@ -27,6 +29,8 @@ model Movie {
   genres      Genre[]
   ratings     Rating[]
   events      UserEvent[]
+  sources     MoviesSimilarity[] @relation("SourceRelation")
+  targets     MoviesSimilarity[] @relation("TargetRelation")
 }
 
 model Genre {
@@ -59,6 +63,30 @@ model UserEvent {
   event     TypeEvent
   createdAt DateTime  @default(now())
   sessionId Int?
+}
+
+model MoviesSimilarity {
+  id          Int      @id @default(autoincrement())
+  sourceMovie Movie    @relation("SourceRelation", fields: [source], references: [id])
+  source      String
+  targetMovie Movie    @relation("TargetRelation", fields: [target], references: [id])
+  target      String
+  similarity  Float
+  createdAt   DateTime @default(now())
+
+  @@unique([source, target])
+}
+
+model UsersSimilarity {
+  id         Int      @id @default(autoincrement())
+  sourceUser User     @relation("SourceRelation", fields: [source], references: [id])
+  source     Int
+  targetUser User     @relation("TargetRelation", fields: [target], references: [id])
+  target     Int
+  similarity Float
+  createdAt  DateTime @default(now())
+
+  @@unique([source, target])
 }
 
 // --------------------------------TESTING--------------------------------
