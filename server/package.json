@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "studio": "npx prisma studio",
-    "migrate": "npx prisma migrate dev --name=similarity_rename",
+    "migrate": "npx prisma migrate dev --name=similarity_type",
     "test": "vitest",
     "dev": "nodemon src/app.ts",
     "popm": "ts-node src/seeders/populate_movies.ts",

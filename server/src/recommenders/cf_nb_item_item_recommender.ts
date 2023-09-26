@@ -1,7 +1,6 @@
 import {BaseRecommender} from "./base_recommender";
 import {PrismaClient} from "@prisma/client";
 import {getRatingsWithPriorityByUserId} from "../utils/ORM";
-import {not} from "mathjs";
 
 const prisma = new PrismaClient()
 
@@ -23,7 +22,8 @@ export class ItemItemRecommender extends BaseRecommender {
             where: {
                 source: {in: userMovieIds},
                 target: {notIn: userMovieIds},
-                similarity: {gte: min_sims}
+                similarity: {gte: min_sims},
+                type: "OTIAI"
             }
         })
 
@@ -33,7 +33,8 @@ export class ItemItemRecommender extends BaseRecommender {
             const target = candidate.target
             if (recommendations.findIndex(rec=>rec.target==target)!=-1) continue;
 
-            const sources = candidatesPairs.filter(p=>p.target == target)
+            const neighbors_size = 15
+            const sources = candidatesPairs.filter(p=>p.target == target).slice(0,neighbors_size)
             if (sources.length == 0) continue;
             let numerator = 0;
             let denominator = 0;
@@ -49,7 +50,8 @@ export class ItemItemRecommender extends BaseRecommender {
             recommendations.push({target,sources: sourcesInfo, predictedRating:numerator/denominator})
         }
 
-        const sortedRecommendations = recommendations.sort((a, b) => b.predictedRating - a.predictedRating);
+        // нормализация predictedRating не нужна, такак они расчитываются на основании оценок одного пользователя
+        const sortedRecommendations = recommendations.sort((a, b) => b.predictedRating - a.predictedRating).slice(0, take);
         const notUserMoviesIds = candidatesPairs.map(p=>p.target)
 
         const moviesData = await prisma.movie.findMany({
@@ -73,44 +75,12 @@ export class ItemItemRecommender extends BaseRecommender {
                     const sourceData = moviesData.find(m=>m.id==s.id)!
                     return {
                         movieId: s.id,
-                        posterPath: targetData.poster_path,
-                        title: targetData.title,
+                        posterPath: sourceData.poster_path,
+                        title: sourceData.title,
                         rating: s.rating
                     }
                 })
             }
         })
-        // const candidatePairs = await prisma.moviesSimilarity.findMany({
-        //         where: {
-        //             OR: [
-        //                 {
-        //                     AND: {
-        //                         movieId1: {
-        //                             in: userMovieIds
-        //                         },
-        //                         movieId2: {
-        //                             notIn: userMovieIds
-        //                         },
-        //                     },
-        //                 },
-        //                 {
-        //                     AND: {
-        //                         movieId1: {
-        //                             notIn: userMovieIds
-        //                         },
-        //                         movieId2: {
-        //                             in: userMovieIds
-        //                         },
-        //                     }
-        //                 }
-        //             ],
-        //             similarity: {gte: min_sims}
-        //         },
-        //         orderBy: {
-        //             similarity: 'desc'
-        //         }
-        //     })
-
-
     }
 }

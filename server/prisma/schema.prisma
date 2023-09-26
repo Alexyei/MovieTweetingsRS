@@ -66,25 +66,27 @@ model UserEvent {
 }
 
 model MoviesSimilarity {
-  id          Int      @id @default(autoincrement())
-  sourceMovie Movie    @relation("SourceRelation", fields: [source], references: [id])
+  id          Int            @id @default(autoincrement())
+  sourceMovie Movie          @relation("SourceRelation", fields: [source], references: [id])
   source      String
-  targetMovie Movie    @relation("TargetRelation", fields: [target], references: [id])
+  targetMovie Movie          @relation("TargetRelation", fields: [target], references: [id])
   target      String
   similarity  Float
-  createdAt   DateTime @default(now())
+  type        SimilarityType
+  createdAt   DateTime       @default(now())
 
   @@unique([source, target])
 }
 
 model UsersSimilarity {
-  id         Int      @id @default(autoincrement())
-  sourceUser User     @relation("SourceRelation", fields: [source], references: [id])
+  id         Int            @id @default(autoincrement())
+  sourceUser User           @relation("SourceRelation", fields: [source], references: [id])
   source     Int
-  targetUser User     @relation("TargetRelation", fields: [target], references: [id])
+  targetUser User           @relation("TargetRelation", fields: [target], references: [id])
   target     Int
   similarity Float
-  createdAt  DateTime @default(now())
+  type       SimilarityType
+  createdAt  DateTime       @default(now())
 
   @@unique([source, target])
 }
@@ -156,4 +158,10 @@ enum TypeEvent {
 enum RatingType {
   EXPLICIT
   IMPLICIT
+}
+
+enum SimilarityType {
+  OTIAI
+  COSINE
+  PEARSON
 }
