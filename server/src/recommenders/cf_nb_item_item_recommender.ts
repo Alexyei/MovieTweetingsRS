@@ -6,9 +6,38 @@ const prisma = new PrismaClient()
 
 export class ItemItemRecommender extends BaseRecommender {
     async predictScore(userId: number, movieId: string) {
-        throw new Error("Method 'predictScore(userId:number, movieId:string)' must be implemented.");
-    }
+        const userRatings = await getRatingsWithPriorityByUserId(userId)
+        if (userRatings.length == 0) return 0.0
 
+        const userMeanRating = userRatings.reduce((acc, rating) =>rating.rating + acc,0) / userRatings.length
+
+        const userMovieIds = userRatings.map(r => r.movieId).filter(id=>id!=movieId)
+
+        const min_sims = 0.2
+        const candidatesPairs = await prisma.moviesSimilarity.findMany({
+            where: {
+                source: {in: userMovieIds},
+                target: movieId,
+                similarity: {gte: min_sims},
+                type: "OTIAI"
+            }
+        })
+
+        if (candidatesPairs.length == 0) return 0.0
+
+        let numerator = 0;
+        let denominator = 0;
+        for (const candidate of candidatesPairs){
+            const source = candidate.source
+            const similarity = candidate.similarity
+            const rating = userRatings.find(r=>r.movieId == source)!.rating
+            numerator += similarity*rating
+            denominator += similarity
+        }
+
+        return numerator/denominator + userMeanRating
+    }
+//predict_score_by_ratings(self, item_id, movie_ids):
     async recommendItems(userId: number, take: number = 10) {
         const userRatings = await getRatingsWithPriorityByUserId(userId)
         if (userRatings.length == 0) return []
@@ -47,7 +76,7 @@ export class ItemItemRecommender extends BaseRecommender {
                 sourcesInfo.push({id:source.source,similarity:source.similarity,rating:sourceRating+userMeanRating})
             }
 
-            recommendations.push({target,sources: sourcesInfo, predictedRating:numerator/denominator})
+            recommendations.push({target,sources: sourcesInfo, predictedRating:numerator/denominator + userMeanRating})
         }
 
         // нормализация predictedRating не нужна, такак они расчитываются на основании оценок одного пользователя
@@ -64,7 +93,7 @@ export class ItemItemRecommender extends BaseRecommender {
             select: { id: true, poster_path: true,title:true },
         });
 
-        sortedRecommendations.map(rec=>{
+        return sortedRecommendations.map(rec=>{
             const targetData = moviesData.find(m=>m.id==rec.target)!
             return {
                 movieId: rec.target,
@@ -83,4 +112,5 @@ export class ItemItemRecommender extends BaseRecommender {
             }
         })
     }
+    //def recommend_items_by_ratings(self, user_id, active_user_items, num=6)
 }

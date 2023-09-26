@@ -6,7 +6,49 @@ const prisma = new PrismaClient()
 
 export class UserUserRecommender extends BaseRecommender {
     async predictScore(userId: number, movieId: string) {
-        throw new Error("Method 'predictScore(userId:number, movieId:string)' must be implemented.");
+        const userRatings = await getRatingsWithPriorityByUserId(userId)
+        if (userRatings.length == 0) return 0.0
+
+        const userMeanRating = userRatings.reduce((acc, rating) =>rating.rating + acc,0) / userRatings.length
+
+        const userMovieIds = userRatings.map(r => r.movieId).filter(id=>id!=movieId)
+
+
+        const min_sims = 0.2
+        const candidatesPairs = await prisma.usersSimilarity.findMany({
+            where: {
+                source: userId,
+                target: {not: userId},
+                similarity: {gte: min_sims},
+                type: "OTIAI"
+            }
+        })
+
+        const simsUserIds = Array.from(new Set(candidatesPairs.filter(p=>p.similarity>=min_sims).map(p=>p.target)))
+
+        const simsUserRatings = await getRatingsWithPriorityByUserIds(simsUserIds)
+
+        let userRatingsNormalized = simsUserRatings.map(r=>{
+            const uRatings = simsUserRatings.filter(ur=>ur.authorId == r.authorId).map(ur=>ur.rating)
+            const uMean = uRatings.reduce((acc, rating) =>rating + acc,0) / uRatings.length
+
+            return {...r,normRating: r.rating - uMean}
+        })
+
+        userRatingsNormalized = userRatingsNormalized.filter(r=>r.movieId==movieId)
+
+
+        if (userRatingsNormalized.length == 0) return 0.0
+
+        let numerator = 0;
+        let denominator = 0;
+        for (const rating of userRatingsNormalized){
+            const similarity = candidatesPairs.find(p=>p.target == rating.authorId)!.similarity
+            numerator += similarity*rating.normRating
+            denominator += similarity
+        }
+
+        return Math.max(Math.min(numerator/denominator + userMeanRating,10),0)
     }
 
     async recommendItems(userId: number, take: number = 10) {
@@ -65,7 +107,7 @@ export class UserUserRecommender extends BaseRecommender {
 
                 sourcesInfo.push({id:source.authorId,similarity:similarity,rating:source.rating})
             }
-            recommendations.push({target,sources: sourcesInfo, predictedRating:numerator/denominator})
+            recommendations.push({target,sources: sourcesInfo, predictedRating:Math.max(Math.min(numerator/denominator + userMeanRating,10),0)})
         }
 
 
@@ -83,7 +125,17 @@ export class UserUserRecommender extends BaseRecommender {
             select: { id: true, poster_path: true,title:true },
         });
 
-        sortedRecommendations.map(rec=>{
+        const usersData = await prisma.user.findMany({
+            where: {
+                id: {
+                    in: Array.from(new Set(simsUserIds)),
+                },
+
+            },
+            select: { id: true, name: true},
+        })
+
+        return sortedRecommendations.map(rec=>{
             const targetData = moviesData.find(m=>m.id==rec.target)!
             return {
                 movieId: rec.target,
@@ -91,8 +143,10 @@ export class UserUserRecommender extends BaseRecommender {
                 title: targetData.title,
                 predictedRating: rec.predictedRating,
                 recommendedByUsers: rec.sources.map(s=>{
+                    const userData = usersData.find(u=>u.id == s.id)!
                     return {
                         userId: s.id,
+                        name: userData.name,
                         similarity: s.similarity,
                         rating: s.rating
                     }
