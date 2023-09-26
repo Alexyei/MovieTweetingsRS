@@ -1,7 +1,7 @@
 import {beforeAll, expect, test} from "vitest";
-import {calculateOverlapUsersM, preprocessData} from "../src/builders/calculate_movies_otiai_similarity";
-import {shortDataRatings} from "./mocks/ratings";
-import {calculateOverlapMoviesM} from "../src/builders/calculate_users_otiai_similarity";
+import {calculateOverlapUsersM, preprocessData} from "../../src/builders/calculate_movies_otiai_similarity";
+import {shortDataRatings} from "../mocks/ratings";
+import {calculateOverlapMoviesM} from "../../src/builders/calculate_users_otiai_similarity";
 
 const data = shortDataRatings
 test('overlap users',()=>{

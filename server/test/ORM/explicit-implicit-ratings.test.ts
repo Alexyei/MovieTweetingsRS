@@ -3,20 +3,20 @@ import {Prisma, PrismaClient, Rating, RatingType, TestRating} from "@prisma/clie
 
 const prisma = new PrismaClient();
 
-async function createUsers(usersData: any) {
+export async function createUsers(usersData: {id:number,name?:string}[]) {
     let users = await prisma.testUser.createMany({
         data: usersData
     })
 }
 
-async function createMovies(moviesData: any) {
-    let users = await prisma.testMovie.createMany({
+export async function createMovies(moviesData: {id: string, title: string, year: number}[]) {
+    let movies = await prisma.testMovie.createMany({
         data: moviesData
     })
 }
 
-async function createRatings(ratingsData:any) {
-    let users = await prisma.testRating.createMany(
+export async function createRatings(ratingsData:{id?: number, authorId: number, movieId: string, rating: number, type: RatingType }[]) {
+    let ratings = await prisma.testRating.createMany(
         {
             data: ratingsData
         })

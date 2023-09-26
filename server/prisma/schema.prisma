@@ -94,15 +94,17 @@ model UsersSimilarity {
 // --------------------------------TESTING--------------------------------
 
 model TestUser {
-  id      Int             @id @default(autoincrement())
-  email   String?         @unique
+  id      Int                   @id @default(autoincrement())
+  email   String?               @unique
   name    String?
   ratings TestRating[]
   events  TestUserEvent[]
+  sources TestUsersSimilarity[] @relation("SourceRelation")
+  targets TestUsersSimilarity[] @relation("TargetRelation")
 }
 
 model TestMovie {
-  id          String          @id
+  id          String                 @id
   title       String
   year        Int
   description String?
@@ -110,6 +112,8 @@ model TestMovie {
   genres      TestGenre[]
   ratings     TestRating[]
   events      TestUserEvent[]
+  sources     TestMoviesSimilarity[] @relation("SourceRelation")
+  targets     TestMoviesSimilarity[] @relation("TargetRelation")
 }
 
 model TestGenre {
@@ -142,6 +146,32 @@ model TestUserEvent {
   event     TypeEvent
   createdAt DateTime   @default(now())
   sessionId Int?
+}
+
+model TestMoviesSimilarity {
+  id          Int            @id @default(autoincrement())
+  sourceMovie TestMovie      @relation("SourceRelation", fields: [source], references: [id])
+  source      String
+  targetMovie TestMovie      @relation("TargetRelation", fields: [target], references: [id])
+  target      String
+  similarity  Float
+  type        SimilarityType
+  createdAt   DateTime       @default(now())
+
+  @@unique([source, target])
+}
+
+model TestUsersSimilarity {
+  id         Int            @id @default(autoincrement())
+  sourceUser TestUser       @relation("SourceRelation", fields: [source], references: [id])
+  source     Int
+  targetUser TestUser       @relation("TargetRelation", fields: [target], references: [id])
+  target     Int
+  similarity Float
+  type       SimilarityType
+  createdAt  DateTime       @default(now())
+
+  @@unique([source, target])
 }
 
 // --------------------------------ENUMS--------------------------------
