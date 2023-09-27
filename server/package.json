@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "studio": "npx prisma studio",
-    "migrate": "npx prisma migrate dev --name=similarity_type",
+    "migrate": "npx prisma migrate dev --name=similarity_test",
     "test": "vitest",
     "dev": "nodemon src/app.ts",
     "popm": "ts-node src/seeders/populate_movies.ts",
@@ -22,6 +22,7 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.2.0",
+    "@tensorflow/tfjs": "^4.11.0",
     "body-parser": "^1.20.2",
     "csv-parser": "^3.0.0",
     "dotenv": "^16.3.1",

@@ -1,3 +1,4 @@
-import {createMoviesOtiaiSimilarity} from "../calculate_movies_otiai_similarity";
+import {createMoviesOtiaiSimilarity, loadRatings} from "../calculate_movies_otiai_similarity";
 
-createMoviesOtiaiSimilarity().then()
+const ratings =
+loadRatings().then(ratings=>createMoviesOtiaiSimilarity(ratings)).then()

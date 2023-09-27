@@ -1,19 +1,21 @@
 import {toOnesM, zerosM} from "../utils/math";
 import {otiaiSimsForMovies} from "../similarity/otiai_similarity";
-import {map, matrix, multiply, transpose} from "mathjs";
-
+// import {map, matrix, multiply, transpose} from "mathjs";
+import {Rating, SimilarityType} from "@prisma/client";
+import {Tensor2D} from "@tensorflow/tfjs";
+const tf = require('@tensorflow/tfjs');
 async function flushDB(){
     console.log(1)
 }
 
-async function loadRatings():Promise<{movieId: string, userId: number, rating: number}[]>{
+export async function loadRatings():Promise<{movieId: string, authorId: number, rating: number}[]>{
     return []
 }
 
 // количество пользователей оценивших ОБА фильма
-export function calculateOverlapUsersM(ratings:number[][]) {
-    const onesM = map(matrix(ratings),el => el > 0 ? 1 : 0)
-    return multiply(transpose(onesM), onesM).toArray() as number[][]
+export function calculateOverlapUsersM(ratings:Tensor2D) {
+    const onesM = ratings.greater(0).toInt();
+    return tf.matMul(tf.transpose(onesM), onesM).arraySync() as number[][]
     // const onesM = toOnesM(ratings)
     //
     // return multiply(transpose(matrix(onesM)), matrix(onesM)).toArray() as number[][]
@@ -21,48 +23,49 @@ export function calculateOverlapUsersM(ratings:number[][]) {
 
 function filterMoviesSimilarity(moviesSims:number[][], overlapUsers:number[][],uniqueMovieIds:string[], minSims:number,minOverlap:number){
     const simsData = []
-
+    console.time('filter')
     for (let i = 0; i < moviesSims.length - 1; ++i) {
         for (let j = i + 1; j < moviesSims.length; ++j) {
-            if (moviesSims[i][j] >= minSims && overlapUsers[i][j] >= minOverlap) {
+            if (moviesSims[i][j] > minSims && overlapUsers[i][j] > minOverlap) {
                 simsData.push({
                     "source": uniqueMovieIds[i],
                     "target": uniqueMovieIds[j],
-                    "similarity": moviesSims[i][j]
+                    "similarity": moviesSims[i][j],
+                    "type": SimilarityType.OTIAI
                 })
                 simsData.push({
                     "source": uniqueMovieIds[j],
                     "target": uniqueMovieIds[i],
-                    "similarity": moviesSims[i][j]
+                    "similarity": moviesSims[i][j],
+                    "type": SimilarityType.OTIAI
                 })
             }
         }
     }
-
+    console.timeEnd('filter')
     return simsData
 }
 
-export function preprocessData(data: { movieId: string, userId: number, rating: number }[]) {
-    const uniqueUserIds = Array.from(new Set(data.map(item => item.userId)));
+export function preprocessData(data: { movieId: string, authorId: number, rating: number }[]) {
+    const uniqueUserIds = Array.from(new Set(data.map(item => item.authorId)));
     const uniqueMovieIds = Array.from(new Set(data.map(item => item.movieId)));
 
-    const ratings = zerosM(uniqueMovieIds.length, uniqueUserIds.length);
+    const ratings = zerosM(uniqueUserIds.length,uniqueMovieIds.length,);
     for (const row of data) {
         const movieIndex = uniqueMovieIds.findIndex(el => el == row.movieId);
-        const userIndex = uniqueUserIds.findIndex(el => el == row.userId);
+        const userIndex = uniqueUserIds.findIndex(el => el == row.authorId);
         ratings[userIndex][movieIndex] = row.rating;
     }
 
     return { uniqueUserIds, uniqueMovieIds, ratings };
 }
 
-export function calculateMoviesOtiaiSimilarity(data:{movieId: string, userId: number, rating: number}[],minSims=0.5,minOverlap=1){
+export function calculateMoviesOtiaiSimilarity(data:{movieId: string, authorId: number, rating: number}[],minSims=0.5,minOverlap=1){
     if (data.length  == 0) return []
     const { uniqueUserIds, uniqueMovieIds, ratings } = preprocessData(data);
-
-    const moviesSims = otiaiSimsForMovies(ratings)
-    const overlap = calculateOverlapUsersM(ratings)
-
+    const ratingsTensor = tf.tensor2d(ratings)
+    const moviesSims = otiaiSimsForMovies(ratingsTensor)
+    const overlap = calculateOverlapUsersM(ratingsTensor)
     return filterMoviesSimilarity(moviesSims, overlap,uniqueMovieIds,minSims,minOverlap)
 }
 
@@ -70,9 +73,8 @@ async function saveMoviesSimilarity(data: {source: string, target: string, simil
 
 }
 
-export async function createMoviesOtiaiSimilarity(){
+export async function createMoviesOtiaiSimilarity(ratings:{movieId: string, authorId: number, rating: number}[]|Rating[]){
     await flushDB()
-    const ratings = await loadRatings()
     const similarities = calculateMoviesOtiaiSimilarity(ratings)
     await saveMoviesSimilarity(similarities)
 }
