@@ -23,7 +23,6 @@ export function calculateOverlapUsersM(ratings:Tensor2D) {
 
 function filterMoviesSimilarity(moviesSims:number[][], overlapUsers:number[][],uniqueMovieIds:string[], minSims:number,minOverlap:number){
     const simsData = []
-    console.time('filter')
     for (let i = 0; i < moviesSims.length - 1; ++i) {
         for (let j = i + 1; j < moviesSims.length; ++j) {
             if (moviesSims[i][j] > minSims && overlapUsers[i][j] > minOverlap) {
@@ -42,7 +41,6 @@ function filterMoviesSimilarity(moviesSims:number[][], overlapUsers:number[][],u
             }
         }
     }
-    console.timeEnd('filter')
     return simsData
 }
 
@@ -52,6 +50,8 @@ export function preprocessData(data: { movieId: string, authorId: number, rating
 
     const ratings = zerosM(uniqueUserIds.length,uniqueMovieIds.length,);
     for (const row of data) {
+        // if (row.authorId == 15)
+        //     console.log()
         const movieIndex = uniqueMovieIds.findIndex(el => el == row.movieId);
         const userIndex = uniqueUserIds.findIndex(el => el == row.authorId);
         ratings[userIndex][movieIndex] = row.rating;
@@ -63,6 +63,9 @@ export function preprocessData(data: { movieId: string, authorId: number, rating
 export function calculateMoviesOtiaiSimilarity(data:{movieId: string, authorId: number, rating: number}[],minSims=0.5,minOverlap=1){
     if (data.length  == 0) return []
     const { uniqueUserIds, uniqueMovieIds, ratings } = preprocessData(data);
+
+    // const filteredElement = ratings[14].filter(el => el > 0)
+
     const ratingsTensor = tf.tensor2d(ratings)
     const moviesSims = otiaiSimsForMovies(ratingsTensor)
     const overlap = calculateOverlapUsersM(ratingsTensor)

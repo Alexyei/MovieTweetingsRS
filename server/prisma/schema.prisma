@@ -129,7 +129,7 @@ model TestRating {
   authorId  Int
   movie     TestMovie  @relation(fields: [movieId], references: [id])
   movieId   String
-  rating    Int
+  rating    Float
   type      RatingType @default(EXPLICIT)
   createdAt DateTime   @default(now())
 }
