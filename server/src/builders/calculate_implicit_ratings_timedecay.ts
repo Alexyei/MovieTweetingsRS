@@ -151,7 +151,8 @@ async function calculateImplicitRatingsForUserWithTimeDecay(userId: number) {
 
     // умножаем на 10 так как рейтинг от 0 до 10
     userRatings.forEach(rating => rating.rating = 10 * rating.rating / max_rating)
-
+    // 0 будет совпадать с отсутствующей оценкой, чтобы этого избежать заменим её на маленькое число
+    userRatings.forEach(rating => rating.rating == 0 ? rating.rating = 0.00001:null)
     return userRatings;
 
 }

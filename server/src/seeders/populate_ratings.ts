@@ -32,7 +32,8 @@ async function createRating(user_id:string, movie_id:string, rating:string, time
             data: {
                 author: { connect: { id: user.id } },
                 movie: { connect: { id: normalizedId } },
-                rating: Number(rating),
+                // 0 будет совпадать с отсутствующей оценкой, чтобы этого избежать заменим её на маленькое число
+                rating: Number(rating) == 0 ?  0.00001 : Number(rating),
                 createdAt: new Date(parseFloat(timestamp) * 1000),
             },
         });
