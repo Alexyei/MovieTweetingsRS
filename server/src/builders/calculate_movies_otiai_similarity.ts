@@ -1,5 +1,5 @@
 import {toOnesM, zerosM} from "../utils/math";
-import {otiaiSimsForMovies} from "../similarity/otiai_similarity";
+import {normalizeRatings, otiaiSimsForMovies} from "../similarity/otiai_similarity";
 // import {map, matrix, multiply, transpose} from "mathjs";
 import {Rating, SimilarityType} from "@prisma/client";
 import {Tensor2D} from "@tensorflow/tfjs";

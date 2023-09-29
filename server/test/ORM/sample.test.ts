@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client'
 
 import { expect, test, vi } from 'vitest'
-import prisma from '../src/__mocks__/prisma'
+import prisma from '../../src/__mocks__/prisma'
 vi.mock('../src/libs/prisma')
 
 test('createUser should return the generated user', async () => {

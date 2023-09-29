@@ -1,21 +1,6 @@
-import {dotDivide, dotMultiply, map, matrix, Matrix, multiply, sqrt, sum, transpose} from "mathjs";
-import {stdRow, sumRow} from "../utils/math";
-import {Tensor2D} from "@tensorflow/tfjs";
+import {Tensor1D, Tensor2D} from "@tensorflow/tfjs";
 const tf = require('@tensorflow/tfjs');
 
-// export function normalizeRatings(ratings:number[][]){
-//     return ratings.map((userRow) => {
-//         const sum = sumRow(userRow)
-//         const num = userRow.filter(el => el > 0).length
-//         const mean = sum / num
-//         const std = stdRow(userRow)
-//         if (std == 0) {
-//             return userRow.map(el => 0)
-//         }
-//
-//         return userRow.map(el => el > 0 ? el - mean : 0)
-// })
-// }
 
 export function normalizeRatings(ratings: Tensor2D){
     // const ratingArr = ratings.arraySync()
@@ -35,6 +20,12 @@ export function normalizeRatings(ratings: Tensor2D){
     // return zeroed as Tensor2D
 }
 
+export function normalizeRatingsSliced(ratingsSlice: Tensor2D, userMeansSlice: Tensor1D){
+    const valuesToSubstract = ratingsSlice.greater(0).mul(userMeansSlice.reshape([userMeansSlice.shape[0],1]))
+    const subtractedTensor = ratingsSlice.sub(valuesToSubstract);
+    return subtractedTensor as Tensor2D
+}
+
 function calculateOtiaiDistance(normRatings: Tensor2D) {
     // const nra = normRatings.arraySync()
     const numerator = tf.matMul(normRatings, tf.transpose(normRatings))
@@ -46,24 +37,7 @@ function calculateOtiaiDistance(normRatings: Tensor2D) {
     return replacedNaNTensor.arraySync() as number[][]
 }
 
-// function calculateOtiaiDistance(M: Matrix) {
-//
-//     const numerator = multiply(M, transpose(M));
-//     const sums = sum(dotMultiply(M, M), 1)
-//     // вычисление квадратов сумм по строкам
-//     const sqrtSums = map(matrix((sums as any)._data.map((el: any) => [el])), sqrt)
-//     const denominator = multiply(sqrtSums, transpose(sqrtSums))
-//
-//     let Res = dotDivide(numerator, denominator);
-//     Res = Res.map(value => isNaN(value) ? 0 : value);
-//     return Res.toArray()
-//     // return sparse.csrMatrix(Res);
-// }
-
 export function otiaiSimsForMovies(ratings: Tensor2D){
-    // const ratingArr = ratings.arraySync()
-    // const filteredElement = ratingArr[14].filter(el => el > 0)
-
     const norm_ratings = normalizeRatings(ratings)
 
     return calculateOtiaiDistance(tf.transpose(norm_ratings))
@@ -71,6 +45,18 @@ export function otiaiSimsForMovies(ratings: Tensor2D){
 
 export function otiaiSimsForUsers(ratings: Tensor2D){
     const norm_ratings = normalizeRatings(ratings)
+
+    return calculateOtiaiDistance(norm_ratings)
+}
+
+export function otiaiSimsForMoviesChunked(ratingsChunk: Tensor2D, userMeansChunk: Tensor1D){
+    const norm_ratings = normalizeRatingsSliced(ratingsChunk,userMeansChunk)
+
+    return calculateOtiaiDistance(tf.transpose(norm_ratings))
+}
+
+export function otiaiSimsForUsersChunked(ratingsChunk: Tensor2D, userMeansChunk: Tensor1D){
+    const norm_ratings = normalizeRatingsSliced(ratingsChunk,userMeansChunk)
 
     return calculateOtiaiDistance(norm_ratings)
 }

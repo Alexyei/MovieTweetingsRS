@@ -9,7 +9,7 @@ export function stdRow(list: number[]) {
     return Math.sqrt(list.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n)
 }
 
-export function zerosM(rows: number, columns: number) {
+export function zerosM(rows: number, columns: number):number[][] {
     return Array(rows).fill(0).map(() => Array(columns).fill(0));
 }
 

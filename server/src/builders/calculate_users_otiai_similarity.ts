@@ -1,4 +1,4 @@
-import {otiaiSimsForUsers} from "../similarity/otiai_similarity";
+import {normalizeRatings, otiaiSimsForUsers} from "../similarity/otiai_similarity";
 import {map, matrix, multiply, transpose} from "mathjs";
 import {preprocessData} from "./calculate_movies_otiai_similarity";
 import {Tensor2D} from "@tensorflow/tfjs";

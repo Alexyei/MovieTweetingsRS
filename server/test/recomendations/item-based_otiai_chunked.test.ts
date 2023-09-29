@@ -8,6 +8,7 @@ import {
     calculateMoviesOtiaiSimilarity,
     createMoviesOtiaiSimilarity
 } from "../../src/builders/calculate_movies_otiai_similarity";
+import {calculateMoviesOtiaiSimilarityChunked} from "../../src/builders/calculate_movies_otiai_similarity_chunked";
 
 const prisma = new PrismaClient();
 
@@ -25,8 +26,21 @@ export async function createMovies(moviesData: { id: string, title: string, year
 
 export async function createMovieSims(movieSimsData: {source: string, target: string, similarity: number, type: "OTIAI"}[]) {
     let movies = await prisma.testMoviesSimilarity.createMany({
-        data: movieSimsData
+        data: movieSimsData,
+        skipDuplicates: true
     })
+}
+
+async function getUniqueMovieIds(skip:number,take:number){
+    return prisma.testRating.findMany({distinct: ['movieId'], orderBy: {movieId: 'asc',}, select: {movieId: true}, skip:skip,take:take});
+}
+
+async function getChunkRatings(movieIds:string[]){
+    return prisma.testRating.findMany({where: {movieId: {in: movieIds}}})
+}
+
+async function saveChunkSims(chunkSims:any){
+    await createMovieSims(chunkSims)
 }
 
 export async function createRatings(ratingsData: {
@@ -48,14 +62,6 @@ async function readCSV(filename: string) {
 
         fs.createReadStream('./test/mocks/ML100K_ratings.csv','utf-8')
             .pipe(csv({ strict: true }))
-            // .pipe(parse({ columns: true}))
-            // .pipe(parse({ columns: true, raw:true, cast: (value, context) => {
-            //         if (context.column === 'rating') {
-            //             return parseFloat(value);
-            //         }
-            //         return value;
-            //     }}))
-            // .pipe(Papa.parse(Papa.NODE_STREAM_INPUT,{ header: true }))
             .on('data', (row:any) => {
                 const {userId, movieId, rating} = row;
                 ratingsData.push({
@@ -115,19 +121,14 @@ test('ratings created', async () => {
 })
 
 test('create item similarity', async () => {
-    console.time('load rating')
-    // const ratings = await prisma.testRating.findMany({where: {authorId:15}})
-    const ratings = await prisma.testRating.findMany()
-    console.timeEnd('load rating')
-    console.time('calculate sims')
-    const moviesSims = calculateMoviesOtiaiSimilarity(ratings,0.2,4)
-    console.timeEnd('calculate sims')
-    console.time('save sims')
-    await createMovieSims(moviesSims)
-    console.timeEnd('save sims')
-    console.time('query sims')
-    expect(await prisma.testMoviesSimilarity.count()).toBeGreaterThan(0)
-    console.timeEnd('query sims')
+    const usersData = await prisma.testRating.groupBy({by: 'authorId',_avg: {rating:true},orderBy: {authorId: 'asc'}})
+    const uniqueMovieIds =  (await prisma.testRating.findMany({
+        distinct: ['movieId'],
+        orderBy: {movieId: 'asc',},
+        select: {movieId: true},
+    })).map(mid=>mid.movieId);
+    // await calculateMoviesOtiaiSimilarityChunked(usersData,getUniqueMovieIds,getChunkRatings,saveChunkSims,100,0.2,4)
+    await calculateMoviesOtiaiSimilarityChunked(usersData,uniqueMovieIds,getChunkRatings,saveChunkSims,100,0.2,4)
 })
 
 test('test item similarity', async () => {

@@ -37,7 +37,7 @@ test('otiai sims movies',()=>{
 
 test('otiai sims users',()=>{
     const { uniqueUserIds, uniqueMovieIds, ratings } = preprocessData(data)
-    const sims = otiaiSimsForUsers(tf.tensor2d(ratings))
+    const sims = otiaiSimsForUsers( tf.tensor2d(ratings))
     expect(sims.length).toEqual(uniqueUserIds.length)
     for (let i=0;i<sims.length;++i){
         expect(sims[i].length).toEqual(uniqueUserIds.length)

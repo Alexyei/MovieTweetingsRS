@@ -134,3 +134,11 @@ test('substract',()=>{
 
     result.print();
 })
+
+test('substract columns',()=>{
+    const ratingsSlice = tf.tensor2d([[1, 2, 3], [0, 0, 1], [4, 0, 2],[4, 7, 2]]);
+    const userMeansSlice = tf.tensor1d([10, 20, 30, 40]);
+    const valuesToSubstract = ratingsSlice.greater(0).mul(userMeansSlice.reshape([userMeansSlice.shape[0],1]))
+    const subtractedTensor = ratingsSlice.sub(valuesToSubstract);
+    subtractedTensor.print()
+})
