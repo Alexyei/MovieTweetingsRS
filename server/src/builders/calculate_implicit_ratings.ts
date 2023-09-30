@@ -98,7 +98,7 @@ async function groupedUserEventsForUser(userId: number) {
 export function prepareRatingsForSave(ratings: any[]) {
     return ratings.filter(rating => rating.movieId).map(rating => {
         const {genreId, ...rest} = rating
-        return {...rest, rating: Math.round(rating.rating), type: RatingType.IMPLICIT}
+        return {...rest, rating: rating.rating, type: RatingType.IMPLICIT}
     })
 }
 
@@ -169,4 +169,7 @@ async function flushDB() {
     })
 }
 
-flushDB().then(calculateImplicitRatings).then(prepareRatingsForSave).then(ratings=>{console.log(ratings);return ratings}).then(saveRatings)
+export async function buildImplicitRatings(){
+    flushDB().then(calculateImplicitRatings).then(prepareRatingsForSave).then(ratings=>{console.log(ratings);return ratings}).then(saveRatings)
+}
+

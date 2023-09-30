@@ -152,7 +152,12 @@ async function calculateImplicitRatingsForUserWithTimeDecay(userId: number) {
     // умножаем на 10 так как рейтинг от 0 до 10
     userRatings.forEach(rating => rating.rating = 10 * rating.rating / max_rating)
     // 0 будет совпадать с отсутствующей оценкой, чтобы этого избежать заменим её на маленькое число
-    userRatings.forEach(rating => rating.rating == 0 ? rating.rating = 0.00001:null)
+    userRatings.forEach(rating =>{
+        if(rating.rating == 0.0){
+            rating.rating = 0.00001
+        }
+    })
+
     return userRatings;
 
 }
@@ -175,4 +180,6 @@ async function flushDB() {
     })
 }
 
-flushDB().then(calculateImplicitRatingsWithTimeDecay).then(prepareRatingsForSave).then(ratings=>{console.log(ratings);return ratings}).then(saveRatings)
+export async function buildImplicitRatingsWithTimeDecay(){
+    flushDB().then(calculateImplicitRatingsWithTimeDecay).then(prepareRatingsForSave).then(ratings=>{console.log(ratings);return ratings}).then(saveRatings)
+}

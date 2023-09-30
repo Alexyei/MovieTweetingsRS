@@ -46,7 +46,7 @@ model Rating {
   authorId  Int
   movie     Movie      @relation(fields: [movieId], references: [id])
   movieId   String
-  rating    Int
+  rating    Float
   type      RatingType @default(EXPLICIT)
   createdAt DateTime   @default(now())
 }
@@ -75,7 +75,7 @@ model MoviesSimilarity {
   type        SimilarityType
   createdAt   DateTime       @default(now())
 
-  @@unique([source, target])
+  @@unique([source, target, type])
 }
 
 model UsersSimilarity {
@@ -88,7 +88,7 @@ model UsersSimilarity {
   type       SimilarityType
   createdAt  DateTime       @default(now())
 
-  @@unique([source, target])
+  @@unique([source, target, type])
 }
 
 // --------------------------------TESTING--------------------------------
@@ -158,7 +158,7 @@ model TestMoviesSimilarity {
   type        SimilarityType
   createdAt   DateTime       @default(now())
 
-  @@unique([source, target])
+  @@unique([source, target, type])
 }
 
 model TestUsersSimilarity {
@@ -171,7 +171,7 @@ model TestUsersSimilarity {
   type       SimilarityType
   createdAt  DateTime       @default(now())
 
-  @@unique([source, target])
+  @@unique([source, target, type])
 }
 
 // --------------------------------ENUMS--------------------------------

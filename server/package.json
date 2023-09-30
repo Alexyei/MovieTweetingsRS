@@ -5,17 +5,19 @@
   "main": "index.js",
   "scripts": {
     "studio": "npx prisma studio",
-    "migrate": "npx prisma migrate dev --name=float_rating",
+    "migrate": "npx prisma migrate dev --name=type_unique",
     "test": "vitest",
     "dev": "nodemon src/app.ts",
     "popm": "ts-node src/seeders/populate_movies.ts",
     "popmd": "ts-node src/seeders/populate_movies_descriptions.ts",
     "popr": "ts-node src/seeders/populate_ratings.ts",
     "popl": "ts-node src/seeders/populate_logs.ts",
-    "buiir": "ts-node src/builders/calculate_implicit_ratings.ts",
-    "buiirtd": "ts-node src/builders/calculate_implicit_ratings_timedecay.ts",
+    "buiir": "ts-node src/builders/scripts/calculate_implicit_ratings_runner.ts",
+    "buiirtd": "ts-node src/builders/scripts/calculate_implicit_ratings_timedecay_runner.ts",
     "bui_om_sim": "ts-node src/builders/scripts/calculate_movies_otiai_similarity_runner.ts",
-    "bui_ou_sim": "ts-node src/builders/scripts/calculate_users_otiai_similarity_runner.ts"
+    "bui_ou_sim": "ts-node src/builders/scripts/calculate_users_otiai_similarity_runner.ts",
+    "bui_omc_sim": "ts-node src/builders/scripts/calculate_movies_otiai_similarity_chunked_runner.ts",
+    "bui_omcw_sim": "ts-node src/builders/scripts/calculate_movies_otiai_similarity_chunked_with_workers_runner.ts"
   },
   "keywords": [],
   "author": "",

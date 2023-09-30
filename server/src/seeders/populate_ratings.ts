@@ -5,7 +5,7 @@ import {createBasicLogger} from "../logger/basic_logger";
 const logger = createBasicLogger("ratings")
 const prisma = new PrismaClient()
 async function flushDB(){
-    await prisma.rating.deleteMany()
+    await prisma.rating.deleteMany({where:{type:'EXPLICIT'}})
 }
 
 function normalizeId(movieId: string) {
