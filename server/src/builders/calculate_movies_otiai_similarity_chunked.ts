@@ -234,12 +234,23 @@ export async function calculateMoviesOtiaiSimilarityChunkedWithWorkersAsyncConve
     await Promise.all(workers);
 
     async function runThread(runCalculationChunk:(chunkUniqueMovieIds:string[],ratings:any)=>Promise<any>,generator:ReturnType<typeof generateSequence>){
-        const data = await generator.next()
-        if (data.done) return;
+        // const data = await generator.next()
+        // if (data.done) return;
+        //
+        // // console.log(data.value.i,data.value.j,'started')
+        // await runCalculationChunk(data.value.chunkUniqueMovieIds,data.value.ratings)
+        // return runThread(runCalculationChunk, generator)
 
-        // console.log(data.value.i,data.value.j,'started')
-        await runCalculationChunk(data.value.chunkUniqueMovieIds,data.value.ratings)
-        return runThread(runCalculationChunk, generator)
+        let done = false;
+
+        while (!done) {
+            const data = await generator.next();
+            done = data.done!;
+
+            if (!done) {
+                await runCalculationChunk(data.value!.chunkUniqueMovieIds,data.value!.ratings)
+            }
+        }
     }
 
     async function* generateSequence() {
@@ -268,7 +279,7 @@ export async function calculateMoviesOtiaiSimilarityChunkedWithWorkersAsyncConve
                 console.log(`Поток выполнился за: ${(Date.now()-start)/1000} секунд`);
                 worker.off('error', reject);
                 // worker.off('exit', resolve);
-                worker.terminate(); // Завершаем worker после выполнения
+                await worker.terminate(); // Завершаем worker после выполнения
                 resolve()
             });
 
