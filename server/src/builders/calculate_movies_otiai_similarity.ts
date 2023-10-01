@@ -76,8 +76,9 @@ async function saveMoviesSimilarity(data: {source: string, target: string, simil
 
 }
 
-export async function createMoviesOtiaiSimilarity(ratings:{movieId: string, authorId: number, rating: number}[]|Rating[]){
+export async function buildMoviesOtiaiSimilarity(){
     await flushDB()
+    const ratings = await loadRatings()
     const similarities = calculateMoviesOtiaiSimilarity(ratings)
     await saveMoviesSimilarity(similarities)
 }

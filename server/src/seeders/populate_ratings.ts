@@ -75,4 +75,7 @@ const populate = async () => {
     }
 };
 
-flushDB().then(populate)
+export function populateRatings(){
+    flushDB().then(populate)
+}
+

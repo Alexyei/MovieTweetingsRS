@@ -114,6 +114,33 @@ async function populate() {
     }
 }
 
+// Загрузка жанров
+//https://api.themoviedb.org/3/genre/movie/list?api_key=f320693db8717aabcd6a78029f03e67a
+// Загрузка фильма
+//https://api.themoviedb.org/3/find/tt0106519?external_source=imdb_id&api_key=f320693db8717aabcd6a78029f03e67a
+// Загрузка фильма на русском
+//https://api.themoviedb.org/3/find/tt0111161?external_source=imdb_id&api_key=f320693db8717aabcd6a78029f03e67a&language=ru-RU
+// Получение изображения
+// https://image.tmdb.org/t/p/w500/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg
+
+async function checkAllPostersLoaded(){
+    const moviesWithPosters = await prisma.movie.findMany({where: {NOT: {description: null,}}})
+    const poster_paths = moviesWithPosters.map(movie => movie.poster_path) as string[]
+
+    const progressBar = new ProgressBar(":bar :current/:total", {total: poster_paths.length});
+
+    for (let poster of poster_paths) {
+        await downloadPoster(poster)
+        progressBar.tick()
+    }
+}
+
+export function  populateMovieDescriptions(){
+    populate().then(checkAllPostersLoaded)
+}
+
+
+
 // async function getImdbId(movieId:number) {
 //     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${getApiKey()}`;
 //
@@ -178,25 +205,3 @@ async function populate() {
 // }
 
 
-// Загрузка жанров
-//https://api.themoviedb.org/3/genre/movie/list?api_key=f320693db8717aabcd6a78029f03e67a
-// Загрузка фильма
-//https://api.themoviedb.org/3/find/tt0106519?external_source=imdb_id&api_key=f320693db8717aabcd6a78029f03e67a
-// Загрузка фильма на русском
-//https://api.themoviedb.org/3/find/tt0111161?external_source=imdb_id&api_key=f320693db8717aabcd6a78029f03e67a&language=ru-RU
-// Получение изображения
-// https://image.tmdb.org/t/p/w500/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg
-
-async function checkAllPostersLoaded(){
-    const moviesWithPosters = await prisma.movie.findMany({where: {NOT: {description: null,}}})
-    const poster_paths = moviesWithPosters.map(movie => movie.poster_path) as string[]
-
-    const progressBar = new ProgressBar(":bar :current/:total", {total: poster_paths.length});
-
-    for (let poster of poster_paths) {
-        await downloadPoster(poster)
-        progressBar.tick()
-    }
-}
-
-populate().then(checkAllPostersLoaded)

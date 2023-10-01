@@ -6,7 +6,8 @@ import {Tensor2D} from "@tensorflow/tfjs";
 import ProgressBar from "progress";
 import {isMainThread, parentPort, threadId, Worker, workerData} from "worker_threads";
 import path from "path";
-
+import {createBasicLogger} from "../logger/basic_logger";
+const logger = createBasicLogger("similarity_otiai")
 const tf = require('@tensorflow/tfjs');
 const prisma = new PrismaClient();
 
@@ -201,7 +202,7 @@ export async function calculateMoviesOtiaiSimilarityChunkedWithWorkers(usersData
                 console.log(`Поток выполнился за: ${(Date.now()-start)/1000} секунд`);
                 worker.off('error', reject);
                 // worker.off('exit', resolve);
-                worker.terminate(); // Завершаем worker после выполнения
+                await worker.terminate(); // Завершаем worker после выполнения
                 resolve()
             });
 
@@ -228,12 +229,12 @@ export async function calculateMoviesOtiaiSimilarityChunkedWithWorkersAsyncConve
     const workerFilename  = path.join(__dirname+'/workers/otiai_movie_worker.js')
     const generator = generateSequence()
     for(let i=0;i<workersCount;++i){
-        workers.push(runThread(runCalculationChunk,generator))
+        workers.push(runThread(runCalculationChunk,generator,i))
     }
 
     await Promise.all(workers);
 
-    async function runThread(runCalculationChunk:(chunkUniqueMovieIds:string[],ratings:any)=>Promise<any>,generator:ReturnType<typeof generateSequence>){
+    async function runThread(runCalculationChunk:(chunkUniqueMovieIds:string[],ratings:any)=>Promise<any>,generator:ReturnType<typeof generateSequence>,threadId:number){
         // const data = await generator.next()
         // if (data.done) return;
         //
@@ -249,19 +250,21 @@ export async function calculateMoviesOtiaiSimilarityChunkedWithWorkersAsyncConve
 
             if (!done) {
                 await runCalculationChunk(data.value!.chunkUniqueMovieIds,data.value!.ratings)
+                logger.log('info',{t:threadId,i: data.value!.i , j: data.value!.j, success:true})
+                console.log({t:threadId,i: data.value!.i , j: data.value!.j, success:true})
             }
         }
     }
 
     async function* generateSequence() {
-        for (let i = 0; i < nChunks-1; ++i) {
+        for (let i = 14; i < nChunks-1; ++i) {
             for (let j = i+1; j < nChunks; ++j) {
                 const chunkUniqueMovieIds = uniqueMovieIds
                     .slice(i*chunkSize, (i+1)*chunkSize)
                     .concat(uniqueMovieIds.slice(j*chunkSize, (j+1)*chunkSize));
                 const ratings = await getChunkRatings(chunkUniqueMovieIds)
 
-                yield {chunkUniqueMovieIds, ratings}
+                yield {chunkUniqueMovieIds, ratings,i,j}
             }
         }
 
@@ -277,13 +280,17 @@ export async function calculateMoviesOtiaiSimilarityChunkedWithWorkersAsyncConve
                 await simsCalculatedCallback(chunkSims);
                 progressBar.tick();
                 console.log(`Поток выполнился за: ${(Date.now()-start)/1000} секунд`);
+                logger.log('info',`Thread time: ${(Date.now()-start)/1000} seconds`)
                 worker.off('error', reject);
                 // worker.off('exit', resolve);
                 await worker.terminate(); // Завершаем worker после выполнения
                 resolve()
             });
 
-            worker.on('error', reject);
+            worker.on('error', ()=>{
+                logger.log('error','error in worker')
+                reject()
+            } );
             // worker.on('exit', resolve);
             // worker.postMessage(); // Передаем данные в worker
         });
@@ -311,7 +318,7 @@ async function saveChunkSims(chunkSims: ReturnType<typeof filterMoviesSimilarity
     })
 }
 
-export async function createMoviesOtiaiSimilarityChunked(chunkSize = 100, minSims = 0.2, minOverlap = 4) {
+export async function buildMoviesOtiaiSimilarityChunked(chunkSize = 100, minSims = 0.2, minOverlap = 4) {
     await flushDB()
     const usersData = await prisma.rating.groupBy({by: 'authorId', _avg: {rating: true}, orderBy: {authorId: 'asc'}})
     const uniqueMovieIds =  (await prisma.rating.findMany({
@@ -323,8 +330,8 @@ export async function createMoviesOtiaiSimilarityChunked(chunkSize = 100, minSim
     await calculateMoviesOtiaiSimilarityChunked(usersData, uniqueMovieIds, getChunkRatings, saveChunkSims, chunkSize, minSims, minOverlap)
 }
 
-export async function createMoviesOtiaiSimilarityChunkedWithWorkers(chunkSize = 100,maxThreads =8, minSims = 0.2, minOverlap = 4) {
-    await flushDB()
+export async function buildMoviesOtiaiSimilarityChunkedWithWorkers(chunkSize = 100, maxThreads =8, minSims = 0.2, minOverlap = 4) {
+    // await flushDB()
     const usersData = await prisma.rating.groupBy({by: 'authorId', _avg: {rating: true}, orderBy: {authorId: 'asc'}})
     const uniqueMovieIds =  (await prisma.rating.findMany({
         distinct: ['movieId'],
@@ -335,8 +342,8 @@ export async function createMoviesOtiaiSimilarityChunkedWithWorkers(chunkSize = 
     await calculateMoviesOtiaiSimilarityChunkedWithWorkers(usersData, uniqueMovieIds, getChunkRatings, saveChunkSims, chunkSize,maxThreads, minSims, minOverlap)
 }
 
-export async function createMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor(chunkSize = 100,maxThreads =8, minSims = 0.2, minOverlap = 4) {
-    await flushDB()
+export async function buildMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor(chunkSize = 100,maxThreads =8, minSims = 0.2, minOverlap = 4) {
+    // await flushDB()
     const usersData = await prisma.rating.groupBy({by: 'authorId', _avg: {rating: true}, orderBy: {authorId: 'asc'}})
     const uniqueMovieIds =  (await prisma.rating.findMany({
         distinct: ['movieId'],

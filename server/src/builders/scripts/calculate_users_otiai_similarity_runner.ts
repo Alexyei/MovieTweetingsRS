@@ -1,3 +1,3 @@
-import {createUsersOtiaiSimilarity} from "../calculate_users_otiai_similarity";
+import {buildUsersOtiaiSimilarity} from "../calculate_users_otiai_similarity";
 
-createUsersOtiaiSimilarity().then()
+buildUsersOtiaiSimilarity().then()

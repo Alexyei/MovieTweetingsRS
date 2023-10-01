@@ -1,6 +1,6 @@
 import {
-    createMoviesOtiaiSimilarityChunkedWithWorkers,
-    createMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor
+    buildMoviesOtiaiSimilarityChunkedWithWorkers,
+    buildMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor
 } from "../calculate_movies_otiai_similarity_chunked";
 
-createMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor(1000,11).then()
+buildMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor(800,11,0.2,1).then()

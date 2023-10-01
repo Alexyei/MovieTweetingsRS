@@ -322,6 +322,14 @@ async function populate(number_of_events = 20000) {
 
 }
 
+async function flushDB() {
+    await prisma.userEvent.deleteMany()
+}
+
+export function populateLogs(){
+    checkAllFilmsExists().then(() => addUsers([400001, 400002, 400003, 400004, 400005, 400006])).then(flushDB).then(()=>populate())
+}
+
 // class User {
 //     private sessionId: number;
 //     public userId: number;
@@ -388,9 +396,7 @@ async function populate(number_of_events = 20000) {
 //     return sample(actions) as keyof typeof actions;
 // }
 
-async function flushDB() {
-    await prisma.userEvent.deleteMany()
-}
+
 
 // async function populate() {
 //     const number_of_events = 20000
@@ -448,4 +454,3 @@ async function flushDB() {
 // }
 
 
-checkAllFilmsExists().then(() => addUsers([400001, 400002, 400003, 400004, 400005, 400006])).then(flushDB).then(()=>populate())

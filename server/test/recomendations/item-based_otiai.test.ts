@@ -6,7 +6,6 @@ const Papa = require('papaparse');
 import csv from "csv-parser";
 import {
     calculateMoviesOtiaiSimilarity,
-    createMoviesOtiaiSimilarity
 } from "../../src/builders/calculate_movies_otiai_similarity";
 
 const prisma = new PrismaClient();

@@ -72,7 +72,7 @@ async function saveUsersSimilarity(data: {source: number, target: number, simila
 
 }
 
-export async function createUsersOtiaiSimilarity(){
+export async function buildUsersOtiaiSimilarity(){
     await flushDB()
     const ratings = await loadRatings()
     const similarities = calculateUsersOtiaiSimilarity(ratings)

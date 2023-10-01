@@ -90,4 +90,8 @@ const populate = async () => {
     }
 };
 
-flushDB().then(populate)
+export function populateMovies(){
+    flushDB().then(populate)
+}
+
+
