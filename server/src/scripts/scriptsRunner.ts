@@ -7,7 +7,7 @@ const params = process.argv.slice(3)
 
 const runners = [
     {
-        keywords: ['seed', 'populate'],
+        keywords: ['seed', 'populate','pop'],
         runner: (args:string[])=>new PopulateRunner().run(args)
     },
     {

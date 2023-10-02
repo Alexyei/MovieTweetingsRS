@@ -21,23 +21,23 @@ export class BuilderRunner extends BaseRunner {
             runner: ()=>buildImplicitRatingsWithTimeDecay().then()
         },
         {
-            args: ['sim','otiai','movies'],
+            args: ['sim','otiai','m'],
             runner: ()=>buildMoviesOtiaiSimilarity().then()
         },
         {
-            args: ['sim','otiai','movies','chunk'],
+            args: ['sim','otiai','m','c'],
             runner: ()=>buildMoviesOtiaiSimilarityChunked(200).then()
         },
         {
-            args: ['sim','otiai','movies','chunk','workers'],
+            args: ['sim','otiai','m','cw'],
             runner: ()=>buildMoviesOtiaiSimilarityChunkedWithWorkers(800,11,0.2,2).then()
         },
         {
-            args: ['sim','otiai','movies','chunk','workers','conveyor'],
+            args: ['sim','otiai','m','cwc'],
             runner: ()=>buildMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor(800,11,0.2,2).then()
         },
         {
-            args: ['sim','otiai','users'],
+            args: ['sim','otiai','u'],
             runner: ()=>buildUsersOtiaiSimilarity().then()
         },
     ]

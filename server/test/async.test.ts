@@ -1,5 +1,4 @@
 import {beforeAll, expect, test} from "vitest";
-import {run} from "node:test";
 
 test('async conveyor',async ()=>{
     async function* generateSequence(start:number, end:number) {
@@ -25,12 +24,6 @@ test('async conveyor',async ()=>{
     }
 
     async function runThread(runWorker:(i: number, j: number)=>Promise<any>, generator:AsyncGenerator<{i: number, j: number}>){
-        // const data = await generator.next()
-        // if (data.done) return;
-        //
-        // console.log(data.value.i,data.value.j,'started')
-        // await runWorker(data.value.i,data.value.j)
-        // return runThread(runWorker, generator)
         let done = false;
 
         while (!done) {

@@ -7,28 +7,28 @@ import {populateRatings} from "./populate_ratings";
 export class PopulateRunner extends BaseRunner {
     _runners = [
         {
-            args: ['pop','movies'],
+            args: ['movies'],
             runner: ()=>populateMovies()
         },
         {
-            args: ['pop','movies','descriptions'],
+            args: ['descriptions'],
             runner: ()=>populateMovieDescriptions()
         },
         {
-            args: ['pop','movies','ratings'],
+            args: ['ratings'],
             runner: ()=>populateRatings()
         },
         {
-            args: ['pop','movies','logs'],
+            args: ['logs'],
             runner: ()=>populateLogs()
         }
     ]
-    showLoading(){
+    showHint(){
         console.log('Доступные параметры:');
-        console.log('pop movies - Загрузить данные о фильмах');
-        console.log('pop movies descriptions - Загрузить описания фильмов и их постеры');
-        console.log('pop ratings - Загрузить явные оценки')
-        console.log('pop logs - Сгенерировать события пользователей')
+        console.log('movies - Загрузить данные о фильмах');
+        console.log('descriptions - Загрузить описания фильмов и их постеры');
+        console.log('ratings - Загрузить явные оценки')
+        console.log('logs - Сгенерировать события пользователей')
         console.log('help - Справка по параметрам');
     }
 }

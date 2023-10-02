@@ -1,7 +1,6 @@
 import {beforeAll, expect, test} from "vitest";
 import {Prisma, PrismaClient, RatingType} from "@prisma/client";
 import fs from "fs";
-const Papa = require('papaparse');
 import csv from "csv-parser";
 
 import {calculateMoviesOtiaiSimilarityChunked} from "../../src/builders/calculate_movies_otiai_similarity_chunked";

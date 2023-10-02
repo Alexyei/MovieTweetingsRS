@@ -1,5 +1,5 @@
 import {toOnesM, zerosM} from "../utils/math";
-import {normalizeRatings, otiaiSimsForMovies} from "../similarity/otiai_similarity";
+import {normalizeRatings, otiaiSimsForMovies} from "../similarity/otiai/distance";
 // import {map, matrix, multiply, transpose} from "mathjs";
 import {Rating, SimilarityType} from "@prisma/client";
 import {Tensor2D} from "@tensorflow/tfjs";
@@ -16,9 +16,6 @@ export async function loadRatings():Promise<{movieId: string, authorId: number, 
 export function calculateOverlapUsersM(ratings:Tensor2D) {
     const onesM = ratings.greater(0).toInt();
     return tf.matMul(tf.transpose(onesM), onesM).arraySync() as number[][]
-    // const onesM = toOnesM(ratings)
-    //
-    // return multiply(transpose(matrix(onesM)), matrix(onesM)).toArray() as number[][]
 }
 
 function filterMoviesSimilarity(moviesSims:number[][], overlapUsers:number[][],uniqueMovieIds:string[], minSims:number,minOverlap:number){
@@ -50,8 +47,6 @@ export function preprocessData(data: { movieId: string, authorId: number, rating
 
     const ratings = zerosM(uniqueUserIds.length,uniqueMovieIds.length,);
     for (const row of data) {
-        // if (row.authorId == 15)
-        //     console.log()
         const movieIndex = uniqueMovieIds.findIndex(el => el == row.movieId);
         const userIndex = uniqueUserIds.findIndex(el => el == row.authorId);
         ratings[userIndex][movieIndex] = row.rating;
@@ -63,8 +58,6 @@ export function preprocessData(data: { movieId: string, authorId: number, rating
 export function calculateMoviesOtiaiSimilarity(data:{movieId: string, authorId: number, rating: number}[],minSims=0.5,minOverlap=1){
     if (data.length  == 0) return []
     const { uniqueUserIds, uniqueMovieIds, ratings } = preprocessData(data);
-
-    // const filteredElement = ratings[14].filter(el => el > 0)
 
     const ratingsTensor = tf.tensor2d(ratings)
     const moviesSims = otiaiSimsForMovies(ratingsTensor)

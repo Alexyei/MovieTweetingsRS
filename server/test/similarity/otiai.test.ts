@@ -1,9 +1,7 @@
 import {beforeAll, expect, test} from "vitest";
-import {dotDivide, dotMultiply, map, Matrix, matrix, multiply, sqrt, sum, transpose} from "mathjs";
 import {calculateMoviesOtiaiSimilarity, preprocessData} from "../../src/builders/calculate_movies_otiai_similarity";
 import {calculateUsersOtiaiSimilarity} from "../../src/builders/calculate_users_otiai_similarity";
-import {normalizeRatings, otiaiSimsForMovies, otiaiSimsForUsers} from "../../src/similarity/otiai_similarity";
-import {stdRow, sumRow, zerosM} from "../../src/utils/math";
+import {normalizeRatings, otiaiSimsForMovies, otiaiSimsForUsers} from "../../src/similarity/otiai/distance";
 import {shortDataRatings} from "../mocks/ratings";
 const tf = require('@tensorflow/tfjs');
 beforeAll(async () => {

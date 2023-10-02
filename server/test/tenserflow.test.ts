@@ -1,5 +1,4 @@
 import {beforeAll, expect, test} from "vitest";
-import {multiply, transpose} from "mathjs";
 import {zerosM} from "../src/utils/math";
 import {Tensor2D} from "@tensorflow/tfjs";
 const tf = require('@tensorflow/tfjs');
