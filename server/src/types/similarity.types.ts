@@ -1,9 +1,10 @@
-import {SimilarityType} from "@prisma/client";
+import {
+    MoviesSimilarity,
+    TestMoviesSimilarity,
+    TestUsersSimilarity,
+    UsersSimilarity
+} from "@prisma/client";
 
-export type MovieSimilarityType = {
-    source: string, target: string, similarity: number, type:SimilarityType
-}
+export type MovieSimilarityT = Omit<MoviesSimilarity | TestMoviesSimilarity, "createdAt" | "id">
 
-export type UserSimilarityType = {
-    source: number, target: number, similarity: number, type:SimilarityType
-}
+export type UserSimilarityT = Omit<UsersSimilarity | TestUsersSimilarity, "createdAt" | "id">

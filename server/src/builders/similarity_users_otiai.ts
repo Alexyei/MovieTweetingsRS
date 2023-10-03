@@ -1,19 +1,19 @@
 import {PrismaClient, SimilarityType} from "@prisma/client";
 import {calculateSimilarityForUsersOtiai} from "../similarity/otiai/calculations_users";
-import {UserSimilarityType} from "../types/similarity.types";
+import {UserSimilarityT} from "../types/similarity.types";
+import {deleteUsersSimilarityByType, saveUsersSimilarity} from "../DAO/user_similarity";
+import {getRatingsWithPriority} from "../DAO/priopity_ratings";
 const prisma = new PrismaClient();
 async function flushDB(){
-    prisma.usersSimilarity.deleteMany({where:{type:SimilarityType.OTIAI}})
+    await deleteUsersSimilarityByType(SimilarityType.OTIAI,false)
 }
 
 async function getRatings(){
-    return prisma.rating.findMany()
+    return getRatingsWithPriority(false)
 }
 
-async function saveSimilarityForUsers(userSims: UserSimilarityType[]){
-    await prisma.usersSimilarity.createMany({
-        data: userSims
-    })
+async function saveSimilarityForUsers(userSims: UserSimilarityT[]){
+    await saveUsersSimilarity(userSims,false,false)
 }
 
 export async function buildSimilarityForUsersOtiai(minSims=0.2,minOverlap=4){

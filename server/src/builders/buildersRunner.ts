@@ -2,11 +2,11 @@ import {BaseRunner} from "../scripts/base_runner";
 import {buildImplicitRatings} from "./calculate_implicit_ratings";
 import {buildImplicitRatingsWithTimeDecay} from "./calculate_implicit_ratings_timedecay";
 import {
-    buildMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor,
-    buildMoviesOtiaiSimilarityChunkedWithWorkers, buildMoviesOtiaiSimilarityChunked,
-} from "./calculate_movies_otiai_similarity_chunked";
-import {buildMoviesOtiaiSimilarity} from "./calculate_movies_otiai_similarity";
-import {buildUsersOtiaiSimilarity} from "./calculate_users_otiai_similarity";
+    buildSimilarityForMoviesOtiai,
+    buildSimilarityForMoviesOtiaiByChunks,
+    buildSimilarityForMoviesOtiaiByChunksWithWorkers, buildSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor
+} from "./similarity_movies_otiai";
+import {buildSimilarityForUsersOtiai} from "./similarity_users_otiai";
 
 
 
@@ -22,23 +22,23 @@ export class BuilderRunner extends BaseRunner {
         },
         {
             args: ['sim','otiai','m'],
-            runner: ()=>buildMoviesOtiaiSimilarity().then()
+            runner: ()=>buildSimilarityForMoviesOtiai().then()
         },
         {
             args: ['sim','otiai','m','c'],
-            runner: ()=>buildMoviesOtiaiSimilarityChunked(200).then()
+            runner: ()=>buildSimilarityForMoviesOtiaiByChunks(200).then()
         },
         {
             args: ['sim','otiai','m','cw'],
-            runner: ()=>buildMoviesOtiaiSimilarityChunkedWithWorkers(800,11,0.2,2).then()
+            runner: ()=>buildSimilarityForMoviesOtiaiByChunksWithWorkers(800,11,0.2,2).then()
         },
         {
             args: ['sim','otiai','m','cwc'],
-            runner: ()=>buildMoviesOtiaiSimilarityChunkedWithWorkersAsyncConveyor(800,11,0.2,2).then()
+            runner: ()=>buildSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(800,11,0.2,2).then()
         },
         {
             args: ['sim','otiai','u'],
-            runner: ()=>buildUsersOtiaiSimilarity().then()
+            runner: ()=>buildSimilarityForUsersOtiai().then()
         },
     ]
 

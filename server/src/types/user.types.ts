@@ -1,3 +1,3 @@
-export type UserAvgType = {
-    authorId: number, _avg: { rating: number | null }
-}
+import {TestUser, User} from "@prisma/client";
+
+export type UserT = Omit<User | TestUser, "email" | "name">

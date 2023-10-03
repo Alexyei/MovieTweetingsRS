@@ -4,8 +4,8 @@ import {Tensor2D} from "@tensorflow/tfjs";
 const tf = require('@tensorflow/tfjs');
 
 test('tf', () => {
-    const rowSize = 100;
-    const colSize = 100000;
+    const rowSize = 10;
+    const colSize = 10000;
     const arr = [];
 
 // Создаем массив с случайными значениями
@@ -16,12 +16,9 @@ test('tf', () => {
         }
         arr.push(row);
     }
-
-    console.log(arr);
     console.time('1')
     // const M = tf.randomUniform([610, 10000]);
     const M = tf.tensor2d(arr)
-    console.log('created')
     // randomArray.print()
     // const X = tf.tensor2d(randomArray.arraySync());
     const numerator1 = tf.matMul(tf.transpose(M),M)
@@ -67,7 +64,6 @@ test('usually list  zerosM',()=>{
         const userIndex = Math.floor(Math.random() * 610);
         ratings[userIndex][movieIndex] = i
     }
-    ratings
 })
 
 test('sub mean',()=>{

@@ -1,19 +1,17 @@
-import tf from "@tensorflow/tfjs";
+const tf = require('@tensorflow/tfjs');
 import {otiaiSimsForMovies, otiaiSimsForMoviesForChunk} from "./distance";
 import {preprocessData, preprocessDataForChunk} from "../preprocess_data";
 import {calculateOverlapUsersM} from "../overlap";
 import {filterMoviesSimilarity} from "../filter_similarities";
 import {SimilarityType} from "@prisma/client";
-import {RatingType} from "../../types/rating.types";
+import {RatingT, UserAvgRatingT} from "../../types/rating.types";
 import ProgressBar from "progress";
-import {UserAvgType} from "../../types/user.types";
-import {MovieSimilarityType} from "../../types/similarity.types";
+import {MovieSimilarityT} from "../../types/similarity.types";
 import path from "path";
 import {Worker} from "worker_threads";
 
 
-
-export function calculateSimilarityForMoviesOtiai(data:RatingType[],minSims=0.2,minOverlap=4){
+export function calculateSimilarityForMoviesOtiai(data:RatingT[],minSims=0.2,minOverlap=4){
     if (data.length  == 0) return []
     const { uniqueUserIds, uniqueMovieIds, ratings } = preprocessData(data);
 
@@ -22,9 +20,6 @@ export function calculateSimilarityForMoviesOtiai(data:RatingType[],minSims=0.2,
     const overlap = calculateOverlapUsersM(ratingsTensor)
     return filterMoviesSimilarity(moviesSims, overlap,uniqueMovieIds,minSims,minOverlap, SimilarityType.OTIAI)
 }
-
-
-
 export function calculateSimilarityForMoviesOtiaiForChunk(ratingsTable: number[][], usersMean: number[], chunkUniqueMovieIds: string[], minSims = 0.2, minOverlap = 4) {
     const ratingsTensor = tf.tensor2d(ratingsTable)
     const moviesSims = otiaiSimsForMoviesForChunk(ratingsTensor, tf.tensor1d(usersMean))
@@ -32,8 +27,7 @@ export function calculateSimilarityForMoviesOtiaiForChunk(ratingsTable: number[]
 
     return filterMoviesSimilarity(moviesSims, overlap, chunkUniqueMovieIds, minSims, minOverlap, SimilarityType.OTIAI)
 }
-
-export async function calculateSimilarityForMoviesOtiaiByChunks(usersData: UserAvgType[], uniqueMovieIds: string[], getRatingsForChunk: (movieIds: string[]) => Promise<RatingType[]>, simsCalculatedCallback: (sims: MovieSimilarityType[]) => Promise<any>, chunkSize = 100, minSims = 0.2, minOverlap = 4) {
+export async function calculateSimilarityForMoviesOtiaiByChunks(usersData: UserAvgRatingT[], uniqueMovieIds: string[], getRatingsForChunk: (movieIds: string[]) => Promise<RatingT[]>, simsCalculatedCallback: (sims: MovieSimilarityT[]) => Promise<any>, chunkSize = 100, minSims = 0.2, minOverlap = 4) {
     if (usersData.length == 0) return;
     const nChunks = Math.ceil(uniqueMovieIds.length / chunkSize)
     const progressBar = new ProgressBar(":bar :current/:total", {total: nChunks * (nChunks - 1) / 2});
@@ -48,8 +42,7 @@ export async function calculateSimilarityForMoviesOtiaiByChunks(usersData: UserA
         }
     }
 }
-
-async function runCalculationSimilarityForMoviesForChunk(workerFilename:string, progressBar:ProgressBar, workerData: {minSims:number,minOverlap:number, chunkUniqueMovieIds: string[],usersData: UserAvgType[], ratings: RatingType[],simsCalculatedCallback: (sims: MovieSimilarityType[]) => Promise<any>}) {
+async function runCalculationSimilarityForMoviesForChunk(workerFilename:string, progressBar:ProgressBar, workerData: {minSims:number,minOverlap:number, chunkUniqueMovieIds: string[],usersData: UserAvgRatingT[], ratings: RatingT[],simsCalculatedCallback: (sims: MovieSimilarityT[]) => Promise<any>}) {
     return new Promise<void>((resolve, reject) => {
         const {minSims,minOverlap, chunkUniqueMovieIds,ratings, usersData,simsCalculatedCallback} = workerData;
         const worker = new Worker(workerFilename, {
@@ -79,7 +72,7 @@ async function runCalculationSimilarityForMoviesForChunk(workerFilename:string, 
         // worker.postMessage(); // Передаем данные в worker
     });
 }
-export async function calculateSimilarityForMoviesOtiaiByChunksWithWorkers(usersData: UserAvgType[], uniqueMovieIds: string[], getChunkRatings: (movieIds: string[]) => Promise<RatingType[]>, simsCalculatedCallback: (sims: MovieSimilarityType[]) => Promise<any>, chunkSize = 100, maxThreads = 8, minSims = 0.2, minOverlap = 4) {
+export async function calculateSimilarityForMoviesOtiaiByChunksWithWorkers(usersData: UserAvgRatingT[], uniqueMovieIds: string[], getChunkRatings: (movieIds: string[]) => Promise<RatingT[]>, simsCalculatedCallback: (sims: MovieSimilarityT[]) => Promise<any>, chunkSize = 100, maxThreads = 8, minSims = 0.2, minOverlap = 4) {
     if (usersData.length == 0) return;
     const nChunks = Math.ceil(uniqueMovieIds.length / chunkSize)
     const progressBar = new ProgressBar(":bar :current/:total", {total: nChunks * (nChunks - 1) / 2});
@@ -101,8 +94,7 @@ export async function calculateSimilarityForMoviesOtiaiByChunksWithWorkers(users
     }
     await Promise.all(workers);
 }
-
-export async function calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(usersData: UserAvgType[], uniqueMovieIds: string[], getChunkRatings: (movieIds: string[]) => Promise<RatingType[]>, simsCalculatedCallback: (sims: MovieSimilarityType[]) => Promise<any>, chunkSize = 100, maxThreads = 11, minSims = 0.2, minOverlap = 4) {
+export async function calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(usersData: UserAvgRatingT[], uniqueMovieIds: string[], getChunkRatings: (movieIds: string[]) => Promise<RatingT[]>, simsCalculatedCallback: (sims: MovieSimilarityT[]) => Promise<any>, chunkSize = 100, maxThreads = 11, minSims = 0.2, minOverlap = 4) {
     if (usersData.length == 0) return;
     const nChunks = Math.ceil(uniqueMovieIds.length / chunkSize)
     const progressBar = new ProgressBar(":bar :current/:total", {total: nChunks * (nChunks - 1) / 2});

@@ -1,6 +1,6 @@
 import {BaseRecommender} from "./base_recommender";
 import {PrismaClient} from "@prisma/client";
-import {getRatingsWithPriorityByUserId, getRatingsWithPriorityByUserIds} from "../utils/ORM";
+import {getRatingsWithPriorityByUserId, getRatingsWithPriorityByUserIds} from "../DAO/priopity_ratings";
 
 const prisma = new PrismaClient()
 
