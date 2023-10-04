@@ -2,12 +2,10 @@ import express from "express";
 import path from "path";
 import { PrismaClient } from '@prisma/client'
 import bodyParser from "body-parser";
-import {createBasicLogger} from "./logger/basic_logger";
 import {PopularityRecommender} from "./recommenders/popularity_recommender";
 
 
 const prisma = new PrismaClient()
-const logger = createBasicLogger("seeder")
 const app = express()
 const port = 3000
 
@@ -39,11 +37,9 @@ app.post('/user', async (req, res) => {
                 email
             },
         })
-        logger.log('info',user)
         res.json(user)
     }
     catch (err:any){
-        logger.log('error',err.toString())
         res.json(err.toString())
     }
 

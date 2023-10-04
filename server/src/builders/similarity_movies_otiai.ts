@@ -13,7 +13,6 @@ import {
 } from "../DAO/priopity_ratings";
 import {getUniqueMovieIdsFromRatings, getUsersAvgRatings} from "../DAO/ratings";
 import {deleteMoviesSimilarityByType, saveMoviesSimilarity} from "../DAO/movie_similarity";
-// const prisma = new PrismaClient();
 async function flushDB(){
     // prisma.moviesSimilarity.deleteMany({where:{type:SimilarityType.OTIAI}})
     await deleteMoviesSimilarityByType(SimilarityType.OTIAI,false)

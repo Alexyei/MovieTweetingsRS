@@ -1,8 +1,8 @@
 import {PrismaClient} from "@prisma/client";
 import ProgressBar from "progress";
-import {createBasicLogger} from "../logger/basic_logger";
+import {createPinoLogger} from "../logger/pino_basic_logger.js";
 
-const logger = createBasicLogger("ratings")
+const logger = createPinoLogger("ratings")
 const prisma = new PrismaClient()
 async function flushDB(){
     await prisma.rating.deleteMany({where:{type:'EXPLICIT'}})
@@ -38,10 +38,10 @@ async function createRating(user_id:string, movie_id:string, rating:string, time
             },
         });
 
-        logger.log('info',{user: user.id , movie: normalizedId, rating})
+        logger.info({user: user.id , movie: normalizedId, rating})
         return createdRating;
     } catch (error) {
-        logger.log('error',{user: Number(user_id) , movie: normalizeId(movie_id), rating})
+        logger.error({user: Number(user_id) , movie: normalizeId(movie_id), rating})
     }
 }
 

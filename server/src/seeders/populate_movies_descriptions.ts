@@ -3,14 +3,14 @@ import {config} from "dotenv";
 
 import {PrismaClient} from "@prisma/client";
 import ProgressBar from "progress";
-import {createBasicLogger} from "../logger/basic_logger";
 import fs from "fs";
 import {Readable} from "stream";
 import {finished} from "stream/promises";
+import {createPinoLogger} from "../logger/pino_basic_logger.js";
 
 const prisma = new PrismaClient();
 config();
-const logger = createBasicLogger("movie_description")
+const logger = createPinoLogger("movie_description")
 
 // const start_date = "1970-01-01"
 function getApiKey() {
@@ -36,16 +36,16 @@ async function downloadPoster(path: string) {
     const FILENAME = `./src/public/images/posters${path}`
 
     if (fs.existsSync(FILENAME)) {
-        logger.log('info',`Image already has downloaded : ${path}`);
+        logger.info(`Image already has downloaded : ${path}`);
         return;
     }
     try {
         const { body } = await fetch(URL);
         const fileStream = fs.createWriteStream(FILENAME, {flags: 'wx'});
         await finished(Readable.fromWeb(body as any).pipe(fileStream));
-        logger.log('info',`Success downloaded image: ${path}`);
+        logger.info(`Success downloaded image: ${path}`);
     } catch (error) {
-        logger.log('error',`Error downloaded image: ${path}`);
+        logger.error(`Error downloaded image: ${path}`);
     }
 }
 
@@ -83,7 +83,7 @@ async function populate() {
         const foundData = await getMovieData(movieId)
 
         if (foundData["movie_results"].length == 0) {
-            logger.log('error', `Movie with id=${movieId} not found`)
+            logger.error(`Movie with id=${movieId} not found`)
             progressBar.tick()
             continue;
         }
@@ -105,7 +105,7 @@ async function populate() {
                 genres: {connect: genreIds},
             },
         });
-        logger.log('info',{movieId,description: movieData["overview"],"poster_path": movieData["poster_path"],});
+        logger.info({movieId,description: movieData["overview"],"poster_path": movieData["poster_path"],});
         //download poster
         if (movieData["poster_path"])
             await downloadPoster(movieData["poster_path"])

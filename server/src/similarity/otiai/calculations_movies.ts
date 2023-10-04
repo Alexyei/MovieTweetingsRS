@@ -1,3 +1,5 @@
+import {createPinoLogger} from "../../logger/pino_basic_logger.js";
+
 const tf = require('@tensorflow/tfjs');
 import {otiaiSimsForMovies, otiaiSimsForMoviesForChunk} from "./distance";
 import {preprocessData, preprocessDataForChunk} from "../preprocess_data";
@@ -102,6 +104,8 @@ export async function calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncC
     const workersCount = maxThreads
     const workerFilename = path.join(__dirname + '/workers/otiai_movie_worker.js')
     const generator = generateSequence()
+    const logger = createPinoLogger('otiai_movie_sims')
+    logger.child({'type':'asyncConveyor'})
     for (let i = 0; i < workersCount; ++i) {
         workers.push(runThread(runCalculationSimilarityForMoviesForChunk, generator, i))
     }
@@ -117,8 +121,21 @@ export async function calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncC
             done = data.done!;
 
             if (!done) {
-                await runCalculationChunk(workerFilename, progressBar,{chunkUniqueMovieIds:data.value!.chunkUniqueMovieIds, ratings:data.value!.ratings,usersData,minSims,minOverlap,simsCalculatedCallback})
-                console.log({t: threadId, i: data.value!.i, j: data.value!.j})
+                try {
+                    await runCalculationChunk(workerFilename, progressBar, {
+                        chunkUniqueMovieIds: data.value!.chunkUniqueMovieIds,
+                        ratings: data.value!.ratings,
+                        usersData,
+                        minSims,
+                        minOverlap,
+                        simsCalculatedCallback
+                    })
+                    logger.info({msg:'success',thread: threadId, i: data.value!.i, j: data.value!.j})
+                } catch (error) {
+                    logger.error({msg:'error',thread: threadId, i: data.value!.i, j: data.value!.j})
+                    logger.error(error)
+                }
+
             }
         }
     }

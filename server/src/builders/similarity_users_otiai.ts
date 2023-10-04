@@ -3,7 +3,6 @@ import {calculateSimilarityForUsersOtiai} from "../similarity/otiai/calculations
 import {UserSimilarityT} from "../types/similarity.types";
 import {deleteUsersSimilarityByType, saveUsersSimilarity} from "../DAO/user_similarity";
 import {getRatingsWithPriority} from "../DAO/priopity_ratings";
-const prisma = new PrismaClient();
 async function flushDB(){
     await deleteUsersSimilarityByType(SimilarityType.OTIAI,false)
 }

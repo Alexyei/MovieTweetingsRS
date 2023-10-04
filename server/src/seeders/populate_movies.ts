@@ -1,8 +1,8 @@
 import {PrismaClient} from "@prisma/client";
 import ProgressBar from "progress";
-import {createBasicLogger} from "../logger/basic_logger";
+import {createPinoLogger} from "../logger/pino_basic_logger.js";
 
-const logger = createBasicLogger("movie")
+const logger = createPinoLogger("movie")
 const prisma = new PrismaClient()
 
 function downloadMovies(URL = "https://raw.githubusercontent.com/sidooms/MovieTweetings/master/latest/movies.dat") {
@@ -22,7 +22,7 @@ const createMovie = async (movieId:string, titleAndYear:string, genres:string) =
     const titleAndYearParts = titleAndYear.split("(");
     const title= titleAndYearParts[0].trim()
     const year = Number(titleAndYearParts[1].slice(0, -1).trim())
-    logger.log('info',{id: movieId, title, year})
+    logger.info({id: movieId, title, year})
     let movie = await prisma.movie.create({
         data: {
             id: movieId,

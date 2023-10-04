@@ -1,10 +1,10 @@
 import {PrismaClient, TypeEvent} from "@prisma/client";
 import ProgressBar from "progress";
-import {createBasicLogger} from "../logger/basic_logger";
 import random_gen from "random-seed"
 import {sample} from "../utils/random";
+import {createPinoLogger} from "../logger/pino_basic_logger.js";
 
-const logger = createBasicLogger("logs")
+const logger = createPinoLogger("logs")
 const prisma = new PrismaClient()
 const random = random_gen.create('0')
 const genres = [{name: 'comedy', id: 80}, {name: 'drama', id: 87}, {name: 'action', id: 81}]
@@ -143,7 +143,7 @@ async function checkAllFilmsExists() {
         const movies = await prisma.movie.findMany({
             where: {id: {in: ids}}
         })
-        logger.log('info', [key, ids.length, movies.length])
+        logger.info([key, ids.length, movies.length])
         if (ids.length !== movies.length) throw Error("Films not found")
     }
 }
@@ -276,7 +276,7 @@ async function populate(number_of_events = 20000) {
 
         if (randomEvent === "GENRE_VIEW") {
             await saveUserEvent(randomUser.userId,randomUser.sessionId,randomEvent,null,getGenreId(randomGenre))
-            logger.log('info', `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${null}; genre: ${randomGenre}`);
+            logger.info( `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${null}; genre: ${randomGenre}`);
             progressBar.tick()
             continue
         }
@@ -287,7 +287,7 @@ async function populate(number_of_events = 20000) {
             if (!randomUser.checkInBoughtList(randomMovieId)){
                 randomUser.addToBoughtList(randomMovieId)
                 await saveUserEvent(randomUser.userId,randomUser.sessionId,randomEvent,randomMovieId,null)
-                logger.log('info', `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${randomMovieId}; genre: ${null}`);
+                logger.info( `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${randomMovieId}; genre: ${null}`);
 
             }
             progressBar.tick()
@@ -298,7 +298,7 @@ async function populate(number_of_events = 20000) {
             if (!randomUser.checkInFavouriteList(randomMovieId)){
                 randomUser.addToFavouriteList(randomMovieId)
                 await saveUserEvent(randomUser.userId,randomUser.sessionId,randomEvent,randomMovieId,null)
-                logger.log('info', `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${randomMovieId}; genre: ${null}`);
+                logger.info( `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${randomMovieId}; genre: ${null}`);
 
             }
             progressBar.tick()
@@ -308,7 +308,7 @@ async function populate(number_of_events = 20000) {
             if (randomUser.checkInFavouriteList(randomMovieId)){
                 randomUser.removeFromFavouriteList(randomMovieId)
                 await saveUserEvent(randomUser.userId,randomUser.sessionId,randomEvent,randomMovieId,null)
-                logger.log('info', `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${randomMovieId}; genre: ${null}`);
+                logger.info( `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${randomMovieId}; genre: ${null}`);
 
             }
             progressBar.tick()
@@ -316,7 +316,7 @@ async function populate(number_of_events = 20000) {
         }
         await saveUserEvent(randomUser.userId,randomUser.sessionId,randomEvent,randomMovieId,null)
 
-        logger.log('info', `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${randomMovieId}; genre: ${null}`);
+        logger.info( `userId: ${randomUser.userId}; sessionId: ${randomUser.sessionId};event: ${randomEvent}; movieId: ${randomMovieId}; genre: ${null}`);
         progressBar.tick()
     }
 
