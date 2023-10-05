@@ -22,12 +22,22 @@ export function preprocessData(data: RatingT[]) {
 
 
 
-export function preprocessDataForChunk(usersData: UserAvgRatingT[], chunkUniqueMovieIds: string[], ratings: RatingT[]) {
+export function preprocessDataForChunkByMovieIds(usersData: UserAvgRatingT[], chunkUniqueMovieIds: string[], ratings: RatingT[]) {
     const uniqueUserIds = Array.from(new Set(ratings.map(r => r.authorId))).sort((a, b) => a - b)
 
     const ratingsTable = createRatingsTable(ratings, uniqueUserIds, chunkUniqueMovieIds)
 
     const usersMean = usersData.filter(ud => uniqueUserIds.includes(ud.authorId)).sort((a, b) => a.authorId - b.authorId).map(ud => ud._avg)
+
+    return {ratingsTable, usersMean}
+}
+
+export function preprocessDataForChunkByUserIds(usersData: UserAvgRatingT[], chunkUniqueUserIds: number[], ratings: RatingT[]) {
+    const uniqueMovieIds = Array.from(new Set(ratings.map(r => r.movieId))).sort((a, b) => a.localeCompare(b))
+
+    const ratingsTable = createRatingsTable(ratings, chunkUniqueUserIds, uniqueMovieIds)
+
+    const usersMean = usersData.filter(ud => chunkUniqueUserIds.includes(ud.authorId)).sort((a, b) => a.authorId - b.authorId).map(ud => ud._avg)
 
     return {ratingsTable, usersMean}
 }

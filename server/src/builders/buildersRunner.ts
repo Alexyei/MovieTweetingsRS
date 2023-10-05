@@ -6,11 +6,15 @@ import {
     buildSimilarityForMoviesOtiaiByChunks,
     buildSimilarityForMoviesOtiaiByChunksWithWorkers, buildSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor
 } from "./similarity_movies_otiai";
-import {buildSimilarityForUsersOtiai} from "./similarity_users_otiai";
+import {
+    buildSimilarityForUsersOtiai,
+    buildSimilarityForUsersOtiaiByChunks,
+    buildSimilarityForUsersOtiaiByChunksWithWorkers, buildSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor
+} from "./similarity_users_otiai";
 
 
 
-export class BuilderRunner extends BaseRunner {
+export class  BuilderRunner extends BaseRunner {
     _runners  = [
         {
             args: ['imp','ratings'],
@@ -39,6 +43,18 @@ export class BuilderRunner extends BaseRunner {
         {
             args: ['sim','otiai','u'],
             runner: ()=>buildSimilarityForUsersOtiai().then()
+        },
+        {
+            args: ['sim','otiai','u','c'],
+            runner: ()=>buildSimilarityForUsersOtiaiByChunks(800).then()
+        },
+        {
+            args: ['sim','otiai','u','cw'],
+            runner: ()=>buildSimilarityForUsersOtiaiByChunksWithWorkers(1500,11,0.2,2).then()
+        },
+        {
+            args: ['sim','otiai','u','cwc'],
+            runner: ()=>buildSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(1500,11,0.2,2).then()
         },
     ]
 

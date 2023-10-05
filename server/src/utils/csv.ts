@@ -35,3 +35,19 @@ export async function readCSV(filename: string, onReadRow: (row: any) => void) {
         });
     });
 }
+
+export function writeCsv(filename:string,data:{[key:string]:any}[]){
+    if (data.length == 0) return;
+    const separator = ';'
+    const delimiter = '\n'
+    const keys = Object.keys(data[0])
+    const csvHeader = keys.join(separator)+delimiter
+
+
+    const csvContent = data.reduce((acc, item) => {
+        const row = Object.values(item).map(v=>v.toString()).join(separator)+delimiter
+        return acc + row;
+    }, csvHeader);
+
+    fs.writeFileSync(filename, csvContent, 'utf8');
+}

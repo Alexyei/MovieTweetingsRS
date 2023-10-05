@@ -1,6 +1,6 @@
 import {BuilderRunner} from "../builders/buildersRunner";
-import {re} from "mathjs";
 import {PopulateRunner} from "../seeders/populateRunner";
+import {BackupRunner} from "../backup/backupRunner";
 
 const subject = process.argv[2];
 const params = process.argv.slice(3)
@@ -13,13 +13,18 @@ const runners = [
     {
         keywords: ['build', 'make'],
         runner: (args:string[])=>new BuilderRunner().run(args)
+    },
+    {
+        keywords: ['backup','back'],
+        runner: (args:string[])=>new BackupRunner().run(args)
     }
 ]
 
 function showHint() {
     console.log('Доступные основные параметры:');
     console.log('populate <name> - Запустить сидер');
-    console.log('builder <name> - Запустить построитель');
+    console.log('build  <name> - Запустить построитель');
+    console.log('backup <name> - Сделать резервную копию таблицы из БД');
     console.log('<main_parametr> help - Справка по основному параметру');
 }
 

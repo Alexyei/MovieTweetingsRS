@@ -47,7 +47,7 @@ export async function buildSimilarityForMoviesOtiai(minSims = 0.2, minOverlap = 
     await flushDB()
     const ratings = await getRatings()
     const similarities = calculateSimilarityForMoviesOtiai(ratings,minSims,minOverlap)
-    await saveMoviesSimilarity(similarities)
+    await saveMoviesSimilarity(similarities,false,false)
 }
 
 export async function buildSimilarityForMoviesOtiaiByChunks(chunkSize = 100, minSims = 0.2, minOverlap = 4) {
@@ -70,7 +70,7 @@ export async function buildSimilarityForMoviesOtiaiByChunksWithWorkers(chunkSize
 
 export async function buildSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(chunkSize = 100, maxThreads = 11, minSims = 0.2, minOverlap = 4) {
     try {
-        await flushDB()
+        // await flushDB()
         const usersData = await getUsersAvg()
         const uniqueMovieIds = await getMoviesUniqueIds()
         await calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(usersData, uniqueMovieIds, getRatingsForChunk, saveSimilarityForMoviesFromChunk, chunkSize, maxThreads, minSims, minOverlap)

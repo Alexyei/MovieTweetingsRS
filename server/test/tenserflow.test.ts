@@ -137,3 +137,142 @@ test('substract columns',()=>{
     const subtractedTensor = ratingsSlice.sub(valuesToSubstract);
     subtractedTensor.print()
 })
+
+test('reshape',()=>{
+    const sqrtSums = tf.tensor1d([10, 20, 30, 40])
+    console.log(sqrtSums.reshape([ sqrtSums.shape[0],1]).arraySync())
+    console.log(sqrtSums.reshape([ 1,sqrtSums.shape[0]]).arraySync())
+})
+
+test('pearson',()=>{
+
+
+
+
+    function transposeM(matrix:number[][]){
+        return matrix[0].map((_, colIndex) => matrix.map(row => row[colIndex]));
+    }
+
+    function matrixDot (A:number[][], B:number[][]) {
+        var result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
+
+        return result.map((row, i) => {
+            return row.map((val, j) => {
+                return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]) ,0)
+            })
+        })
+    }
+
+    // const normRatings = [[1, 2, 3], [0, 0, 1], [4, 0, 2],[4, 7, 2]]
+
+    // normRatings это матрица n на m
+    // numerator это матрица n на n
+    // оптимизируй и перепиши этот код используя tensorflow
+
+    const normRatings = [[0.2, 1.2, 0.2, 0, -0.8, -0.8], [-0.33, -0.33, -0.33, -1.33, 0.67, 1.67]]
+    const numerator = matrixDot(normRatings,transposeM(normRatings))
+
+    const ones = toOnes(normRatings)
+
+
+    function toOnes(matrix:number[][]){
+        return matrix.map(row => row.map(element => element !== 0 ? 1 : 0));
+    }
+
+    function AND(vectorA:number[], vectorB:number[]){
+        return vectorA.map((element, index) => element && vectorB[index])
+    }
+
+    function MUL(vectorA:number[], vectorB:number[]){
+        return vectorA.map((element, index) => element * vectorB[index])
+    }
+
+    function SUM(vector:number[]){
+        return vector.reduce((partialSum, a) => partialSum + a, 0)
+    }
+
+    for(let i =0; i<normRatings.length;++i){
+        for(let j =0; j<normRatings.length;++j){
+            const maskI = ones[i]
+            const maskJ = ones[j]
+            const ANDmask = MUL(maskI,maskJ)
+
+            const elemetsI = MUL(ANDmask,normRatings[i])
+            const sqrI = MUL(elemetsI,elemetsI)
+            const elemetsJ = MUL(ANDmask,normRatings[j])
+
+            const sqrJ = MUL(elemetsJ,elemetsJ)
+            const sumI = SUM(sqrI)
+            const sumJ = SUM(sqrJ)
+            console.log(sumI, sumJ)
+            const sqrtI = Math.sqrt(sumI)
+            const sqrtJ = Math.sqrt(sumJ)
+
+            numerator[i][j] = numerator[i][j]/(sqrtI*sqrtJ)
+        }
+    }
+    console.log(numerator)
+})
+
+test('pearson tf',()=>{
+    const normRatings = tf.tensor2d([[0.2, 1.2, 0.2, 0, -0.8, -0.8], [-0.33, -0.33, -0.33, -1.33, 0.67, 1.67]])
+    const numerator = tf.matMul(normRatings,tf.transpose(normRatings))
+
+
+    const ones = tf.where(tf.notEqual(normRatings, 0), tf.ones(normRatings.shape), tf.zeros(normRatings.shape));
+    const sqr = tf.mul(normRatings,normRatings)
+
+    const numeratorData = numerator.arraySync();
+
+    // for(let i = 0; i < normRatings.shape[0]; ++i) {
+    //     for(let j = 0; j < normRatings.shape[0]; ++j) {
+    //         const maskI = ones.slice([i, 0], [1, normRatings.shape[1]]);
+    //         const maskJ = ones.slice([j, 0], [1, normRatings.shape[1]]);
+    //         const ANDmask = tf.mul(maskI, maskJ);
+    //
+    //         const sqrI = tf.mul(ANDmask, sqr.slice([i, 0], [1, sqr.shape[1]]));
+    //         const sqrJ = tf.mul(ANDmask, sqr.slice([j, 0], [1, sqr.shape[1]]));
+    //         const sqrtI = tf.sqrt(tf.sum(sqrI))
+    //         const sqrtJ = tf.sqrt(tf.sum(sqrJ))
+    //         numeratorData[i][j] = numeratorData[i][j] / (sqrtI.arraySync() * sqrtJ.arraySync());
+    //     }
+    // }
+
+    for(let i = 0; i < normRatings.shape[0]; ++i) {
+        for(let j = i; j < normRatings.shape[0]; ++j) {
+            const maskI = ones.slice([i, 0], [1, normRatings.shape[1]]);
+            const maskJ = ones.slice([j, 0], [1, normRatings.shape[1]]);
+            const ANDmask = tf.mul(maskI, maskJ);
+
+            const sqrI = tf.mul(ANDmask, sqr.slice([i, 0], [1, sqr.shape[1]]));
+            const sqrJ = tf.mul(ANDmask, sqr.slice([j, 0], [1, sqr.shape[1]]));
+            const sqrtI = tf.sqrt(tf.sum(sqrI))
+            const sqrtJ = tf.sqrt(tf.sum(sqrJ))
+            numeratorData[i][j] = numeratorData[i][j] / (sqrtI.arraySync() * sqrtJ.arraySync());
+            if (i!=j)
+            numeratorData[j][i] = numeratorData[j][i] / (sqrtI.arraySync() * sqrtJ.arraySync());
+        }
+    }
+
+    console.log(numeratorData)
+})
+
+
+test('pearson 3',()=>{
+    const normRatings = tf.tensor2d([[0.2, 1.2, 0.2, 0, -0.8, -0.8], [-0.33, -0.33, -0.33, -1.33, 0.67, 1.67]]);
+    const sqr = tf.square(normRatings);
+
+    const numerator = tf.matMul(sqr, tf.transpose(sqr));
+
+    const ones = tf.where(tf.notEqual(sqr, 0), tf.ones(sqr.shape), tf.zeros(sqr.shape));
+    const sumSqr = tf.sqrt(tf.sum(sqr, 1));
+
+    const sqrtI = tf.reshape(sumSqr, [sumSqr.shape[0], 1]).mul(ones);
+    const sqrtJ = tf.reshape(sumSqr, [sumSqr.shape[0],1]).mul(ones);
+    console.log(sqrtI.shape)
+    console.log(sqrtJ.shape)
+    const denominator = sqrtI.matMul(tf.transpose(sqrtJ));
+
+    const result = numerator.div(denominator);
+    console.log(result.arraySync());
+})

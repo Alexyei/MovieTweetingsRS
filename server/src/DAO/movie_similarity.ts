@@ -22,3 +22,60 @@ export async function deleteMoviesSimilarityByType(typeSimilarity:SimilarityType
     testDB ? await prisma.testMoviesSimilarity.deleteMany({where:{type:SimilarityType.OTIAI}}) : await prisma.moviesSimilarity.deleteMany({where:{type:SimilarityType.OTIAI}})
 }
 
+export async function getCandidatesPairsFromMoviesSimilarityByTargetId(userMovieIds:string[], targetId:string,type:SimilarityType,take=100,min_sims = 0.2,testDB = true){
+    if (testDB){
+        return prisma.testMoviesSimilarity.findMany({
+            where: {
+                source: {in: userMovieIds},
+                target: targetId,
+                similarity: {gte: min_sims},
+                type: type
+            },
+            orderBy: {
+                similarity: 'desc'
+            },
+            take: take
+        });
+    }
+    return prisma.moviesSimilarity.findMany({
+        where: {
+            source: {in: userMovieIds},
+            target: targetId,
+            similarity: {gte: min_sims},
+            type: type
+        },
+        orderBy: {
+            similarity: 'desc'
+        },
+        take: take
+    });
+}
+
+export async function getAllCandidatesPairsFromMoviesSimilarity(userMovieIds:string[], type:SimilarityType,take=100,min_sims = 0.2,testDB = true){
+    if (testDB){
+        return prisma.testMoviesSimilarity.findMany({
+            where: {
+                source: {in: userMovieIds},
+                target: {notIn: userMovieIds},
+                similarity: {gt: min_sims},
+                type: type
+            },
+            orderBy: {
+                similarity: 'desc'
+            },
+            take: take
+        });
+    }
+    return prisma.moviesSimilarity.findMany({
+        where: {
+            source: {in: userMovieIds},
+            target: {notIn: userMovieIds},
+            similarity: {gte: min_sims},
+            type: type
+        },
+        orderBy: {
+            similarity: 'desc'
+        },
+        take: take
+    });
+}

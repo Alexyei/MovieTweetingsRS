@@ -2,7 +2,7 @@ import {createPinoLogger} from "../../logger/pino_basic_logger.js";
 
 const tf = require('@tensorflow/tfjs');
 import {otiaiSimsForMovies, otiaiSimsForMoviesForChunk} from "./distance";
-import {preprocessData, preprocessDataForChunk} from "../preprocess_data";
+import {preprocessData, preprocessDataForChunkByMovieIds} from "../preprocess_data";
 import {calculateOverlapUsersM} from "../overlap";
 import {filterMoviesSimilarity} from "../filter_similarities";
 import {SimilarityType} from "@prisma/client";
@@ -37,7 +37,7 @@ export async function calculateSimilarityForMoviesOtiaiByChunks(usersData: UserA
         for (let j = i + 1; j < nChunks; ++j) {
             const chunkUniqueMovieIds = uniqueMovieIds.slice(i * chunkSize, (i + 1) * chunkSize).concat(uniqueMovieIds.slice(j * chunkSize, (j + 1) * chunkSize))
             const ratings = await getRatingsForChunk(chunkUniqueMovieIds)
-            const {ratingsTable, usersMean} = preprocessDataForChunk(usersData, chunkUniqueMovieIds, ratings)
+            const {ratingsTable, usersMean} = preprocessDataForChunkByMovieIds(usersData, chunkUniqueMovieIds, ratings)
             const chunkSims = calculateSimilarityForMoviesOtiaiForChunk(ratingsTable, usersMean, chunkUniqueMovieIds, minSims, minOverlap)
             await simsCalculatedCallback(chunkSims)
             progressBar.tick()
