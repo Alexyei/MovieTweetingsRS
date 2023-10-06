@@ -1,5 +1,7 @@
-import {Tensor2D} from "@tensorflow/tfjs";
-const tf = require('@tensorflow/tfjs');
+// import {Tensor2D} from "@tensorflow/tfjs";
+import {Tensor2D} from "@tensorflow/tfjs-node";
+// const tf = require('@tensorflow/tfjs');
+const tf = require('@tensorflow/tfjs-node');
 
 // количество пользователей оценивших ОБА фильма
 export function calculateOverlapUsersM(ratings:Tensor2D) {

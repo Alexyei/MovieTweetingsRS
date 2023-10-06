@@ -48,8 +48,8 @@ beforeAll(async () => {
 })
 
 test('recs NB u-u by userId',async ()=>{
-    const recomender = new UserUserRecommender()
-    const recs = await recomender.recommendItems(35,10,5,0)
+    const recomender = new UserUserRecommender(true,5,0)
+    const recs = await recomender.recommendItems(35,10,)
     expect(recs.length).toEqual(10)
     expect(recs[0].predictedRating).toBeCloseTo(5,2)
     expect(recs[0].movieId).toEqual("356")
@@ -60,20 +60,20 @@ test('recs NB u-u by userId',async ()=>{
 })
 
 test('recs NB u-u by userId empty',async ()=>{
-    const recomender = new UserUserRecommender()
-    const recs = await recomender.recommendItems(100100,10,5,0)
+    const recomender = new UserUserRecommender(true, 5,0)
+    const recs = await recomender.recommendItems(100100,10,)
     expect(recs.length).toEqual(0)
 })
 
 test('predict NB i-i by userId',async ()=>{
-    const recomender = new UserUserRecommender()
-    const score = await recomender.predictScore(35,"161",5,0)
+    const recomender = new UserUserRecommender(true,5,0)
+    const score = await recomender.predictScore(35,"161",)
     expect(score).toBeCloseTo(4.78796,2)
 })
 
 test('predict NB i-i by userId not in recs',async ()=>{
-    const recomender = new UserUserRecommender()
-    const score = await recomender.predictScore(35,"4377",5,0)
+    const recomender = new UserUserRecommender(true,5,0)
+    const score = await recomender.predictScore(35,"4377",)
     const userRatings = await getRatingsWithPriorityByUserId(35)
     const userMeanRating = userRatings.reduce((acc, rating) =>rating.rating + acc,0) / userRatings.length
     expect(score).toBeCloseTo(userMeanRating,2)

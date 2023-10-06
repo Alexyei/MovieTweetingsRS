@@ -48,7 +48,7 @@ beforeAll(async () => {
 })
 
 test('recs NB i-i by userId',async ()=>{
-    const recomender = new ItemItemRecommender()
+    const recomender = new ItemItemRecommender(true)
     const recs = await recomender.recommendItems(101)
     expect(recs.length).toEqual(9)
     expect(recs[0].predictedRating).toBeCloseTo(4.528,2)
@@ -59,19 +59,19 @@ test('recs NB i-i by userId',async ()=>{
 })
 
 test('recs NB i-i by userId empty',async ()=>{
-    const recomender = new ItemItemRecommender()
+    const recomender = new ItemItemRecommender(true)
     const recs = await recomender.recommendItems(100100)
     expect(recs.length).toEqual(0)
 })
 
 test('predict NB i-i by userId',async ()=>{
-    const recomender = new ItemItemRecommender()
-    const score = await recomender.predictScore(101,"4378",'OTIAI',2)
+    const recomender = new ItemItemRecommender(true)
+    const score = await recomender.predictScore(101,"4378",2)
     expect(score).toBeCloseTo(4.496,2)
 })
 
 test('predict NB i-i by userId not in recs',async ()=>{
-    const recomender = new ItemItemRecommender()
+    const recomender = new ItemItemRecommender(true)
     const score = await recomender.predictScore(101,"4377")
     const userRatings = await getRatingsWithPriorityByUserId(101)
     const userMeanRating = userRatings.reduce((acc, rating) =>rating.rating + acc,0) / userRatings.length

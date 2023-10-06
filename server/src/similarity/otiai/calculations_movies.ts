@@ -1,6 +1,7 @@
 import {createPinoLogger} from "../../logger/pino_basic_logger.js";
-
-const tf = require('@tensorflow/tfjs');
+// import {Tensor2D} from "@tensorflow/tfjs-node";
+const tf = require('@tensorflow/tfjs-node');
+// const tf = require('@tensorflow/tfjs');
 import {otiaiSimsForMovies, otiaiSimsForMoviesForChunk} from "./distance";
 import {preprocessData, preprocessDataForChunkByMovieIds} from "../preprocess_data";
 import {calculateOverlapUsersM} from "../overlap";
@@ -117,11 +118,14 @@ export async function calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncC
         let done = false;
 
         while (!done) {
+            const start = Date.now()
             const data = await generator.next();
             done = data.done!;
+            console.log(`Get data time: ${(Date.now() - start) / 1000} seconds`);
 
             if (!done) {
                 try {
+                    const start = Date.now()
                     await runCalculationChunk(workerFilename, progressBar, {
                         chunkUniqueMovieIds: data.value!.chunkUniqueMovieIds,
                         ratings: data.value!.ratings,

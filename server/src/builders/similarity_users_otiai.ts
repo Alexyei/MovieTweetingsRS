@@ -66,7 +66,7 @@ export async function buildSimilarityForUsersOtiaiByChunksWithWorkers(chunkSize 
 
 export async function buildSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(chunkSize = 100, maxThreads = 11, minSims = 0.2, minOverlap = 4) {
     try {
-        // await flushDB()
+        await flushDB()
         const usersData = await getUsersAvg()
         const uniqueUserIds = await getUsersUniqueIds()
         const start = Date.now()

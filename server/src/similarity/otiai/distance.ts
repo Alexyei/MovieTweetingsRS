@@ -1,6 +1,7 @@
-import {Tensor1D, Tensor2D} from "@tensorflow/tfjs";
-const tf = require('@tensorflow/tfjs');
-
+// import {Tensor1D, Tensor2D} from "@tensorflow/tfjs";
+// const tf = require('@tensorflow/tfjs');
+import {Tensor1D, Tensor2D} from "@tensorflow/tfjs-node";
+const tf = require('@tensorflow/tfjs-node');
 
 export function normalizeRatings(ratings: Tensor2D){
     const rowSums = ratings.relu().sum(1);        // Суммируем положительные значения по строке

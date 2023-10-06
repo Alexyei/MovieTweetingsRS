@@ -1,6 +1,7 @@
 import {RatingT, UserAvgRatingT} from "../../types/rating.types";
 import {preprocessData, preprocessDataForChunkByUserIds} from "../preprocess_data";
-const tf = require('@tensorflow/tfjs');
+// const tf = require('@tensorflow/tfjs');
+const tf = require('@tensorflow/tfjs-node');
 import {otiaiSimsForUsers, otiaiSimsForUsersForChunk} from "./distance";
 import {calculateOverlapMoviesM} from "../overlap";
 import {filterUsersSimilarity} from "../filter_similarities";
@@ -120,11 +121,14 @@ export async function calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncCo
         let done = false;
 
         while (!done) {
+            const start = Date.now()
             const data = await generator.next();
+            console.log(`Get data time: ${(Date.now() - start) / 1000} seconds`);
             done = data.done!;
 
             if (!done) {
                 try {
+                    const start = Date.now()
                     await runCalculationChunk(workerFilename, progressBar, {
                         chunkUniqueUserIds: data.value!.chunkUniqueUserIds,
                         ratings: data.value!.ratings,

@@ -10,13 +10,20 @@ import {getMoviesDataByIds} from "../DAO/movie";
 // const prisma = new PrismaClient()
 
 export class ItemItemRecommender extends BaseRecommender {
-    async predictScore(userId: number, movieId: string,type:SimilarityType = 'OTIAI',candidates=1000, min_sims=0.2, testDb = true) {
-        const userRatings = await getRatingsWithPriorityByUserId(userId,testDb)
+    _type:SimilarityType
+    _testDb:boolean
+    constructor( testDb = true,type:SimilarityType = 'OTIAI') {
+        super();
+        this._type = type
+        this._testDb = testDb
+    }
+    async predictScore(userId: number, movieId: string,candidates=1000, min_sims=0.2,) {
+        const userRatings = await getRatingsWithPriorityByUserId(userId,this._testDb)
         if (userRatings.length == 0) return 0.0
         const userMeanRating = userRatings.reduce((acc, rating) =>rating.rating + acc,0) / userRatings.length
         const userMovieIds = userRatings.map(r => r.movieId).filter(id=>id!=movieId)
 
-        const candidatesPairs = await getCandidatesPairsFromMoviesSimilarityByTargetId(userMovieIds,movieId,type,candidates,min_sims,testDb)
+        const candidatesPairs = await getCandidatesPairsFromMoviesSimilarityByTargetId(userMovieIds,movieId,this._type,candidates,min_sims,this._testDb)
 
         // if (candidatesPairs.length == 0) return 0.0
         if (candidatesPairs.length == 0) return userMeanRating
@@ -33,8 +40,8 @@ export class ItemItemRecommender extends BaseRecommender {
         return numerator/denominator + userMeanRating
     }
 //predict_score_by_ratings(self, item_id, movie_ids):
-    async recommendItems(userId: number, take: number = 10, overlap=2, candidates=100, type:SimilarityType = 'OTIAI', min_sims = 0.2, testDb = true) {
-        const userRatings = await getRatingsWithPriorityByUserId(userId,testDb)
+    async recommendItems(userId: number, take: number = 10, overlap=2, candidates=100, min_sims = 0.2) {
+        const userRatings = await getRatingsWithPriorityByUserId(userId,this._testDb)
 
         if (userRatings.length == 0) return []
 
@@ -43,7 +50,7 @@ export class ItemItemRecommender extends BaseRecommender {
         const userMovieIds = userRatings.map(r => r.movieId)
 
 
-        const candidatesPairs = await getAllCandidatesPairsFromMoviesSimilarity(userMovieIds,type,candidates,min_sims,testDb)
+        const candidatesPairs = await getAllCandidatesPairsFromMoviesSimilarity(userMovieIds,this._type,candidates,min_sims,this._testDb)
 
         const recommendations:{target:string,sources:{id:string, similarity: number, rating: number}[],predictedRating:number}[] = []
         // const recommendations:{[key:string]:{sources:{id:string, similarity: number}[],predictedRating:number}} = {}
@@ -70,7 +77,7 @@ export class ItemItemRecommender extends BaseRecommender {
         const sortedRecommendations = recommendations.sort((a, b) => b.predictedRating - a.predictedRating).slice(0, take);
         const notUserMoviesIds = candidatesPairs.map(p=>p.target)
 
-        const moviesData = await getMoviesDataByIds(Array.from(new Set([...notUserMoviesIds,...userMovieIds])),testDb)
+        const moviesData = await getMoviesDataByIds(Array.from(new Set([...notUserMoviesIds,...userMovieIds])),this._testDb)
 
         return sortedRecommendations.map(rec=>{
             const targetData = moviesData.find(m=>m.id==rec.target)!

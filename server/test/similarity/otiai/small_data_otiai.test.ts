@@ -4,7 +4,7 @@ import {shortDataRatings} from "../../mocks/short_dataset_ratings";
 import {preprocessData} from "../../../src/similarity/preprocess_data";
 import {calculateSimilarityForMoviesOtiai} from "../../../src/similarity/otiai/calculations_movies";
 import {calculateSimilarityForUsersOtiai} from "../../../src/similarity/otiai/calculations_users";
-const tf = require('@tensorflow/tfjs');
+const tf = require('@tensorflow/tfjs-node');
 beforeAll(async () => {
 
 })

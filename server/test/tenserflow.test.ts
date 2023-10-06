@@ -1,8 +1,9 @@
 import {beforeAll, expect, test} from "vitest";
 import {zerosM} from "../src/utils/math";
-import {Tensor2D} from "@tensorflow/tfjs";
-const tf = require('@tensorflow/tfjs');
-
+import {Tensor2D} from "@tensorflow/tfjs-node";
+const tf = require('@tensorflow/tfjs-node');
+// import {Tensor2D} from "@tensorflow/tfjs";
+// const tf = require('@tensorflow/tfjs');
 test('tf', () => {
     const rowSize = 10;
     const colSize = 10000;

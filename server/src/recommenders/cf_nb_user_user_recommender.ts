@@ -8,19 +8,28 @@ import {getUsersDataByIds} from "../DAO/user";
 const prisma = new PrismaClient()
 
 export class UserUserRecommender extends BaseRecommender {
-    async predictScore(userId: number, movieId: string,max_rating=10,min_rating=0.001,type:SimilarityType = 'OTIAI',candidates=1000, min_sims=0.2, testDb = true) {
-        const userRatings = await getRatingsWithPriorityByUserId(userId,testDb)
+    _max_rating: number
+    _min_rating: number
+    _testDb: boolean
+    constructor(testDb = true, max_rating=10,min_rating=0.001, type:SimilarityType = 'OTIAI') {
+        super();
+        this._max_rating = max_rating
+        this._min_rating = min_rating
+        this._testDb =testDb
+    }
+    async predictScore(userId: number, movieId: string,candidates=1000, min_sims=0.2) {
+        const userRatings = await getRatingsWithPriorityByUserId(userId,this._testDb)
         if (userRatings.length == 0) return 0.0
 
         const userMeanRating = userRatings.reduce((acc, rating) =>rating.rating + acc,0) / userRatings.length
 
         // const userMovieIds = userRatings.map(r => r.movieId).filter(id=>id!=movieId)
 
-        const candidatesPairs = await getCandidatesPairsFromUsersSimilarityByUserId(userId,'OTIAI',candidates,min_sims,testDb)
+        const candidatesPairs = await getCandidatesPairsFromUsersSimilarityByUserId(userId,'OTIAI',candidates,min_sims,this._testDb)
 
         const simsUserIds = Array.from(new Set(candidatesPairs.filter(p=>p.similarity>=min_sims).map(p=>p.target)))
 
-        const simsUserRatings = await getRatingsWithPriorityByUserIds(simsUserIds,testDb)
+        const simsUserRatings = await getRatingsWithPriorityByUserIds(simsUserIds,this._testDb)
 
         let userRatingsNormalized = simsUserRatings.map(r=>{
             const uRatings = simsUserRatings.filter(ur=>ur.authorId == r.authorId).map(ur=>ur.rating)
@@ -43,21 +52,21 @@ export class UserUserRecommender extends BaseRecommender {
             denominator += similarity
         }
 
-        return Math.max(Math.min(numerator/denominator + userMeanRating,max_rating),min_rating)
+        return Math.max(Math.min(numerator/denominator + userMeanRating,this._max_rating),this._min_rating)
     }
 
-    async recommendItems(userId: number, take: number = 10, max_rating=10,min_rating=0.001, overlap=3, candidates=100, type:SimilarityType = 'OTIAI', min_sims = 0.2, testDb = true) {
-        const userRatings = await getRatingsWithPriorityByUserId(userId, testDb)
+    async recommendItems(userId: number, take: number = 10, overlap=3, candidates=100, min_sims = 0.2) {
+        const userRatings = await getRatingsWithPriorityByUserId(userId, this._testDb)
         if (userRatings.length == 0) return []
 
         const userMeanRating = userRatings.reduce((acc, rating) =>rating.rating + acc,0) / userRatings.length
         // const userMovieIds = userRatings.map(r => r.movieId)
 
-        const candidatesPairs = await getCandidatesPairsFromUsersSimilarityByUserId(userId,'OTIAI',candidates,min_sims,testDb)
+        const candidatesPairs = await getCandidatesPairsFromUsersSimilarityByUserId(userId,'OTIAI',candidates,min_sims,this._testDb)
 
         const simsUserIds = Array.from(new Set(candidatesPairs.filter(p=>p.similarity>=min_sims).map(p=>p.target)))
 
-        const simsUserRatings = await getRatingsWithPriorityByUserIds(simsUserIds, testDb)
+        const simsUserRatings = await getRatingsWithPriorityByUserIds(simsUserIds, this._testDb)
 
         //нормализовать оценки пользователей
 
@@ -90,7 +99,7 @@ export class UserUserRecommender extends BaseRecommender {
 
                 sourcesInfo.push({id:source.authorId,similarity:similarity,rating:source.rating})
             }
-            recommendations.push({target,sources: sourcesInfo, predictedRating:Math.max(Math.min(numerator/denominator + userMeanRating,max_rating),min_rating)})
+            recommendations.push({target,sources: sourcesInfo, predictedRating:Math.max(Math.min(numerator/denominator + userMeanRating,this._max_rating),this._min_rating)})
         }
 
 

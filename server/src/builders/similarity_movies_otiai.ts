@@ -70,7 +70,7 @@ export async function buildSimilarityForMoviesOtiaiByChunksWithWorkers(chunkSize
 
 export async function buildSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(chunkSize = 100, maxThreads = 11, minSims = 0.2, minOverlap = 4) {
     try {
-        // await flushDB()
+        await flushDB()
         const usersData = await getUsersAvg()
         const uniqueMovieIds = await getMoviesUniqueIds()
         const start = Date.now()
