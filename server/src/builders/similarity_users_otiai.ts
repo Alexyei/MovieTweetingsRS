@@ -69,7 +69,9 @@ export async function buildSimilarityForUsersOtiaiByChunksWithWorkersAsyncConvey
         // await flushDB()
         const usersData = await getUsersAvg()
         const uniqueUserIds = await getUsersUniqueIds()
+        const start = Date.now()
         await calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(usersData, uniqueUserIds, getRatingsForChunk, saveSimilarityForUsersFromChunk, chunkSize, maxThreads, minSims, minOverlap)
+        console.log(`Calculated for: ${(Date.now() - start) / 1000} seconds`);
     } catch (err) {
         console.log(err)
     }
