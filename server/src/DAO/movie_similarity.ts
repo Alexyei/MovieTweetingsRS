@@ -19,7 +19,7 @@ export async function deleteAllMoviesSimilarity(testDB = true){
 }
 
 export async function deleteMoviesSimilarityByType(typeSimilarity:SimilarityType,testDB = true){
-    testDB ? await prisma.testMoviesSimilarity.deleteMany({where:{type:SimilarityType.OTIAI}}) : await prisma.moviesSimilarity.deleteMany({where:{type:SimilarityType.OTIAI}})
+    testDB ? await prisma.testMoviesSimilarity.deleteMany({where:{type:typeSimilarity}}) : await prisma.moviesSimilarity.deleteMany({where:{type:typeSimilarity}})
 }
 
 export async function getCandidatesPairsFromMoviesSimilarityByTargetId(userMovieIds:string[], targetId:string,type:SimilarityType,take=100,min_sims = 0.2,testDB = true){
