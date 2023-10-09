@@ -3,7 +3,7 @@ import {UserT} from "../../../../types/user.types";
 import {PrismaClient} from "@prisma/client";
 
 class UserGetDAO__mixin extends DAOMixinHelper{
-    getUsersDataByIds(userIds:number[]){
+    async getUsersDataByIds(userIds:number[]){
         if (this._testDb){
             return this._client.testUser.findMany({
                 where: {id: {in: userIds},},

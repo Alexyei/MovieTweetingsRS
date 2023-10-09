@@ -6,44 +6,35 @@ import {
     calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor
 } from "../similarity/otiai/calculations_users";
 import {UserSimilarityT} from "../types/similarity.types";
-import {deleteUsersSimilarityByType, saveUsersSimilarity} from "../DAO/user_similarity";
-import {
-    getRatingsWithPriority,
-    getRatingsWithPriorityByUserIds,
-    getUsersAvgRatingsWithPriority
-} from "../DAO/priopity_ratings";
-
-import {getUniqueUserIdsFromRatings} from "../DAO/ratings";
-
+import {getDAO} from "../DAO/DAO";
+const dao = getDAO(false)
 async function flushDB(){
-    await deleteUsersSimilarityByType(SimilarityType.OTIAI,false)
+    await dao.movieSimilarity.deleteByType(SimilarityType.OTIAI)
 }
 
 async function getRatings(){
-    return getRatingsWithPriority(false)
+    return dao.priorityRating.all()
 }
 
 async function saveSimilarityForUsersFromChunk(chunkUserSims: UserSimilarityT[]) {
-    await saveUsersSimilarity(chunkUserSims, true,false)
+    await dao.userSimilarity.saveMany(chunkUserSims,true)
 }
 async function getUsersAvg(){
-    // return prisma.rating.groupBy({by: 'authorId', _avg: {rating: true}, orderBy: {authorId: 'asc'}})
-    // return  getUsersAvgRatings()
-    return getUsersAvgRatingsWithPriority(false)
+
+    return dao.priorityRating.getAvgRatings()
 }
 
 async function getUsersUniqueIds(){
-    return getUniqueUserIdsFromRatings(false)
+    return dao.priorityRating.getUniqueUserIds()
 }
 export async function getRatingsForChunk(userIds: number[]) {
-    return getRatingsWithPriorityByUserIds(userIds,false)
-    // return prisma.rating.findMany({where: {movieId: {in: movieIds}}})
+    return dao.priorityRating.getByUserIds(userIds)
 }
 export async function buildSimilarityForUsersOtiai(minSims=0.2,minOverlap=4){
     await flushDB()
     const ratings = await getRatings()
     const similarities = calculateSimilarityForUsersOtiai(ratings,minSims,minOverlap)
-    await saveUsersSimilarity(similarities,false,false)
+    await dao.userSimilarity.saveMany(similarities,false)
 }
 
 export async function buildSimilarityForUsersOtiaiByChunks(chunkSize = 100, minSims = 0.2, minOverlap = 4) {

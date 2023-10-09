@@ -2,12 +2,12 @@ import {DAOMixinHelper} from "../../../dao_helper";
 import {PrismaClient, SimilarityType} from "@prisma/client";
 
 class MoviesSimilarityDeleteDAO__mixin extends DAOMixinHelper{
-    deleteAll(){
-        this._testDb ? this._client.testMoviesSimilarity.deleteMany() : this._client.moviesSimilarity.deleteMany()
+    async deleteAll(){
+        this._testDb ? await this._client.testMoviesSimilarity.deleteMany() : await this._client.moviesSimilarity.deleteMany()
     }
 
-    deleteByType(typeSimilarity:SimilarityType){
-        this._testDb ? this._client.testMoviesSimilarity.deleteMany({where:{type:typeSimilarity}}) : this._client.moviesSimilarity.deleteMany({where:{type:typeSimilarity}})
+    async deleteByType(typeSimilarity:SimilarityType){
+        this._testDb ? await this._client.testMoviesSimilarity.deleteMany({where:{type:typeSimilarity}}) : await this._client.moviesSimilarity.deleteMany({where:{type:typeSimilarity}})
     }
 }
 

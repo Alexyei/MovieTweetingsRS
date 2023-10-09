@@ -1,72 +1,41 @@
-import {beforeAll, expect, test, describe} from "vitest";
-import {readML100K} from "../../../src/utils/csv";
 import {
     calculateSimilarityForMoviesOtiai,
     calculateSimilarityForMoviesOtiaiByChunks,
     calculateSimilarityForMoviesOtiaiByChunksWithWorkers,
     calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor
 } from "../../../src/similarity/otiai/calculations_movies";
-import {
-    getAllRatings, getRatingsByMovieIds,
-    getRatingsCount,
-    getUniqueMovieIdsFromRatings,
-    getUsersAvgRatings,
-    saveRatings
-} from "../../../src/DAO/ratings";
-import {
-    deleteAllMoviesSimilarity,
-    getAllMoviesSimilarity,
-    getMoviesSimilarityCount,
-    saveMoviesSimilarity
-} from "../../../src/DAO/movie_similarity";
-import {saveUsers} from "../../../src/DAO/user";
-import {saveMovies} from "../../../src/DAO/movie";
-import {flushTestDB} from "../../../src/utils/test";
+import {flushTestDB, loadML100KDataSet} from "../../../src/utils/test";
 import {MovieSimilarityT} from "../../../src/types/similarity.types";
+import {getDAO} from "../../../src/DAO/DAO";
 
-
+const dao = getDAO(true)
 async function saveChunkSims(chunkSims: MovieSimilarityT[]) {
-    await saveMoviesSimilarity(chunkSims, true)
+    await dao.movieSimilarity.saveMany(chunkSims,true)
 }
 
 async function getRatingsForChunk(movieIds: string[]) {
-    return getRatingsByMovieIds(movieIds)
+    return dao.rating.getByMovieIds(movieIds)
 }
 
 describe('item-based otiai', () => {
     beforeAll(async () => {
         await flushTestDB()
-
-        const ratingsData = await readML100K('./test/mocks/ML100K_ratings.csv')
-        const usersData = Array.from(new Set(ratingsData.map(r => r.authorId))).map(el => ({id: el}))
-        const moviesData = Array.from(new Set(ratingsData.map(r => r.movieId))).map(id => ({
-            id,
-            title: id + "title",
-            year: 2010
-        }))
-
-        await saveUsers(usersData, true);
-        await saveMovies(moviesData, true)
-        await saveRatings(ratingsData, true)
-
-        return async () => {
-
-        }
+        await loadML100KDataSet()
     })
 
     test('ratings created', async () => {
-        expect(await getRatingsCount(true)).toBeGreaterThan(0)
+        expect(await dao.rating.count()).toBeGreaterThan(0)
     })
 
     test('create item similarity', async () => {
-        const ratings = await getAllRatings(true)
+        const ratings = await dao.rating.all()
         const moviesSims = calculateSimilarityForMoviesOtiai(ratings, 0.2, 4)
-        await saveMoviesSimilarity(moviesSims)
-        expect(await getMoviesSimilarityCount(true)).toBeGreaterThan(0)
+        await dao.movieSimilarity.saveMany(moviesSims)
+        expect(await dao.rating.count()).toBeGreaterThan(0)
     })
 
     test('test item similarity', async () => {
-        const moviesSims = await getAllMoviesSimilarity(true)
+        const moviesSims = await dao.movieSimilarity.all()
         expect(moviesSims.length).toBe(101420)
         expect(moviesSims.find(s => s.source == "1" && s.target == "588")!.similarity).toBeCloseTo(0.327, 2)
         expect(moviesSims.find(s => s.source == "588" && s.target == "1")!.similarity).toBeCloseTo(0.327, 2)
@@ -79,14 +48,14 @@ describe('item-based otiai', () => {
     })
 
     test('create item similarity by chunks', async () => {
-        await deleteAllMoviesSimilarity()
-        const usersData = await getUsersAvgRatings()
-        const uniqueMovieIds = await getUniqueMovieIdsFromRatings()
+        await dao.movieSimilarity.deleteAll()
+        const usersData = await dao.rating.getAvgRatings()
+        const uniqueMovieIds = await dao.rating.getUniqueMovieIds()
         await calculateSimilarityForMoviesOtiaiByChunks(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 5000, 0.2, 4)
     })
 
     test('test item similarity by chunks', async () => {
-        const moviesSims = await getAllMoviesSimilarity()
+        const moviesSims = await dao.movieSimilarity.all()
         expect(moviesSims.length).toBe(101420)
         expect(moviesSims.find(s => s.source == "1" && s.target == "588")!.similarity).toBeCloseTo(0.327, 2)
         expect(moviesSims.find(s => s.source == "588" && s.target == "1")!.similarity).toBeCloseTo(0.327, 2)
@@ -99,14 +68,14 @@ describe('item-based otiai', () => {
     })
 
     test('create item similarity by chunks with workers', async () => {
-        await deleteAllMoviesSimilarity()
-        const usersData = await getUsersAvgRatings()
-        const uniqueMovieIds = await getUniqueMovieIdsFromRatings()
+        await dao.movieSimilarity.deleteAll()
+        const usersData = await dao.rating.getAvgRatings()
+        const uniqueMovieIds = await dao.rating.getUniqueMovieIds()
         await calculateSimilarityForMoviesOtiaiByChunksWithWorkers(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 2000, 11, 0.2, 4)
     })
 
     test('test item similarity by chunks with workers', async () => {
-        const moviesSims = await getAllMoviesSimilarity()
+        const moviesSims = await dao.movieSimilarity.all()
         expect(moviesSims.length).toBe(101420)
         expect(moviesSims.find(s => s.source == "1" && s.target == "588")!.similarity).toBeCloseTo(0.327, 2)
         expect(moviesSims.find(s => s.source == "588" && s.target == "1")!.similarity).toBeCloseTo(0.327, 2)
@@ -119,14 +88,14 @@ describe('item-based otiai', () => {
     })
 
     test('create item similarity by chunks with workers async conveyor', async () => {
-        await deleteAllMoviesSimilarity()
-        const usersData = await getUsersAvgRatings()
-        const uniqueMovieIds = await getUniqueMovieIdsFromRatings()
+        await dao.movieSimilarity.deleteAll()
+        const usersData = await dao.rating.getAvgRatings()
+        const uniqueMovieIds = await dao.rating.getUniqueMovieIds()
         await calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 2000, 11, 0.2, 4)
     })
 
     test('test item similarity by chunks with workers', async () => {
-        const moviesSims = await getAllMoviesSimilarity()
+        const moviesSims = await dao.movieSimilarity.all()
         expect(moviesSims.length).toBe(101420)
         expect(moviesSims.find(s => s.source == "1" && s.target == "588")!.similarity).toBeCloseTo(0.327, 2)
         expect(moviesSims.find(s => s.source == "588" && s.target == "1")!.similarity).toBeCloseTo(0.327, 2)

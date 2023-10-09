@@ -3,7 +3,7 @@ import {MovieT} from "../../../../types/movie.types";
 import {PrismaClient} from "@prisma/client";
 
 class MovieGetDAO__mixin extends DAOMixinHelper{
-    getMoviesDataByIds(movieIds:string[]){
+    async getMoviesDataByIds(movieIds:string[]){
         if (this._testDb){
             return this._client.testMovie.findMany({
                 where: {id: {in: movieIds},},

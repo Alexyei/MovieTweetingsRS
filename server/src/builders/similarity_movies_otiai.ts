@@ -6,48 +6,40 @@ import {
 } from "../similarity/otiai/calculations_movies";
 import {SimilarityType} from "@prisma/client";
 import {MovieSimilarityT} from "../types/similarity.types";
-import {
-    getRatingsWithPriority,
-    getRatingsWithPriorityByMovieIds,
-    getUsersAvgRatingsWithPriority
-} from "../DAO/priopity_ratings";
-import {getUniqueMovieIdsFromRatings, getUsersAvgRatings} from "../DAO/ratings";
-import {deleteMoviesSimilarityByType, saveMoviesSimilarity} from "../DAO/movie_similarity";
+import {getDAO} from "../DAO/DAO";
+
+const dao = getDAO(false)
 async function flushDB(){
-    // prisma.moviesSimilarity.deleteMany({where:{type:SimilarityType.OTIAI}})
-    await deleteMoviesSimilarityByType(SimilarityType.OTIAI,false)
+    await dao.movieSimilarity.deleteByType(SimilarityType.OTIAI)
 }
 
 async function getRatings(){
-    return getRatingsWithPriority(false)
-    // return prisma.rating.findMany()
+    return dao.priorityRating.all()
 }
 
 export async function getRatingsForChunk(movieIds: string[]) {
-    return getRatingsWithPriorityByMovieIds(movieIds,false)
-    // return prisma.rating.findMany({where: {movieId: {in: movieIds}}})
+    return dao.priorityRating.getByMovieIds(movieIds)
 }
 
 async function getUsersAvg(){
-    // return prisma.rating.groupBy({by: 'authorId', _avg: {rating: true}, orderBy: {authorId: 'asc'}})
-    // return  getUsersAvgRatings()
-    return getUsersAvgRatingsWithPriority(false)
+    return dao.priorityRating.getAvgRatings()
 }
 
 async function getMoviesUniqueIds(){
-    return getUniqueMovieIdsFromRatings(false)
+    return dao.priorityRating.getUniqueMovieIds()
 }
 
 
 async function saveSimilarityForMoviesFromChunk(chunkMovieSims: MovieSimilarityT[]) {
-    await saveMoviesSimilarity(chunkMovieSims, true,false)
+    await dao.movieSimilarity.saveMany(chunkMovieSims,true)
 }
 
 export async function buildSimilarityForMoviesOtiai(minSims = 0.2, minOverlap = 4){
     await flushDB()
     const ratings = await getRatings()
     const similarities = calculateSimilarityForMoviesOtiai(ratings,minSims,minOverlap)
-    await saveMoviesSimilarity(similarities,false,false)
+    await dao.movieSimilarity.saveMany(similarities,false)
+    // await saveMoviesSimilarity(similarities,false,false)
 }
 
 export async function buildSimilarityForMoviesOtiaiByChunks(chunkSize = 100, minSims = 0.2, minOverlap = 4) {

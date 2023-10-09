@@ -1,70 +1,41 @@
-import {beforeAll, expect, test, describe} from "vitest";
-import {flushTestDB} from "../../../src/utils/test";
-import {readML100K} from "../../../src/utils/csv";
-import {saveUsers} from "../../../src/DAO/user";
-import {saveMovies} from "../../../src/DAO/movie";
-import {
-    getAllRatings,
-    getRatingsByUserIds,
-    getRatingsCount, getUniqueUserIdsFromRatings, getUsersAvgRatings,
-    saveRatings
-} from "../../../src/DAO/ratings";
+import {flushTestDB, loadML100KDataSet} from "../../../src/utils/test";
 import {
     calculateSimilarityForUsersOtiai,
     calculateSimilarityForUsersOtiaiByChunks,
     calculateSimilarityForUsersOtiaiByChunksWithWorkers,
     calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor
 } from "../../../src/similarity/otiai/calculations_users";
-import {
-    deleteAllUsersSimilarity,
-    getAllUsersSimilarity,
-    getUsersSimilarityCount,
-    saveUsersSimilarity
-} from "../../../src/DAO/user_similarity";
 import { UserSimilarityT} from "../../../src/types/similarity.types";
+import {getDAO} from "../../../src/DAO/DAO";
 
+const dao = getDAO(true)
 
 async function saveChunkSims(chunkSims: UserSimilarityT[]) {
-    await saveUsersSimilarity(chunkSims, true)
+    await dao.userSimilarity.saveMany(chunkSims, true)
 }
 
 async function getRatingsForChunk(userIds: number[]) {
-    return getRatingsByUserIds(userIds)
+    return dao.rating.getByUserIds(userIds)
 }
 describe('user-based otiai', () => {
     beforeAll(async () => {
         await flushTestDB()
-
-        const ratingsData = await readML100K('./test/mocks/ML100K_ratings.csv')
-        const usersData = Array.from(new Set(ratingsData.map(r => r.authorId))).map(el => ({id: el}))
-        const moviesData = Array.from(new Set(ratingsData.map(r => r.movieId))).map(id => ({
-            id,
-            title: id + "title",
-            year: 2010
-        }))
-
-        await saveUsers(usersData, true);
-        await saveMovies(moviesData, true)
-        await saveRatings(ratingsData, true)
-
-        return async () => {
-
-        }
+        await loadML100KDataSet()
     })
 
     test('ratings created', async () => {
-        expect(await getRatingsCount()).toBeGreaterThan(0)
+        expect(await dao.rating.count()).toBeGreaterThan(0)
     })
 
     test('create user similarity', async () => {
-        const ratings = await getAllRatings()
+        const ratings = await dao.rating.all()
         const usersSims = calculateSimilarityForUsersOtiai(ratings, 0.2, 4)
-        await saveUsersSimilarity(usersSims)
-        expect(await getUsersSimilarityCount()).toBeGreaterThan(0)
+        await dao.userSimilarity.saveMany(usersSims)
+        expect(await dao.userSimilarity.count()).toBeGreaterThan(0)
     })
 
     test('test user similarity', async () => {
-        const usersSims = await getAllUsersSimilarity()
+        const usersSims = await dao.userSimilarity.all()
         expect(usersSims.length).toBe(1384)
         expect(usersSims.find(s => s.source == 5 && s.target == 35)!.similarity).toBeCloseTo(0.3, 2)
         expect(usersSims.find(s => s.source == 35 && s.target == 5)!.similarity).toBeCloseTo(0.3, 2)
@@ -75,14 +46,16 @@ describe('user-based otiai', () => {
     })
 
     test('create user similarity by chunks', async () => {
-        await deleteAllUsersSimilarity()
-        const usersData = await getUsersAvgRatings()
-        const uniqueUserIds = await getUniqueUserIdsFromRatings()
+        await dao.userSimilarity.deleteAll()
+        
+        const usersData = await dao.rating.getAvgRatings() 
+        
+        const uniqueUserIds = await dao.rating.getUniqueUserIds()
         await calculateSimilarityForUsersOtiaiByChunks(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 210, 0.2, 4)
     })
 
     test('test user similarity by chunks', async () => {
-        const usersSims = await getAllUsersSimilarity()
+        const usersSims = await dao.userSimilarity.all()
         expect(usersSims.length).toBe(1384)
         expect(usersSims.find(s => s.source == 5 && s.target == 35)!.similarity).toBeCloseTo(0.3, 2)
         expect(usersSims.find(s => s.source == 35 && s.target == 5)!.similarity).toBeCloseTo(0.3, 2)
@@ -93,14 +66,14 @@ describe('user-based otiai', () => {
     })
 
     test('create user similarity by chunks with workers', async () => {
-        await deleteAllUsersSimilarity()
-        const usersData = await getUsersAvgRatings()
-        const uniqueUserIds = await getUniqueUserIdsFromRatings()
+        await dao.userSimilarity.deleteAll()
+        const usersData = await dao.rating.getAvgRatings()
+        const uniqueUserIds = await dao.rating.getUniqueUserIds()
         await calculateSimilarityForUsersOtiaiByChunksWithWorkers(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 100, 11, 0.2, 4)
     })
 
     test('test user similarity by chunks with workers', async () => {
-        const usersSims = await getAllUsersSimilarity()
+        const usersSims = await dao.userSimilarity.all()
         expect(usersSims.length).toBe(1384)
         expect(usersSims.find(s => s.source == 5 && s.target == 35)!.similarity).toBeCloseTo(0.3, 2)
         expect(usersSims.find(s => s.source == 35 && s.target == 5)!.similarity).toBeCloseTo(0.3, 2)
@@ -111,14 +84,14 @@ describe('user-based otiai', () => {
     })
 
     test('create user similarity by chunks with workers async conveyor', async () => {
-        await deleteAllUsersSimilarity()
-        const usersData = await getUsersAvgRatings()
-        const uniqueUserIds = await getUniqueUserIdsFromRatings()
+        await dao.userSimilarity.deleteAll()
+        const usersData = await dao.rating.getAvgRatings()
+        const uniqueUserIds = await dao.rating.getUniqueUserIds()
         await calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 100, 11, 0.2, 4)
     })
 
     test('test user similarity by chunks with workers', async () => {
-        const usersSims = await getAllUsersSimilarity()
+        const usersSims = await dao.userSimilarity.all()
         expect(usersSims.length).toBe(1384)
         expect(usersSims.find(s => s.source == 5 && s.target == 35)!.similarity).toBeCloseTo(0.3, 2)
         expect(usersSims.find(s => s.source == 35 && s.target == 5)!.similarity).toBeCloseTo(0.3, 2)

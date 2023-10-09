@@ -2,8 +2,8 @@ import {DAOMixinHelper} from "../../../dao_helper";
 import {PrismaClient} from "@prisma/client";
 
 class UserDeleteDAO__mixin extends DAOMixinHelper{
-    deleteAll(){
-        this._testDb ? this._client.testUser.deleteMany() : this._client.user.deleteMany()
+    async deleteAll(){
+        this._testDb ? await this._client.testUser.deleteMany() : await this._client.user.deleteMany()
     }
 
 }

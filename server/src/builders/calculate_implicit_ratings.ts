@@ -1,7 +1,7 @@
 import {PrismaClient, RatingType} from "@prisma/client";
+import {getDAO} from "../DAO/DAO";
 
 const prisma = new PrismaClient();
-
 // const w1 = 100;
 // const w2 = 50;
 // const w3 = 15;

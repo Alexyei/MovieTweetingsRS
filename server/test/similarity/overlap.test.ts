@@ -1,8 +1,7 @@
-import {beforeAll, expect, test} from "vitest";
 import {shortDataRatings} from "../mocks/short_dataset_ratings";
 import {preprocessData} from "../../src/similarity/preprocess_data";
 import {calculateOverlapMoviesM, calculateOverlapUsersM} from "../../src/similarity/overlap";
-const tf = require('@tensorflow/tfjs');
+const tf = require('@tensorflow/tfjs-node');
 
 const data = shortDataRatings
 test('overlap users',()=>{

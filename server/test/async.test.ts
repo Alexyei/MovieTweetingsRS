@@ -1,4 +1,3 @@
-import {beforeAll, expect, test} from "vitest";
 
 test('async conveyor',async ()=>{
     async function* generateSequence(start:number, end:number) {

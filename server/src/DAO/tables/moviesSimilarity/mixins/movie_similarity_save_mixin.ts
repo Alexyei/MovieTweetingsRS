@@ -3,8 +3,8 @@ import {PrismaClient, SimilarityType} from "@prisma/client";
 import {MovieSimilarityT} from "../../../../types/similarity.types";
 
 class MoviesSimilaritySaveDAO__mixin extends DAOMixinHelper{
-    saveMany(movieSimsData: MovieSimilarityT[], skipDuplicates=false) {
-        this._testDb ? this._client.testMoviesSimilarity.createMany({data: movieSimsData,skipDuplicates}) : this._client.moviesSimilarity.createMany({data: movieSimsData,skipDuplicates})
+    async saveMany(movieSimsData: MovieSimilarityT[], skipDuplicates=false) {
+        this._testDb ? await this._client.testMoviesSimilarity.createMany({data: movieSimsData,skipDuplicates}) : await this._client.moviesSimilarity.createMany({data: movieSimsData,skipDuplicates})
     }
 
 }

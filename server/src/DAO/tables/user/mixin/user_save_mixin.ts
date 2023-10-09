@@ -3,8 +3,8 @@ import {PrismaClient} from "@prisma/client";
 import {UserT} from "../../../../types/user.types";
 
 class UserSaveDAO__mixin extends DAOMixinHelper{
-    saveMany(usersData: UserT[],){
-        this._testDb ? this._client.testUser.createMany({data: usersData}) : this._client.user.createMany({data: usersData})
+    async saveMany(usersData: UserT[],){
+        this._testDb ? await this._client.testUser.createMany({data: usersData}) : await this._client.user.createMany({data: usersData})
     }
 }
 

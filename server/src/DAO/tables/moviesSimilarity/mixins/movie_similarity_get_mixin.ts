@@ -3,15 +3,15 @@ import {PrismaClient, SimilarityType} from "@prisma/client";
 
 
 class MoviesSimilarityGetDAO__mixin extends DAOMixinHelper{
-    count(){
-        return this._testDb ? this._client.testMoviesSimilarity.count() : this._client.moviesSimilarity.count();
+    async count(){
+        return this._testDb ? await this._client.testMoviesSimilarity.count() : await this._client.moviesSimilarity.count();
     }
 
-    all(){
-        return this._testDb ? this._client.testMoviesSimilarity.findMany() : this._client.moviesSimilarity.findMany();
+    async all(){
+        return this._testDb ? await this._client.testMoviesSimilarity.findMany() : await this._client.moviesSimilarity.findMany();
     }
 
-    getCandidatesByTargetId(userMovieIds:string[], targetId:string,type:SimilarityType,take=100,min_sims = 0.2){
+    async getCandidatesByTargetId(userMovieIds:string[], targetId:string,type:SimilarityType,take=100,min_sims = 0.2){
         if (this._testDb){
             return this._client.testMoviesSimilarity.findMany({
                 where: {
@@ -40,7 +40,7 @@ class MoviesSimilarityGetDAO__mixin extends DAOMixinHelper{
         });
     }
 
-    getAllCandidates(userMovieIds:string[], type:SimilarityType,take=100,min_sims = 0.2){
+    async getAllCandidates(userMovieIds:string[], type:SimilarityType,take=100,min_sims = 0.2){
         if (this._testDb){
             return this._client.testMoviesSimilarity.findMany({
                 where: {

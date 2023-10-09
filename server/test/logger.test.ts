@@ -1,4 +1,3 @@
-import {test} from "vitest"
 import {createPinoLogger} from "../src/logger/pino_basic_logger.js";
 
 test('two logger',()=>{

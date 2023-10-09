@@ -4,8 +4,8 @@ import {MovieT} from "../../../../types/movie.types";
 import {RatingWithTypeT} from "../../../../types/rating.types";
 
 class RatingSaveDAO__mixin extends DAOMixinHelper{
-    saveMany(ratingsData: RatingWithTypeT[]) {
-        this._testDb ? this._client.testRating.createMany({data: ratingsData}) : this._client.rating.createMany({data: ratingsData})
+    async saveMany(ratingsData: RatingWithTypeT[]) {
+        this._testDb ? await this._client.testRating.createMany({data: ratingsData}) : await this._client.rating.createMany({data: ratingsData})
     }
 
 }

@@ -1,13 +1,9 @@
-import {beforeAll, expect, test} from "vitest";
 import {normalizeRatings, otiaiSimsForMovies, otiaiSimsForUsers} from "../../../src/similarity/otiai/distance";
 import {shortDataRatings} from "../../mocks/short_dataset_ratings";
 import {preprocessData} from "../../../src/similarity/preprocess_data";
 import {calculateSimilarityForMoviesOtiai} from "../../../src/similarity/otiai/calculations_movies";
 import {calculateSimilarityForUsersOtiai} from "../../../src/similarity/otiai/calculations_users";
 const tf = require('@tensorflow/tfjs-node');
-beforeAll(async () => {
-
-})
 
 const data = shortDataRatings
 
