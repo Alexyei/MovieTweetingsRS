@@ -1,5 +1,3 @@
-// import {Tensor1D, Tensor2D} from "@tensorflow/tfjs";
-// const tf = require('@tensorflow/tfjs');
 import {Tensor1D, Tensor2D} from "@tensorflow/tfjs-node";
 const tf = require('@tensorflow/tfjs-node');
 
@@ -28,17 +26,7 @@ function calculateOtiaiDistance(normRatings: Tensor2D) {
     return replacedNaNTensor.arraySync() as number[][]
 }
 
-function calculatePearsonDistance(normRatings: Tensor2D) {
-    const numerator = tf.matMul(normRatings, tf.transpose(normRatings))
-    const sqr = tf.mul(normRatings, normRatings)
-    const ones = normRatings.relu()
-    const sums = tf.matMul(ones,sqr)
-    const sqrtSums = tf.sqrt(sums)
-    const denominator = tf.matMul(sqrtSums.reshape([ sqrtSums.shape[0],1]),sqrtSums.reshape([ 1,sqrtSums.shape[0]]))
-    let res = tf.div(numerator, denominator);
-    const replacedNaNTensor = tf.where(tf.isNaN(res), tf.zerosLike(res), res);
-    return replacedNaNTensor.arraySync() as number[][]
-}
+
 
 export function otiaiSimsForMovies(ratings: Tensor2D){
     const norm_ratings = normalizeRatings(ratings)

@@ -1,14 +1,10 @@
-import {
-    calculateSimilarityForMoviesOtiai,
-    calculateSimilarityForMoviesOtiaiByChunks,
-    calculateSimilarityForMoviesOtiaiByChunksWithWorkers,
-    calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor
-} from "../../../src/similarity/otiai/calculations_movies";
 import {flushTestDB, loadML100KDataSet} from "../../../src/utils/test";
 import {MovieSimilarityT} from "../../../src/types/similarity.types";
 import {getDAO} from "../../../src/DAO/DAO";
+import {getSimilarityCalculator} from "../../../src/similarity/calculator";
 
 const dao = getDAO(true)
+const similarityCalculator = getSimilarityCalculator().movies.otiai
 async function saveChunkSims(chunkSims: MovieSimilarityT[]) {
     await dao.movieSimilarity.saveMany(chunkSims,true)
 }
@@ -29,7 +25,7 @@ describe('item-based otiai', () => {
 
     test('create item similarity', async () => {
         const ratings = await dao.rating.all()
-        const moviesSims = calculateSimilarityForMoviesOtiai(ratings, 0.2, 4)
+        const moviesSims = similarityCalculator.calculate(ratings, 0.2, 4)
         await dao.movieSimilarity.saveMany(moviesSims)
         expect(await dao.rating.count()).toBeGreaterThan(0)
     })
@@ -51,7 +47,7 @@ describe('item-based otiai', () => {
         await dao.movieSimilarity.deleteAll()
         const usersData = await dao.rating.getAvgRatings()
         const uniqueMovieIds = await dao.rating.getUniqueMovieIds()
-        await calculateSimilarityForMoviesOtiaiByChunks(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 5000, 0.2, 4)
+        await similarityCalculator.calculateByChunks(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 5000, 0.2, 4)
     })
 
     test('test item similarity by chunks', async () => {
@@ -71,7 +67,7 @@ describe('item-based otiai', () => {
         await dao.movieSimilarity.deleteAll()
         const usersData = await dao.rating.getAvgRatings()
         const uniqueMovieIds = await dao.rating.getUniqueMovieIds()
-        await calculateSimilarityForMoviesOtiaiByChunksWithWorkers(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 2000, 11, 0.2, 4)
+        await similarityCalculator.calculateByChunksWithWorkers(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 2000, 11, 0.2, 4)
     })
 
     test('test item similarity by chunks with workers', async () => {
@@ -91,7 +87,7 @@ describe('item-based otiai', () => {
         await dao.movieSimilarity.deleteAll()
         const usersData = await dao.rating.getAvgRatings()
         const uniqueMovieIds = await dao.rating.getUniqueMovieIds()
-        await calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 2000, 11, 0.2, 4)
+        await similarityCalculator.calculateByChunksWithWorkersAsyncConveyor(usersData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 2000, 11, 0.2, 4)
     })
 
     test('test item similarity by chunks with workers', async () => {

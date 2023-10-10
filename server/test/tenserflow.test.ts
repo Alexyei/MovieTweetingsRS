@@ -224,20 +224,6 @@ test('pearson tf',()=>{
 
     const numeratorData = numerator.arraySync();
 
-    // for(let i = 0; i < normRatings.shape[0]; ++i) {
-    //     for(let j = 0; j < normRatings.shape[0]; ++j) {
-    //         const maskI = ones.slice([i, 0], [1, normRatings.shape[1]]);
-    //         const maskJ = ones.slice([j, 0], [1, normRatings.shape[1]]);
-    //         const ANDmask = tf.mul(maskI, maskJ);
-    //
-    //         const sqrI = tf.mul(ANDmask, sqr.slice([i, 0], [1, sqr.shape[1]]));
-    //         const sqrJ = tf.mul(ANDmask, sqr.slice([j, 0], [1, sqr.shape[1]]));
-    //         const sqrtI = tf.sqrt(tf.sum(sqrI))
-    //         const sqrtJ = tf.sqrt(tf.sum(sqrJ))
-    //         numeratorData[i][j] = numeratorData[i][j] / (sqrtI.arraySync() * sqrtJ.arraySync());
-    //     }
-    // }
-
     for(let i = 0; i < normRatings.shape[0]; ++i) {
         for(let j = i; j < normRatings.shape[0]; ++j) {
             const maskI = ones.slice([i, 0], [1, normRatings.shape[1]]);

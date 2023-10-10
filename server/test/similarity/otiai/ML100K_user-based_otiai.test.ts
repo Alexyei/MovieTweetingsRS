@@ -1,15 +1,10 @@
 import {flushTestDB, loadML100KDataSet} from "../../../src/utils/test";
-import {
-    calculateSimilarityForUsersOtiai,
-    calculateSimilarityForUsersOtiaiByChunks,
-    calculateSimilarityForUsersOtiaiByChunksWithWorkers,
-    calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor
-} from "../../../src/similarity/otiai/calculations_users";
 import { UserSimilarityT} from "../../../src/types/similarity.types";
 import {getDAO} from "../../../src/DAO/DAO";
+import {getSimilarityCalculator} from "../../../src/similarity/calculator";
 
 const dao = getDAO(true)
-
+const similarityCalculator = getSimilarityCalculator().users.otiai
 async function saveChunkSims(chunkSims: UserSimilarityT[]) {
     await dao.userSimilarity.saveMany(chunkSims, true)
 }
@@ -29,7 +24,7 @@ describe('user-based otiai', () => {
 
     test('create user similarity', async () => {
         const ratings = await dao.rating.all()
-        const usersSims = calculateSimilarityForUsersOtiai(ratings, 0.2, 4)
+        const usersSims = similarityCalculator.calculate(ratings, 0.2, 4)
         await dao.userSimilarity.saveMany(usersSims)
         expect(await dao.userSimilarity.count()).toBeGreaterThan(0)
     })
@@ -51,7 +46,7 @@ describe('user-based otiai', () => {
         const usersData = await dao.rating.getAvgRatings() 
         
         const uniqueUserIds = await dao.rating.getUniqueUserIds()
-        await calculateSimilarityForUsersOtiaiByChunks(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 210, 0.2, 4)
+        await similarityCalculator.calculateByChunks(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 210, 0.2, 4)
     })
 
     test('test user similarity by chunks', async () => {
@@ -69,7 +64,7 @@ describe('user-based otiai', () => {
         await dao.userSimilarity.deleteAll()
         const usersData = await dao.rating.getAvgRatings()
         const uniqueUserIds = await dao.rating.getUniqueUserIds()
-        await calculateSimilarityForUsersOtiaiByChunksWithWorkers(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 100, 11, 0.2, 4)
+        await similarityCalculator.calculateByChunksWithWorkers(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 100, 11, 0.2, 4)
     })
 
     test('test user similarity by chunks with workers', async () => {
@@ -87,7 +82,7 @@ describe('user-based otiai', () => {
         await dao.userSimilarity.deleteAll()
         const usersData = await dao.rating.getAvgRatings()
         const uniqueUserIds = await dao.rating.getUniqueUserIds()
-        await calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 100, 11, 0.2, 4)
+        await similarityCalculator.calculateByChunksWithWorkersAsyncConveyor(usersData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 100, 11, 0.2, 4)
     })
 
     test('test user similarity by chunks with workers', async () => {

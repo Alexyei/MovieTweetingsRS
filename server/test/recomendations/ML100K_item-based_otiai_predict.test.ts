@@ -1,13 +1,12 @@
-import {
-    calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor
-} from "../../src/similarity/otiai/calculations_movies";
 import {MovieSimilarityT} from "../../src/types/similarity.types";
 import {ItemItemRecommender} from "../../src/recommenders/cf_nb_item_item_recommender";
 
 import {flushTestDB, loadML100KDataSet} from "../../src/utils/test";
 import {getDAO} from "../../src/DAO/DAO";
+import {getSimilarityCalculator} from "../../src/similarity/calculator";
 
 const dao = getDAO(true);
+const similarityCalculator = getSimilarityCalculator().movies.otiai
 async function saveChunkSims(chunkSims: MovieSimilarityT[]) {
     await dao.movieSimilarity.saveMany(chunkSims,true)
 }
@@ -24,7 +23,7 @@ beforeAll(async () => {
     await dao.movieSimilarity.deleteAll()
     const usersAvgData = await dao.rating.getAvgRatings()
     const uniqueMovieIds = await dao.rating.getUniqueMovieIds()
-    await calculateSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(usersAvgData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 2000, 11, 0.2, 4)
+    await similarityCalculator.calculateByChunksWithWorkersAsyncConveyor(usersAvgData, uniqueMovieIds, getRatingsForChunk, saveChunkSims, 2000, 11, 0.2, 4)
 })
 
 test('recs NB i-i by userId',async ()=>{

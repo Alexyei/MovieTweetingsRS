@@ -1,12 +1,11 @@
 import {normalizeRatings, otiaiSimsForMovies, otiaiSimsForUsers} from "../../../src/similarity/otiai/distance";
 import {shortDataRatings} from "../../mocks/short_dataset_ratings";
 import {preprocessData} from "../../../src/similarity/preprocess_data";
-import {calculateSimilarityForMoviesOtiai} from "../../../src/similarity/otiai/calculations_movies";
-import {calculateSimilarityForUsersOtiai} from "../../../src/similarity/otiai/calculations_users";
+import {getSimilarityCalculator} from "../../../src/similarity/calculator";
 const tf = require('@tensorflow/tfjs-node');
 
 const data = shortDataRatings
-
+const similarityCalculator = getSimilarityCalculator()
 test('otiai normalize',()=>{
     const { uniqueUserIds, uniqueMovieIds, ratings } = preprocessData(data)
     const normRatings = normalizeRatings(tf.tensor2d(ratings)).arraySync()
@@ -46,7 +45,7 @@ test('otiai sims users',()=>{
 })
 
 test('item-similarity otiai builder', async () => {
-    const sims = calculateSimilarityForMoviesOtiai(data,0.2,4)
+    const sims = similarityCalculator.movies.otiai.calculate(data,0.2,4)
     expect(sims.length % 2).toBe(0)
     expect(sims.length).toBe(4)
     expect(sims[0].similarity).toBeCloseTo(0.786, 2)
@@ -56,11 +55,11 @@ test('item-similarity otiai builder', async () => {
 })
 
 test('item-similarity otiai builder empty ratings', async () => {
-    const sims = calculateSimilarityForMoviesOtiai([],0.2,4)
+    const sims = similarityCalculator.movies.otiai.calculate([],0.2,4)
     expect(sims.length).toBe(0)
 })
 test('user-similarity otiai builder', async () => {
-    const sims = calculateSimilarityForUsersOtiai(data,0.2,4)
+    const sims = similarityCalculator.users.otiai.calculate(data,0.2,4)
     expect(sims.length % 2).toBe(0)
     expect(sims.length).toBe(10)
     expect(sims[0].similarity).toBeCloseTo(0.755, 2)
@@ -71,6 +70,6 @@ test('user-similarity otiai builder', async () => {
     expect(sims[5].similarity).toBeCloseTo(0.218, 2)
 })
 test('user-similarity otiai builder empty ratings', async () => {
-    const sims = calculateSimilarityForUsersOtiai([],0.2,4)
+    const sims = similarityCalculator.users.otiai.calculate([],0.2,4)
     expect(sims.length).toBe(0)
 })

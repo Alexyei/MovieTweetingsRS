@@ -1,11 +1,10 @@
 import {UserSimilarityT} from "../../src/types/similarity.types";
-import {
-    calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor
-} from "../../src/similarity/otiai/calculations_users";
 import {UserUserRecommender} from "../../src/recommenders/cf_nb_user_user_recommender";
 import {flushTestDB, loadML100KDataSet} from "../../src/utils/test";
 import {getDAO} from "../../src/DAO/DAO";
+import {getSimilarityCalculator} from "../../src/similarity/calculator";
 const dao = getDAO(true)
+const similarityCalculator = getSimilarityCalculator().users.otiai
 async function saveChunkSims(chunkSims: UserSimilarityT[]) {
     await dao.userSimilarity.saveMany(chunkSims, true)
 }
@@ -21,7 +20,7 @@ beforeAll(async () => {
     await dao.userSimilarity.deleteAll()
     const usersAvgData = await dao.rating.getAvgRatings()
     const uniqueUserIds = await dao.rating.getUniqueUserIds()
-    await calculateSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(usersAvgData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 300, 11, 0.2, 4)
+    await similarityCalculator.calculateByChunksWithWorkersAsyncConveyor(usersAvgData, uniqueUserIds, getRatingsForChunk, saveChunkSims, 300, 11, 0.2, 4)
 
 })
 
