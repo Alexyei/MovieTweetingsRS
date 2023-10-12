@@ -23,7 +23,7 @@ app.use(express.json())
 app.use(sessionMiddleware)
 app.use(cors({
     credentials: true,
-    origin: process.env['FRONTEND_URL']!
+    origin: '*'
 }));
 app.use('/static', express.static(path.join(__dirname, 'src/public')));
 app.use('/api/v1.0.0', router);

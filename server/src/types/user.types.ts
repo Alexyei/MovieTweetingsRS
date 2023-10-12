@@ -7,6 +7,7 @@ export type UserSaveT = {login?:string,email?:string,role?:UserRole,password:str
 
 declare module 'express-session' {
     interface SessionData {
+        id: string,
         user: UserDataT
     }
 }

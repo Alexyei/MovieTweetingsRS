@@ -8,6 +8,6 @@ export default function connectAuthRoutes(router: Router) {
     const prefix = '/auth'
     router.post(`${prefix}/login`, loginValidation, requestValidationMiddleware, authController.login);
     router.post(`${prefix}/signup`, registerValidation, requestValidationMiddleware, authController.registration);
-    router.get(`${prefix}/:userID`, authMiddleware, authController.getUserData);
-    router.delete(`${prefix}/:userID`, authMiddleware, authController.logout);
+    router.get(`${prefix}/data/:userID`, authMiddleware, authController.getUserData);
+    router.delete(`${prefix}/logout/:userID`, authMiddleware, authController.logout);
 }

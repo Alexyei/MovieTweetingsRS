@@ -5,8 +5,9 @@ config()
 const sessionMiddleware = session({
     store: redisStore,
     secret: process.env["SESSION_SECRET_WORD "] || "secret0179f",
+
+    resave: true,
     //не записывать пустую сессию в БД
-    resave: false,
     saveUninitialized: false,
     //название печенья
     name: 'sessionId',

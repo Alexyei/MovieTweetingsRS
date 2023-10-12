@@ -28,18 +28,19 @@ class AuthService {
     }
 
     async getUserData(userID:number, sessionUserID:number){
-
+        if (isNaN(userID)) throw ApiError.BadRequest('Invalid user ID')
         const user = await dao.user.getUserByID(userID) as UserDataT
-        if (user.role !== UserRole.ADMIN || userID != sessionUserID) {
+        if (userID != sessionUserID && user.role !== UserRole.ADMIN) {
             throw ApiError.Forbidden()
         }
 
         return user;
     }
 
-    async logout(userId:number,sessionUserId:number,sessionStore:Express.SessionStore){
-        const user = await dao.user.getUserByID(userId) as UserDataT
-        if (user.role !== UserRole.ADMIN || userId != sessionUserId) {
+    async logout(userID:number,sessionUserID:number,sessionStore:Express.SessionStore){
+        if (isNaN(userID)) throw ApiError.BadRequest('Invalid user ID')
+        const user = await dao.user.getUserByID(userID) as UserDataT
+        if (userID != sessionUserID && user.role !== UserRole.ADMIN) {
             throw ApiError.Forbidden()
         }
         //удаляем только текущую сессию
@@ -58,9 +59,9 @@ class AuthService {
                     // Проходимся по каждой сессии
                     (sessions as SessionData[]).forEach(session  => {
                         // Проверяем, сессия принадлежит ли пользователю с указанным id
-                        if (session.user.id === userId) {
+                        if (session.user.id === userID) {
                             // Удаляем сессию из Redis
-                            sessionStore.destroy(session.user.id.toString(), (error) => {
+                            sessionStore.destroy(session.id, (error) => {
                                 if (error) {
                                     // Обработка ошибки
                                     throw new Error('Ошибка удаления сессии:', error)
