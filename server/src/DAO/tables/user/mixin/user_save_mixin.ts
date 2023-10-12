@@ -8,7 +8,31 @@ class UserSaveDAO__mixin extends DAOMixinHelper{
     }
 
     async saveOne(userData: UserSaveT):Promise<UserDataT>{
-        return this._testDb ? await this._client.testUser.create({data: userData, select: {id: true, login: true, email:true,role:true}}) : await this._client.user.create({data: userData,select: {id: true, login: true, email:true,role:true}})
+        if (this._testDb){
+            const maxId = await this._client.testUser.aggregate({
+                _max: {
+                    id: true,
+                },
+            })
+            const id = maxId._max.id || 0
+            return this._client.testUser.create({
+                data: {id, ...userData},
+                select: {id: true, login: true, email: true, role: true}
+            });
+
+        }
+        else{
+            const maxId = await this._client.user.aggregate({
+                _max: {
+                    id: true,
+                },
+            })
+            const id = (maxId._max.id|| 0) + 1
+            return this._client.user.create({
+                data: {id, ...userData},
+                select: {id: true, login: true, email: true, role: true}
+            });
+        }
     }
 }
 
