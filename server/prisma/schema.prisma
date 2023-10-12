@@ -11,13 +11,15 @@ datasource db {
 }
 
 model User {
-  id      Int               @id @default(autoincrement())
-  email   String?           @unique
-  name    String?
-  ratings Rating[]
-  events  UserEvent[]
-  sources UsersSimilarity[] @relation("SourceRelation")
-  targets UsersSimilarity[] @relation("TargetRelation")
+  id       Int               @id @default(autoincrement())
+  email    String?           @unique
+  login    String?           @unique
+  role     UserRole          @default(USER)
+  password String?
+  ratings  Rating[]
+  events   UserEvent[]
+  sources  UsersSimilarity[] @relation("SourceRelation")
+  targets  UsersSimilarity[] @relation("TargetRelation")
 }
 
 model Movie {
@@ -94,13 +96,15 @@ model UsersSimilarity {
 // --------------------------------TESTING--------------------------------
 
 model TestUser {
-  id      Int                   @id @default(autoincrement())
-  email   String?               @unique
-  name    String?
-  ratings TestRating[]
-  events  TestUserEvent[]
-  sources TestUsersSimilarity[] @relation("SourceRelation")
-  targets TestUsersSimilarity[] @relation("TargetRelation")
+  id       Int                   @id @default(autoincrement())
+  email    String?               @unique
+  login    String?               @unique
+  role     UserRole              @default(USER)
+  password String?
+  ratings  TestRating[]
+  events   TestUserEvent[]
+  sources  TestUsersSimilarity[] @relation("SourceRelation")
+  targets  TestUsersSimilarity[] @relation("TargetRelation")
 }
 
 model TestMovie {
@@ -175,6 +179,10 @@ model TestUsersSimilarity {
 }
 
 // --------------------------------ENUMS--------------------------------
+enum UserRole {
+  USER
+  ADMIN
+}
 
 enum TypeEvent {
   GENRE_VIEW

@@ -127,7 +127,7 @@ export class UserUserRecommender extends BaseRecommender {
                     const userData = usersData.find(u=>u.id == s.id)!
                     return {
                         userId: s.id,
-                        name: userData.name,
+                        login: userData.login,
                         similarity: s.similarity,
                         rating: s.rating
                     }
