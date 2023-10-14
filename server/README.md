@@ -41,6 +41,10 @@
 
 1. Можно сохранять значение overlap при расчёте сходств
 2. конспект 5.1 Коллизия при обновлении и получении правил из БД
+3. https://github.com/prisma/prisma/issues/1938
+4. GET sim/items/:movieId/:method ->views.similar_content ->lda_similarity
 
 # Redis
  - flushall - удалить все записи
+ - keys * - получить все коючи
+ - get key - прочитать значение ключа
