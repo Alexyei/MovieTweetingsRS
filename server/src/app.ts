@@ -14,6 +14,7 @@ config()
 
 const PORT = Number(process.env['BACKEND_PORT']) || 3001
 const HOST = process.env['BACKEND_HOST']!
+const CLIENT_URL = process.env['CLIENT_URL']
 
 const prisma = new PrismaClient()
 
@@ -23,7 +24,7 @@ app.use(express.json())
 app.use(sessionMiddleware)
 app.use(cors({
     credentials: true,
-    origin: '*'
+    origin: CLIENT_URL
 }));
 app.use('/static', express.static(path.join(__dirname, 'src/public')));
 app.use('/api/v1.0.0', router);

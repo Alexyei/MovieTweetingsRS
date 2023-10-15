@@ -5,6 +5,7 @@ import {UserRole} from "@prisma/client";
 import {UserDataT, UserDataWithPasswordT} from "../types/user.types";
 import {ApiError} from "../exceptions/api_errors";
 import {SessionData} from "express-session";
+
 config()
 const dao = getDAO(false);
 class AuthService {
@@ -28,21 +29,23 @@ class AuthService {
     }
 
     async getUserData(userID:number, sessionUserID:number){
-        if (isNaN(userID)) throw ApiError.BadRequest('Invalid user ID')
-        const user = await dao.user.getUserByID(userID) as UserDataT
-        if (userID != sessionUserID && user.role !== UserRole.ADMIN) {
+        const sender = await dao.user.getUserByID(sessionUserID) as UserDataT
+        const requestedUserID = userID || sessionUserID
+        if (requestedUserID != sessionUserID && sender.role !== UserRole.ADMIN) {
             throw ApiError.Forbidden()
         }
-
-        return user;
+        return requestedUserID == sessionUserID ? sender : await dao.user.getUserByID(requestedUserID) as UserDataT;
     }
 
     async logout(userID:number,sessionUserID:number,sessionStore:Express.SessionStore){
-        if (isNaN(userID)) throw ApiError.BadRequest('Invalid user ID')
-        const user = await dao.user.getUserByID(userID) as UserDataT
-        if (userID != sessionUserID && user.role !== UserRole.ADMIN) {
+        const sender = await dao.user.getUserByID(sessionUserID) as UserDataT
+        const requestedUserID = userID || sessionUserID
+
+        if (requestedUserID != sessionUserID && sender.role !== UserRole.ADMIN) {
             throw ApiError.Forbidden()
         }
+
+
         //удаляем только текущую сессию
         // req.session.destroy((err) => {
         //     res.redirect(config.app.client_url) // will always fire after session is destroyed
@@ -59,7 +62,7 @@ class AuthService {
                     // Проходимся по каждой сессии
                     (sessions as SessionData[]).forEach(session  => {
                         // Проверяем, сессия принадлежит ли пользователю с указанным id
-                        if (session.user.id === userID) {
+                        if (session.user.id === requestedUserID) {
                             // Удаляем сессию из Redis
                             sessionStore.destroy(session.id, (error) => {
                                 if (error) {
