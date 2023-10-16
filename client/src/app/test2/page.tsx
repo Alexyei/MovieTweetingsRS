@@ -27,7 +27,7 @@ export default async function Home() {
 
     }
     const user = await loadUser()
-    if (user.email)
+    if (!user.email)
         redirect('/sign-in')
     return (
         <>

@@ -3,7 +3,7 @@ import {buttonVariants} from "@/components/ui/button";
 import Link from "next/link";
 import {Clapperboard} from "lucide-react";
 import {useUserData} from "@/context/UserDataContext";
-
+import {cookies} from "next/headers";
 const Navbar = () => {
     const userData = useUserData()
     return (
@@ -12,7 +12,6 @@ const Navbar = () => {
                 <Link href='/' className='flex items-end'>
                     <Clapperboard  className="mr-2 text-primary"/>Cyber Cinema
                 </Link>
-
                 <Link className={buttonVariants()} href='/sign-in'>
 
                     {!userData.user ? 'Sign In':userData.user.login}

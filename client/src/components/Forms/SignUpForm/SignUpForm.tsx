@@ -1,5 +1,4 @@
 'use client';
-import {GetServerSideProps} from "next";
 import { useForm } from 'react-hook-form';
 
 import * as z from 'zod';
