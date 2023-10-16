@@ -33,6 +33,7 @@ interface UserDataProviderProps {
 export function UserDataProvider({children}: UserDataProviderProps) {
     const API_URL = process.env.NEXT_PUBLIC_API_URL
     const [user, setUser] = useState<User | null>(null);
+    const [isLoading,setLoading] = useState(true)
     const router = useRouter();
     const loadUser = async () => {
 
@@ -52,6 +53,8 @@ export function UserDataProvider({children}: UserDataProviderProps) {
         } else {
             console.log(answer)
         }
+
+        setLoading(false)
     }
 
     const logout = async () => {
@@ -78,7 +81,7 @@ export function UserDataProvider({children}: UserDataProviderProps) {
 
 
     return <UserDataContext.Provider value={{user, logout}}>
-        {/*{loading ? <FullScreenLoading/> : children}*/}
-        {children}
+        {isLoading ? <p>loading...</p> : children}
+        {/*{children}*/}
     </UserDataContext.Provider>
 }
