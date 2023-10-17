@@ -4,6 +4,7 @@ import {Inter} from 'next/font/google'
 import Navbar from "@/components/Navbar/Navbar";
 import {Toaster} from "@/components/ui/toaster";
 import {UserDataProvider} from "@/context/UserDataContext";
+import {ThemeProvider} from "@/components/ui/theme-provider";
 
 const inter = Inter({subsets: ['cyrillic-ext']})
 
@@ -18,11 +19,16 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
 
         <body className={inter.className}>
         <main className='h-screen flex flex-col justify-center items-center'>
-            <UserDataProvider>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+            >
+            {/*<UserDataProvider>*/}
                 <Navbar/>
                 {children}
-            </UserDataProvider>
-
+            {/*</UserDataProvider>*/}
+            </ThemeProvider>
         </main>
         <Toaster />
         </body>

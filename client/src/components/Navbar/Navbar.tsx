@@ -1,22 +1,26 @@
-'use client'
-import {buttonVariants} from "@/components/ui/button";
+
 import Link from "next/link";
 import {Clapperboard} from "lucide-react";
-import {useUserData} from "@/context/UserDataContext";
-import {cookies} from "next/headers";
+import {ThemeToggle} from "@/components/ui/theme-toggle";
+import {UserNav} from "@/components/UserNav/UserNav";
 const Navbar = () => {
-    const userData = useUserData()
+    // const userData = useUserData()
     return (
-        <div className=' bg-zinc-100 py-2 border-b border-s-zinc-200 fixed w-full z-10 top-0'>
+        <div className=' bg-secondary py-2 border-b border-s-secondary fixed w-full z-10 top-0'>
             <div className='container flex items-center justify-between'>
-                <Link href='/' className='flex items-end'>
-                    <Clapperboard  className="mr-2 text-primary"/>Cyber Cinema
+                <Link href='/' className='flex items-center'>
+                    <Clapperboard  className="mr-2 text-primary "/><h4 className="scroll-m-20 text-xl font-semibold tracking-tigh">Cyber Cinema</h4>
                 </Link>
-                <Link className={buttonVariants()} href='/sign-in'>
+                <div className='flex items-center'>
+                    <ThemeToggle className='mr-2' />
+                    {/*<Link className={`${buttonVariants()} inline-block`} href='/sign-in'>*/}
 
-                    {!userData.user ? 'Sign In':userData.user.login}
+                    {/*    {!userData.user ? 'Sign In':userData.user.login}*/}
 
-                </Link>
+                    {/*</Link>*/}
+                    <UserNav/>
+                </div>
+
             </div>
         </div>
     );

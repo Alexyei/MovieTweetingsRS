@@ -9,6 +9,12 @@ import Link from 'next/link';
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {getClientAPI} from "@/api/client_api";
+import {useRouter} from "next/navigation";
+import {useToast} from "@/components/ui/use-toast";
+
+const api = getClientAPI()
 
 const FormSchema = z.object({
     login: z.string().min(3, 'Длина логина от 3 символов').max(16, 'Длина логина до 16 сиволов'),
@@ -19,6 +25,8 @@ const FormSchema = z.object({
 });
 
 const SignInForm = () => {
+    const router = useRouter()
+    const { toast } = useToast()
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -30,9 +38,27 @@ const SignInForm = () => {
     const onSubmit = async (values: z.infer<typeof FormSchema>) => {
         console.log(values);
 
+        const response = await api.authAPI.signIn(values)
+
+        if (response.status == 200){
+            router.refresh()
+            router.push('/')
+        }else{
+            const message = response.response.message
+            toast({
+                variant: "destructive",
+                title: `Ошибка ${response.status}!`,
+                description: message,
+            })
+        }
     };
 
     return (
+        <Card>
+            <CardHeader>
+                <CardTitle>Войти</CardTitle>
+            </CardHeader>
+            <CardContent>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
                 <div className='space-y-2'>
@@ -71,17 +97,17 @@ const SignInForm = () => {
                     Войти
                 </Button>
             </form>
-            <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
+            <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-border after:ml-4 after:block after:h-px after:flex-grow after:bg-border'>
                 или
             </div>
             {/*<GoogleSignInButton>Sign in with Google</GoogleSignInButton>*/}
-            <p className='text-center text-sm text-gray-600 mt-2'>
+            <p className='text-center text-sm mt-2'>
                 Если у вас нет аккаунта, пожалуйста&nbsp;
                 <Link className='text-primary hover:underline' href='/sign-up'>
                     создайте его
                 </Link>
             </p>
-        </Form>
+        </Form></CardContent></Card>
     );
 };
 

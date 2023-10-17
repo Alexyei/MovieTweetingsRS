@@ -45,7 +45,7 @@ class AuthController {
 
             await authService.logout(requestUserId,sessionUserId,req.sessionStore);
 
-            return res.status(200).send();
+            return res.status(200).json("");
         } catch (e) {
             next(e);
         }

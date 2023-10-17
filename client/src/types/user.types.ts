@@ -1,0 +1,1 @@
+export type UserDataT = { login: string | null, id: number, email: string | null, role: "ADMIN" | "USER" }

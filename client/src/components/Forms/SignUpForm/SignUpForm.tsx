@@ -10,7 +10,10 @@ import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import {useRouter} from "next/navigation";
 import {useToast} from "@/components/ui/use-toast";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
+import {getClientAPI} from "@/api/client_api";
 
+const api = getClientAPI()
 
 const FormSchema = z
     .object({
@@ -29,7 +32,7 @@ const FormSchema = z
 
 const SignUpForm = () => {
     const router = useRouter()
-    const API_URL = process.env.NEXT_PUBLIC_API_URL
+    // const API_URL = process.env.NEXT_PUBLIC_API_URL
     const { toast } = useToast()
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -44,32 +47,51 @@ const SignUpForm = () => {
     const onSubmit = async (values: z.infer<typeof FormSchema>) => {
 
         console.log(values);
-        console.log(API_URL)
+        // console.log(API_URL)
 
-        const response = await fetch(API_URL + '/api/v1.0.0/auth/signup', {
-            method: 'POST',
-            credentials: "include",
-            headers: {
-                'Content-type':'application/json'
-            },
-            body: JSON.stringify(values)
-        })
+        // const response = await fetch(API_URL + '/api/v1.0.0/auth/signup', {
+        //     method: 'POST',
+        //     credentials: "include",
+        //     headers: {
+        //         'Content-type':'application/json'
+        //     },
+        //     body: JSON.stringify(values)
+        // })
 
-        if(response.ok){
+        // if(response.ok){
+        //     router.refresh()
+        //     router.push('/sign-in')
+        // }else{
+        //     const answer = await response.json()
+        //     toast({
+        //         variant: "destructive",
+        //         title: `Ошибка ${response.status}!`,
+        //         description: answer.message,
+        //     })
+        //
+        // }
+
+        const response = await api.authAPI.signUp(values)
+
+        if (response.status == 201){
             router.refresh()
-            router.push('/sign-in')
+            router.push('/')
         }else{
-            const answer = await response.json()
-            toast({
-                variant: "destructive",
-                title: `Ошибка ${response.status}!`,
-                description: answer.message,
-            })
-
+                const message = response.response.message
+                toast({
+                    variant: "destructive",
+                    title: `Ошибка ${response.status}!`,
+                    description: message,
+                })
         }
     };
 
     return (
+        <Card>
+            <CardHeader>
+                <CardTitle>Создать аккаунт</CardTitle>
+            </CardHeader>
+            <CardContent>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className='w-full'>
                 <div className='space-y-2'>
@@ -138,16 +160,18 @@ const SignUpForm = () => {
                     Создать аккаунт
                 </Button>
             </form>
-            <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block after:h-px after:flex-grow after:bg-stone-400'>
+            <div className='mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-border after:ml-4 after:block after:h-px after:flex-grow after:bg-border'>
                 или
             </div>
-            <p className='text-center text-sm text-gray-600 mt-2'>
+            <p className='text-center text-sm  mt-2'>
                 Есди у вас уже есть аккаунт, пожалуйста&nbsp;
                 <Link className='text-primary hover:underline' href='/sign-in'>
                     войдите
                 </Link>
             </p>
         </Form>
+            </CardContent>
+        </Card>
     );
 };
 

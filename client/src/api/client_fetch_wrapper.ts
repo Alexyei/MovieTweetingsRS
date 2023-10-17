@@ -2,7 +2,6 @@
 
 
 
-
 import {ErrorResponseT} from "@/types/fetch.types";
 
 export function clientFetchWrapper<ResponseT extends {status:number, response:any},PayloadT>
@@ -12,13 +11,11 @@ export function clientFetchWrapper<ResponseT extends {status:number, response:an
         method,
         credentials: "include",
         headers: {
-            'Content-type':'application/json',
+            'Content-type':'application/json'
         },
     }
 
-    // if (isServerSide) {
-    //     (init.headers as any)['Cookie'] = cookies().toString()
-    // }
+
 
     if (body)
         init['body'] = JSON.stringify(body)
@@ -27,9 +24,16 @@ export function clientFetchWrapper<ResponseT extends {status:number, response:an
 
             fetch(url,init)
                 .then(async (response) => {
+                    console.log(response)
                     const answer = await response.json()
+
+
                     // Проверяем статус ответа
                     if (response.status < 500){
+                        // if (response.status == 401)
+                        //     redirect('/sign-in')
+                        // if (response.status == 403)
+                        //     notFound()
                         return {status:response.status, response: answer} as ResponseT
                     } else {
 
@@ -39,7 +43,7 @@ export function clientFetchWrapper<ResponseT extends {status:number, response:an
                     }
                 })
                 .then(data => resolve(data))
-                .catch(error => resolve({status:400,response:{message:'Проверьте подключение к интернету'}} as ResponseT));
+                .catch(error => reject(error));
 
 
     });

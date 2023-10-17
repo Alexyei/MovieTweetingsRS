@@ -4,5 +4,6 @@ export type ErrorResponseT = {
 }
 
 export type fetchWrapperT
-    = <ResponseT extends {status:number, response:any},PayloadT>(url:string, method: "GET"|"POST"|"DELETE"|"PUT",body?:PayloadT | null)
+    = <ResponseT extends {status:number, response:any},PayloadT>(url:string, method: "GET"|"POST"|"DELETE"|"PUT",
+                                                                 body?:PayloadT | null, revalidate?:number| null)
     =>Promise<ResponseT| ErrorResponseT>
