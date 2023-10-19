@@ -26,7 +26,8 @@ app.use(cors({
     credentials: true,
     origin: CLIENT_URL
 }));
-app.use('/static', express.static(path.join(__dirname, 'src/public')));
+
+app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/api/v1.0.0', router);
 app.use(errorMiddleware);
 // app.get('/rec/pop/score/:userId/:movieId', async (req, res) => {

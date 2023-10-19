@@ -243,22 +243,46 @@ test('pearson tf',()=>{
     console.log(numeratorData)
 })
 
+test('pearson tf',()=>{
+    const normRatings = tf.tensor2d([[0.2, 1.2, 0.2, 0, -0.8, -0.8], [-0.33, -0.33, -0.33, -1.33, 0.67, 1.67]])
+    const numerator = tf.matMul(normRatings,tf.transpose(normRatings))
 
-test('pearson 3',()=>{
-    const normRatings = tf.tensor2d([[0.2, 1.2, 0.2, 0, -0.8, -0.8], [-0.33, -0.33, -0.33, -1.33, 0.67, 1.67]]);
-    const sqr = tf.square(normRatings);
 
-    const numerator = tf.matMul(sqr, tf.transpose(sqr));
+    const ones = tf.where(tf.notEqual(normRatings, 0), tf.ones(normRatings.shape), tf.zeros(normRatings.shape));
+    const sqr = tf.mul(normRatings,normRatings)
 
-    const ones = tf.where(tf.notEqual(sqr, 0), tf.ones(sqr.shape), tf.zeros(sqr.shape));
-    const sumSqr = tf.sqrt(tf.sum(sqr, 1));
+    const numeratorData = numerator.arraySync();
 
-    const sqrtI = tf.reshape(sumSqr, [sumSqr.shape[0], 1]).mul(ones);
-    const sqrtJ = tf.reshape(sumSqr, [sumSqr.shape[0],1]).mul(ones);
-    console.log(sqrtI.shape)
-    console.log(sqrtJ.shape)
-    const denominator = sqrtI.matMul(tf.transpose(sqrtJ));
+    for(let i = 0; i < normRatings.shape[0]; ++i) {
+        for(let j = i; j < normRatings.shape[0]; ++j) {
+            const maskI = ones.slice([i, 0], [1, normRatings.shape[1]]);
+            const maskJ = ones.slice([j, 0], [1, normRatings.shape[1]]);
+            const ANDmask = tf.mul(maskI, maskJ);
 
-    const result = numerator.div(denominator);
-    console.log(result.arraySync());
+            const sqrI = tf.mul(ANDmask, sqr.slice([i, 0], [1, sqr.shape[1]]));
+            const sqrJ = tf.mul(ANDmask, sqr.slice([j, 0], [1, sqr.shape[1]]));
+            const sqrtI = tf.sqrt(tf.sum(sqrI))
+            const sqrtJ = tf.sqrt(tf.sum(sqrJ))
+            numeratorData[i][j] = numeratorData[i][j] / (sqrtI.arraySync() * sqrtJ.arraySync());
+            if (i!=j)
+                numeratorData[j][i] = numeratorData[j][i] / (sqrtI.arraySync() * sqrtJ.arraySync());
+        }
+    }
+
+    console.log(numeratorData)
+})
+
+
+test('pearson forum',()=>{
+    const normRatings = tf.tensor([[0.2, 1.2, 0.2, 0, -0.8, -0.8], [-0.33, -0.33, -0.33, -1.33, 0.67, 1.67]]);
+
+    const squared_normRatings = tf.square(normRatings);
+    const numerator = tf.matMul(normRatings, tf.transpose(normRatings));
+    // const mask = tf.where(tf.notEqual(normRatings, 0), 1.0, 0.0);
+    const mask = tf.where(tf.notEqual(normRatings, 0), tf.ones(normRatings.shape), tf.zeros(normRatings.shape));
+    console.log(mask)
+    const denominator = tf.matMul(tf.transpose(tf.sqrt(tf.sum(tf.mul(squared_normRatings, mask), 1, true))));
+    const numeratorData = tf.div(numerator, tf.mul(denominator, denominator));
+
+    numeratorData.print();
 })
