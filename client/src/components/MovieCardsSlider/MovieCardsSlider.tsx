@@ -5,6 +5,7 @@ import HoverTracer from "@/components/HoverTracer/HoverTracer";
 import MovieCard from "@/components/MovieCard/MovieCard";
 
 import {Swiper, SwiperSlide} from "swiper/react";
+import {Suspense} from "react";
 const MovieCardsSlider = ({title,movieData}:{title:string,movieData:any[]})=>{
     const breakpoints ={
         460: {
@@ -23,7 +24,7 @@ const MovieCardsSlider = ({title,movieData}:{title:string,movieData:any[]})=>{
             slidesPerView: 7,
         },
         1536: {
-            slidesPerView: 'auto',
+            slidesPerView: 8,
         }
     } as any
     return (
@@ -34,13 +35,14 @@ const MovieCardsSlider = ({title,movieData}:{title:string,movieData:any[]})=>{
                 </CardTitle>
             </CardHeader>
             <CardContent >
-                <Swiper className={"ml-0"} slidesPerView={'auto'} centeredSlides={false} spaceBetween={10}>
+
+                <Swiper className={"ml-0"} slidesPerView={'auto'} centeredSlides={false} spaceBetween={0}>
                     { movieData.map((v,i)=>{
 
                         return (
                             <SwiperSlide key={i} className={"w-auto"}>
                                 <HoverTracer data={{url:'d'}}>
-                                    <MovieCard movieData={{url:'d'}}  className={`w-32 ${i<movieData.length - 1 ? "":"mr-2"}`}></MovieCard>
+                                    <MovieCard movieData={{url:'d'}}  className={`w-32 ${i<movieData.length - 1 ? "mr-4":""}`}></MovieCard>
                                 </HoverTracer>
                             </SwiperSlide>
                         )
@@ -48,6 +50,7 @@ const MovieCardsSlider = ({title,movieData}:{title:string,movieData:any[]})=>{
                     })}
 
                 </Swiper>
+
             </CardContent>
         </Card>
     )

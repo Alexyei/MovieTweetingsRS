@@ -16,7 +16,7 @@ const HoverTracer = ({children,data}:{children:React.ReactElement,data:any}) => 
     }
 
 
-    return <div onPointerEnter={pointerEnterHandler} onPointerLeave={pointerOutHandler}>
+    return <div  onPointerEnter={pointerEnterHandler} onPointerLeave={pointerOutHandler}>
         {children}
     </div>
 }
