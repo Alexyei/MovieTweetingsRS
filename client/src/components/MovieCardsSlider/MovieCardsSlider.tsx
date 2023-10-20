@@ -9,16 +9,16 @@ import {Suspense} from "react";
 const MovieCardsSlider = ({title,movieData}:{title:string,movieData:any[]})=>{
     const breakpoints ={
         460: {
-            slidesPerView: 3, // на планшетах отображать 2 слайда
+            slidesPerView: 3,
         },
         650: {
             slidesPerView: 4
         },
         800: {
-            slidesPerView: 5, // на планшетах отображать 2 слайда
+            slidesPerView: 5,
         },
         1024: {
-            slidesPerView: 6, // на десктопах отображать 3 слайда
+            slidesPerView: 6,
         },
         1280: {
             slidesPerView: 7,
