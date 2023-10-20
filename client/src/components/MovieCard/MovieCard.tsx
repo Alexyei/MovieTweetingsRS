@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from 'next/image'
 import {AspectRatio} from "@/components/ui/aspect-ratio";
 import {Star} from "lucide-react";
-import {Suspense} from "react";
+
 
 const MovieCard = ({movieData, className}: { movieData: { url: string | null }, className?: string }) => {
     return (

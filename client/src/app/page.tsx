@@ -1,6 +1,7 @@
-import Navbar from "@/components/Navbar/Navbar";
-import MovieCard from "@/components/MovieCard/MovieCard";
+import MovieCardsSlider from "@/components/MovieCardsSlider/MovieCardsSlider";
+export default async function Home() {
 
-export default function Home() {
-  return <><MovieCard movieData={{url:'d'}}  className={"w-32 mr-2"}></MovieCard></>;
+  return <div className={"sm:container mx-auto "}>
+    <MovieCardsSlider title={"Рекомендуемые элементы"} movieData={Array.from({length:5}).fill(0)}/>
+  </div>;
 }

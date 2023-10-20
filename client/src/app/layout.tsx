@@ -1,4 +1,6 @@
+import "swiper/css";
 import './global.css'
+
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import Navbar from "@/components/Navbar/Navbar";
@@ -18,7 +20,7 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
         <html lang="en">
 
         <body className={inter.className}>
-        <main className='h-screen flex flex-col justify-center items-center'>
+        <main className='min-h-screen pt-20'>
             <ThemeProvider
                 attribute="class"
                 defaultTheme="system"

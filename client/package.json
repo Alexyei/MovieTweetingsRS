@@ -25,6 +25,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
+    "swiper": "^10.3.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"
@@ -33,6 +34,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.11",
     "autoprefixer": "^10",
     "postcss": "^8",
     "tailwindcss": "^3",
