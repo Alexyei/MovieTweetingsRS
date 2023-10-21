@@ -17,6 +17,12 @@ export default async function Page({ params }: { params: { genre: string } }){
     // get genre id by genre name
     const id = 1;
 
+    try {
+        //fetch log GENRE_VIEW
+    }
+    catch (e) {}
+
+
     return (
         // TODO: slider с популярными элементами по категории
         <MovieSearchPanel title={`Категория: ${params.genre}`} canSelectGenre={false} initialValues={{genreIDs:[id]}}/>
