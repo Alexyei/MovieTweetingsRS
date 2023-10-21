@@ -28,7 +28,10 @@ export default function RootLayout({children,}: { children: React.ReactNode }) {
             >
             {/*<UserDataProvider>*/}
                 <Navbar/>
+                <div className={"sm:container mx-auto "}>
+                    <div className={"space-y-4 mb-4"}>
                 {children}
+                    </div></div>
             {/*</UserDataProvider>*/}
             </ThemeProvider>
         </main>

@@ -28,19 +28,19 @@ const MovieCardsSlider = ({title,movieData}:{title:string,movieData:any[]})=>{
         }
     } as any
     return (
-        <Card >
+        <Card>
             <CardHeader>
                 <CardTitle>
                     {title}
                 </CardTitle>
             </CardHeader>
             <CardContent >
-
-                <Swiper className={"ml-0"} slidesPerView={'auto'} centeredSlides={false} spaceBetween={0}>
+                { movieData.length &&
+                <Swiper className={"ml-0"}   slidesPerView={'auto'} centeredSlides={false} spaceBetween={0}>
                     { movieData.map((v,i)=>{
 
                         return (
-                            <SwiperSlide key={i} className={"w-auto"}>
+                            <SwiperSlide key={i}>
                                 <HoverTracer data={{url:'d'}}>
                                     <MovieCard movieData={{url:'d'}}  className={`w-32 ${i<movieData.length - 1 ? "mr-4":""}`}></MovieCard>
                                 </HoverTracer>
@@ -49,7 +49,7 @@ const MovieCardsSlider = ({title,movieData}:{title:string,movieData:any[]})=>{
 
                     })}
 
-                </Swiper>
+                </Swiper>}
 
             </CardContent>
         </Card>

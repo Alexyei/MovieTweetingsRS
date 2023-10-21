@@ -88,7 +88,7 @@ function makeRequest(searchParams:any,startWith:number) {
 
 }
 
-const MovieSearchPanel = ({title}:{title:string}) =>{
+const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:string,initialValues?:Partial<SearchParams>,canSelectGenre?:boolean}) =>{
     const genres = useRef<Genre[]>([])
     const searchParams = useRef<SearchParams>({
         genreIDs: [],
@@ -96,6 +96,7 @@ const MovieSearchPanel = ({title}:{title:string}) =>{
         to: new Date().getFullYear(),
         sort: "desc ratings",
         input: "",
+        ...initialValues
     })
     const lastSearchParams = useRef<SearchParams>(searchParams.current)
 
@@ -180,7 +181,7 @@ const MovieSearchPanel = ({title}:{title:string}) =>{
                     <div className="flex items-center py-4 justify-between">
                         <Search onInputChanged={onSearchInputChanged}/>
                         <div className={"flex space-x-2 ml-2"}>
-                            <GenreSelector genres={genres.current} onGenresChanged={onGenresChanged}/>
+                            {canSelectGenre && <GenreSelector genres={genres.current} onGenresChanged={onGenresChanged}/>}
                             <MovieSearchParamsSelector onSearchParamsChanged={onSearchParamsChanged}/>
                         </div>
                     </div>
