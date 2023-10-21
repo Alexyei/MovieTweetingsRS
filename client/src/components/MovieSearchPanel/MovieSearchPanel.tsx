@@ -5,273 +5,210 @@ import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from "@/components/ui/command";
 import {cn} from "@/lib/utils";
-import {useState} from "react";
+import {useDeferredValue, useEffect, useRef, useState} from "react";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {PopoverTrigger,Popover,PopoverContent} from "@/components/ui/popover";
 import {Label} from "@/components/ui/label";
+import GenreSelector from "@/components/GenreSelector";
+import SortSelector from "@/components/SortSelector";
+import MovieSearchParamsSelector from "@/components/MovieSearchParamsSelector";
+import {Genre} from "@/types/genre.types";
+import Search from "@/components/Search";
+import {Skeleton} from "@/components/ui/skeleton";
+import MovieCard from "@/components/MovieCard/MovieCard";
 
-const MovieSearchPanel = ({title}:{title:string}) =>{
-    const sorted = [
-        {
-            value: "asc title",
-            label: "Title",
-        },
-        {
-            value: "desc title",
-            label: "Title",
-        },
-        {
-            value: "asc rating",
-            label: "Rating",
-        },
-        {
-            value: "desc rating",
-            label: "Rating",
-        },
-        {
-            value: "asc year",
-            label: "Year",
-        },
-        {
-            value: "desc year",
-            label: "Year",
-        },
-    ]
-
-    const [openSorted, setOpenSorted] = useState(false)
-    const [valueSorted, setValueSorted] = useState("desc rating")
-
-    const frameworks = [
-        {
-            value: "all",
-            label: "All",
-        },
-        {
-            value: "sveltekit",
-            label: "SvelteKit",
-        },
-        {
-            value: "nuxt.js",
-            label: "Nuxt.js",
-        },
-        {
-            value: "remix",
-            label: "Remix",
-        },
-        {
-            value: "astro",
-            label: "Astro",
-        },
-    ]
-
-    const [open, setOpen] = useState(false)
-    const [value, setValue] = useState(frameworks[0].value)
-
-    function getElementByValue(){
-        if (!valueSorted) return "Сортировать по..."
-        const item = sorted.find((sort) => sort.value === valueSorted)!
-
-        if (item.value.startsWith("desc"))
-        return (
-            <>
-                <ArrowDown className={cn(
-                    "mr-2 h-4 w-4 ",
-
-                )}/>
-                {item.label}
-            </>
-            )
-        return (
-            <>
-                <ArrowUp className={cn(
-                    "mr-2 h-4 w-4 ",
-
-                )}/>
-                {item.label}
-            </>
-        )
-
-
-
-
-
-    }
-
+const  SearchPanelSkeleton = ({title}:{title:string})=>{
     return (
         <Card >
             <CardHeader>
                 <CardTitle>
-                    {/*Поиск по каталогу*/}
                     {title}
                 </CardTitle>
             </CardHeader>
             <CardContent>
                 <div className="w-full">
                     <div className="flex items-center py-4 justify-between">
-                        <Input
-                            placeholder="Найдётся всё..."
-                            // value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-                            // onChange={(event) =>
-                            //     table.getColumn("email")?.setFilterValue(event.target.value)
-                            // }
-                            className="w-full mr-2"
-                        />
-                        <div className={"flex space-x-2"}>
-                            <Popover open={open} onOpenChange={setOpen}>
-                                <PopoverTrigger asChild>
-                                    <Button
-                                        variant="outline"
-                                        role="combobox"
-                                        aria-expanded={open}
-                                        className="w-[120px] justify-between"
-                                    >
-                                        {value
-                                            ?
-                                            frameworks.find((framework) => framework.value === value)?.label
-                                            : "Выберите жанры..."}
-                                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                    </Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-[200px] p-0">
-                                    <Command>
-                                        <CommandInput placeholder="Выберите жанры..." />
-                                        <CommandEmpty>Ничего не найдено</CommandEmpty>
-                                        <CommandGroup>
-                                            {frameworks.map((framework) => (
-                                                <CommandItem
-                                                    key={framework.value}
-
-                                                    onSelect={(currentValue) => {
-                                                        setValue(currentValue === value ? "" : currentValue)
-                                                        setOpen(false)
-                                                    }}
-                                                >
-                                                    <Check
-                                                        className={cn(
-                                                            "mr-2 h-4 w-4",
-                                                            value === framework.value ? "opacity-100" : "opacity-0"
-                                                        )}
-                                                    />
-                                                    {framework.label}
-                                                </CommandItem>
-                                            ))}
-                                        </CommandGroup>
-                                    </Command>
-                                </PopoverContent>
-                            </Popover>
-                            <Popover>
-                                <PopoverTrigger asChild>
-                            <Button variant="outline" size="icon">
-                                <SlidersHorizontal className="h-4 w-4"/>
-                            </Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="m-w-auto">
-                                    <div className="grid gap-4">
-                                        <div className="space-y-2">
-                                            <h4 className="font-medium leading-none">Параметры</h4>
-                                            <p className="text-sm text-muted-foreground">
-                                                Настроите дополнительыне параметры поиска
-                                            </p>
-                                        </div>
-                                        <div className="grid gap-2">
-                                            <div className="grid grid-cols-3 items-center gap-4">
-                                                <Label htmlFor="from">Год от:</Label>
-                                                <Input
-                                                    id="from"
-                                                    type="number"
-                                                    defaultValue="1890"
-                                                    className="col-span-2 h-8"
-                                                />
-                                            </div>
-                                            <div className="grid grid-cols-3 items-center gap-4">
-                                                <Label htmlFor="to">Год до:</Label>
-                                                <Input
-                                                    id="to"
-                                                    defaultValue="2020"
-                                                    className="col-span-2 h-8"
-                                                />
-                                            </div>
-                                            <div className="grid grid-cols-3 items-center gap-4">
-                                                <Label htmlFor="sort">Сортировка</Label>
-                                                <Popover  open={openSorted} onOpenChange={setOpenSorted}>
-                                                    <PopoverTrigger asChild>
-                                                        <Button
-                                                            id={"sort"}
-                                                            variant="outline"
-                                                            role="combobox"
-                                                            aria-expanded={openSorted}
-                                                            className="w-[150px] justify-between"
-                                                        >
-                                                            {getElementByValue()}
-                                                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                                        </Button>
-                                                    </PopoverTrigger>
-                                                    <PopoverContent className="w-full p-0">
-                                                        <Command>
-                                                            <CommandInput placeholder="Сортировать по..." />
-                                                            <CommandEmpty>Ничего не найдено</CommandEmpty>
-                                                            <CommandGroup>
-                                                                {sorted.map((sorted) => (
-                                                                    <CommandItem
-                                                                        key={sorted.value}
-                                                                        value={sorted.value}
-                                                                        onSelect={(currentValue) => {
-                                                                            console.log(currentValue, valueSorted)
-                                                                            setValueSorted(currentValue)
-                                                                            setOpenSorted(false)
-                                                                        }}
-                                                                    >
-                                                                        {sorted.value.startsWith("desc") ?
-                                                                            <ArrowDown className={cn(
-                                                                                "mr-2 h-4 w-4 ",
-
-                                                                            )}/>
-                                                                            :
-                                                                            <ArrowUp className={cn(
-                                                                                "mr-2 h-4 w-4",
-
-                                                                            )}/>
-                                                                        }
-
-                                                                        {sorted.label}
-                                                                    </CommandItem>
-                                                                ))}
-                                                            </CommandGroup>
-                                                        </Command>
-                                                    </PopoverContent>
-                                                </Popover>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </PopoverContent>
-                            </Popover>
-                        </div>
-
+                        <Skeleton className="w-full h-8"/>
                     </div>
-
                 </div>
-                <ScrollArea className="h-96 w-full rounded-md border">
-                    <div className={"min-h-screen bg-yellow-300"}></div>
-                </ScrollArea>
+                <Skeleton className="h-96 w-full rounded-md border"/>
                 <div className="flex items-center justify-end space-x-2 py-4">
                     <div className="flex-1 text-sm text-muted-foreground">
-                        Показано 100 элементов из 10000.
+                        <Skeleton className="w-[120px] h-4"/>
                     </div>
-
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            // onClick={() => table.previousPage()}
-                            // disabled={!table.getCanPreviousPage()}
-                        >
-                            <Plus className="mr-2 h-4 w-4 " />
-                            Показать ещё
-                        </Button>
-
                 </div>
             </CardContent>
         </Card>
     )
 }
+//TODO: sort types
+
+type SearchParams = {
+    genreIDs: number[],
+    from:number,
+    to:number,
+    sort: string,
+    input:string,
+}
+
+function getGenres() {
+    return new Promise<Genre[]>((resolve, reject) => {
+        setTimeout(() => resolve([
+            {
+                id: 1,
+                name: "Comedy",
+                count: 1000,
+            },
+            {
+                id:2,
+                name: "Drama",
+                count: 1500
+            },
+            {
+                id:3,
+                name: "Action",
+                count: 500
+            },
+            {
+                id: 4,
+                name: "Sci-fi",
+                count:2000
+            },
+        ]),2000)
+    })
+}
+
+const moviesInResponse = 100
+function makeRequest(searchParams:any,startWith:number) {
+    return new Promise<{movies:any[],total:number}>((resolve, reject) => {
+        setTimeout(() => {
+            console.log(searchParams,moviesInResponse)
+            resolve({movies:Array.from({length:7}).fill(0),total:150})},2000)
+    })
+
+}
+
+const MovieSearchPanel = ({title}:{title:string}) =>{
+    const genres = useRef<Genre[]>([])
+    const searchParams = useRef<SearchParams>({
+        genreIDs: [],
+        from: 1890,
+        to: new Date().getFullYear(),
+        sort: "desc ratings",
+        input: "",
+    })
+
+    const[isMounted,setIsMounted] = useState(false)
+    const [isLoading,setIsLoading] = useState(true)
+    const [movies,setMovies] = useState<any[]>([])
+    const [total,setTotal] = useState(0)
+    const [current,setCurrent] = useState(0)
+
+    useEffect(()=>{
+        getGenres().then((gens)=>genres.current = gens).then(()=>setIsMounted(true))
+    },[])
+
+    useEffect(()=>{
+        search()
+    },[])
+
+
+
+    function onGenresChanged(genreIds:number[]){
+        searchParams.current.genreIDs = genreIds
+    }
+
+    function onSearchParamsChanged(from:number,to:number,sort:string){
+        searchParams.current.from = from
+        searchParams.current.to = to
+        searchParams.current.sort = sort
+    }
+
+    function onSearchInputChanged(input:string){
+        searchParams.current.input = input
+    }
+
+    function search(){
+        setIsLoading(true)
+        makeRequest(searchParams,current).then(({movies,total})=>{
+            setMovies(movies)
+            setTotal(total)
+            setCurrent(Math.min(total,moviesInResponse))
+        }).finally(()=>{
+            setIsLoading(false)
+        })
+    }
+
+    function loadMore(){
+        setIsLoading(true)
+        makeRequest(searchParams,current).then(({movies,total})=>{
+            setMovies(prev=>[...prev,...movies])
+            setTotal(total)
+            setCurrent(prev=>Math.min(total,prev+moviesInResponse))
+        }).finally(()=>{
+            setIsLoading(false)
+        })
+    }
+
+
+
+    function onSearchBtnClickHandler(){
+        search()
+    }
+
+    function onLoadMoreBtnClickHandler(){
+        loadMore()
+    }
+
+
+
+
+
+    if (!isMounted) return <SearchPanelSkeleton title={title}/>
+
+    return (
+        <Card >
+            <CardHeader>
+                <CardTitle>
+                    {title}
+                </CardTitle>
+            </CardHeader>
+            <CardContent>
+                <div className="w-full">
+                    <div className="flex items-center py-4 justify-between">
+                        <Search onInputChanged={onSearchInputChanged}/>
+                        <div className={"flex space-x-2 ml-2"}>
+                            <GenreSelector genres={genres.current} onGenresChanged={onGenresChanged}/>
+                            <MovieSearchParamsSelector onSearchParamsChanged={onSearchParamsChanged}/>
+                        </div>
+                    </div>
+                </div>
+                <ScrollArea className="h-96 w-full rounded-md border ">
+                    {/*<div className={"min-h-screen bg-yellow-300"}></div>*/}
+                    <div className={"flex flex-wrap gap-4 p-4"}>
+                        {movies.map((el,i)=><MovieCard className={"w-[128px]"} movieData={{url:'d'}}/>)}
+                    </div>
+                </ScrollArea>
+                <div className="flex items-center justify-end space-x-2 py-4">
+                    <div className="flex-1 text-sm text-muted-foreground">
+                        { total ? `Показано ${current} элементов из ${total}`: ""}
+                    </div>
+                    <div className={"flex space-x-2"}>
+                        <Button disabled={isLoading} variant="default" size="sm" onClick={onSearchBtnClickHandler}>
+                            Найти
+                        </Button>
+                        {total > current &&
+                        <Button disabled={isLoading} variant="secondary" size="sm" onClick={onLoadMoreBtnClickHandler}>
+                            <Plus className="mr-2 h-4 w-4 " />
+                            Показать ещё
+                        </Button>}
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+    )
+}
+
+
 
 export default MovieSearchPanel
