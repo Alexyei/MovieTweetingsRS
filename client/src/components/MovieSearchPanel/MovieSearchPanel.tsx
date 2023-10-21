@@ -97,6 +97,7 @@ const MovieSearchPanel = ({title}:{title:string}) =>{
         sort: "desc ratings",
         input: "",
     })
+    const lastSearchParams = useRef<SearchParams>(searchParams.current)
 
     const[isMounted,setIsMounted] = useState(false)
     const [isLoading,setIsLoading] = useState(true)
@@ -134,6 +135,7 @@ const MovieSearchPanel = ({title}:{title:string}) =>{
             setMovies(movies)
             setTotal(total)
             setCurrent(Math.min(total,moviesInResponse))
+            lastSearchParams.current = searchParams.current
         }).finally(()=>{
             setIsLoading(false)
         })
@@ -141,7 +143,7 @@ const MovieSearchPanel = ({title}:{title:string}) =>{
 
     function loadMore(){
         setIsLoading(true)
-        makeRequest(searchParams,current).then(({movies,total})=>{
+        makeRequest(lastSearchParams,current).then(({movies,total})=>{
             setMovies(prev=>[...prev,...movies])
             setTotal(total)
             setCurrent(prev=>Math.min(total,prev+moviesInResponse))
