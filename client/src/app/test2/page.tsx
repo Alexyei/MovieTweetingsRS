@@ -4,7 +4,7 @@ import AdminRoute from "@/components/routes/AdminRoute/AdminRoute";
 import { cookies } from "next/headers";
 import {notFound, redirect} from 'next/navigation'
 import {getServerAPI} from "@/api/server_api";
-import {UserDataT} from "@/types/user.types";
+import {UserT} from "@/types/user.types";
 
 const api = getServerAPI()
 export default async function Home() {
@@ -36,7 +36,7 @@ export default async function Home() {
     if (response.status == 403)
         notFound()
 
-    const user = response.response as UserDataT
+    const user = response.response as UserT
     return (
         <>
             {user.email}<br></br>

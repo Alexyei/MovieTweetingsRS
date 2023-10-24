@@ -3,7 +3,7 @@ import {Button} from "@/components/ui/button";
 import {SlidersHorizontal} from "lucide-react";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
-import SortSelector from "@/components/SortSelector";
+import SortSelector from "@/components/MovieSearchPanel/components/SortSelector";
 import {useEffect, useRef, useState} from "react";
 
 const MovieSearchParamsSelector = ({onSearchParamsChanged}:{onSearchParamsChanged:(from:number,to:number,sort:string)=>any})=>{

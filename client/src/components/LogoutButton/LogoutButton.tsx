@@ -1,23 +1,23 @@
 'use client'
 import {DropdownMenuItem} from "@/components/ui/dropdown-menu";
 import {useState} from "react";
-import {getClientAPI} from "@/api/client_api";
 import {useRouter} from "next/navigation";
+import {useUserData} from "@/context/UserDataContext";
 
-const api = getClientAPI()
 
 const LogoutButton = ()=>{
     const [disabled, setDisabled] = useState(false)
-    const router = useRouter()
+    const user = useUserData()
+    // const router = useRouter()
     async function logoutHandler(){
-        try {
-            await api.authAPI.logout()
+        // try {
+            await user.logout()
 
-        }catch (err) {
-            console.log(err)
-        }finally {
-            router.refresh()
-        }
+        // }catch (err) {
+        //     console.log(err)
+        // }finally {
+        //     router.refresh()
+        // }
 
     }
 

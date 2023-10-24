@@ -9,11 +9,11 @@ import {useDeferredValue, useEffect, useRef, useState} from "react";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {PopoverTrigger,Popover,PopoverContent} from "@/components/ui/popover";
 import {Label} from "@/components/ui/label";
-import GenreSelector from "@/components/GenreSelector";
-import SortSelector from "@/components/SortSelector";
-import MovieSearchParamsSelector from "@/components/MovieSearchParamsSelector";
+import GenreSelector from "@/components/MovieSearchPanel/components/GenreSelector";
+import SortSelector from "@/components/MovieSearchPanel/components/SortSelector";
+import MovieSearchParamsSelector from "@/components/MovieSearchPanel/components/MovieSearchParamsSelector";
 import {Genre} from "@/types/genre.types";
-import Search from "@/components/Search";
+import Search from "@/components/MovieSearchPanel/components/Search";
 import {Skeleton} from "@/components/ui/skeleton";
 import MovieCard from "@/components/MovieCard/MovieCard";
 

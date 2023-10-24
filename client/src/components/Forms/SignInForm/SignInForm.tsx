@@ -13,8 +13,9 @@ import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {getClientAPI} from "@/api/client_api";
 import {useRouter} from "next/navigation";
 import {useToast} from "@/components/ui/use-toast";
+import {useUserData} from "@/context/UserDataContext";
 
-const api = getClientAPI()
+// const api = getClientAPI()
 
 const FormSchema = z.object({
     login: z.string().min(3, 'Длина логина от 3 символов').max(16, 'Длина логина до 16 сиволов'),
@@ -26,6 +27,7 @@ const FormSchema = z.object({
 
 const SignInForm = () => {
     const router = useRouter()
+    const user = useUserData()
     const { toast } = useToast()
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -37,12 +39,11 @@ const SignInForm = () => {
 
     const onSubmit = async (values: z.infer<typeof FormSchema>) => {
         console.log(values);
-
-        const response = await api.authAPI.signIn(values)
+        const response = await user.signIn(values)
+        // const response = await api.authAPI.signIn(values)
 
         if (response.status == 200){
-            router.refresh()
-            router.push('/')
+            router.back()
         }else{
             const message = response.response.message
             toast({
@@ -54,7 +55,7 @@ const SignInForm = () => {
     };
 
     return (
-        <Card>
+        <Card className="max-w-lg">
             <CardHeader>
                 <CardTitle>Войти</CardTitle>
             </CardHeader>

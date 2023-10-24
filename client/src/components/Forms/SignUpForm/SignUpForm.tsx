@@ -12,8 +12,9 @@ import {useRouter} from "next/navigation";
 import {useToast} from "@/components/ui/use-toast";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {getClientAPI} from "@/api/client_api";
+import {useUserData} from "@/context/UserDataContext";
 
-const api = getClientAPI()
+// const api = getClientAPI()
 
 const FormSchema = z
     .object({
@@ -32,6 +33,7 @@ const FormSchema = z
 
 const SignUpForm = () => {
     const router = useRouter()
+    const user = useUserData()
     // const API_URL = process.env.NEXT_PUBLIC_API_URL
     const { toast } = useToast()
     const form = useForm<z.infer<typeof FormSchema>>({
@@ -47,35 +49,13 @@ const SignUpForm = () => {
     const onSubmit = async (values: z.infer<typeof FormSchema>) => {
 
         console.log(values);
-        // console.log(API_URL)
 
-        // const response = await fetch(API_URL + '/api/v1.0.0/auth/signup', {
-        //     method: 'POST',
-        //     credentials: "include",
-        //     headers: {
-        //         'Content-type':'application/json'
-        //     },
-        //     body: JSON.stringify(values)
-        // })
-
-        // if(response.ok){
-        //     router.refresh()
-        //     router.push('/sign-in')
-        // }else{
-        //     const answer = await response.json()
-        //     toast({
-        //         variant: "destructive",
-        //         title: `Ошибка ${response.status}!`,
-        //         description: answer.message,
-        //     })
-        //
-        // }
-
-        const response = await api.authAPI.signUp(values)
+        // const response = await api.authAPI.signUp(values)
+        const response = await user.signUp(values)
 
         if (response.status == 201){
-            router.refresh()
-            router.push('/')
+            // router.refresh()
+            router.back()
         }else{
                 const message = response.response.message
                 toast({
@@ -87,7 +67,7 @@ const SignUpForm = () => {
     };
 
     return (
-        <Card>
+        <Card className="max-w-lg">
             <CardHeader>
                 <CardTitle>Создать аккаунт</CardTitle>
             </CardHeader>
