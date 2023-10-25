@@ -5,7 +5,7 @@ import {AspectRatio} from "@/components/ui/aspect-ratio";
 import {Star} from "lucide-react";
 
 
-const MovieCard = ({movieData, className}: { movieData: { url: string | null }, className?: string }) => {
+const MovieCard = ({movieData, className,hover=true}: { movieData: { url: string | null }, className?: string, hover?:boolean }) => {
     return (
         <div className={className}>
             <Link href={movieData.url || "/"}>
@@ -21,6 +21,7 @@ const MovieCard = ({movieData, className}: { movieData: { url: string | null }, 
                             <h4 className={"scroll-m-20 text-sm font-semibold tracking-tight truncate"}>Movie Name</h4>
                         </div>
                     }
+                    { hover &&
                     <div
                         className={"group-hover:bottom-0 transition-all absolute p-1 -bottom-28 left-0 right-0 rounded-md flex flex-col justify-end  bg-secondary"}>
                         <h4 className={"scroll-m-20 text-sm font-semibold tracking-tight truncate"}>Movie Name</h4>
@@ -34,7 +35,7 @@ const MovieCard = ({movieData, className}: { movieData: { url: string | null }, 
                             story is: never underestimate the power of a good laugh and always be careful of bad
                             ideas.</p>
                     </div>
-
+                    }
                 </AspectRatio>
             </Link>
         </div>

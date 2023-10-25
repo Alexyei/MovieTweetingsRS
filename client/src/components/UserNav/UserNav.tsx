@@ -23,7 +23,7 @@ export function UserNav() {
    // const response = await api.authAPI.userData()
     const user = useUserData()
 
-    if (user.isLoading) return (<Skeleton className="z-100 h-10 w-10 rounded-full"/>)
+    if (user.isLoading) return (<Skeleton className="h-10 w-10 rounded-full"/>)
 
     // if (response.status == 401){
     //     return <LoginButton/>

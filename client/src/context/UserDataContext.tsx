@@ -2,7 +2,6 @@
 import React, {createContext, useContext, useEffect, useState} from "react";
 import {getClientAPI} from "@/api/client_api";
 import {UserMoviesT, UserT} from "@/types/user.types";
-import {MovieT} from "@/types/movie.types";
 
 const api = getClientAPI()
 
@@ -10,9 +9,10 @@ const api = getClientAPI()
 interface UserContextType {
     user: UserT | null;
     userMovies: UserMoviesT,
-    addToList: (movie:MovieT)=>void
-    removeFromList: (movie:MovieT)=>void,
-    buy:(movie:MovieT)=>void,
+    addToList: (movieId:string)=>void
+    removeFromList: (movieId:string)=>void,
+    buy:(movieId:string)=>void,
+    rate:(movieId:string,rating:number)=>void,
     signIn: (values:{login:string, password:string})=>ReturnType<typeof api.authAPI.signIn>,
     signUp: (values:{login: string, email: string, password: string, confirmPassword: string})=>ReturnType<typeof api.authAPI.signUp>,
     logout: ()=>Promise<any>,
@@ -22,13 +22,14 @@ interface UserContextType {
 const UserDataContext = createContext<UserContextType>(
     {
         user: null,
-        userMovies: {purchased:[],liked:[]},
+        userMovies: {purchased:[],liked:[],rated:[]},
         logout: ()=>new Promise<null>(()=>null),
         signIn: ()=>new Promise(()=>({status:400,message:""})),
         signUp: ()=>new Promise(()=>({status:400,message:""})),
         addToList: ()=>null,
         removeFromList: ()=>null,
         buy: ()=>null,
+        rate: ()=>null,
         isLoading: true
     }
 )
@@ -43,7 +44,7 @@ interface UserDataProviderProps {
 
 export function UserDataProvider({children}: UserDataProviderProps) {
     const [user, setUser] = useState<UserT | null>(null);
-    const [userMovies, setUserMovies] = useState<UserMoviesT>({purchased:[],liked:[]})
+    const [userMovies, setUserMovies] = useState<UserMoviesT>({purchased:[],liked:[],rated:[]})
     const [isLoading, setLoading] = useState(true)
 
     async function logout(){
@@ -67,17 +68,17 @@ export function UserDataProvider({children}: UserDataProviderProps) {
         try {
             // const response = await api.authAPI.userData(100)
             // if (response.status == 200) {setUser(response.response)}
-            setUserMovies({purchased:[],liked:[]})
+            setUserMovies({purchased:[],liked:[],rated:[]})
         }
         catch (e){console.log("user-movies load error")}
     }
 
-    async function addToList(movie:MovieT){
+    async function addToList(movieId:string){
         try {
             // const response = await api.authAPI.userData(100)
             // if (response.status == 200) {setUser(response.response)}
             setUserMovies((prev)=>{
-                return  {...prev,liked:[...prev.liked,movie]}
+                return  {...prev,liked:[...prev.liked,{id:movieId}]}
             })
 
             //try {api.authAPI.userData(100).then()}catch(e){}
@@ -85,12 +86,12 @@ export function UserDataProvider({children}: UserDataProviderProps) {
         catch (e){}
     }
 
-    async function removeFromList(movie:MovieT){
+    async function removeFromList(movieId:string){
         try {
             // const response = await api.authAPI.userData(100)
             // if (response.status == 200) {setUser(response.response)}
             setUserMovies((prev)=>{
-                return  {...prev,liked:prev.liked.filter(m=>m.id!=movie.id)}
+                return  {...prev,liked:prev.liked.filter(m=>m.id!=movieId)}
             })
 
             //try {api.authAPI.userData(100).then()}catch(e){}
@@ -98,12 +99,33 @@ export function UserDataProvider({children}: UserDataProviderProps) {
         catch (e){}
     }
 
-    async function buy(movie:MovieT){
+    async function buy(movieId:string){
         try {
             // const response = await api.authAPI.userData(100)
             // if (response.status == 200) {setUser(response.response)}
             setUserMovies((prev)=>{
-                return  {...prev,purchased:[...prev.purchased,movie]}
+
+
+
+                return  {...prev,purchased:[...prev.purchased,{id:movieId}]}
+            })
+
+            //try {api.authAPI.userData(100).then()}catch(e){}
+        }
+        catch (e){}
+    }
+
+    async function rate(movieId:string,rating:number){
+        try {
+            // const response = await api.authAPI.userData(100)
+            // if (response.status == 200) {setUser(response.response)}
+            setUserMovies((prev)=>{
+
+                let movie = prev.rated.filter(m=>m.id==movieId)[0]
+                if (movie) movie.rating = rating
+                else movie = {id:movieId,rating}
+
+                return  {...prev,rated:[...prev.rated.filter(m=>m.id!=movieId),movie]}
             })
 
             //try {api.authAPI.userData(100).then()}catch(e){}
@@ -140,7 +162,7 @@ export function UserDataProvider({children}: UserDataProviderProps) {
         loadUser().then(()=>loadUserMovies()).then(()=>setLoading(false))
     }, [])
 
-    return <UserDataContext.Provider value={{user, userMovies, logout, signIn, addToList,removeFromList,buy, signUp, isLoading}}>
+    return <UserDataContext.Provider value={{user, userMovies, logout, signIn, addToList,removeFromList,buy, signUp,rate, isLoading}}>
         {/*{isLoading ? <p>loading...</p> : children}*/}
         {children}
     </UserDataContext.Provider>
