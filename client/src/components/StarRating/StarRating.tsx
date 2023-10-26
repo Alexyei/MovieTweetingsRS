@@ -3,9 +3,11 @@ import {useUserData} from "@/context/UserDataContext";
 import {Skeleton} from "@/components/ui/skeleton";
 import {Star, StarHalf} from "lucide-react";
 import React, {useRef, useState} from "react";
+import {useToast} from "@/components/ui/use-toast";
 
 const StarRating = ({movieId}: { movieId: string }) => {
     const [hoveredRating,setHoveredRating] = useState(0)
+    const { toast } = useToast()
     const ref = useRef<HTMLDivElement>(null);
     const user = useUserData()
 
@@ -18,7 +20,7 @@ const StarRating = ({movieId}: { movieId: string }) => {
         console.log(rating)
     }
     const starWidth = 24
-    function onPointerEventHandler(event:React.PointerEvent<SVGSVGElement>,index:number){
+    function onPointerMoveEventHandler(event:React.PointerEvent<SVGSVGElement>,index:number){
 
         const element = event.target as any
         const width = starWidth
@@ -29,6 +31,7 @@ const StarRating = ({movieId}: { movieId: string }) => {
             setHoveredRating(index+1)
 
         }
+
     }
 
     function onPointerClickHandler(event:  React.MouseEvent<SVGSVGElement, MouseEvent>,index:number){
@@ -41,11 +44,14 @@ const StarRating = ({movieId}: { movieId: string }) => {
         }else {
             user.rate(movieId,index+1)
         }
+        toast({
+            description: 'Оценка сохранена!',
+        })
     }
 
     function getColor(index:number, half:boolean){
         const n = half ? 0.5 : 1
-        if (index + n <= hoveredRating) return  "fill-foreground text-foreground"
+        if (index + n <= hoveredRating) return  "fill-destructive text-destructive"
 
         if (index + n <= userRating) return  "fill-primary text-primary"
 
@@ -57,7 +63,7 @@ const StarRating = ({movieId}: { movieId: string }) => {
             {Array.from({length: 5}, (_, index) => {
                 return (<div key={index} className="relative h-6 w-6" >
                     <Star className={`z-1 absolute h-6 w-6 ${getColor(index,false)} `}/>
-                    <StarHalf onPointerMove={(e)=>onPointerEventHandler(e,index)} onClick={(e)=>onPointerClickHandler(e,index)} className={`z-10 absolute  h-6 w-6 ${getColor(index,true)} `}/>
+                    <StarHalf onPointerMove={(e)=>onPointerMoveEventHandler(e,index)} onClick={(e)=>onPointerClickHandler(e,index)} className={`z-10 absolute  h-6 w-6 ${getColor(index,true)} `}/>
 
                 </div>)
             })}

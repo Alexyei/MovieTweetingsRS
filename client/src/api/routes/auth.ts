@@ -1,4 +1,4 @@
-import {ApiHelper} from "@/api/api_helper";
+import {ApiHelper} from "@/api/helpers/api_helper";
 import {fetchWrapperT} from "@/types/fetch.types";
 import {UserT} from "@/types/user.types";
 
@@ -9,7 +9,6 @@ type SignUpPayloadT = {
 type SignInPayloadT = {
     login: string, password: string,
 }
-
 
 
 

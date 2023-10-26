@@ -10,27 +10,19 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {Badge} from "@/components/ui/badge";
 import Link from "next/link";
 import LogoutButton from "@/components/LogoutButton/LogoutButton";
-import {getServerAPI} from "@/api/server_api";
 import LoginButton from "@/components/LoginButton/LoginButton";
-import {UserT} from "@/types/user.types";
 import {useUserData} from "@/context/UserDataContext";
 import {Skeleton} from "@/components/ui/skeleton";
 
-// const api = getServerAPI()
 
 export function UserNav() {
-
-   // const response = await api.authAPI.userData()
     const user = useUserData()
 
     if (user.isLoading) return (<Skeleton className="h-10 w-10 rounded-full"/>)
 
-    // if (response.status == 401){
-    //     return <LoginButton/>
-    // }
+
     if (user.user == null) return (<LoginButton/>)
 
-    // const user = response.response as any
 
     return (
         <DropdownMenu>

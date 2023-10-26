@@ -1,25 +1,39 @@
 import {createAuthApi} from "@/api/routes/auth";
-import {serverFetchWrapper} from "@/api/server_fetch_wrapper";
+import {serverFetchWrapper} from "@/api/helpers/server_fetch_wrapper";
+import {createMovieApi} from "@/api/routes/movie";
+import {createRecsApi} from "@/api/routes/recs";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-class Client_api {
+class Server_api {
     _API_URL: string
 
     readonly #authAPI: ReturnType<typeof createAuthApi>
+    readonly #movieAPI: ReturnType<typeof createMovieApi>
+    readonly #recsAPI: ReturnType<typeof createRecsApi>
     constructor(API_URL:string) {
         this._API_URL = API_URL
         this.#authAPI = createAuthApi(this._API_URL, serverFetchWrapper)
+        this.#movieAPI = createMovieApi(this._API_URL,serverFetchWrapper)
+        this.#recsAPI = createRecsApi(this._API_URL,serverFetchWrapper)
     }
 
-    get authAPI(){
+    get auth(){
         return this.#authAPI
+    }
+
+    get movie(){
+        return this.#movieAPI
+    }
+
+    get recs(){
+        return this.#recsAPI
     }
 }
 
-let clientSideAPIInstance:Client_api | null = null
+let serverSideAPIInstance:Server_api | null = null
 
 
 export function getServerAPI() {
-    if (clientSideAPIInstance) return clientSideAPIInstance;
-    clientSideAPIInstance = new Client_api(API_URL!)
-    return clientSideAPIInstance
+    if (serverSideAPIInstance) return serverSideAPIInstance;
+    serverSideAPIInstance = new Server_api(API_URL!)
+    return serverSideAPIInstance
 }

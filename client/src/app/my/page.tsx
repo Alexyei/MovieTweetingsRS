@@ -16,6 +16,7 @@ export default function Page(){
         <>
             <MovieCardsSliderSkeleton/>
             <MovieCardsSliderSkeleton/>
+            <MovieCardsSliderSkeleton/>
         </>
     )
 
@@ -24,10 +25,13 @@ export default function Page(){
     return (
         <>
             <div id={"purchased"}>
-                <MovieCardsSlider title={`Приобретённые фильмы: ${user.userMovies.purchased.length}`} movieData={Array.from({length:5}).fill(0)}/>
+                <MovieCardsSlider title={`Приобретённые фильмы: ${user.userMovies.purchased.length}`} movies={[]}/>
             </div>
             <div id={"liked"}>
-                <MovieCardsSlider title={`Понравившиеся фильмы: ${user.userMovies.liked.length}`} movieData={Array.from({length:5}).fill(0)}/>
+                <MovieCardsSlider title={`Понравившиеся фильмы: ${user.userMovies.liked.length}`} movies={[]}/>
+            </div>
+            <div id={"liked"}>
+                <MovieCardsSlider title={`Оцененные фильмы: ${user.userMovies.rated.length}`} movies={[]}/>
             </div>
         </>
     )

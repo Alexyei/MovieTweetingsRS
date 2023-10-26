@@ -13,8 +13,8 @@ interface UserContextType {
     removeFromList: (movieId:string)=>void,
     buy:(movieId:string)=>void,
     rate:(movieId:string,rating:number)=>void,
-    signIn: (values:{login:string, password:string})=>ReturnType<typeof api.authAPI.signIn>,
-    signUp: (values:{login: string, email: string, password: string, confirmPassword: string})=>ReturnType<typeof api.authAPI.signUp>,
+    signIn: (values:{login:string, password:string})=>ReturnType<typeof api.auth.signIn>,
+    signUp: (values:{login: string, email: string, password: string, confirmPassword: string})=>ReturnType<typeof api.auth.signUp>,
     logout: ()=>Promise<any>,
     isLoading: boolean
 }
@@ -49,7 +49,7 @@ export function UserDataProvider({children}: UserDataProviderProps) {
 
     async function logout(){
         try {
-            const response = await api.authAPI.logout()
+            const response = await api.auth.logout()
             if (response.status == 200) {setUser(null)}
             console.log(response.response)
         }
@@ -58,7 +58,7 @@ export function UserDataProvider({children}: UserDataProviderProps) {
 
     async function loadUser(){
         try {
-            const response = await api.authAPI.userData()
+            const response = await api.auth.userData()
             if (response.status == 200) {setUser(response.response)}
         }
         catch (e){console.log("user load error")}
@@ -134,7 +134,7 @@ export function UserDataProvider({children}: UserDataProviderProps) {
     }
 
     async function signIn(values:{login:string, password:string}){
-        const response = await api.authAPI.signIn(values)
+        const response = await api.auth.signIn(values)
 
         if (response.status == 200){
             setUser(response.response)
@@ -146,7 +146,7 @@ export function UserDataProvider({children}: UserDataProviderProps) {
     }
 
     async function signUp(values:{login: string, email: string, password: string, confirmPassword: string}){
-        const response = await api.authAPI.signUp(values)
+        const response = await api.auth.signUp(values)
 
         if (response.status == 201){
             setUser(response.response)

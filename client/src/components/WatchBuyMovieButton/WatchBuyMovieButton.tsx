@@ -2,7 +2,6 @@
 import {useUserData} from "@/context/UserDataContext";
 import {Button} from "@/components/ui/button";
 import {Skeleton} from "@/components/ui/skeleton";
-import {MovieT} from "@/types/movie.types";
 
 const WatchBuyMovieButton = ({movieId}:{movieId:string})=>{
     const user = useUserData()

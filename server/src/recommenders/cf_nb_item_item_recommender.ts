@@ -1,7 +1,6 @@
 import {BaseRecommender} from "./base_recommender";
 import {SimilarityType} from "@prisma/client";
 import {getDAO} from "../DAO/DAO";
-import {MovieDataT} from "../types/movie.types";
 import {CFNBItemItemRecommendationT} from "../types/recommendations.types";
 import {MovieSimilarityT} from "../types/similarity.types";
 import {RatingWithTypeT} from "../types/rating.types";
@@ -37,9 +36,9 @@ export class ItemItemRecommender extends BaseRecommender {
         // нормализация predictedRating не нужна, такак они расчитываются на основании оценок одного пользователя
         const sortedRecommendations = recommendations.sort((a, b) => b.predictedRating - a.predictedRating).slice(0, take);
 
-        const notUserMoviesIds = candidatesPairs.map(p=>p.target)
-        const moviesData = await this._dao.movie.getMoviesDataByIds(Array.from(new Set([...notUserMoviesIds,...userMovieIds])))
-        return this.#prettyRecommendations(sortedRecommendations,moviesData)
+        // const notUserMoviesIds = candidatesPairs.map(p=>p.target)
+        // const moviesData = await this._dao.movie.getMoviesDataByIds(Array.from(new Set([...notUserMoviesIds,...userMovieIds])))
+        return this.#prettyRecommendations(sortedRecommendations)
     }
 
     async #prepareData(userId: number){
@@ -88,20 +87,20 @@ export class ItemItemRecommender extends BaseRecommender {
         }
         return recommendations
     }
-    #prettyRecommendations(sortedRecs:CFNBItemItemRecommendationT[], moviesData:MovieDataT[]){
+    #prettyRecommendations(sortedRecs:CFNBItemItemRecommendationT[]){
         return sortedRecs.map(rec=>{
-            const targetData = moviesData.find(m=>m.id==rec.target)!
+            // const targetData = moviesData.find(m=>m.id==rec.target)!
             return {
                 movieId: rec.target,
-                posterPath: targetData.poster_path,
-                title: targetData.title,
+                // posterPath: targetData.poster_path,
+                // title: targetData.title,
                 predictedRating: rec.predictedRating,
                 recommendedByMovies: rec.sources.map(s=>{
-                    const sourceData = moviesData.find(m=>m.id==s.id)!
+                    // const sourceData = moviesData.find(m=>m.id==s.id)!
                     return {
                         movieId: s.id,
-                        posterPath: sourceData.poster_path,
-                        title: sourceData.title,
+                        // posterPath: sourceData.poster_path,
+                        // title: sourceData.title,
                         rating: s.rating
                     }
                 })

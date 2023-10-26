@@ -8,21 +8,21 @@ export class PopularityRecommender extends BaseRecommender {
     }
     //recommend_items_by_ratings
     async predictScoreForMovies(moviesIds:string[],take=10){
-        return await dao.rating.getAvgAndCountByMovieIds(moviesIds, take)
+        return (await dao.rating.getAvgAndCountByMovieIds(moviesIds, take)).map(score => ({predictedRating: score.avg || 0, usersCount: score.count, movieId:score.movieId}))
     }
     async recommendItems(userId: number, take: number = 10) {
-        const popItems = await dao.rating.getAvgAndCountMoviesForUser(userId,take)
+        const popItems = (await dao.rating.getAvgAndCountMoviesForUser(userId,take)).map(score => ({predictedRating: score.avg || 0, usersCount: score.count, movieId:score.movieId}))
 
         const movieIds =popItems.map((item) =>item.movieId)
-        const moviesData = await dao.movie.getMoviesDataByIds(movieIds)
+        // const moviesData = await dao.movie.getMoviesDataByIds(movieIds)
 
         return popItems.map(movie=>{
-            const movieData = moviesData.find(m=>m.id == movie.movieId)!
+            // const movieData = moviesData.find(m=>m.id == movie.movieId)!
             return {
-                movieId: movieData.id,
-                poster_path: movieData.poster_path,
-                ratingsCount: movie.count,
-                avgRating: movie.avg
+                movieId: movie.movieId,
+                // poster_path: movieData.poster_path,
+                usersCount: movie.usersCount,
+                predictedRating: movie.predictedRating
             }
         })
     }
@@ -34,30 +34,30 @@ export class PopularityRecommender extends BaseRecommender {
         const predictedScore = await this.predictScoreForMovies(movieIds,take)
 
 
-        const moviesData = await dao.movie.getMoviesDataByIds(movieIds)
+        // const moviesData = await dao.movie.getMoviesDataByIds(movieIds)
 
         return popItems.map(m=>{
             const score = predictedScore.find(movie=>m.movieId==movie.movieId)!
-            const data = moviesData.find(movie=>m.movieId==movie.id)!
+            // const data = moviesData.find(movie=>m.movieId==movie.id)!
 
             return {
-                purchases: m.count,
-                poster_path: data.poster_path,
+                purchasesCount: m.count,
+                // poster_path: data.poster_path,
                 ...score
             }
         }).sort((a,b) => {
-            if (a.purchases < b.purchases) {
+            if (a.purchasesCount < b.purchasesCount) {
                 return 1;
             }
-            if (a.purchases > b.purchases) {
+            if (a.purchasesCount > b.purchasesCount) {
                 return -1;
             }
 
-            // Если значения "name" одинаковы, сравниваем поле "age"
-            if (a.avg! < b.avg!) {
+
+            if (a.predictedRating < b.predictedRating) {
                 return 1;
             }
-            if (a.avg! > b.avg!) {
+            if (a.predictedRating > b.predictedRating) {
                 return -1;
             }
 

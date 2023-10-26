@@ -30,7 +30,7 @@ export default async function Home() {
     //
     // }
     // const user = await loadUser()
-    const response = await api.authAPI.userData()
+    const response = await api.auth.userData()
     if (response.status == 401)
         redirect('/sign-in')
     if (response.status == 403)

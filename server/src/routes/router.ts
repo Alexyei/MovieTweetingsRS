@@ -1,10 +1,14 @@
 import {Router} from "express";
 import connectAuthRoutes from "./authRoutes";
+import connectMovieRoutes from "./movieRoutes";
+import connectRecommendRoutes from "./recommenderRoutes";
 
 const router = Router();
 
 function createRouter() {
     connectAuthRoutes(router)
+    connectMovieRoutes(router)
+    connectRecommendRoutes(router)
     //POST collector/log - сбор данных о пользователе
 
     //GET rec/pop/:userId&take=10

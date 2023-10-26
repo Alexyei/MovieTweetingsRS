@@ -189,7 +189,7 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:
                 <ScrollArea className="h-96 w-full rounded-md border ">
                     {/*<div className={"min-h-screen bg-yellow-300"}></div>*/}
                     <div className={"flex flex-wrap gap-4 p-4"}>
-                        {movies.map((el,i)=><MovieCard className={"w-[128px]"} movieData={{url:'d'}}/>)}
+                        {movies.map((el,i)=><MovieCard className={"w-[128px]"} movie={{id:'d',title:'d',description:'d',year:2011,mean_rating:0,poster_path:null}}/>)}
                     </div>
                 </ScrollArea>
                 <div className="flex items-center justify-end space-x-2 py-4">

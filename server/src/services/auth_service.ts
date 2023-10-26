@@ -29,21 +29,22 @@ class AuthService {
     }
 
     async getUserData(userID:number, sessionUserID:number){
-        const sender = await dao.user.getUserByID(sessionUserID) as UserDataT
+        // const sender = await dao.user.getUserByID(sessionUserID) as UserDataT
         const requestedUserID = userID || sessionUserID
-        if (requestedUserID != sessionUserID && sender.role !== UserRole.ADMIN) {
-            throw ApiError.Forbidden()
-        }
-        return requestedUserID == sessionUserID ? sender : await dao.user.getUserByID(requestedUserID) as UserDataT;
+        // if (requestedUserID != sessionUserID && sender.role !== UserRole.ADMIN) {
+        //     throw ApiError.Forbidden()
+        // }
+        // return requestedUserID == sessionUserID ? sender : await dao.user.getUserByID(requestedUserID) as UserDataT;
+        return await dao.user.getUserByID(requestedUserID) as UserDataT;
     }
 
     async logout(userID:number,sessionUserID:number,sessionStore:Express.SessionStore){
-        const sender = await dao.user.getUserByID(sessionUserID) as UserDataT
+        // const sender = await dao.user.getUserByID(sessionUserID) as UserDataT
         const requestedUserID = userID || sessionUserID
 
-        if (requestedUserID != sessionUserID && sender.role !== UserRole.ADMIN) {
-            throw ApiError.Forbidden()
-        }
+        // if (requestedUserID != sessionUserID && sender.role !== UserRole.ADMIN) {
+        //     throw ApiError.Forbidden()
+        // }
 
 
         //удаляем только текущую сессию

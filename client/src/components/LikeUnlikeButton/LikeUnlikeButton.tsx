@@ -1,5 +1,4 @@
 'use client'
-import {MovieT} from "@/types/movie.types";
 import {useUserData} from "@/context/UserDataContext";
 import {Button} from "@/components/ui/button";
 import {Heart} from "lucide-react";
