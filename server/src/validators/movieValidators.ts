@@ -9,5 +9,6 @@ export const movieIDsValidation = [
                 return Promise.reject(`ID: ${id} не является строкой`);
             }
         }
+        return true;
     }),
 ];

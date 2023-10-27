@@ -54,15 +54,21 @@ export function UserNav() {
                     <DropdownMenuItem>
                         <Link className='flex w-full justify-between' href={'/my/#purchased'}>
                         Мои фильмы
-                        <Badge className='ml-auto' variant="secondary">{user.userMovies.purchased.length}</Badge>
+                        <Badge className='ml-auto bg-primary'>{user.userMovies.purchased.length}</Badge>
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link className='flex w-full justify-between' href={'/my/#liked'}>
                         Избранное
-                            <Badge  variant="destructive">{user.userMovies.liked.length}</Badge>
+                            <Badge  variant="secondary">{user.userMovies.liked.length}</Badge>
                         </Link>
 
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                        <Link className='flex w-full justify-between' href={'/my/#rated'}>
+                            Оценённые
+                            <Badge  variant="secondary">{user.userMovies.rated.length}</Badge>
+                        </Link>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />

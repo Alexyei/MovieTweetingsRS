@@ -273,16 +273,4 @@ test('pearson tf',()=>{
 })
 
 
-test('pearson forum',()=>{
-    const normRatings = tf.tensor([[0.2, 1.2, 0.2, 0, -0.8, -0.8], [-0.33, -0.33, -0.33, -1.33, 0.67, 1.67]]);
 
-    const squared_normRatings = tf.square(normRatings);
-    const numerator = tf.matMul(normRatings, tf.transpose(normRatings));
-    // const mask = tf.where(tf.notEqual(normRatings, 0), 1.0, 0.0);
-    const mask = tf.where(tf.notEqual(normRatings, 0), tf.ones(normRatings.shape), tf.zeros(normRatings.shape));
-    console.log(mask)
-    const denominator = tf.matMul(tf.transpose(tf.sqrt(tf.sum(tf.mul(squared_normRatings, mask), 1, true))));
-    const numeratorData = tf.div(numerator, tf.mul(denominator, denominator));
-
-    numeratorData.print();
-})

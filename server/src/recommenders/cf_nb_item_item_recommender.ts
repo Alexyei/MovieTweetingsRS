@@ -30,7 +30,9 @@ export class ItemItemRecommender extends BaseRecommender {
     }
 //predict_score_by_ratings(self, item_id, movie_ids):
     async recommendItems(userId: number, take: number = 10, overlap=2, ncandidates=100, min_sims = 0.2) {
+
         const {userRatings,userMeanRating,userMovieIds,candidatesPairs} = await this.#prepareDataForRecs(userId,ncandidates, min_sims)
+
         if (userRatings.length == 0) return []
         const recommendations = this.#getRecommendations(candidatesPairs,userRatings,userMeanRating,overlap)
         // нормализация predictedRating не нужна, такак они расчитываются на основании оценок одного пользователя
@@ -42,7 +44,9 @@ export class ItemItemRecommender extends BaseRecommender {
     }
 
     async #prepareData(userId: number){
+
         const userRatings = await this._dao.priorityRating.getByUserId(userId)
+
         const userMeanRating = userRatings.length == 0 ? 0.0 : userRatings.reduce((acc, rating) =>rating.rating + acc,0) / userRatings.length
         const userMovieIds = userRatings.map(r => r.movieId)
 
@@ -56,7 +60,9 @@ export class ItemItemRecommender extends BaseRecommender {
     }
 
     async #prepareDataForRecs(userId: number,ncandidates=100, min_sims = 0.2){
+
         const {userRatings,userMeanRating,userMovieIds} = await this.#prepareData(userId)
+
         if (userRatings.length == 0) return {userRatings, userMeanRating,userMovieIds,candidatesPairs:[]}
         const candidatesPairs = await this._dao.movieSimilarity.getAllCandidates(userMovieIds,this._type,ncandidates,min_sims)
         return {userRatings,userMeanRating,userMovieIds,candidatesPairs}

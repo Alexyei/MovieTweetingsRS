@@ -5,6 +5,6 @@ import movieController from "../controllers/movie_controller";
 
 export default function connectMovieRoutes(router: Router) {
     const prefix = '/movie'
-    router.get(`${prefix}/movies`, movieIDsValidation, requestValidationMiddleware, movieController.movies);
+    router.post(`${prefix}/movies`, movieIDsValidation, requestValidationMiddleware, movieController.movies);
     router.get(`${prefix}/movie/:movieID`, movieController.movie);
 }

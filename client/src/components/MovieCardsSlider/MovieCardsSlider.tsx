@@ -39,7 +39,7 @@ const MovieCardsSlider = ({title,movies}:{title:string,movies:MovieFullDataT[]})
                 </CardTitle>
             </CardHeader>
             <CardContent >
-                { movies.length &&
+                { movies.length > 0 ?
                 <Swiper className={"ml-0"}   slidesPerView={'auto'} centeredSlides={false} spaceBetween={0}>
                     { movies.map((movie,i)=>{
 
@@ -53,7 +53,9 @@ const MovieCardsSlider = ({title,movies}:{title:string,movies:MovieFullDataT[]})
 
                     })}
 
-                </Swiper>}
+                </Swiper>
+                :null
+                }
 
             </CardContent>
         </Card>

@@ -9,7 +9,7 @@ class MovieApi extends ApiHelper {
 
     async movies(movieIDs:string[]) {
         const URL = this._API_URL + '/movie/movies'
-        return this._fetchWrapper<{ status: 200, response: MovieFullDataT[] }, MoviesPayloadT>( URL, 'GET', {movieIDs})
+        return this._fetchWrapper<{ status: 200, response: MovieFullDataT[] }, MoviesPayloadT>( URL, 'POST', {movieIDs})
     }
 
     async movie(movieID: string) {

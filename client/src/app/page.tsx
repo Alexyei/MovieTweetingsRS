@@ -1,16 +1,13 @@
-import MovieCardsSlider from "@/components/MovieCardsSlider/MovieCardsSlider";
 import MovieSearchPanel from "@/components/MovieSearchPanel/MovieSearchPanel";
-import {getServerAPI} from "@/api/server_api";
-import CFNBItemItemRecsSlider from "@/components/recs/CFNBItemItemRecsSlider/CFNBItemItemRecsSlider";
+import RecsSlider from "@/components/RecsSlider/RecsSlider";
 export default async function Home() {
-
-
-
 
   return (
       <>
-          {/*<MovieCardsSlider title={"Рекомендуемые элементы"} movies={[]}/>*/}
-          <CFNBItemItemRecsSlider title={"Рекомендуемые элементы"}/>
+          <RecsSlider title={"Рекомендуемые элементы"} type={"item-item"}/>
+          <RecsSlider title={"Выбор других пользователей"} type={"user-user"}/>
+          <RecsSlider title={"Популярные"} type={"pops"}/>
+          <RecsSlider title={"Топ-продаж"} type={"bestsellers"}/>
         <MovieSearchPanel title={"Поиск по каталогу"}/>
       </>
       )

@@ -6,6 +6,7 @@ import getRatingDAO from "./tables/rating/rating_dao";
 import getPriorityRatingDAO from "./tables/priorityRating/priority_rating_dao";
 import getUserSimilarityDAO from "./tables/usersSimilarity/user_similarity_dao";
 import getUserEventDAO from "./tables/userEvent/user_event_dao";
+import getGenreDAO from "./tables/genre/genre_dao";
 
 
 
@@ -19,6 +20,7 @@ class DAO {
     readonly #rating: ReturnType<typeof getRatingDAO>
     readonly #priorityRating: ReturnType<typeof getPriorityRatingDAO>
     readonly #userEvent: ReturnType<typeof getUserEventDAO>
+    readonly #genre: ReturnType<typeof getGenreDAO>
     constructor(testDb:boolean) {
         this._testDb = testDb
         this.#movieSimilarity = getMoviesSimilarityDAO(this._client,this._testDb)
@@ -28,6 +30,7 @@ class DAO {
         this.#rating = getRatingDAO(this._client,this._testDb)
         this.#priorityRating = getPriorityRatingDAO(this._client,this._testDb)
         this.#userEvent = getUserEventDAO(this._client,this._testDb)
+        this.#genre = getGenreDAO(this._client,this._testDb)
     }
 
     get movieSimilarity(){
@@ -56,6 +59,10 @@ class DAO {
 
     get userEvent(){
         return this.#userEvent
+    }
+
+    get genre(){
+        return this.#genre
     }
 }
 

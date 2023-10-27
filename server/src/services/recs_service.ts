@@ -8,6 +8,7 @@ import {SessionData} from "express-session";
 import {PopularityRecommender} from "../recommenders/popularity_recommender";
 import {ItemItemRecommender} from "../recommenders/cf_nb_item_item_recommender";
 import {UserUserRecommender} from "../recommenders/cf_nb_user_user_recommender";
+import {flushTestDB} from "../utils/test";
 
 config()
 const dao = getDAO(false);
@@ -37,17 +38,17 @@ class RecsService {
     async CFNBRecommenderItemItem(userID:number, sessionUserID:number, take:number){
         const requestedUserID = userID || sessionUserID
 
-        const recommender = new ItemItemRecommender()
+        const recommender = new ItemItemRecommender(false)
 
-        return recommender.recommendItems(requestedUserID,take)
+        return recommender.recommendItems(requestedUserID,take,2,)
     }
 
     async CFNBRecommenderUserUser(userID:number, sessionUserID:number, take:number){
         const requestedUserID = userID || sessionUserID
 
-        const recommender = new UserUserRecommender()
+        const recommender = new UserUserRecommender(false)
 
-        return recommender.recommendItems(requestedUserID,take)
+        return recommender.recommendItems(requestedUserID,take,1,)
     }
 }
 

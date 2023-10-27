@@ -38,9 +38,10 @@ export class UserUserRecommender extends BaseRecommender {
     async recommendItems(userId: number, take: number = 10, overlap=3, ncandidates=100, min_sims = 0.2) {
         const {userRatings,simsUserIds,userRatingsNormalized,userMeanRating,candidatesPairs} = await this.#prepareDataForRecs(userId,overlap,ncandidates,min_sims)
         if (userRatings.length == 0) return []
+
         // Для каждого фильма из списка рассчитываем прогнозируемую оценку на оновании средней оценки текущего пользователя (source) и нормализованных оценок target которые просмотрели этот фильм
         const recommendations = this.#getRecommendations(candidatesPairs,userRatingsNormalized,userMeanRating)
-        
+
         const sortedRecommendations = recommendations.sort((a, b) => b.predictedRating - a.predictedRating).slice(0, take);
         const notUserMoviesIds = userRatingsNormalized.map(r=>r.movieId)
 
