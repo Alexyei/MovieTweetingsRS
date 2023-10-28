@@ -55,11 +55,34 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                 skip,
                 take
             })
+        const count = this._testDb ? await this._client.testMovie.count({
+                where:
+                    {
+                        OR: [
+                            {title: {contains: searchRequest, mode: 'insensitive'},},
+                            {description: {contains: searchRequest, mode: 'insensitive'},},
+                        ],
+                        year: {gte: yearFrom, lte: yearTo},
+                        genres: {some: {id: genresIDs.length > 0 ? {in: genresIDs} : undefined}}
+                    },
 
+            })
+            :
+            await this._client.movie.count({
+                where:
+                    {
+                        OR: [
+                            {title: {contains: searchRequest, mode: 'insensitive'},},
+                            {description: {contains: searchRequest, mode: 'insensitive'},},
+                        ],
+                        year: {gte: yearFrom, lte: yearTo},
+                        genres: {some: {id: genresIDs.length > 0 ? {in: genresIDs} : undefined}}
+                    },
+            })
         const fullData = await this.getFullMoviesDataByIds(movieIDs.map(id => id.id))
 
         // восстанавливаем исходный порядок
-        return movieIDs.map(movieID => fullData.find(movie => movie.id === movieID.id))
+        return {data:movieIDs.map(movieID => fullData.find(movie => movie.id === movieID.id)),count}
 
     }
 
