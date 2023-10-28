@@ -2,6 +2,7 @@ import {Router} from "express";
 import connectAuthRoutes from "./authRoutes";
 import connectMovieRoutes from "./movieRoutes";
 import connectRecommendRoutes from "./recommenderRoutes";
+import connectGenreRoutes from "./genreRoutes";
 
 const router = Router();
 
@@ -9,6 +10,7 @@ function createRouter() {
     connectAuthRoutes(router)
     connectMovieRoutes(router)
     connectRecommendRoutes(router)
+    connectGenreRoutes(router)
     //POST collector/log - сбор данных о пользователе
 
     //GET rec/pop/:userId&take=10

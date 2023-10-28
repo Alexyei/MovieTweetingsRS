@@ -19,7 +19,6 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
             }
         }
 
-
         const movieIDs = this._testDb ? await this._client.testMovie.findMany({
                 where:
                     {
@@ -36,9 +35,7 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                 },
                 skip,
                 take
-            })
-            :
-            await this._client.movie.findMany({
+            }) : await this._client.movie.findMany({
                 where:
                     {
                         OR: [
@@ -66,9 +63,7 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                         genres: {some: {id: genresIDs.length > 0 ? {in: genresIDs} : undefined}}
                     },
 
-            })
-            :
-            await this._client.movie.count({
+            }) : await this._client.movie.count({
                 where:
                     {
                         OR: [
@@ -152,6 +147,18 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
         });
     }
 
+    async getMovieById(movieId: string){
+            if (this._testDb) {
+                return this._client.testMovie.findFirst({
+                    where: {id: movieId,},
+                    select: {id: true,},
+                });
+            }
+            return this._client.movie.findFirst({
+                where: {id: movieId,},
+                select: {id: true,},
+            });
+    }
     // async getMoviesDataByIds(movieIds: string[]) {
     //     if (this._testDb) {
     //         return this._client.testMovie.findMany({
@@ -180,6 +187,7 @@ export function createMovieGetDAOMixin(client: PrismaClient, testDb: boolean) {
 
     return {
         // 'getMoviesDataByIds': mixin.getMoviesDataByIds.bind(mixin),
+        'getMovieById':mixin.getMovieById.bind(mixin),
         'getFullMoviesDataByIds': mixin.getFullMoviesDataByIds.bind(mixin),
         'searchMovies':mixin.searchMovies.bind(mixin),
     }

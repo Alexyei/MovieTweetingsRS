@@ -2,10 +2,11 @@ import {DAOMixinHelper} from "../../../dao_helper";
 import {MovieT} from "../../../../types/movie.types";
 import {PrismaClient} from "@prisma/client";
 
-class UserEventGetDAO__mixin extends DAOMixinHelper{
-    async getPurchasesForUser(userId: number, take: number = 10){
+class UserEventGetDAO__mixin extends DAOMixinHelper {
+
+    async getPurchasesForUser(userId: number, take: number = 10) {
         let purchases = []
-        if (this._testDb){
+        if (this._testDb) {
             purchases = await this._client.testUserEvent.groupBy({
                 by: ['movieId'],
                 where: {
@@ -28,7 +29,7 @@ class UserEventGetDAO__mixin extends DAOMixinHelper{
 
                 take: take,
             })
-        }else{
+        } else {
             purchases = await this._client.userEvent.groupBy({
                 by: ['movieId'],
                 where: {
@@ -59,13 +60,44 @@ class UserEventGetDAO__mixin extends DAOMixinHelper{
             }
         })
     }
+
+    async getUserEvents(userId: number) {
+        if (this._testDb) {
+            return this._client.testUserEvent.groupBy({
+                by: ['movieId','genreId', 'event'],
+                where: {
+                    userId,
+                },
+                _count: {
+                    event: true,
+                },
+                orderBy: {
+                    movieId: 'asc'
+                }
+            })
+        } else {
+            return this._client.userEvent.groupBy({
+                by: ['movieId','genreId', 'event'],
+                where: {
+                    userId,
+                },
+                _count: {
+                    event: true,
+                },
+                orderBy: {
+                    movieId: 'asc'
+                }
+            })
+        }
+    }
 }
 
 
-export function createUserEventGetDAOMixin(client:PrismaClient,testDb:boolean){
-    const mixin = new UserEventGetDAO__mixin(client,testDb)
+export function createUserEventGetDAOMixin(client: PrismaClient, testDb: boolean) {
+    const mixin = new UserEventGetDAO__mixin(client, testDb)
 
     return {
-        'getPurchasesForUser':mixin.getPurchasesForUser.bind(mixin),
+        'getPurchasesForUser': mixin.getPurchasesForUser.bind(mixin),
+        'getUserEvents':mixin.getUserEvents.bind(mixin),
     }
 }

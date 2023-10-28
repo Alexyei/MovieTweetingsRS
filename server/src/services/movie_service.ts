@@ -1,8 +1,7 @@
-import {config} from "dotenv";
 import {getDAO} from "../DAO/DAO";
 import {ApiError} from "../exceptions/api_errors";
+import {MovieOrderingT} from "../types/movie.types";
 
-config()
 const dao = getDAO(false);
 class MovieService {
     async movies(moviesIDs: string[]) {
@@ -21,6 +20,10 @@ class MovieService {
         if (!movie) throw ApiError.BadRequest(`Фильм с id:${movieID} не найден`);
 
         return movie;
+    }
+
+    async search(searchRequest:string,yearFrom:number,yearTo:number,genreIDs:number[],ordering:MovieOrderingT,take:number,skip:number){
+        return await dao.movie.searchMovies(searchRequest,yearFrom,yearTo,genreIDs,ordering,take,skip)
     }
 }
 

@@ -51,6 +51,8 @@ model Rating {
   rating    Float
   type      RatingType @default(EXPLICIT)
   createdAt DateTime   @default(now())
+
+  @@unique([authorId, movieId, type])
 }
 
 // Пользователь может просматривать либо фильм либо целую категорию
@@ -64,7 +66,7 @@ model UserEvent {
   genreId   Int?
   event     TypeEvent
   createdAt DateTime  @default(now())
-  sessionId Int?
+  sessionId String?
 }
 
 model MoviesSimilarity {
@@ -136,6 +138,8 @@ model TestRating {
   rating    Float
   type      RatingType @default(EXPLICIT)
   createdAt DateTime   @default(now())
+
+  @@unique([authorId, movieId, type])
 }
 
 // Пользователь может просматривать либо фильм либо целую категорию
@@ -149,7 +153,7 @@ model TestUserEvent {
   genreId   Int?
   event     TypeEvent
   createdAt DateTime   @default(now())
-  sessionId Int?
+  sessionId String?
 }
 
 model TestMoviesSimilarity {
