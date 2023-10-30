@@ -5,12 +5,13 @@ import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import SortSelector from "@/components/MovieSearchPanel/components/SortSelector";
 import {useEffect, useRef, useState} from "react";
+import {MovieOrderingT} from "@/types/movie.types";
 
-const MovieSearchParamsSelector = ({onSearchParamsChanged}:{onSearchParamsChanged:(from:number,to:number,sort:string)=>any})=>{
+const MovieSearchParamsSelector = ({onSearchParamsChanged}:{onSearchParamsChanged:(from:number,to:number,sort:MovieOrderingT)=>any})=>{
     const isMounted = useRef(false)
-    const [from,setFrom] = useState(1890)
-    const [to,setTo] = useState(2020)
-    const [sort, setSort] = useState("desc rating")
+    const [from,setFrom] = useState(1878)
+    const [to,setTo] = useState(new Date().getFullYear())
+    const [sort, setSort] = useState<MovieOrderingT>("year desc")
 
 
     useEffect(()=>{

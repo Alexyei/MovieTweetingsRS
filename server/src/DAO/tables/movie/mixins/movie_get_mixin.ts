@@ -9,13 +9,13 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
         function getOrdering(ordering: MovieOrderingT) {
             switch (ordering) {
                 case "title asc":
-                    return {title: 'asc' as 'asc'}
+                    return [{title: 'asc' as 'asc'},{id:'desc' as 'desc'}]
                 case "title desc":
-                    return {title: 'desc' as 'desc'}
+                    return [{title: 'desc' as 'desc'},{id:'desc' as 'desc'}]
                 case "year asc":
-                    return {year: 'asc' as 'asc'}
+                    return [{year: 'asc' as 'asc'},{id:'desc' as 'desc'}]
                 case "year desc":
-                    return {year: 'desc' as 'desc'}
+                    return [{year: 'desc' as 'desc'},{id:'desc' as 'desc'}]
             }
         }
 
@@ -27,7 +27,7 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                             {description: {contains: searchRequest, mode: 'insensitive'},},
                         ],
                         year: {gte: yearFrom, lte: yearTo},
-                        genres: {some: {id: genresIDs.length > 0 ? {in: genresIDs} : undefined}}
+                        genres: genresIDs.length > 0 ? {some: {id: {in: genresIDs}}} : undefined
                     },
                 orderBy: getOrdering(ordering),
                 select: {
@@ -43,7 +43,7 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                             {description: {contains: searchRequest, mode: 'insensitive'},},
                         ],
                         year: {gte: yearFrom, lte: yearTo},
-                        genres: {some: {id: genresIDs.length > 0 ? {in: genresIDs} : undefined}}
+                        genres: genresIDs.length > 0 ? {some: {id: {in: genresIDs}}} : undefined
                     },
                 orderBy: getOrdering(ordering),
                 select: {
@@ -60,7 +60,7 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                             {description: {contains: searchRequest, mode: 'insensitive'},},
                         ],
                         year: {gte: yearFrom, lte: yearTo},
-                        genres: {some: {id: genresIDs.length > 0 ? {in: genresIDs} : undefined}}
+                        genres: genresIDs.length > 0 ? {some: {id: {in: genresIDs}}} : undefined
                     },
 
             }) : await this._client.movie.count({
@@ -71,11 +71,11 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                             {description: {contains: searchRequest, mode: 'insensitive'},},
                         ],
                         year: {gte: yearFrom, lte: yearTo},
-                        genres: {some: {id: genresIDs.length > 0 ? {in: genresIDs} : undefined}}
+                        genres: genresIDs.length > 0 ? {some: {id: {in: genresIDs}}} : undefined
                     },
             })
         const fullData = await this.getFullMoviesDataByIds(movieIDs.map(id => id.id))
-
+        // console.log(movieIDs)
         // восстанавливаем исходный порядок
         return {data:movieIDs.map(movieID => fullData.find(movie => movie.id === movieID.id)),count}
 

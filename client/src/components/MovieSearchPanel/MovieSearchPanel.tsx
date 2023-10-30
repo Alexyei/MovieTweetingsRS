@@ -2,21 +2,27 @@
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {ArrowDown, ArrowUp, Check, ChevronsUpDown, Plus, SlidersHorizontal} from "lucide-react";
 import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from "@/components/ui/command";
-import {cn} from "@/lib/utils";
 import {useDeferredValue, useEffect, useRef, useState} from "react";
 import {ScrollArea} from "@/components/ui/scroll-area";
-import {PopoverTrigger,Popover,PopoverContent} from "@/components/ui/popover";
-import {Label} from "@/components/ui/label";
 import GenreSelector from "@/components/MovieSearchPanel/components/GenreSelector";
-import SortSelector from "@/components/MovieSearchPanel/components/SortSelector";
 import MovieSearchParamsSelector from "@/components/MovieSearchPanel/components/MovieSearchParamsSelector";
 import {GenreT} from "@/types/genre.types";
 import Search from "@/components/MovieSearchPanel/components/Search";
 import {Skeleton} from "@/components/ui/skeleton";
 import MovieCard from "@/components/MovieCard/MovieCard";
+import {getClientAPI} from "@/api/client_api";
+import {MovieFullDataT, MovieOrderingT} from "@/types/movie.types";
 
+
+export type SearchParamsT = {
+    genreIDs: number[],
+    yearFrom:number,
+    yearTo:number,
+    ordering: MovieOrderingT,
+    searchRequest:string,
+}
+
+const api = getClientAPI()
 const  SearchPanelSkeleton = ({title}:{title:string})=>{
     return (
         <Card >
@@ -43,71 +49,65 @@ const  SearchPanelSkeleton = ({title}:{title:string})=>{
 }
 //TODO: sort types
 
-type SearchParams = {
-    genreIDs: number[],
-    from:number,
-    to:number,
-    sort: string,
-    input:string,
-}
 
-function getGenres() {
-    return new Promise<GenreT[]>((resolve, reject) => {
-        setTimeout(() => resolve([
-            {
-                id: 1,
-                name: "Comedy",
-                moviesCount: 1000,
-            },
-            {
-                id:2,
-                name: "Drama",
-                moviesCount: 1500
-            },
-            {
-                id:3,
-                name: "Action",
-                moviesCount: 500
-            },
-            {
-                id: 4,
-                name: "Sci-fi",
-                moviesCount:2000
-            },
-        ]),2000)
-    })
-}
 
-const moviesInResponse = 100
-function makeRequest(searchParams:any,startWith:number) {
-    return new Promise<{movies:any[],total:number}>((resolve, reject) => {
-        setTimeout(() => {
-            console.log(searchParams,moviesInResponse)
-            resolve({movies:Array.from({length:7}).fill(0),total:150})},2000)
-    })
 
-}
+// function getGenres() {
+//     return new Promise<GenreT[]>((resolve, reject) => {
+//         setTimeout(() => resolve([
+//             {
+//                 id: 1,
+//                 name: "Comedy",
+//                 moviesCount: 1000,
+//             },
+//             {
+//                 id:2,
+//                 name: "Drama",
+//                 moviesCount: 1500
+//             },
+//             {
+//                 id:3,
+//                 name: "Action",
+//                 moviesCount: 500
+//             },
+//             {
+//                 id: 4,
+//                 name: "Sci-fi",
+//                 moviesCount:2000
+//             },
+//         ]),2000)
+//     })
+// }
 
-const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:string,initialValues?:Partial<SearchParams>,canSelectGenre?:boolean}) =>{
+const moviesInResponse = 30
+
+
+const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:string,initialValues?:Partial<SearchParamsT>,canSelectGenre?:boolean}) =>{
     const genres = useRef<GenreT[]>([])
-    const searchParams = useRef<SearchParams>({
+    const searchParams = useRef<SearchParamsT>({
         genreIDs: [],
-        from: 1890,
-        to: new Date().getFullYear(),
-        sort: "desc ratings",
-        input: "",
+        yearFrom: 1878,
+        yearTo: new Date().getFullYear(),
+        ordering: "year desc",
+        searchRequest: "",
         ...initialValues
     })
-    const lastSearchParams = useRef<SearchParams>(searchParams.current)
+    const lastSearchParams = useRef<SearchParamsT>(searchParams.current)
 
     const[isMounted,setIsMounted] = useState(false)
     const [isLoading,setIsLoading] = useState(true)
-    const [movies,setMovies] = useState<any[]>([])
+    const [movies,setMovies] = useState<MovieFullDataT[]>([])
     const [total,setTotal] = useState(0)
-    const [current,setCurrent] = useState(0)
+    const [skip,setSkip] = useState(0)
 
     useEffect(()=>{
-        getGenres().then((gens)=>genres.current = gens).then(()=>setIsMounted(true))
+        api.genre.genres().then(response=>{
+            if (response.status == 200){
+                genres.current = response.response
+                setIsMounted(true)
+            }
+        })
+        // getGenres().then((gens)=>genres.current = gens).then(()=>setIsMounted(true))
     },[])
 
     useEffect(()=>{
@@ -120,37 +120,63 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:
         searchParams.current.genreIDs = genreIds
     }
 
-    function onSearchParamsChanged(from:number,to:number,sort:string){
-        searchParams.current.from = from
-        searchParams.current.to = to
-        searchParams.current.sort = sort
+    function onSearchParamsChanged(from:number,to:number,sort:MovieOrderingT){
+        searchParams.current.yearFrom = from
+        searchParams.current.yearTo = to
+        searchParams.current.ordering = sort
     }
 
     function onSearchInputChanged(input:string){
-        searchParams.current.input = input
+        searchParams.current.searchRequest = input
     }
 
     function search(){
+        console.log("SEARCH")
         setIsLoading(true)
-        makeRequest(searchParams,current).then(({movies,total})=>{
-            setMovies(movies)
-            setTotal(total)
-            setCurrent(Math.min(total,moviesInResponse))
-            lastSearchParams.current = searchParams.current
+        api.movie.search(searchParams.current,moviesInResponse,0).then(response=>{
+            if (response.status == 200){
+                const total = response.response.count
+                setMovies(response.response.data)
+                setTotal(total)
+                setSkip(Math.min(total,moviesInResponse))
+                lastSearchParams.current = searchParams.current
+            }
         }).finally(()=>{
             setIsLoading(false)
         })
+        // makeRequest(searchParams,current).then(({movies,total})=>{
+        //     setMovies(movies)
+        //     setTotal(total)
+        //     setCurrent(Math.min(total,moviesInResponse))
+        //     lastSearchParams.current = searchParams.current
+        // }).finally(()=>{
+        //     setIsLoading(false)
+        // })
     }
 
     function loadMore(){
+        console.log("LOAD MORE")
         setIsLoading(true)
-        makeRequest(lastSearchParams,current).then(({movies,total})=>{
-            setMovies(prev=>[...prev,...movies])
-            setTotal(total)
-            setCurrent(prev=>Math.min(total,prev+moviesInResponse))
+        api.movie.search(searchParams.current,moviesInResponse,skip).then(response=>{
+            if (response.status == 200){
+                const total = response.response.count
+                const movies = response.response.data
+
+                setMovies(prev=>[...prev,...movies])
+                setTotal(total)
+                setSkip(prev=>Math.min(total,prev+moviesInResponse))
+                // lastSearchParams.current = searchParams.current
+            }
         }).finally(()=>{
             setIsLoading(false)
         })
+        // makeRequest(lastSearchParams,skip).then(({movies,total})=>{
+        //     setMovies(prev=>[...prev,...movies])
+        //     setTotal(total)
+        //     setSkip(prev=>Math.min(total,prev+moviesInResponse))
+        // }).finally(()=>{
+        //     setIsLoading(false)
+        // })
     }
 
 
@@ -189,18 +215,18 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:
                 <ScrollArea className="h-96 w-full rounded-md border ">
                     {/*<div className={"min-h-screen bg-yellow-300"}></div>*/}
                     <div className={"flex flex-wrap gap-4 p-4"}>
-                        {movies.map((el,i)=><MovieCard key={i} className={"w-[128px]"} movie={{id:'d',title:'d',description:'d',year:2011,mean_rating:0,poster_path:null}}/>)}
+                        {movies.map((el,i)=><MovieCard key={el.id} className={"w-[128px]"} movie={el}/>)}
                     </div>
                 </ScrollArea>
                 <div className="flex items-center justify-end space-x-2 py-4">
                     <div className="flex-1 text-sm text-muted-foreground">
-                        { total ? `Показано ${current} элементов из ${total}`: ""}
+                        { total ? `Показано ${skip} элементов из ${total}`: ""}
                     </div>
                     <div className={"flex space-x-2"}>
                         <Button disabled={isLoading} variant="default" size="sm" onClick={onSearchBtnClickHandler}>
                             Найти
                         </Button>
-                        {total > current &&
+                        {total > skip &&
                         <Button disabled={isLoading} variant="secondary" size="sm" onClick={onLoadMoreBtnClickHandler}>
                             <Plus className="mr-2 h-4 w-4 " />
                             Показать ещё

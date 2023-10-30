@@ -6,6 +6,7 @@ import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from "@/
 import {cn} from "@/lib/utils";
 import {Badge} from "@/components/ui/badge";
 import {GenreT} from "@/types/genre.types";
+import {ScrollArea} from "@/components/ui/scroll-area";
 
 const GenreSelector = ({genres,onGenresChanged}:{genres:GenreT[],onGenresChanged:(genreIds:number[])=>any})=>{
     const isMounted = useRef(false)
@@ -58,6 +59,7 @@ const GenreSelector = ({genres,onGenresChanged}:{genres:GenreT[],onGenresChanged
                     <CommandInput placeholder="Найти жанр..." />
                     <CommandEmpty>Ничего не найдено</CommandEmpty>
                     <CommandGroup>
+                        <ScrollArea className="h-48 ">
                         {genres.map((genre) => (
                             <CommandItem
                                 key={genre.id}
@@ -71,12 +73,13 @@ const GenreSelector = ({genres,onGenresChanged}:{genres:GenreT[],onGenresChanged
                                         values.includes(genre.id) ? "opacity-100" : "opacity-0"
                                     )}
                                 />
-                                <div className={"flex items-center justify-between w-full"}>
+                                <div className={"flex items-center justify-between w-full mr-1"}>
                                     <p>{genre.name}</p>
-                                    <Badge variant="destructive">1000</Badge>
+                                    <Badge variant="destructive">{genre.moviesCount}</Badge>
                                 </div>
                             </CommandItem>
                         ))}
+                        </ScrollArea>
                     </CommandGroup>
                 </Command>
             </PopoverContent>

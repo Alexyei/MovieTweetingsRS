@@ -1,10 +1,13 @@
 import {ApiHelper} from "@/api/helpers/api_helper";
 import {fetchWrapperT} from "@/types/fetch.types";
 import {MovieFullDataT} from "@/types/movie.types";
+import {SearchParamsT} from "@/components/MovieSearchPanel/MovieSearchPanel";
 
 type MoviesPayloadT = {
     movieIDs: string[]
 }
+
+type SearchPayloadT = SearchParamsT & {take:number,skip:number}
 class MovieApi extends ApiHelper {
 
     async movies(movieIDs:string[]) {
@@ -16,6 +19,11 @@ class MovieApi extends ApiHelper {
         const URL = this._API_URL + '/movie/movie/'+movieID
         return this._fetchWrapper<{ status: 200, response: MovieFullDataT }, null>( URL, 'GET')
     }
+
+    async search(searchParams:SearchParamsT,take:number,skip:number) {
+        const URL = this._API_URL + '/movie/search'
+        return this._fetchWrapper<{ status: 200, response: {data:MovieFullDataT[],count:number} }, SearchPayloadT>( URL, 'POST', {...searchParams,take,skip})
+    }
 }
 
 
@@ -25,5 +33,6 @@ export function createMovieApi(API_URL:string, fetchWrapper:fetchWrapperT){
     return {
         'movies': api.movies.bind(api),
         'movie': api.movie.bind(api),
+        'search': api.search.bind(api)
     }
 }

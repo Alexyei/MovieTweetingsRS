@@ -4,34 +4,35 @@ import {cn} from "@/lib/utils";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {Button} from "@/components/ui/button";
 import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from "@/components/ui/command";
+import {MovieFullDataT, MovieOrderingT} from "@/types/movie.types";
+const sorts = [
+    {
+        value: "title asc",
+        label: "Title",
+    },
+    {
+        value: "title desc",
+        label: "Title",
+    },
+    // {
+    //     value: "rating asc ",
+    //     label: "Rating",
+    // },
+    // {
+    //     value: "rating desc",
+    //     label: "Rating",
+    // },
+    {
+        value: "year asc",
+        label: "Year",
+    },
+    {
+        value: "year desc",
+        label: "Year",
+    },
+]
+const SortSelector = ({onChangeSort,value}:{value:typeof sorts[number]['value'],onChangeSort:(sort:MovieOrderingT)=>any})=>{
 
-const SortSelector = ({onChangeSort,value}:{value:string,onChangeSort:(sort:string)=>any})=>{
-    const sorts = [
-        {
-            value: "asc title",
-            label: "Title",
-        },
-        {
-            value: "desc title",
-            label: "Title",
-        },
-        {
-            value: "asc rating",
-            label: "Rating",
-        },
-        {
-            value: "desc rating",
-            label: "Rating",
-        },
-        {
-            value: "asc year",
-            label: "Year",
-        },
-        {
-            value: "desc year",
-            label: "Year",
-        },
-    ]
 
     const [open, setOpen] = useState(false)
     // const [value, setValue] = useState(initialValue || "desc rating")
@@ -42,7 +43,7 @@ const SortSelector = ({onChangeSort,value}:{value:string,onChangeSort:(sort:stri
         if (!value) return "Сортировать по..."
         const item = sorts.find((sort) => sort.value === value)!
 
-        if (item.value.startsWith("desc"))
+        if (item.value.endsWith("desc"))
             return (
                 <>
                     <ArrowDown className={cn(
@@ -88,10 +89,10 @@ const SortSelector = ({onChangeSort,value}:{value:string,onChangeSort:(sort:stri
                                 value={sort.value}
                                 onSelect={(currentValue) => {
                                     setOpen(false)
-                                    onChangeSort(currentValue)
+                                    onChangeSort(currentValue as MovieOrderingT)
                                 }}
                             >
-                                {sort.value.startsWith("desc") ?
+                                {sort.value.endsWith("desc") ?
                                     <ArrowDown className={cn(
                                         "mr-2 h-4 w-4 ",
 

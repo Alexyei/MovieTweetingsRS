@@ -10,3 +10,5 @@ export type MovieFullDataT = {
     genres: {name:string, id:number}[]
 }
 
+export type MovieOrderingT =  "year asc" | "year desc" | "title asc" | "title desc"
+
