@@ -14,7 +14,10 @@ const MovieCard = ({movie, className,hover=true}: { movie: Omit<MovieFullDataT, 
                     {movie.poster_path ?
                         <Image src={IMAGE_URL+movie.poster_path}
                                alt={movie.title}
+                               priority={true}
                                fill
+                               placeholder={"blur"}
+                               blurDataURL={"/images/blured.png"}
                                className={"rounded-md object-cover"}
                         /> :
                         <div

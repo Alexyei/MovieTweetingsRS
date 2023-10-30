@@ -12,7 +12,7 @@ import {Label} from "@/components/ui/label";
 import GenreSelector from "@/components/MovieSearchPanel/components/GenreSelector";
 import SortSelector from "@/components/MovieSearchPanel/components/SortSelector";
 import MovieSearchParamsSelector from "@/components/MovieSearchPanel/components/MovieSearchParamsSelector";
-import {Genre} from "@/types/genre.types";
+import {GenreT} from "@/types/genre.types";
 import Search from "@/components/MovieSearchPanel/components/Search";
 import {Skeleton} from "@/components/ui/skeleton";
 import MovieCard from "@/components/MovieCard/MovieCard";
@@ -52,27 +52,27 @@ type SearchParams = {
 }
 
 function getGenres() {
-    return new Promise<Genre[]>((resolve, reject) => {
+    return new Promise<GenreT[]>((resolve, reject) => {
         setTimeout(() => resolve([
             {
                 id: 1,
                 name: "Comedy",
-                count: 1000,
+                moviesCount: 1000,
             },
             {
                 id:2,
                 name: "Drama",
-                count: 1500
+                moviesCount: 1500
             },
             {
                 id:3,
                 name: "Action",
-                count: 500
+                moviesCount: 500
             },
             {
                 id: 4,
                 name: "Sci-fi",
-                count:2000
+                moviesCount:2000
             },
         ]),2000)
     })
@@ -89,7 +89,7 @@ function makeRequest(searchParams:any,startWith:number) {
 }
 
 const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:string,initialValues?:Partial<SearchParams>,canSelectGenre?:boolean}) =>{
-    const genres = useRef<Genre[]>([])
+    const genres = useRef<GenreT[]>([])
     const searchParams = useRef<SearchParams>({
         genreIDs: [],
         from: 1890,

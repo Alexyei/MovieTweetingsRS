@@ -8,7 +8,7 @@ class RatingController {
             const sessionUserId = req.session.user!.id
             await ratingService.rate(sessionUserId,movieID,rating);
 
-            return res.json("success");
+            return res.status(200).json("success");
         } catch (e) {
             next(e);
         }

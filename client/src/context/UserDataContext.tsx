@@ -9,27 +9,32 @@ const api = getClientAPI()
 interface UserContextType {
     user: UserT | null;
     userMovies: UserMoviesT,
-    addToList: (movieId:string)=>void
-    removeFromList: (movieId:string)=>void,
-    buy:(movieId:string)=>void,
-    rate:(movieId:string,rating:number)=>void,
-    signIn: (values:{login:string, password:string})=>ReturnType<typeof api.auth.signIn>,
-    signUp: (values:{login: string, email: string, password: string, confirmPassword: string})=>ReturnType<typeof api.auth.signUp>,
-    logout: ()=>Promise<any>,
+    addToList: (movieId: string) => void
+    removeFromList: (movieId: string) => void,
+    buy: (movieId: string) => void,
+    rate: (movieId: string, rating: number) => void,
+    signIn: (values: { login: string, password: string }) => ReturnType<typeof api.auth.signIn>,
+    signUp: (values: {
+        login: string,
+        email: string,
+        password: string,
+        confirmPassword: string
+    }) => ReturnType<typeof api.auth.signUp>,
+    logout: () => Promise<any>,
     isLoading: boolean
 }
 
 const UserDataContext = createContext<UserContextType>(
     {
         user: null,
-        userMovies: {purchased:[],liked:[],rated:[]},
-        logout: ()=>new Promise<null>(()=>null),
-        signIn: ()=>new Promise(()=>({status:400,message:""})),
-        signUp: ()=>new Promise(()=>({status:400,message:""})),
-        addToList: ()=>null,
-        removeFromList: ()=>null,
-        buy: ()=>null,
-        rate: ()=>null,
+        userMovies: {purchased: [], liked: [], rated: []},
+        logout: () => new Promise<null>(() => null),
+        signIn: () => new Promise(() => ({status: 400, message: ""})),
+        signUp: () => new Promise(() => ({status: 400, message: ""})),
+        addToList: () => null,
+        removeFromList: () => null,
+        buy: () => null,
+        rate: () => null,
         isLoading: true
     }
 )
@@ -44,114 +49,121 @@ interface UserDataProviderProps {
 
 export function UserDataProvider({children}: UserDataProviderProps) {
     const [user, setUser] = useState<UserT | null>(null);
-    const [userMovies, setUserMovies] = useState<UserMoviesT>({purchased:[],liked:[],rated:[]})
+    const [userMovies, setUserMovies] = useState<UserMoviesT>({purchased: [], liked: [], rated: []})
     const [isLoading, setLoading] = useState(true)
 
-    async function logout(){
+    async function logout() {
         try {
             const response = await api.auth.logout()
-            if (response.status == 200) {setUser(null)}
+            if (response.status == 200) {
+                setUser(null)
+            }
             console.log(response.response)
+        } catch (e) {
+            console.log("user logout error")
         }
-        catch (e){console.log("user logout error")}
     }
 
-    async function loadUser(){
+    async function loadUser() {
         try {
             const response = await api.auth.userData()
-            if (response.status == 200) {setUser(response.response)}
+            if (response.status == 200) {
+                setUser(response.response)
+            }
+        } catch (e) {
+            console.log("user load error")
         }
-        catch (e){console.log("user load error")}
     }
 
-    async function loadUserMovies(){
+    async function loadUserMovies() {
+        try {
+            const response = await api.user.userFilms()
+            if (response.status == 200) {
+                setUserMovies(response.response)
+            }
+        } catch (e) {
+            console.log("user-movies load error")
+        }
+    }
+
+    async function addToList(movieId: string) {
         try {
             // const response = await api.authAPI.userData(100)
             // if (response.status == 200) {setUser(response.response)}
-            setUserMovies({purchased:[],liked:[],rated:[]})
-        }
-        catch (e){console.log("user-movies load error")}
-    }
-
-    async function addToList(movieId:string){
-        try {
-            // const response = await api.authAPI.userData(100)
-            // if (response.status == 200) {setUser(response.response)}
-            setUserMovies((prev)=>{
-                return  {...prev,liked:[...prev.liked,{id:movieId}]}
+            setUserMovies((prev) => {
+                return {...prev, liked: [...prev.liked, {id: movieId}]}
             })
 
             //try {api.authAPI.userData(100).then()}catch(e){}
+        } catch (e) {
         }
-        catch (e){}
     }
 
-    async function removeFromList(movieId:string){
+    async function removeFromList(movieId: string) {
         try {
             // const response = await api.authAPI.userData(100)
             // if (response.status == 200) {setUser(response.response)}
-            setUserMovies((prev)=>{
-                return  {...prev,liked:prev.liked.filter(m=>m.id!=movieId)}
+            setUserMovies((prev) => {
+                return {...prev, liked: prev.liked.filter(m => m.id != movieId)}
             })
 
             //try {api.authAPI.userData(100).then()}catch(e){}
+        } catch (e) {
         }
-        catch (e){}
     }
 
-    async function buy(movieId:string){
+    async function buy(movieId: string) {
         try {
             // const response = await api.authAPI.userData(100)
             // if (response.status == 200) {setUser(response.response)}
-            setUserMovies((prev)=>{
+            setUserMovies((prev) => {
 
 
-
-                return  {...prev,purchased:[...prev.purchased,{id:movieId}]}
+                return {...prev, purchased: [...prev.purchased, {id: movieId}]}
             })
 
             //try {api.authAPI.userData(100).then()}catch(e){}
+        } catch (e) {
         }
-        catch (e){}
     }
 
-    async function rate(movieId:string,rating:number){
+    async function rate(movieId: string, rating: number) {
         try {
             // const response = await api.authAPI.userData(100)
             // if (response.status == 200) {setUser(response.response)}
-            setUserMovies((prev)=>{
+            setUserMovies((prev) => {
 
-                let movie = prev.rated.filter(m=>m.id==movieId)[0]
+                let movie = prev.rated.filter(m => m.id == movieId)[0]
                 if (movie) movie.rating = rating
-                else movie = {id:movieId,rating}
+                else movie = {id: movieId, rating}
 
-                return  {...prev,rated:[...prev.rated.filter(m=>m.id!=movieId),movie]}
+                return {...prev, rated: [...prev.rated.filter(m => m.id != movieId), movie]}
             })
 
             //try {api.authAPI.userData(100).then()}catch(e){}
+        } catch (e) {
         }
-        catch (e){}
     }
 
-    async function signIn(values:{login:string, password:string}){
+    async function signIn(values: { login: string, password: string }) {
         const response = await api.auth.signIn(values)
 
-        if (response.status == 200){
+        if (response.status == 200) {
             setUser(response.response)
             setLoading(true)
-            loadUserMovies().then(()=>setLoading(false))
+            loadUserMovies().then(() => setLoading(false))
         }
 
         return response
     }
 
-    async function signUp(values:{login: string, email: string, password: string, confirmPassword: string}){
+    async function signUp(values: { login: string, email: string, password: string, confirmPassword: string }) {
         const response = await api.auth.signUp(values)
 
-        if (response.status == 201){
+        if (response.status == 201) {
             setUser(response.response)
             setLoading(true)
-            loadUserMovies().then(()=>setLoading(false))
+            loadUserMovies().then(() => setLoading(false))
         }
 
         return response
@@ -159,10 +171,11 @@ export function UserDataProvider({children}: UserDataProviderProps) {
 
 
     useEffect(() => {
-        loadUser().then(()=>loadUserMovies()).then(()=>setLoading(false))
+        loadUser().then(() => loadUserMovies()).then(() => setLoading(false))
     }, [])
 
-    return <UserDataContext.Provider value={{user, userMovies, logout, signIn, addToList,removeFromList,buy, signUp,rate, isLoading}}>
+    return <UserDataContext.Provider
+        value={{user, userMovies, logout, signIn, addToList, removeFromList, buy, signUp, rate, isLoading}}>
         {/*{isLoading ? <p>loading...</p> : children}*/}
         {children}
     </UserDataContext.Provider>

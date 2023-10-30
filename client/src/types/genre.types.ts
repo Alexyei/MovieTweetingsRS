@@ -1,5 +1,5 @@
-export type Genre = {
+export type GenreT = {
     id: number,
     name: string,
-    count: number,
+    moviesCount: number,
 }

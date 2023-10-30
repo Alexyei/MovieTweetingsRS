@@ -24,7 +24,6 @@ export function clientFetchWrapper<ResponseT extends {status:number, response:an
 
             fetch(url,init)
                 .then(async (response) => {
-                    console.log(response)
                     const answer = await response.json()
 
 

@@ -64,7 +64,7 @@ export default async function Page({params}: { params: { id: string } }) {
                             <small className='text-sm font-medium leading-none'>Жанры: {movie.genres.length}</small>
                             <div className="flex flex-wrap gap-2">
                                 {movie.genres.map((genre, i) => {
-                                    return <Link key={genre.id} href={"/"}><Badge>{genre.name}</Badge></Link>
+                                    return <Link key={genre.id} href={`/genre/${genre.name}`}><Badge>{genre.name}</Badge></Link>
                                 })}
                             </div>
                         </div>

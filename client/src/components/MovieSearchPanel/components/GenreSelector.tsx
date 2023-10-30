@@ -5,9 +5,9 @@ import {Check, ChevronsUpDown} from "lucide-react";
 import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from "@/components/ui/command";
 import {cn} from "@/lib/utils";
 import {Badge} from "@/components/ui/badge";
-import {Genre} from "@/types/genre.types";
+import {GenreT} from "@/types/genre.types";
 
-const GenreSelector = ({genres,onGenresChanged}:{genres:Genre[],onGenresChanged:(genreIds:number[])=>any})=>{
+const GenreSelector = ({genres,onGenresChanged}:{genres:GenreT[],onGenresChanged:(genreIds:number[])=>any})=>{
     const isMounted = useRef(false)
     const [open, setOpen] = useState(false)
     const [values, setValues] = useState<number[]>([])

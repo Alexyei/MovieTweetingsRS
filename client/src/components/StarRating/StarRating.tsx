@@ -14,7 +14,6 @@ const StarRating = ({movieId}: { movieId: string }) => {
     if (user.isLoading) return <Skeleton className="h-8 w-[150px]"/>
 
     const userRating = user.userMovies.rated.filter(m => m.id == movieId)[0]?.rating || 0.5
-    console.log(userRating)
     function rateHandler(rating:number){
         user.rate(movieId,rating)
         console.log(rating)

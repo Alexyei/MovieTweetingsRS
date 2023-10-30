@@ -14,11 +14,12 @@ export default function UserMoviesSlider({title,type}:{title:string,type:MoviesT
     const [movies,setMovies]=useState<MovieFullDataT[]>([])
     const user = useUserData()
 
-    const moviesIds = user.userMovies[type].map(r=>r.id)
 
 
 
     useEffect(()=>{
+
+        const moviesIds = user.userMovies[type].map(r=>r.id)
 
             api.movie.movies(moviesIds).then(moviesResponse=>{
                 if(moviesResponse.status == 200)

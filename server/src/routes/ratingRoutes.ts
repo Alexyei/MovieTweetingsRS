@@ -6,5 +6,5 @@ import ratingController from "../controllers/rating_contoller";
 
 export default function connectRatingRoutes(router: Router) {
     const prefix = '/rating'
-    router.get(`${prefix}/rate`, authMiddleware,rateValidation, requestValidationMiddleware,  ratingController.rate);
+    router.post(`${prefix}/rate`, authMiddleware,rateValidation, requestValidationMiddleware,  ratingController.rate);
 }

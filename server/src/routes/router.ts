@@ -3,6 +3,9 @@ import connectAuthRoutes from "./authRoutes";
 import connectMovieRoutes from "./movieRoutes";
 import connectRecommendRoutes from "./recommenderRoutes";
 import connectGenreRoutes from "./genreRoutes";
+import connectRatingRoutes from "./ratingRoutes";
+import connectUserEventRoutes from "./userEventRoutes";
+import connectUserRoutes from "./userRoutes";
 
 const router = Router();
 
@@ -11,6 +14,9 @@ function createRouter() {
     connectMovieRoutes(router)
     connectRecommendRoutes(router)
     connectGenreRoutes(router)
+    connectRatingRoutes(router)
+    connectUserEventRoutes(router)
+    connectUserRoutes(router)
     //POST collector/log - сбор данных о пользователе
 
     //GET rec/pop/:userId&take=10
