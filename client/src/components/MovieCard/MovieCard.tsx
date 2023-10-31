@@ -22,7 +22,7 @@ const MovieCard = ({movie, className,hover=true}: { movie: Omit<MovieFullDataT, 
                         /> :
                         <div
                             className={"rounded-md w-full h-full flex items-center justify-center bg-gradient-to-t from-purple-500 to-pink-500"}>
-                            <h4 className={"scroll-m-20 text-sm font-semibold tracking-tight truncate"}>{movie.title}</h4>
+                            <h4 className={"scroll-m-20 px-2 text-center text-sm font-semibold tracking-tight line-clamp-3 "}>{movie.title}</h4>
                         </div>
                     }
                     { hover &&

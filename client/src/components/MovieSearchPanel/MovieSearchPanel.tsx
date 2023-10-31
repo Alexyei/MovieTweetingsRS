@@ -212,12 +212,19 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:
                         </div>
                     </div>
                 </div>
+                {movies.length ?
                 <ScrollArea className="h-96 w-full rounded-md border ">
                     {/*<div className={"min-h-screen bg-yellow-300"}></div>*/}
+
                     <div className={"flex flex-wrap gap-4 p-4"}>
                         {movies.map((el,i)=><MovieCard key={el.id} className={"w-[128px]"} movie={el}/>)}
                     </div>
                 </ScrollArea>
+                    :
+                    <div className="w-full h-96 flex items-center justify-center rounded-md border">
+                        <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">Ничего не найдено</h4>
+                    </div>
+                }
                 <div className="flex items-center justify-end space-x-2 py-4">
                     <div className="flex-1 text-sm text-muted-foreground">
                         { total ? `Показано ${skip} элементов из ${total}`: ""}

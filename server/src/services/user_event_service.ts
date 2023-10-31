@@ -7,21 +7,24 @@ class UserEventService {
     async create(userId:number,movieId:string|null,genreId:number|null,type:TypeEvent,sessionId:string) {
         const events = await dao.userEvent.getUserEvents(userId)
         if (movieId){
-            const thisMovieEvents = events.filter(e=>e.movieId)
+            const thisMovieEvents = events.filter(e=>e.movieId == movieId)
+
+            const addCountEvent = thisMovieEvents.find(e => e.event == "ADD_TO_FAVORITES_LIST")
+            const removeCountEvent = thisMovieEvents.find(e => e.event == "REMOVE_FROM_FAVORITES_LIST")
+            const buyEvent = thisMovieEvents.find(e => e.event == "BUY")
+            const addCount = addCountEvent ? addCountEvent._count.event : 0
+            const removeCount = removeCountEvent ? removeCountEvent._count.event : 0
+            const buyCount = buyEvent ? buyEvent._count.event : 0
+
             if (type == "ADD_TO_FAVORITES_LIST") {
-                const addCount = thisMovieEvents.filter(e => e.event == "ADD_TO_FAVORITES_LIST")[0]._count.event
-                const removeCount = thisMovieEvents.filter(e => e.event == "REMOVE_FROM_FAVORITES_LIST")[0]._count.event
                 if (addCount != 0 && removeCount < addCount)
                     throw ApiError.BadRequest('Элемент уже в списке');
             }
             if (type == "REMOVE_FROM_FAVORITES_LIST") {
-                const addCount = thisMovieEvents.filter(e => e.event == "ADD_TO_FAVORITES_LIST")[0]._count.event
-                const removeCount = thisMovieEvents.filter(e => e.event == "REMOVE_FROM_FAVORITES_LIST")[0]._count.event
                 if (removeCount == addCount)
                     throw ApiError.BadRequest('Элемент уже удалён');
             }
             if (type == "BUY") {
-                const buyCount = thisMovieEvents.filter(e => e.event == "BUY")[0]._count.event
                 if (buyCount != 0)
                     throw ApiError.BadRequest('Элемент уже куплен');
             }

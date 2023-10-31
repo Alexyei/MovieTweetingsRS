@@ -7,6 +7,7 @@ import {useToast} from "@/components/ui/use-toast";
 
 const StarRating = ({movieId}: { movieId: string }) => {
     const [hoveredRating,setHoveredRating] = useState(0)
+    const [loading, setLoading] = useState(false)
     const { toast } = useToast()
     const ref = useRef<HTMLDivElement>(null);
     const user = useUserData()
@@ -14,10 +15,7 @@ const StarRating = ({movieId}: { movieId: string }) => {
     if (user.isLoading) return <Skeleton className="h-8 w-[150px]"/>
 
     const userRating = user.userMovies.rated.filter(m => m.id == movieId)[0]?.rating || 0.5
-    function rateHandler(rating:number){
-        user.rate(movieId,rating)
-        console.log(rating)
-    }
+
     const starWidth = 24
     function onPointerMoveEventHandler(event:React.PointerEvent<SVGSVGElement>,index:number){
 
@@ -33,26 +31,33 @@ const StarRating = ({movieId}: { movieId: string }) => {
 
     }
 
-    function onPointerClickHandler(event:  React.MouseEvent<SVGSVGElement, MouseEvent>,index:number){
+    async function onPointerClickHandler(event:  React.MouseEvent<SVGSVGElement, MouseEvent>,index:number){
+        if (loading) return;
+        setLoading(true)
         const element = event.target as any
         const width = starWidth
         const x = event.clientX - element.getBoundingClientRect().left
-        if (x <= width / 2) {
+        const result = await user.rate(movieId,(x <= width / 2 ? index+0.5 : index+1)*2)
 
-            user.rate(movieId,index+0.5)
-        }else {
-            user.rate(movieId,index+1)
+        if (result == "success"){
+            toast({
+                description: 'Оценка сохранена!',
+            })
         }
-        toast({
-            description: 'Оценка сохранена!',
-        })
+        else{
+            toast({
+                variant: "destructive",
+                description: 'Ошибка при сохранении рейтинга!',
+            })
+        }
+        setLoading(false)
     }
 
     function getColor(index:number, half:boolean){
         const n = half ? 0.5 : 1
         if (index + n <= hoveredRating) return  "fill-destructive text-destructive"
 
-        if (index + n <= userRating) return  "fill-primary text-primary"
+        if (index + n <= userRating/2) return  "fill-primary text-primary"
 
         return "text-primary"
     }

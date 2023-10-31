@@ -45,12 +45,12 @@ const GenreSelector = ({genres,onGenresChanged}:{genres:GenreT[],onGenresChanged
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className=" justify-between"
+                    className=" justify-between w-20"
                 >
-                    {values.length
+                    <span className={"text-center w-full"}>{values.length
                         ?
                         `${values.length}`
-                        : "Все"}
+                        : "Все"}</span>
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
@@ -73,9 +73,9 @@ const GenreSelector = ({genres,onGenresChanged}:{genres:GenreT[],onGenresChanged
                                         values.includes(genre.id) ? "opacity-100" : "opacity-0"
                                     )}
                                 />
-                                <div className={"flex items-center justify-between w-full mr-1"}>
+                                <div className={"flex items-center justify-between w-full "}>
                                     <p>{genre.name}</p>
-                                    <Badge variant="destructive">{genre.moviesCount}</Badge>
+                                    <Badge className={"mr-1"}  variant="destructive">{genre.moviesCount}</Badge>
                                 </div>
                             </CommandItem>
                         ))}

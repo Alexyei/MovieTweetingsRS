@@ -1,8 +1,17 @@
 import {body} from "express-validator";
 
 export const createUserEventValidation = [
-    body('genreID', 'ID фильма должен быть строкой или null').optional().isString(),
-    body('movieID', 'ID фильма должен быть строкой или null').optional().isString().custom((value, {req }) => {
+    body('genreID').custom((value, {req }) => {
+        if (value != null && typeof req.body['genreID'] != 'number') {
+            throw new Error('ID категории должен быть числом или null')
+        }
+        return true
+    }),
+    body('movieID', ).custom((value, {req }) => {
+        if (value != null && typeof req.body['movieID'] != 'string') {
+            throw new Error('ID фильма должен быть строкой или null')
+        }
+
         if (value == null && req.body['genreID'] == null) {
             throw new Error('Должен быть передан только один из двух: (movieID, genreID)');
         }

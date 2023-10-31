@@ -11,8 +11,8 @@ interface UserContextType {
     userMovies: UserMoviesT,
     addToList: (movieId: string) => void
     removeFromList: (movieId: string) => void,
-    buy: (movieId: string) => void,
-    rate: (movieId: string, rating: number) => void,
+    buy: (movieId: string) => Promise<"success"| "error">,
+    rate: (movieId: string, rating: number) => Promise<"success"| "error">,
     signIn: (values: { login: string, password: string }) => ReturnType<typeof api.auth.signIn>,
     signUp: (values: {
         login: string,
@@ -33,8 +33,8 @@ const UserDataContext = createContext<UserContextType>(
         signUp: () => new Promise(() => ({status: 400, message: ""})),
         addToList: () => null,
         removeFromList: () => null,
-        buy: () => null,
-        rate: () => null,
+        buy: () => new Promise<"success"| "error">(() => null),
+        rate: () => new Promise<"success"| "error">(() => null),
         isLoading: true
     }
 )
@@ -114,34 +114,39 @@ export function UserDataProvider({children}: UserDataProviderProps) {
 
     async function buy(movieId: string) {
         try {
-            // const response = await api.authAPI.userData(100)
-            // if (response.status == 200) {setUser(response.response)}
-            setUserMovies((prev) => {
+            const response = await api.userEvent.create(movieId,null,"BUY")
+            if (response.status == 200) {
+                setUserMovies((prev) => {
+                    return {...prev, purchased: [...prev.purchased, {id: movieId}]}
+                })
 
-
-                return {...prev, purchased: [...prev.purchased, {id: movieId}]}
-            })
-
-            //try {api.authAPI.userData(100).then()}catch(e){}
+                return "success"
+            }
+            return "error"
         } catch (e) {
+            return "error"
         }
     }
 
     async function rate(movieId: string, rating: number) {
         try {
-            // const response = await api.authAPI.userData(100)
-            // if (response.status == 200) {setUser(response.response)}
-            setUserMovies((prev) => {
+            const response = await api.rating.rate(movieId,rating)
 
+            if (response.status == 200){
+
+            setUserMovies((prev) => {
                 let movie = prev.rated.filter(m => m.id == movieId)[0]
                 if (movie) movie.rating = rating
                 else movie = {id: movieId, rating}
 
                 return {...prev, rated: [...prev.rated.filter(m => m.id != movieId), movie]}
             })
+                return "success"
+            }
 
-            //try {api.authAPI.userData(100).then()}catch(e){}
+            return "error"
         } catch (e) {
+            return "error"
         }
     }
 
