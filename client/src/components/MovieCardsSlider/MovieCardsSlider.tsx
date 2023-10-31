@@ -45,7 +45,7 @@ const MovieCardsSlider = ({title,movies}:{title:string,movies:MovieFullDataT[]})
 
                         return (
                             <SwiperSlide key={i}>
-                                <HoverTracer data={{url:'d'}}>
+                                <HoverTracer movieID={movie.id}>
                                     <MovieCard movie={movie}  className={`w-32 ${i<movies.length - 1 ? "mr-4":""}`}></MovieCard>
                                 </HoverTracer>
                             </SwiperSlide>

@@ -9,20 +9,6 @@ import StarRating from "@/components/StarRating/StarRating";
 import {getServerAPI} from "@/api/server_api";
 import {MovieFullDataT} from "@/types/movie.types";
 
-// function getData(id: string) {
-//     return new Promise((resolve, reject) => {
-//         if (id != "2") setTimeout(() => resolve(
-//             {
-//                 'title': 'dfd',
-//                 'year': 2011,
-//                 'id': '100',
-//                 'description': 'lorem',
-//                 'poster_path': 'http://',
-//                 'mean_rating': 9.1
-//             }), 2000)
-//         else setTimeout(() => reject(new Error()))
-//     })
-// }
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: string } }) {
@@ -34,13 +20,12 @@ export default async function Page({params}: { params: { id: string } }) {
 
     const movie = response.response as MovieFullDataT
 
-    // let data: any
-    // try {
-    //     data = await getData(params.id)
-    // } catch (e) {
-    //     notFound()
-    // }
 
+    try{
+        const response = await api.userEvent.create(movie.id,null,"MORE_DETAILS")
+    }catch (e){
+
+    }
 
     return (
         <Card>
@@ -74,7 +59,6 @@ export default async function Page({params}: { params: { id: string } }) {
                             <StarRating movieId={movie.id}/>
                         </div>
                         <div>
-                            {/*<Button>Купить</Button>*/}
                             <WatchBuyMovieButton movieId={movie.id}/>
                         </div>
                     </div>

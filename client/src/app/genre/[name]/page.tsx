@@ -14,18 +14,14 @@ const api = getServerAPI()
 // }
 export default async function Page({ params }: { params: { name: string } }){
     const response = await api.genre.genreData(params.name)
-    // console.log(response.status == 200 ? response.response : [])
+
     if (response.status != 200)
         notFound()
 
     const genreData = response.response
 
-    // get genre id by genre name
-
-    const id = 1;
-
     try {
-        //fetch log GENRE_VIEW
+        const response = await api.userEvent.create(null,genreData.id,'GENRE_VIEW')
     }
     catch (e) {}
 

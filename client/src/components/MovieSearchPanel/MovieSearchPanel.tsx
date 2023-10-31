@@ -12,6 +12,7 @@ import {Skeleton} from "@/components/ui/skeleton";
 import MovieCard from "@/components/MovieCard/MovieCard";
 import {getClientAPI} from "@/api/client_api";
 import {MovieFullDataT, MovieOrderingT} from "@/types/movie.types";
+import HoverTracer from "@/components/HoverTracer/HoverTracer";
 
 
 export type SearchParamsT = {
@@ -217,7 +218,7 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:
                     {/*<div className={"min-h-screen bg-yellow-300"}></div>*/}
 
                     <div className={"flex flex-wrap gap-4 p-4"}>
-                        {movies.map((el,i)=><MovieCard key={el.id} className={"w-[128px]"} movie={el}/>)}
+                        {movies.map((el,i)=><HoverTracer key={el.id} movieID={el.id}><MovieCard  className={"w-[128px]"} movie={el}/></HoverTracer>)}
                     </div>
                 </ScrollArea>
                     :

@@ -9,8 +9,8 @@ const api = getClientAPI()
 interface UserContextType {
     user: UserT | null;
     userMovies: UserMoviesT,
-    addToList: (movieId: string) => void
-    removeFromList: (movieId: string) => void,
+    addToList: (movieId: string) => Promise<"success"| "error">,
+    removeFromList: (movieId: string) => Promise<"success"| "error">,
     buy: (movieId: string) => Promise<"success"| "error">,
     rate: (movieId: string, rating: number) => Promise<"success"| "error">,
     signIn: (values: { login: string, password: string }) => ReturnType<typeof api.auth.signIn>,
@@ -31,8 +31,8 @@ const UserDataContext = createContext<UserContextType>(
         logout: () => new Promise<null>(() => null),
         signIn: () => new Promise(() => ({status: 400, message: ""})),
         signUp: () => new Promise(() => ({status: 400, message: ""})),
-        addToList: () => null,
-        removeFromList: () => null,
+        addToList: () => new Promise<"success"| "error">(() => null),
+        removeFromList: () => new Promise<"success"| "error">(() => null),
         buy: () => new Promise<"success"| "error">(() => null),
         rate: () => new Promise<"success"| "error">(() => null),
         isLoading: true
@@ -88,27 +88,31 @@ export function UserDataProvider({children}: UserDataProviderProps) {
 
     async function addToList(movieId: string) {
         try {
-            // const response = await api.authAPI.userData(100)
-            // if (response.status == 200) {setUser(response.response)}
+            const response = await api.userEvent.create(movieId,null,"ADD_TO_FAVORITES_LIST")
+            if (response.status == 200) {
             setUserMovies((prev) => {
                 return {...prev, liked: [...prev.liked, {id: movieId}]}
             })
-
-            //try {api.authAPI.userData(100).then()}catch(e){}
+                return "success"
+            }
+            return "error"
         } catch (e) {
+            return "error"
         }
     }
 
     async function removeFromList(movieId: string) {
         try {
-            // const response = await api.authAPI.userData(100)
-            // if (response.status == 200) {setUser(response.response)}
+            const response = await api.userEvent.create(movieId,null,"REMOVE_FROM_FAVORITES_LIST")
+            if (response.status == 200) {
             setUserMovies((prev) => {
                 return {...prev, liked: prev.liked.filter(m => m.id != movieId)}
             })
-
-            //try {api.authAPI.userData(100).then()}catch(e){}
+                return "success"
+            }
+            return "error"
         } catch (e) {
+            return "error"
         }
     }
 
