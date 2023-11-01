@@ -1,0 +1,61 @@
+"use client"
+
+import {Bar, BarChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts"
+import React from "react";
+import {EventTypeT} from "@/types/user_event.types";
+
+
+export function ConversionChart({data}: { data: { type: EventTypeT, no_buy: number, buy: number }[] }) {
+    return (
+        <ResponsiveContainer width="100%" height={350}>
+            <BarChart data={data}>
+                <XAxis
+                    dataKey="type"
+                    fontSize={12}
+                    tickLine={false}
+                    axisLine={true}
+                    style={{fill: "hsl(var(--muted-foreground)",}}
+                    tickFormatter={(value) => value.split("_")[0].toLowerCase()}
+                />
+                <YAxis
+                    style={{fill: "hsl(var(--muted-foreground)",}}
+                    fontSize={12}
+                    tickLine={true}
+                    axisLine={true}
+                    tickFormatter={(value) => `${value / 1000}K`}
+                />
+                <Tooltip
+                    cursor={{fill: 'hsl(var(--secondary))'}}
+                    content={({active, payload}) => {
+
+                        if (active && payload && payload.length) {
+                            console.log(payload[0])
+                            return (
+                                <div className="rounded-lg border bg-background p-2 shadow-sm">
+                                    <div className="grid grid-cols-2 gap-2 items-center">
+                                        <span className="text-[0.70rem] uppercase text-muted-foreground">Тип</span>
+                                        <span
+                                            className="font-bold text-muted-foreground">{payload[0].payload.type.split("_")[0]}</span>
+                                        <span
+                                            className="text-[0.70rem] uppercase text-muted-foreground">Без покупки</span>
+                                        <span className="font-bold">{payload[0].payload.no_buy}</span>
+                                        <span
+                                            className="text-[0.70rem] uppercase text-muted-foreground">С покупкой</span>
+                                        <span className="font-bold">{payload[0].payload.buy}</span>
+                                    </div>
+                                </div>
+                            )
+                        }
+
+                        return null
+                    }}
+                />
+                <Bar dataKey="no_buy" className={"fill-primary"} radius={[4, 4, 0, 0]}
+                     activeBar={<Rectangle fill="hsl(var(--primary))" stroke="hsl(var(--foreground))"/>}/>
+                <Bar dataKey="buy" className={"fill-destructive"} radius={[4, 4, 0, 0]}
+                     activeBar={<Rectangle fill="hsl(var(--destructive))" stroke="hsl(var(--foreground))"/>}/>
+            </BarChart>
+        </ResponsiveContainer>
+    )
+}
+

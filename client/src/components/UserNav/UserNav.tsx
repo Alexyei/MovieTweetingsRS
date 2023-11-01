@@ -3,7 +3,7 @@ import {
     DropdownMenu,
     DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
     DropdownMenuSeparator, DropdownMenuShortcut,
-    DropdownMenuTrigger,DropdownMenuLabel
+    DropdownMenuTrigger, DropdownMenuLabel
 } from "@/components/ui/dropdown-menu";
 import {Button} from "@/components/ui/button";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
@@ -29,7 +29,9 @@ export function UserNav() {
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                     <Avatar className="h-8 w-8">
-                        <AvatarImage src={`https://api.dicebear.com/7.x/identicon/svg?seed=${user.user.login || user.user.id}`} alt="@avatar" />
+                        <AvatarImage
+                            src={`https://api.dicebear.com/7.x/identicon/svg?seed=${user.user.login || user.user.id}`}
+                            alt="@avatar"/>
                         <AvatarFallback>AV</AvatarFallback>
                     </Avatar>
                 </Button>
@@ -43,7 +45,7 @@ export function UserNav() {
                         </p>
                     </div>
                 </DropdownMenuLabel>
-                <DropdownMenuSeparator />
+                <DropdownMenuSeparator/>
                 <DropdownMenuGroup>
                     {/*<DropdownMenuItem >*/}
                     {/*    <Link className='flex w-full justify-between' href={'/'}>*/}
@@ -53,25 +55,34 @@ export function UserNav() {
                     {/*</DropdownMenuItem>*/}
                     <DropdownMenuItem>
                         <Link className='flex w-full justify-between' href={'/my/#purchased'}>
-                        Мои фильмы
-                        <Badge className='ml-auto bg-primary'>{user.userMovies.purchased.length}</Badge>
+                            Мои фильмы
+                            <Badge className='ml-auto bg-primary'>{user.userMovies.purchased.length}</Badge>
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link className='flex w-full justify-between' href={'/my/#liked'}>
-                        Избранное
-                            <Badge  variant="secondary">{user.userMovies.liked.length}</Badge>
+                            Избранное
+                            <Badge variant="secondary">{user.userMovies.liked.length}</Badge>
                         </Link>
 
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link className='flex w-full justify-between' href={'/my/#rated'}>
                             Оценённые
-                            <Badge  variant="secondary">{user.userMovies.rated.length}</Badge>
+                            <Badge variant="secondary">{user.userMovies.rated.length}</Badge>
                         </Link>
                     </DropdownMenuItem>
+                    {(user.user.role == 'ADMIN') &&
+                        <>
+                            <DropdownMenuSeparator/>
+                            <DropdownMenuItem>
+                                <Link className='flex w-full justify-between' href={'/analytics/overview'}>
+                                    Аналитика
+                                </Link>
+                            </DropdownMenuItem>
+                        </>}
                 </DropdownMenuGroup>
-                <DropdownMenuSeparator />
+                <DropdownMenuSeparator/>
                 <LogoutButton/>
             </DropdownMenuContent>
         </DropdownMenu>
