@@ -1,11 +1,48 @@
 import {getServerAPI} from "@/api/server_api";
 import ServerAdminRoute from "@/components/routes/ServerAdminRoute/ServerAdminRoute";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import {Overview} from "@/components/temp/overview";
-import {RecentSales} from "@/components/temp/recent-sales";
 import {RatingChart} from "@/components/charts/RatingChart/RatingChart";
 import {ConversionChart} from "@/components/charts/ConversionChart/ConversionChart";
+import {ReactNode} from "react";
+import {CandlestickChart, Cookie, RussianRuble, Users2} from "lucide-react";
+import {RecentSales} from "@/components/RecentSales/RecentSales";
+import {UserT} from "@/types/user.types";
+import {TopSales} from "@/components/TopSales/TopSales";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import Link from "next/link";
+import {SearchUser} from "@/components/SearchUser/SearchUser";
+import RecentSalesTable from "@/components/tables/RecentSales/RecentSalesTable";
+import RecentSalesTableCustom from "@/components/tables/RecentSalesCustom/RecentSalesCustom";
 
+
+function OverviewCard({title,description,value,icon}:{title:string, value:string, description:string, icon:ReactNode}){
+    return (
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                    {title}
+                </CardTitle>
+                {/*<svg*/}
+                {/*    xmlns="http://www.w3.org/2000/svg"*/}
+                {/*    viewBox="0 0 24 24"*/}
+                {/*    fill="none"*/}
+                {/*    stroke="currentColor"*/}
+                {/*    strokeLinecap="round"*/}
+                {/*    strokeLinejoin="round"*/}
+                {/*    strokeWidth="2"*/}
+                {/*    className="h-4 w-4 text-muted-foreground"*/}
+                {/*>*/}
+                {/*    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />*/}
+                {/*</svg>*/}
+                {icon}
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold">{value}</div>
+                <p className="text-xs text-muted-foreground">{description}</p>
+            </CardContent>
+        </Card>
+    )
+}
 
 const api = getServerAPI()
 export default async function Page(){
@@ -60,6 +97,10 @@ export default async function Page(){
         {type: "REMOVE_FROM_FAVORITES_LIST",no_buy:7000,buy:350},
         {type: "BUY",no_buy:970,buy:970},
     ] as any[]
+
+    const salesData = [{user:{id:1,login:"длинный_логин",email:"Длинное_email@email.ru",role:"USER"} as UserT,movie:{id:"12345",title:"Длинное название длинного фильма"}}]
+    const topSalesData = [{movie:{id:"12345",title:"Длинное название длинного фильма",purchased:1000}}]
+
     return (
         <ServerAdminRoute>
             <Card className="w-full">
@@ -67,109 +108,27 @@ export default async function Page(){
                     <CardTitle>Панель аналитики</CardTitle>
                 </CardHeader>
                 <CardContent>
+
+                        {/*<Tabs defaultValue="overview" className={"mb-4"}>*/}
+                        {/*    <TabsList className={"flex-wrap"}>*/}
+                        {/*        <TabsTrigger value="overview"><Link href={"/"}>Обзор</Link></TabsTrigger>*/}
+                        {/*        <TabsTrigger value="users">Пользователи</TabsTrigger>*/}
+                        {/*        <TabsTrigger value="movies">Фильмы</TabsTrigger>*/}
+                        {/*    </TabsList>*/}
+                        {/*    <TabsContent value="users" className={"space-y-4 mt-4"}>*/}
+                        {/*        <h4 className={"text-xl font-semibold leading-none tracking-tight"}>Аналитика по пользователю</h4>*/}
+                        {/*        <SearchUser/>*/}
+                        {/*    </TabsContent>*/}
+                        {/*    <TabsContent value="movies">Change your password here.</TabsContent>*/}
+                        {/*</Tabs>*/}
+
+
                     <div className={"flex w-full flex-col gap-4"}>
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                        <Card>
-                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">
-                                    Total Revenue
-                                </CardTitle>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="h-4 w-4 text-muted-foreground"
-                                >
-                                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                                </svg>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="text-2xl font-bold">$45,231.89</div>
-                                <p className="text-xs text-muted-foreground">
-                                    +20.1% from last month
-                                </p>
-                            </CardContent>
-                        </Card>
-                        <Card>
-                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">
-                                    Subscriptions
-                                </CardTitle>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="h-4 w-4 text-muted-foreground"
-                                >
-                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                    <circle cx="9" cy="7" r="4" />
-                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                                </svg>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="text-2xl font-bold">+2350</div>
-                                <p className="text-xs text-muted-foreground">
-                                    +180.1% from last month
-                                </p>
-                            </CardContent>
-                        </Card>
-                        <Card>
-                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">Sales</CardTitle>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="h-4 w-4 text-muted-foreground"
-                                >
-                                    <rect width="20" height="14" x="2" y="5" rx="2" />
-                                    <path d="M2 10h20" />
-                                </svg>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="text-2xl font-bold">+12,234</div>
-                                <p className="text-xs text-muted-foreground">
-                                    +19% from last month
-                                </p>
-                            </CardContent>
-                        </Card>
-                        <Card>
-                            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle className="text-sm font-medium">
-                                    Active Now
-                                </CardTitle>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    className="h-4 w-4 text-muted-foreground"
-                                >
-                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                                </svg>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="text-2xl font-bold">+573</div>
-                                <p className="text-xs text-muted-foreground">
-                                    +201 since last hour
-                                </p>
-                            </CardContent>
-                        </Card>
+                        <OverviewCard title={"Посетителей за месяц"} value={"1000"} description={"+20.1% с прошлого месяца"} icon={<Users2 className="h-6 w-6 text-muted-foreground" strokeWidth={2} />}/>
+                        <OverviewCard title={"Конверсия"} value={"10,07%"} description={"-2.1% с прошлого месяца"} icon={<RussianRuble className="h-6 w-6 text-muted-foreground" strokeWidth={2} />}/>
+                        <OverviewCard title={"Сессии"} value={"1579"} description={"+115.1% с прошлого месяца"} icon={<Cookie className="h-6 w-6 text-muted-foreground" strokeWidth={2} />}/>
+                        <OverviewCard title={"Продажи"} value={"157"} description={"+15.1% с прошлого месяца"} icon={<CandlestickChart className="h-6 w-6 text-muted-foreground" strokeWidth={2} />}/>
                     </div>
                     <div className="grid w-full gap-4 lg:grid-cols-2">
                         <Card >
@@ -190,29 +149,13 @@ export default async function Page(){
                         </Card>
                     </div>
                         <div className="grid  w-full gap-4 lg:grid-cols-2">
-                        <Card >
-                            <CardHeader>
-                                <CardTitle>Recent Sales</CardTitle>
-                                <CardDescription>
-                                    You made 265 sales this month.
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <RecentSales />
-                            </CardContent>
-                        </Card>
-                            <Card >
-                                <CardHeader>
-                                    <CardTitle>Recent Sales</CardTitle>
-                                    <CardDescription>
-                                        You made 265 sales this month.
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <RecentSales />
-                                </CardContent>
-                            </Card>
+                            {/*<RecentSales salesData={ Array.from({length: 10}, () => salesData).flat()}/>*/}
+                            {/*<TopSales topSalesData={ Array.from({length: 10}, () => topSalesData).flat()}/>*/}
+                            {/*<RecentSalesTable/>*/}
+                            <RecentSalesTableCustom/>
+                            <RecentSalesTableCustom/>
                         </div>
+
                     </div>
                 </CardContent>
             </Card>
