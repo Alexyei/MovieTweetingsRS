@@ -1,0 +1,82 @@
+import Link from "next/link";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import * as React from "react";
+import {UserT} from "@/types/user.types";
+import MovieCard from "@/components/MovieCard/MovieCard";
+import {ArrowUpDown, Star} from "lucide-react";
+import {Badge} from "@/components/ui/badge";
+import {MovieFullDataT} from "@/types/movie.types";
+import {Button} from "@/components/ui/button";
+
+export function baseHeader(title:string){
+    return ({column}: any) => {
+    return (
+        <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+            {title}
+            <ArrowUpDown className="ml-2 h-4 w-4"/>
+        </Button>
+    )
+}}
+export const userHeader = baseHeader("Пользователь")
+
+export const movieHeader = baseHeader("Фильм")
+
+export const dateHeader = baseHeader("Дата")
+
+export const userCell = ({row}: any) => {
+    const data = row.original
+    const user = data.user as UserT
+    return (
+        <Link href={`/analytics/user/${user.id}`}
+              className="flex items-center hover:bg-secondary p-2 rounded-md h-[128px]">
+            <Avatar className="h-9 w-9">
+                <AvatarImage
+                    src={`https://api.dicebear.com/7.x/identicon/svg?seed=${user.login || user.id}`}
+                    alt="@avatar"/>
+                <AvatarFallback>AV</AvatarFallback>
+            </Avatar>
+            <div className="ml-4 space-y-1 w-[100px]">
+                <p className="text-sm font-medium leading-none">{user.login}</p>
+                <p className="text-sm text-muted-foreground break-words line-clamp-3">
+                    {user.email}
+                </p>
+            </div>
+        </Link>
+    )
+}
+
+export const movieCell = ({row}: any) => {
+    const data = row.original
+    const movie = data.movie as MovieFullDataT
+    return (
+        <Link href={`/analytics/movie/${movie.id}`}
+              className={"grid grid-cols-[auto_1fr] gap-3 items-center hover:bg-secondary p-2 rounded-md"}>
+            <MovieCard link={false} movie={movie} hover={false} className={`w-20`}></MovieCard>
+            <div className={"w-[150px] "}>
+                <h4 className={"text-primary scroll-m-20 text-sm font-semibold tracking-tight line-clamp-3 leading-none mb-2"}>{movie.title}</h4>
+                <div className={"flex items-center mb-1 text-foreground"}>
+                    <Star className={"h-3 w-3 fill-foreground  mr-1"}/>
+                    <p className={"text-xs  leading-none line-clamp-5 mr-1"}>{movie.mean_rating.toFixed(1)} / 10.0</p>
+                    <p className={"text-xs  leading-none line-clamp-5"}>| {movie.year}</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    {movie.genres.map((genre, i) => {
+                        return <Badge className={"text-xs"}>{genre.name}</Badge>
+                    })}
+                </div>
+            </div>
+        </Link>
+    )
+}
+
+export const dateCell = ({ row }:any) => {
+    const date = new Date(row.getValue("date"));
+    return <div className="text-md font-bold text-center">{date.toLocaleDateString()}</div>
+}
+
+export const countCell = ({ row }:any) => {
+    return <div className="text-md font-bold text-center">{row.getValue("count")}</div>
+}

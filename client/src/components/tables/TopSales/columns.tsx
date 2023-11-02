@@ -5,6 +5,7 @@ import {MovieFullDataT} from "@/types/movie.types";
 
 import * as React from "react";
 import {
+    baseHeader, countCell,
     dateCell,
     dateHeader,
     movieCell,
@@ -13,13 +14,12 @@ import {
     userHeader
 } from "@/components/tables/BaseTable/base-columns";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type SalesT = { user: UserT, movie: MovieFullDataT,date:string }
+
+export type TopSalesT = { user: UserT, movie: MovieFullDataT,count:number }
 
 
 
-export const columns: ColumnDef<SalesT & {filterField:string}>[] = [
+export const columns: ColumnDef<TopSalesT & {filterField:string}>[] = [
     {
         accessorKey: "user.login",
         header: userHeader,
@@ -31,9 +31,9 @@ export const columns: ColumnDef<SalesT & {filterField:string}>[] = [
         cell: movieCell
     },
     {
-        accessorKey: "date",
-        header: dateHeader,
-        cell: dateCell
+        accessorKey: "count",
+        header: baseHeader("Продано"),
+        cell: countCell
     },
     {
         accessorKey: "filterField",

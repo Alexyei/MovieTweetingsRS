@@ -66,7 +66,7 @@ export function BaseTable<TData, TValue>({
             <CardHeader>
                 <CardTitle className={"px-1"}>{header}</CardTitle>
             </CardHeader>
-            <CardContent >
+            <CardContent className={"px-2"}>
                 <div className={"w-full  px-1  "}>
                     <div className="flex items-center py-4 ">
                         <Input

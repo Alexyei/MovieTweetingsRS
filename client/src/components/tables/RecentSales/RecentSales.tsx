@@ -1,5 +1,5 @@
-import {SalesT} from "@/components/tables/RecentSalesCustom/columns";
-import {columns} from "@/components/tables/RecentSalesCustom/columns";
+import {SalesT} from "@/components/tables/RecentSales/columns";
+import {columns} from "@/components/tables/RecentSales/columns";
 import {BaseTable} from "@/components/tables/BaseTable/BaseTable";
 
 async function getData(): Promise<SalesT[]> {
@@ -9,7 +9,7 @@ async function getData(): Promise<SalesT[]> {
     ]
 }
 
-export default async function RecentSalesTableCustom() {
+export default async function RecentSalesTable() {
     const data = await getData()
 
     const dataWithFilterField = data.map(r=>({...r,
@@ -23,7 +23,7 @@ export default async function RecentSalesTableCustom() {
 
     return (
         // <div className="container mx-auto py-10">
-        <BaseTable header={"Недавние продажи"} filterPlaceholder={"Пользователь, фильм"} columns={columns} data={dataWithFilterField} />
+        <BaseTable header={"Недавние продажи"} filterPlaceholder={"Пользователь, фильм..."} columns={columns} data={dataWithFilterField} />
         // </div>
     )
 }
