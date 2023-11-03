@@ -7,6 +7,7 @@ export type MovieFullDataT = {
     description: string | null
     poster_path: string | null,
     mean_rating: number,
+    count_ratings: number,
     genres: {name:string, id:number}[]
 }
 

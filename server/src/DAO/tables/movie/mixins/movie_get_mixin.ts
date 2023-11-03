@@ -87,7 +87,8 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
 
         return movieData.map((movieData) => ({
             ...movieData,
-            mean_rating: averageRatings.find((ar) => ar.movieId == movieData.id)!._avg.rating || 0
+            mean_rating: averageRatings.find((ar) => ar.movieId == movieData.id)!._avg.rating || 0,
+            count_ratings: averageRatings.find((ar) => ar.movieId == movieData.id)!._count.rating || 0
         }))
     }
 
@@ -98,6 +99,9 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                 where: {type: 'EXPLICIT', 'movieId': {in: movieIds},},
                 _avg: {
                     rating: true
+                },
+                _count: {
+                    rating:true
                 }
             });
         }
@@ -106,6 +110,9 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
             where: {type: 'EXPLICIT', 'movieId': {in: movieIds},},
             _avg: {
                 rating: true
+            },
+            _count: {
+                rating:true
             }
         });
     }

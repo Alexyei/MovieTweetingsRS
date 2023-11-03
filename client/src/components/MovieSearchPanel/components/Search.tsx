@@ -1,27 +1,32 @@
 import {useDeferredValue, useEffect, useRef, useState} from "react";
 import {Input} from "@/components/ui/input";
 
-const Search = ({onInputChanged}:{onInputChanged:(input:string)=>any})=>{
+const Search = ({onInputChanged,placeholder="",className=""}:{onInputChanged:(input:string)=>any,className?:string,placeholder?:string})=>{
     const isMounted = useRef(false)
     const [searchInput, setSearchInput] = useState("")
     const deferredInput = useDeferredValue(searchInput)
 
+
+
     useEffect(()=>{
+        console.log(isMounted.current,deferredInput)
         if (isMounted.current){
             onInputChanged(deferredInput)
         }
         else {
             isMounted.current = true
         }
+
+
     },[deferredInput])
 
 
     return (
         <Input
-            placeholder="Найдётся всё..."
+            placeholder={placeholder ? placeholder:"Найдётся всё..."}
             value={searchInput}
             onChange={(e)=>setSearchInput(e.target.value)}
-            className="w-full"
+            className={"w-full"+className}
         />
     )
 }

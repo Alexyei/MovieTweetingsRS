@@ -5,21 +5,22 @@ import {MovieFullDataT} from "@/types/movie.types";
 
 import * as React from "react";
 import {
-    baseHeader, countCell,
+    baseHeader,
     dateCell,
     dateHeader,
     movieCell,
-    movieHeader,
+    movieHeader, similarityCell, typeSimilarityCell,
     userCell,
     userHeader
 } from "@/components/tables/BaseTable/base-columns";
 
 
-export type TopSalesT = { user: UserT, movie: MovieFullDataT,count:number }
+export type MovieSalesT = { date:string,user: UserT, }
 
 
 
-export const columns: ColumnDef<TopSalesT & {filterField:string}>[] = [
+export const columns: ColumnDef<MovieSalesT & {filterField:string}>[] = [
+
     {
         accessorKey: "user.login",
         header: userHeader,
@@ -30,18 +31,9 @@ export const columns: ColumnDef<TopSalesT & {filterField:string}>[] = [
         }
     },
     {
-        accessorKey: "movie.title",
-        header: movieHeader,
-        cell: ({row}: any) => {
-            const data = row.original
-            const movie = data.movie as MovieFullDataT
-            return movieCell(movie)
-        }
-    },
-    {
-        accessorKey: "count",
-        header: baseHeader("Продано"),
-        cell: countCell
+        accessorKey: "date",
+        header: dateHeader,
+        cell: dateCell
     },
     {
         accessorKey: "filterField",

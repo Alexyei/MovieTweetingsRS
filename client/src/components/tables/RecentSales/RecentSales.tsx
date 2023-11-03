@@ -4,8 +4,8 @@ import {BaseTable} from "@/components/tables/BaseTable/BaseTable";
 
 async function getData(): Promise<SalesT[]> {
     return [
-        {user:{id:1,login:"длинный_логин",email:"Длинное_email@email.ru",role:"USER"}, date: "2023-10-02T07:41:47.267Z", movie:{id:"12345",title:"Длинное название длинного фильма",mean_rating:7.7,year:2010,description:"dd",poster_path:null,genres:[{id:1,name:'Comedy'},{id:2,name:'Drama'}]}},
-        {user:{id:1,login:"длинный_логин",email:"Длинное_email@email.ru",role:"USER"}, date: "2023-10-02T07:41:47.267Z", movie:{id:"12345",title:"Длинное название длинного фильма",mean_rating:7.7,year:2010,description:"dd",poster_path:null,genres:[{id:1,name:'Comedy'},{id:3,name:'Action'}]}},
+        {user:{id:1,login:"длинный_логин",email:"Длинное_email@email.ru",role:"USER"}, date: "2023-10-02T07:41:47.267Z", movie:{id:"12345",count_ratings:10,title:"Длинное название длинного фильма",mean_rating:7.7,year:2010,description:"dd",poster_path:null,genres:[{id:1,name:'Comedy'},{id:2,name:'Drama'}]}},
+        {user:{id:1,login:"длинный_логин",email:"Длинное_email@email.ru",role:"USER"}, date: "2023-10-02T07:41:47.267Z", movie:{id:"12345",count_ratings:10,title:"Длинное название длинного фильма",mean_rating:7.7,year:2010,description:"dd",poster_path:null,genres:[{id:1,name:'Comedy'},{id:3,name:'Action'}]}},
     ]
 }
 

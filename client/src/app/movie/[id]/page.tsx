@@ -33,7 +33,7 @@ export default async function Page({params}: { params: { id: string } }) {
             <CardContent className="space-y-4">
                 <div className="grid gap-5 sm:grid-cols-[300px_1fr] mx-auto">
                     <div className="relative">
-                        <MovieCard className="w-full max-w-[300px]  justify-self-center" movie={movie}
+                        <MovieCard link={false} className="w-full max-w-[300px]  justify-self-center" movie={movie}
                                    hover={false}/>
                         <div className="absolute top-4 right-4">
                             <LikeUnlikeButton movieId={movie.id}/>
@@ -54,7 +54,7 @@ export default async function Page({params}: { params: { id: string } }) {
                             </div>
                         </div>
                         <div>
-                            <small className='text-sm font-medium leading-none'>Средняя оценка: <span
+                            <small className='text-sm font-medium leading-none'>Средняя оценка ({movie.count_ratings}): <span
                                 className="text-lg font-semibold text-primary">{movie.mean_rating.toFixed(1)} / 10.0</span></small>
                             <StarRating movieId={movie.id}/>
                         </div>

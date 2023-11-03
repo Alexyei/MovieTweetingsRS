@@ -10,8 +10,10 @@ import {Button} from "@/components/ui/button";
 
 export function baseHeader(title:string){
     return ({column}: any) => {
+
     return (
         <Button
+            className={"w-full"}
             variant="ghost"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -26,19 +28,18 @@ export const movieHeader = baseHeader("Фильм")
 
 export const dateHeader = baseHeader("Дата")
 
-export const userCell = ({row}: any) => {
-    const data = row.original
-    const user = data.user as UserT
+export const userCell = (user:UserT,fullHeight:boolean = true) => {
+
     return (
-        <Link href={`/analytics/user/${user.id}`}
-              className="flex items-center hover:bg-secondary p-2 rounded-md h-[128px]">
+        <Link href={`/analytics/user/${user.id}` }
+              className={`flex items-center hover:bg-secondary p-2 rounded-md pl-2 ${fullHeight ? "h-[120px]":""}`}>
             <Avatar className="h-9 w-9">
                 <AvatarImage
                     src={`https://api.dicebear.com/7.x/identicon/svg?seed=${user.login || user.id}`}
                     alt="@avatar"/>
                 <AvatarFallback>AV</AvatarFallback>
             </Avatar>
-            <div className="ml-4 space-y-1 w-[100px]">
+            <div className="ml-4 space-y-1 w-full max-w-[140px]">
                 <p className="text-sm font-medium leading-none">{user.login}</p>
                 <p className="text-sm text-muted-foreground break-words line-clamp-3">
                     {user.email}
@@ -48,9 +49,8 @@ export const userCell = ({row}: any) => {
     )
 }
 
-export const movieCell = ({row}: any) => {
-    const data = row.original
-    const movie = data.movie as MovieFullDataT
+export const movieCell = (movie: MovieFullDataT) => {
+
     return (
         <Link href={`/analytics/movie/${movie.id}`}
               className={"grid grid-cols-[auto_1fr] gap-3 items-center hover:bg-secondary p-2 rounded-md"}>
@@ -64,7 +64,7 @@ export const movieCell = ({row}: any) => {
                 </div>
                 <div className="flex flex-wrap gap-2">
                     {movie.genres.map((genre, i) => {
-                        return <Badge className={"text-xs"}>{genre.name}</Badge>
+                        return <Badge key={genre.id} className={"text-xs"}>{genre.name}</Badge>
                     })}
                 </div>
             </div>
@@ -74,9 +74,23 @@ export const movieCell = ({row}: any) => {
 
 export const dateCell = ({ row }:any) => {
     const date = new Date(row.getValue("date"));
-    return <div className="text-md font-bold text-center">{date.toLocaleDateString()}</div>
+    return <div className="text-md font-bold text-center w-full">{date.toLocaleDateString()}</div>
+}
+
+export const similarityCell = ({ row }:any) => {
+    const similarity = row.getValue("similarity");
+    return <div className="text-md font-bold text-center  w-full">{similarity.toFixed(2)}</div>
+}
+
+export const typeSimilarityCell = ({ row }:any) => {
+    return <div className="text-md font-bold text-center ">{row.getValue("type")}</div>
 }
 
 export const countCell = ({ row }:any) => {
-    return <div className="text-md font-bold text-center">{row.getValue("count")}</div>
+    return <div className="text-md font-bold text-center ">{row.getValue("count")}</div>
+}
+
+export const roleCell = ({ row }:any) => {
+    const role = row.getValue("role")
+    return <div className={`text-md font-bold text-center ${role == "ADMIN" ? 'text-primary': ""}`}>{role.toLowerCase()}</div>
 }

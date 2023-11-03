@@ -6,7 +6,7 @@ import {Star} from "lucide-react";
 import {MovieFullDataT} from "@/types/movie.types";
 const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
-const MovieCard = ({movie, className,hover=true,link=true}: { movie: Omit<MovieFullDataT, "genres">, className?: string, hover?:boolean,link?:boolean }) => {
+const MovieCard = ({movie, className,hover=true,link=true,admin=false}: { movie: Omit<MovieFullDataT, "genres">, className?: string, hover?:boolean,link?:boolean,admin?:boolean }) => {
     const content = <AspectRatio ratio={3 / 4} className={"relative group overflow-hidden"}>
         {movie.poster_path ?
             <Image src={IMAGE_URL+movie.poster_path}
@@ -38,7 +38,7 @@ const MovieCard = ({movie, className,hover=true,link=true}: { movie: Omit<MovieF
 
     return (
         <div className={className}>
-            {link ? <Link href={`/movie/${movie.id}`}>{content}</Link> : <>{content}</>}
+            {link ? <Link href={admin ? `/analytics/movie/${movie.id}`:`/movie/${movie.id}`}>{content}</Link> : <>{content}</>}
         </div>
     )
 }

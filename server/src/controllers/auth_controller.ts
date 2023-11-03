@@ -28,7 +28,6 @@ class AuthController {
     async getUserData(req: Request, res: Response, next: NextFunction) {
         try {
             const requestUserId = Number(req.params.userID)
-
             const sessionUserId = req.session.user!.id
             const userData = await authService.getUserData(requestUserId,sessionUserId);
 
@@ -37,6 +36,7 @@ class AuthController {
             next(e);
         }
     }
+
 
     async logout(req: Request, res: Response, next: NextFunction) {
         try {

@@ -16,7 +16,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import {Button} from "@/components/ui/button";
-import React, {useState} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import {Input} from "@/components/ui/input";
 import {ChevronLeft, ChevronRight} from "lucide-react";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
@@ -26,13 +26,16 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
     header:string,
     filterPlaceholder:string
+    columnVisibility?: {[index: string]: boolean},
+    input?:ReactNode
 }
 
 export function BaseTable<TData, TValue>({
                                              columns,
                                              data,
                                             header,
-    filterPlaceholder
+    filterPlaceholder,
+    columnVisibility={},input,
                                          }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = useState<SortingState>([])
     // const [filtering, setFiltering] = React.useState("");
@@ -56,10 +59,13 @@ export function BaseTable<TData, TValue>({
                 pageSize: 5,
             },
             columnVisibility: {
-                'filterField': false
+                'filterField': false,
+                ...columnVisibility
             }
         },
     })
+
+
 
     return (
         <Card className={"overflow-x-auto"}>
@@ -69,6 +75,7 @@ export function BaseTable<TData, TValue>({
             <CardContent className={"px-2"}>
                 <div className={"w-full  px-1  "}>
                     <div className="flex items-center py-4 ">
+                        {input ? input :
                         <Input
                             placeholder={filterPlaceholder}
                             value={(table.getColumn("filterField")?.getFilterValue() as string) ?? ""}
@@ -76,7 +83,7 @@ export function BaseTable<TData, TValue>({
                                 table.getColumn("filterField")?.setFilterValue(event.target.value)
                             }
                             className="max-w-sm "
-                        />
+                        />}
                         {/*<Input*/}
                         {/*    placeholder="Filter..."*/}
                         {/*    value={filtering}*/}
@@ -93,7 +100,7 @@ export function BaseTable<TData, TValue>({
                                     <TableRow key={headerGroup.id}>
                                         {headerGroup.headers.map((header) => {
                                             return (
-                                                <TableHead key={header.id}>
+                                                <TableHead  key={header.id}>
                                                     {header.isPlaceholder
                                                         ? null
                                                         : flexRender(

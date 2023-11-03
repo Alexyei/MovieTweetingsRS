@@ -117,32 +117,33 @@ export default async function Page() {
                                           icon={<CandlestickChart className="h-6 w-6 text-muted-foreground"
                                                                   strokeWidth={2}/>}/>
                         </div>
-                        <div className="grid w-full gap-4 lg:grid-cols-2">
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>Распределение оценок</CardTitle>
-                                </CardHeader>
-                                <CardContent className="pl-2">
-                                    <RatingChart data={ratingsData}></RatingChart>
-                                </CardContent>
-                            </Card>
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>Конверсия</CardTitle>
-                                </CardHeader>
-                                <CardContent className="pl-2">
-                                    <ConversionChart data={conversionData}/>
-                                </CardContent>
-                            </Card>
-                        </div>
-                        <div className="grid  w-full gap-4 lg:grid-cols-2">
-                            <RecentSalesTable/>
-                            <TopSalesTable/>
-                        </div>
+
 
                     </div>
                 </CardContent>
             </Card>
+            <div className="grid w-full gap-4 lg:grid-cols-2">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Распределение оценок</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pl-2">
+                        <RatingChart data={ratingsData}></RatingChart>
+                    </CardContent>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <CardTitle>Конверсия</CardTitle>
+                    </CardHeader>
+                    <CardContent className="pl-2">
+                        <ConversionChart data={conversionData}/>
+                    </CardContent>
+                </Card>
+            </div>
+            <div className="grid  w-full gap-4 lg:grid-cols-2">
+                <RecentSalesTable/>
+                <TopSalesTable/>
+            </div>
         </ServerAdminRoute>
     )
 }

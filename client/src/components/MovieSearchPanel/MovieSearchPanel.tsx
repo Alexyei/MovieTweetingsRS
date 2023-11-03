@@ -83,7 +83,7 @@ const  SearchPanelSkeleton = ({title}:{title:string})=>{
 const moviesInResponse = 30
 
 
-const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:string,initialValues?:Partial<SearchParamsT>,canSelectGenre?:boolean}) =>{
+const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true, admin=false}:{title:string,initialValues?:Partial<SearchParamsT>,canSelectGenre?:boolean,admin?:boolean}) =>{
     const genres = useRef<GenreT[]>([])
     const searchParams = useRef<SearchParamsT>({
         genreIDs: [],
@@ -218,7 +218,7 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true}:{title:
                     {/*<div className={"min-h-screen bg-yellow-300"}></div>*/}
 
                     <div className={"flex flex-wrap gap-4 p-4"}>
-                        {movies.map((el,i)=><HoverTracer key={el.id} movieID={el.id}><MovieCard  className={"w-[128px]"} movie={el}/></HoverTracer>)}
+                        {movies.map((el,i)=>admin ?<MovieCard key={el.id} admin={admin} className={"w-[128px]"} movie={el}/>: <HoverTracer key={el.id} movieID={el.id}><MovieCard admin={admin} className={"w-[128px]"} movie={el}/></HoverTracer>)}
                     </div>
                 </ScrollArea>
                     :
