@@ -82,6 +82,10 @@ export const similarityCell = ({ row }:any) => {
     return <div className="text-md font-bold text-center  w-full">{similarity.toFixed(2)}</div>
 }
 
+export const userEventCell = ({ row }:any) => {
+    const event = row.getValue("event")
+    return <div className={`text-md font-bold text-center ${event == 'BUY' ? 'text-primary': ""} ${event.startsWith('REMOVE') ? 'text-destructive': ''}`}>{event.split("_")[0]}</div>
+}
 export const typeSimilarityCell = ({ row }:any) => {
     return <div className="text-md font-bold text-center ">{row.getValue("type")}</div>
 }

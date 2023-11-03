@@ -24,7 +24,9 @@ export default async function RecsSlider({title,type}:{title:string,type:RecsTyp
     if (moviesResponse.status != 200) return moviesResponse.response.message;
 
 
+    const sorted = response.response.map(m=>{const id = m.movieId
+        return moviesResponse.response.find(mm=>mm.id==id)!
+    })
 
-
-    return <MovieCardsSlider title={title} movies={moviesResponse.response}/>
+    return <MovieCardsSlider title={title} movies={sorted}/>
 }

@@ -13,7 +13,7 @@ export class PopularityRecommender extends BaseRecommender {
     async recommendItems(userId: number, take: number = 10) {
         const popItems = (await dao.rating.getAvgAndCountMoviesForUser(userId,take)).map(score => ({predictedRating: score.avg || 0, usersCount: score.count, movieId:score.movieId}))
 
-        const movieIds =popItems.map((item) =>item.movieId)
+        // const movieIds =popItems.map((item) =>item.movieId)
         // const moviesData = await dao.movie.getMoviesDataByIds(movieIds)
 
         return popItems.map(movie=>{

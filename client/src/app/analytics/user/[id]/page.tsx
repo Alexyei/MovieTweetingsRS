@@ -6,6 +6,8 @@ import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/compo
 import {Badge} from "@/components/ui/badge";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import * as React from "react";
+import UserLogsTable from "@/components/tables/UserLogs/UserLogs";
+import UserSimilarityTable from "@/components/tables/UserSimilarity/UserSimilarity";
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: number } }){
@@ -40,6 +42,10 @@ export default async function Page({params}: { params: { id: number } }){
 
                 </CardContent>
             </Card>
+            <div className="grid  w-full gap-4 lg:grid-cols-2">
+                <UserLogsTable/>
+                <UserSimilarityTable/>
+            </div>
         </ServerAdminRoute>
     )
 }
