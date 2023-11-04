@@ -15,13 +15,13 @@ export default async function MovieSimilarityTable() {
         filterField:[
             r.movie.year,
             r.movie.title,
-            r.type,r.similarity,
             ...r.movie.genres.map(g=>g.name),
+            r.type,r.similarity,
         ].join(" ")}))
 
     return (
         // <div className="container mx-auto py-10">
-        <BaseTable header={"Похожие фильмы"} filterPlaceholder={"Фильм, сходство..."} columns={columns} data={dataWithFilterField} />
+        <BaseTable header={"Похожие фильмы"} filterPlaceholder={"Фильм, сходство, тип..."} columns={columns} data={dataWithFilterField} />
         // </div>
     )
 }

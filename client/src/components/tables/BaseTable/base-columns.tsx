@@ -86,12 +86,25 @@ export const userEventCell = ({ row }:any) => {
     const event = row.getValue("event")
     return <div className={`text-md font-bold text-center ${event == 'BUY' ? 'text-primary': ""} ${event.startsWith('REMOVE') ? 'text-destructive': ''}`}>{event.split("_")[0]}</div>
 }
+export const userCollectionTypeCell = ({ row }:any) => {
+    const type = row.getValue("type")
+    return <div className={`text-md font-bold text-center ${type == 'BUY' ? 'text-primary': ''}`}>{type}</div>
+}
+
+export const userRatingTypeCell = ({ row }:any) => {
+    const type = row.getValue("type")
+    return <div className={`text-md font-bold text-center ${type == 'PRIORITY' ? 'text-primary': ''}`}>{type}</div>
+}
 export const typeSimilarityCell = ({ row }:any) => {
     return <div className="text-md font-bold text-center ">{row.getValue("type")}</div>
 }
 
 export const countCell = ({ row }:any) => {
     return <div className="text-md font-bold text-center ">{row.getValue("count")}</div>
+}
+
+export const ratingCell = ({ row }:any) => {
+    return <div className="text-md font-bold text-center ">{row.getValue("rating").toFixed(1)}</div>
 }
 
 export const roleCell = ({ row }:any) => {

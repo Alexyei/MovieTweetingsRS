@@ -16,7 +16,6 @@ export default async function UserLogsTable() {
         ...(r.movie ? [
             r.movie.year,
             r.movie.title,
-
             ...r.movie.genres.map(g=>g.name)] : [r.genre?.name, r.genre?.id])
         ].join(" ")}))
 

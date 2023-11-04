@@ -105,6 +105,7 @@ export class ItemItemRecommender extends BaseRecommender {
                     // const sourceData = moviesData.find(m=>m.id==s.id)!
                     return {
                         movieId: s.id,
+                        similarity:s.similarity,
                         // posterPath: sourceData.poster_path,
                         // title: sourceData.title,
                         rating: s.rating

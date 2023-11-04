@@ -43,7 +43,7 @@ export class UserUserRecommender extends BaseRecommender {
         const recommendations = this.#getRecommendations(candidatesPairs,userRatingsNormalized,userMeanRating)
 
         const sortedRecommendations = recommendations.sort((a, b) => b.predictedRating - a.predictedRating).slice(0, take);
-        const notUserMoviesIds = userRatingsNormalized.map(r=>r.movieId)
+        // const notUserMoviesIds = userRatingsNormalized.map(r=>r.movieId)
 
         // const moviesData = await this._dao.movie.getMoviesDataByIds(Array.from(new Set(notUserMoviesIds)))
         const usersData = await this._dao.user.getUsersDataByIds(Array.from(new Set(simsUserIds)))
@@ -98,7 +98,7 @@ export class UserUserRecommender extends BaseRecommender {
             const target = rating.movieId
             if (recommendations.findIndex(rec=>rec.target==target)!=-1) continue;
             
-            // sources - оценки схожих пользователей, которые посомтрели этот фильм
+            // sources - оценки схожих пользователей, которые посмотрели этот фильм
             const sources = userRatingsNormalized.filter(r=>r.movieId == target)
             let numerator = 0;
             let denominator = 0;

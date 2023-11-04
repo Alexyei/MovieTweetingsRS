@@ -11,6 +11,8 @@ import UserSimilarityTable from "@/components/tables/UserSimilarity/UserSimilari
 import {ConversionChart} from "@/components/charts/ConversionChart/ConversionChart";
 import {UserRatingsByGenresChart} from "@/components/charts/UserRatingsByGenresChart/UserRatingsByGenresChart";
 import {UserGenresChart} from "@/components/charts/UserGenres/UserGenresChart";
+import UserCollectionTable from "@/components/tables/UserCollection/UserCollection";
+import UserRatingTable from "@/components/tables/UserRatings/UserRatings";
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: number } }){
@@ -77,11 +79,16 @@ export default async function Page({params}: { params: { id: number } }){
 
                 <CardContent >
                     {genresData.length ?
-                        <UserGenresChart data={genresData}/>: "Нет данных"}
+                        <UserGenresChart data={genresData}/>
+                        : "Нет данных"}
                 </CardContent>
 
 
             </Card>
+            <div className="grid  w-full gap-4 lg:grid-cols-2">
+                <UserCollectionTable/>
+                <UserRatingTable/>
+            </div>
             <div className="grid  w-full gap-4 lg:grid-cols-2">
                 <UserLogsTable/>
                 <UserSimilarityTable/>
