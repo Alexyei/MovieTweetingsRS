@@ -13,6 +13,10 @@ import {UserRatingsByGenresChart} from "@/components/charts/UserRatingsByGenresC
 import {UserGenresChart} from "@/components/charts/UserGenres/UserGenresChart";
 import UserCollectionTable from "@/components/tables/UserCollection/UserCollection";
 import UserRatingTable from "@/components/tables/UserRatings/UserRatings";
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
+import {movieCell} from "@/components/tables/BaseTable/base-columns";
+import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area";
+import UserItemBasedRecsAccordion from "@/components/UserItemBasedRecsAccordion/UserItemBasedRecsAccordion";
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: number } }){
@@ -51,9 +55,9 @@ export default async function Page({params}: { params: { id: number } }){
                         </Avatar>
                         <div className={"pl-4 w-full"}>
                             <CardTitle >{`${user.login ? user.login : ""} (id: ${user.id})`}</CardTitle>
-                            <div className={"flex items-center mt-4 w-full"}>
+                            <div className={"flex items-center mt-4 w-full flex-wrap gap-4"}>
                                 <CardDescription >{user.email ? user.email:"email отсуствует"}</CardDescription>
-                                <Badge className={`ml-4 inline-block`} variant={`${user.role == 'ADMIN' ? 'default':'secondary'}`}>{user.role.toLowerCase()}</Badge>
+                                <Badge className={` inline-block`} variant={`${user.role == 'ADMIN' ? 'default':'secondary'}`}>{user.role.toLowerCase()}</Badge>
                             </div>
 
                         </div>
@@ -93,6 +97,9 @@ export default async function Page({params}: { params: { id: number } }){
                 <UserLogsTable/>
                 <UserSimilarityTable/>
             </div>
+            <UserItemBasedRecsAccordion/>
+        {/*    UserUserBasedRecsAccordion*/}
+        {/*    // ВО ВЛОЖЕННОЙ ТАБЛИЦЕ ПОЛЯ user (Похожие пользователи), similarity (сходство фильмов), rating (Оценка схожего пользователя)*/}
         </ServerAdminRoute>
     )
 }

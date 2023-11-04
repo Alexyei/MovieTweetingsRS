@@ -13,6 +13,7 @@ export default async function UserLogsTable() {
 
     const dataWithFilterField = data.map(r=>({...r,
         filterField:[
+            r.event,
         ...(r.movie ? [
             r.movie.year,
             r.movie.title,
