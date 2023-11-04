@@ -8,6 +8,9 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import * as React from "react";
 import UserLogsTable from "@/components/tables/UserLogs/UserLogs";
 import UserSimilarityTable from "@/components/tables/UserSimilarity/UserSimilarity";
+import {ConversionChart} from "@/components/charts/ConversionChart/ConversionChart";
+import {UserRatingsByGenresChart} from "@/components/charts/UserRatingsByGenresChart/UserRatingsByGenresChart";
+import {UserGenresChart} from "@/components/charts/UserGenres/UserGenresChart";
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: number } }){
@@ -15,6 +18,22 @@ export default async function Page({params}: { params: { id: number } }){
     if (response.status >= 400){
         return notFound()
     }
+
+    const tasteData = [
+        {genre: {id:1,name:'Comedy',mean_rating:7.7,mean_rating_norm:7.7/8.5},
+            ratings_count_implicit:100,ratings_count_norm_implicit: 100/100,mean_rating_difference_implicit: 1.5, mean_rating_difference_norm_implicit: 1.5/2.1,
+            ratings_count_explicit:100,ratings_count_norm_explicit: 100/100,mean_rating_difference_explicit: 1.5, mean_rating_difference_norm_explicit: 1.5/2.1
+        },
+        {genre: {id:2,name:'Action',mean_rating:8.5,mean_rating_norm:8.5/8.5},
+            ratings_count_implicit:2,ratings_count_norm_implicit: 2/100,mean_rating_difference_implicit: -2.1, mean_rating_difference_norm_implicit: -2.1/2.1,
+            ratings_count_explicit:2,ratings_count_norm_explicit: 2/100,mean_rating_difference_explicit: -2.1, mean_rating_difference_norm_explicit: -2.1/2.1,
+        },
+    ]
+
+    const  genresData = [
+        {id:1,name:'Comedy',count_buy:10,count_list:7,count_explicit:5,count_implicit:8, count_priority:11},
+        {id:1,name:'Action',count_buy:10,count_list:0,count_explicit:2,count_implicit:0, count_priority:31},
+    ]
 
     const user = response.response as UserT
     return (
@@ -38,9 +57,30 @@ export default async function Page({params}: { params: { id: number } }){
                         </div>
                     </div>
                 </CardHeader>
-                <CardContent>
+                {/*<CardContent>*/}
 
+                {/*</CardContent>*/}
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Вкусы пользователя</CardTitle>
+                </CardHeader>
+                <CardContent >
+                    {tasteData.length ?
+                    <UserRatingsByGenresChart data={tasteData}/>: "Нет данных"}
                 </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Жанры пользователя</CardTitle>
+                </CardHeader>
+
+                <CardContent >
+                    {genresData.length ?
+                        <UserGenresChart data={genresData}/>: "Нет данных"}
+                </CardContent>
+
+
             </Card>
             <div className="grid  w-full gap-4 lg:grid-cols-2">
                 <UserLogsTable/>
