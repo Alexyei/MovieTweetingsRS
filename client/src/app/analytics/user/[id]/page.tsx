@@ -15,6 +15,7 @@ import UserRatingTable from "@/components/tables/UserRatings/UserRatings";
 import ItemBasedRecsCard from "@/components/ItemBasedRecsCard/ItemBasedRecsCard";
 import UserBasedRecsCard from "@/components/UserBasedRecsCard/UserBasedRecsCard";
 import {UserRatingsDataByGenresExtendedT} from "@/types/genre.types";
+import UserTasteCard from "@/components/UserTasteCard/UserTasteCard";
 
 
 const api = getServerAPI()
@@ -88,7 +89,7 @@ export default async function Page({params}: { params: { id: number } }){
     //         ratings_count_explicit:2,ratings_count_norm_explicit: 2/100,mean_rating_difference_explicit: -2.1, mean_rating_difference_norm_explicit: -2.1/2.1,
     //     },
     // ]
-    const tasteData = await getTasteData(userID)
+    // const tasteData = await getTasteData(userID)
 
     const  genresData = [
         {id:1,name:'Comedy',count_buy:10,count_list:7,count_explicit:5,count_implicit:8, count_priority:11},
@@ -121,15 +122,16 @@ export default async function Page({params}: { params: { id: number } }){
 
                 {/*</CardContent>*/}
             </Card>
-            <Card>
-                <CardHeader>
-                    <CardTitle>Вкусы пользователя</CardTitle>
-                </CardHeader>
-                <CardContent >
-                    {tasteData != null && tasteData.genresData.length ?
-                    <UserRatingsByGenresChart data={tasteData}/>: "Нет данных"}
-                </CardContent>
-            </Card>
+            {/*<Card>*/}
+            {/*    <CardHeader>*/}
+            {/*        <CardTitle>Вкусы пользователя</CardTitle>*/}
+            {/*    </CardHeader>*/}
+            {/*    <CardContent >*/}
+            {/*        {tasteData != null && tasteData.genresData.length ?*/}
+            {/*        <UserRatingsByGenresChart data={tasteData}/>: "Нет данных"}*/}
+            {/*    </CardContent>*/}
+            {/*</Card>*/}
+            <UserTasteCard userID={userID}/>
             <Card>
                 <CardHeader>
                     <CardTitle>Жанры пользователя</CardTitle>
