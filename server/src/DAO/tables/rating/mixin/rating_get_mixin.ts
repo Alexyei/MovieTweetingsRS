@@ -2,6 +2,96 @@ import {DAOMixinHelper} from "../../../dao_helper";
 import {PrismaClient} from "@prisma/client";
 
 class ExplicitRatingGetDAO__mixin extends DAOMixinHelper {
+    async getAvgAndCountByMovieIdsWithoutUser(userID:number, movieIds: string[]) {
+        let group = []
+        if (this._testDb) {
+            group = await this._client.testRating.groupBy({
+
+                by: ['type'],
+                where: {
+                    authorId: {not: userID},
+                    movieId: {in: movieIds},
+                },
+
+                _avg: {
+                    rating: true,
+                },
+                _count: {
+                    authorId: true,
+                },
+            })
+        } else {
+            group = await this._client.rating.groupBy({
+
+                by: ['type'],
+                where: {
+                    authorId: {not: userID},
+                    movieId: {in: movieIds},
+                },
+
+                _avg: {
+                    rating: true,
+                },
+                _count: {
+                    authorId: true,
+                },
+            })
+        }
+
+
+        return group.map(g => {
+            return {
+                type: g.type,
+                count:g._count.authorId,
+                avg: g._avg.rating || 0
+            }
+        })
+    }
+    async getAvgAndCountByMovieIdsForUser(userID:number, movieIds?: string[]) {
+        let group = []
+        if (this._testDb) {
+            group = await this._client.testRating.groupBy({
+
+                by: ['type'],
+                where: {
+                    authorId: userID,
+                    movieId: movieIds ? {in: movieIds} : undefined,
+                },
+
+                _avg: {
+                    rating: true,
+                },
+                _count: {
+                    authorId: true,
+                },
+            })
+        } else {
+            group = await this._client.rating.groupBy({
+
+                by: ['type'],
+                where: {
+                    authorId:  userID,
+                    movieId: movieIds ? {in: movieIds} : undefined,
+                },
+
+                _avg: {
+                    rating: true,
+                },
+                _count: {
+                    authorId: true,
+                },
+            })
+        }
+
+
+        return group.map(g => {
+            return {
+                type: g.type,
+                count:g._count.authorId,
+                avg: g._avg.rating || 0
+            }
+        })
+    }
     async getAvgAndCountMoviesForUser(userId: number, take: number) {
         let movies = []
         if (this._testDb) {
@@ -273,6 +363,8 @@ export function createExplicitRatingGetDAOMixin(client: PrismaClient, testDb: bo
     const mixin = new ExplicitRatingGetDAO__mixin(client, testDb)
 
     return {
+        'getAvgAndCountByMovieIdsWithoutUser': mixin.getAvgAndCountByMovieIdsWithoutUser.bind(mixin),
+        'getAvgAndCountByMovieIdsForUser': mixin.getAvgAndCountByMovieIdsForUser.bind(mixin),
         'getAvgRatings': mixin.getAvgRatings.bind(mixin),
         'getAvgRatingForUser': mixin.getAvgRatingForUser.bind(mixin),
         'getAvgAndCountMoviesForUser': mixin.getAvgAndCountMoviesForUser.bind(mixin),

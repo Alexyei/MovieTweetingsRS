@@ -11,6 +11,16 @@ class UserController {
             next(error);
         }
     }
+
+    async search(req: Request, res: Response, next: NextFunction) {
+        try {
+            const {searchInput} = req.body;
+            const users = await userService.searchUsers(searchInput);
+            return res.status(200).json(users);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 const userController = new UserController()

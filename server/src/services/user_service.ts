@@ -23,6 +23,24 @@ class UserService {
         }
     }
 
+    async searchUsers(searchInput:string){
+        const results = []
+        let take = 10
+        const id = Number(searchInput)
+        if (!isNaN(id)){
+            console.log(id)
+            const user = await dao.user.getUserByID(id)
+            if (user){
+                results.push(user)
+                take-=1
+            }
+        }
+
+        const users = await dao.user.searchUsers(searchInput,take)
+
+        return [...results,...users]
+    }
+
 }
 
 const userService = new UserService()

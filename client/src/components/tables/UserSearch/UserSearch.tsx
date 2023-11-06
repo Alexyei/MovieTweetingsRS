@@ -4,27 +4,20 @@ import Search from "@/components/MovieSearchPanel/components/Search";
 import {useEffect, useRef, useState} from "react";
 import {UserT} from "@/types/user.types";
 import {columns} from "@/components/tables/UserSearch/columns";
+import {getClientAPI} from "@/api/client_api";
+
+const api =getClientAPI()
 
 export default function UserSearch() {
     const [data, setData] = useState<UserT[]>([])
     const input = useRef(<Search placeholder={"Login, email, id..."} className={"max-w-sm"} onInputChanged={onSearchInputChanged}/>)
-    function search(input:string) {
-        new Promise<UserT[]>((resolve, reject) => {
-            setTimeout(() => resolve([
-                {
-                    id: 1,
-                    login: "login",
-                    "email": null,
-                    role: "USER"
-                },
-                {
-                    id: 2,
-                    login: "login2",
-                    "email": "admin@email.ru",
-                    role: "ADMIN"
-                }
-            ]), 2000)
-        }).then(users=>setData(users))
+    function search(searchInput:string) {
+        api.user.search(searchInput).then(response=>{
+            if (response.status == 200){
+                const users = response.response
+                setData(users)
+            }
+        }).catch()
     }
 
 

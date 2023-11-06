@@ -41,6 +41,7 @@ export const userCell = (user:UserT,fullHeight:boolean = true) => {
             </Avatar>
             <div className="ml-4 space-y-1 w-full max-w-[140px]">
                 <p className="text-sm font-medium leading-none">{user.login}</p>
+                <p className="text-sm font-medium leading-none">id: {user.id}</p>
                 <p className="text-sm text-muted-foreground break-words line-clamp-3">
                     {user.email}
                 </p>

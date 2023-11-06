@@ -2,6 +2,38 @@ import {DAOMixinHelper} from "../../../dao_helper";
 import {PrismaClient} from "@prisma/client";
 
 class GenreGetDAO__mixin extends DAOMixinHelper {
+
+    async getGenresWithMoviesIDs(){
+        const genresWithMoviesIDs = this._testDb ? await this._client.testGenre.findMany({
+                where: {
+                    movies: {
+                        some: {},
+                    },
+                },
+                include: {
+                    movies: {select: {id: true},}
+                }
+        }) :
+            await this._client.genre.findMany({
+                where: {
+                    movies: {
+                        some: {},
+                    },
+                },
+                include: {
+                    movies: {select: {id: true},}
+                }
+            })
+
+        const result = genresWithMoviesIDs.map((genre) => ({
+            id: genre.id,
+            name: genre.name,
+            moviesIDs: genre.movies.map(m => m.id),
+        }))
+
+        return result.sort((a, b) => b.moviesIDs.length - a.moviesIDs.length)
+
+    }
     async getGenresWithMoviesCount(){
         const genresWithMovies = this._testDb ? await this._client.testGenre.findMany({
             where: {
@@ -72,6 +104,7 @@ export function createGenreGetDAOMixin(client: PrismaClient, testDb: boolean) {
     const mixin = new GenreGetDAO__mixin(client, testDb)
 
     return {
+        'getGenresWithMoviesIDs':mixin.getGenresWithMoviesIDs.bind(mixin),
         'getGenresWithMoviesCount': mixin.getGenresWithMoviesCount.bind(mixin),
         'getGenreDataByName':mixin.getGenreDataByName.bind(mixin)
     }

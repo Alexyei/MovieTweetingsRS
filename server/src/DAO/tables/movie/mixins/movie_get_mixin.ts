@@ -4,7 +4,7 @@ import {MovieOrderingT} from "../../../../types/movie.types";
 
 class MovieGetDAO__mixin extends DAOMixinHelper {
 
-    async searchMovies(searchRequest: string, yearFrom: number, yearTo: number, genresIDs: number[], ordering: MovieOrderingT, take: number, skip: number) {
+    async searchMovies(searchInput: string, yearFrom: number, yearTo: number, genresIDs: number[], ordering: MovieOrderingT, take: number, skip: number) {
 
         function getOrdering(ordering: MovieOrderingT) {
             switch (ordering) {
@@ -23,8 +23,8 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                 where:
                     {
                         OR: [
-                            {title: {contains: searchRequest, mode: 'insensitive'},},
-                            {description: {contains: searchRequest, mode: 'insensitive'},},
+                            {title: {contains: searchInput, mode: 'insensitive'},},
+                            {description: {contains: searchInput, mode: 'insensitive'},},
                         ],
                         year: {gte: yearFrom, lte: yearTo},
                         genres: genresIDs.length > 0 ? {some: {id: {in: genresIDs}}} : undefined
@@ -39,8 +39,8 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                 where:
                     {
                         OR: [
-                            {title: {contains: searchRequest, mode: 'insensitive'},},
-                            {description: {contains: searchRequest, mode: 'insensitive'},},
+                            {title: {contains: searchInput, mode: 'insensitive'},},
+                            {description: {contains: searchInput, mode: 'insensitive'},},
                         ],
                         year: {gte: yearFrom, lte: yearTo},
                         genres: genresIDs.length > 0 ? {some: {id: {in: genresIDs}}} : undefined
@@ -56,8 +56,8 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                 where:
                     {
                         OR: [
-                            {title: {contains: searchRequest, mode: 'insensitive'},},
-                            {description: {contains: searchRequest, mode: 'insensitive'},},
+                            {title: {contains: searchInput, mode: 'insensitive'},},
+                            {description: {contains: searchInput, mode: 'insensitive'},},
                         ],
                         year: {gte: yearFrom, lte: yearTo},
                         genres: genresIDs.length > 0 ? {some: {id: {in: genresIDs}}} : undefined
@@ -67,8 +67,8 @@ class MovieGetDAO__mixin extends DAOMixinHelper {
                 where:
                     {
                         OR: [
-                            {title: {contains: searchRequest, mode: 'insensitive'},},
-                            {description: {contains: searchRequest, mode: 'insensitive'},},
+                            {title: {contains: searchInput, mode: 'insensitive'},},
+                            {description: {contains: searchInput, mode: 'insensitive'},},
                         ],
                         year: {gte: yearFrom, lte: yearTo},
                         genres: genresIDs.length > 0 ? {some: {id: {in: genresIDs}}} : undefined

@@ -9,7 +9,6 @@ const Search = ({onInputChanged,placeholder="",className=""}:{onInputChanged:(in
 
 
     useEffect(()=>{
-        console.log(isMounted.current,deferredInput)
         if (isMounted.current){
             onInputChanged(deferredInput)
         }
@@ -25,6 +24,7 @@ const Search = ({onInputChanged,placeholder="",className=""}:{onInputChanged:(in
         <Input
             placeholder={placeholder ? placeholder:"Найдётся всё..."}
             value={searchInput}
+            maxLength={100}
             onChange={(e)=>setSearchInput(e.target.value)}
             className={"w-full"+className}
         />

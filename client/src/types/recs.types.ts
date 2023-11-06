@@ -1,3 +1,5 @@
+import {UserT} from "@/types/user.types";
+
 export type PopularityRecsPopsT =
     {
         predictedRating: number,
@@ -12,11 +14,11 @@ export type PopularityRecsBestsellersT = PopularityRecsPopsT & {purchasesCount: 
 export type CFNBRecsItemItemT =
     {movieId: string,
         predictedRating: number,
-        recommendedByMovies: {movieId: string, rating: number}[]
+        recommendedByMovies: {movieId: string, similarity:number, rating: number}[]
     }
 
 export type CFNBRecsUserUserT =
     {
         movieId: string,
         predictedRating: number,
-        recommendedByUsers: {userId: number, login: string | null, similarity: number, rating: number}[]}
+        recommendedByUsers: {user:UserT, similarity: number, rating: number}[]}

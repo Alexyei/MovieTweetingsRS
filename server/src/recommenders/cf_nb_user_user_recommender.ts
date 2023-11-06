@@ -126,8 +126,9 @@ export class UserUserRecommender extends BaseRecommender {
                 recommendedByUsers: rec.sources.map(s=>{
                     const userData = usersData.find(u=>u.id == s.id)!
                     return {
-                        userId: s.id,
-                        login: userData.login,
+                        user: userData,
+                        // userId: s.id,
+                        // login: userData.login,
                         similarity: s.similarity,
                         rating: s.rating
                     }

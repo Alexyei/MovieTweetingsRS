@@ -55,6 +55,29 @@ class UserGetDAO__mixin extends DAOMixinHelper{
             select: {id: true, login: true, email:true, role:true},
         });
     }
+
+    async searchUsers(searchInput:string,take:number){
+        if (this._testDb){
+            return this._client.testUser.findMany({
+                where: {
+                    OR: [
+                        {login: {contains: searchInput, mode: 'insensitive'},},
+                        {email: {contains: searchInput, mode: 'insensitive'},},
+                    ],
+                },
+                take
+            })
+        }
+        return this._client.user.findMany({
+            where: {
+                OR: [
+                    {login: {contains: searchInput, mode: 'insensitive'},},
+                    {email: {contains: searchInput, mode: 'insensitive'},},
+                ],
+            },
+            take
+        })
+    }
 }
 
 
@@ -62,6 +85,7 @@ export function createUserGetDAOMixin(client:PrismaClient,testDb:boolean){
     const mixin = new UserGetDAO__mixin(client,testDb)
 
     return {
+        'searchUsers':mixin.searchUsers.bind(mixin),
         'getUsersDataByIds':mixin.getUsersDataByIds.bind(mixin),
         'getUserByLogin':mixin.getUserByLogin.bind(mixin),
         'getUserByEmail':mixin.getUserByEmail.bind(mixin),
