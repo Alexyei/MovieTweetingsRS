@@ -11,6 +11,7 @@ import {Button} from "@/components/ui/button";
 import RecentSalesTable from "@/components/tables/RecentSales/RecentSales";
 import TopSalesTable from "@/components/tables/TopSales/TopSales";
 import RatingDistributionCard from "@/components/cards/RatingDistributionCard/RatingDistributionCard";
+import ConversionCard from "@/components/cards/ConversionCard/ConversionCard";
 
 
 function OverviewCard({title, description, value, icon}: {
@@ -80,14 +81,14 @@ export default async function Page() {
     //         count: 73008,
     //     },
     // ]
-    const conversionData = [
-        {type: "GENRE_VIEW", no_buy: 100011, buy: 9789},
-        {type: "DETAILS", no_buy: 42790, buy: 5678},
-        {type: "MORE_DETAILS", no_buy: 20790, buy: 3450},
-        {type: "ADD_TO_FAVORITES_LIST", no_buy: 10011, buy: 2350},
-        {type: "REMOVE_FROM_FAVORITES_LIST", no_buy: 7000, buy: 350},
-        {type: "BUY", no_buy: 970, buy: 970},
-    ] as any[]
+    // const conversionData = [
+    //     {type: "GENRE_VIEW", no_buy: 100011, buy: 9789},
+    //     {type: "DETAILS", no_buy: 42790, buy: 5678},
+    //     {type: "MORE_DETAILS", no_buy: 20790, buy: 3450},
+    //     {type: "ADD_TO_FAVORITES_LIST", no_buy: 10011, buy: 2350},
+    //     {type: "REMOVE_FROM_FAVORITES_LIST", no_buy: 7000, buy: 350},
+    //     {type: "BUY", no_buy: 970, buy: 970},
+    // ] as any[]
 
 
     return (
@@ -132,15 +133,16 @@ export default async function Page() {
                 {/*        <DistributionRatingChart data={ratingsData}></DistributionRatingChart>*/}
                 {/*    </CardContent>*/}
                 {/*</Card>*/}
+                {/*<Card>*/}
+                {/*    <CardHeader>*/}
+                {/*        <CardTitle>Конверсия</CardTitle>*/}
+                {/*    </CardHeader>*/}
+                {/*    <CardContent className="pl-2">*/}
+                {/*        <ConversionChart data={conversionData}/>*/}
+                {/*    </CardContent>*/}
+                {/*</Card>*/}
                 <RatingDistributionCard/>
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Конверсия</CardTitle>
-                    </CardHeader>
-                    <CardContent className="pl-2">
-                        <ConversionChart data={conversionData}/>
-                    </CardContent>
-                </Card>
+                <ConversionCard/>
             </div>
             <div className="grid  w-full gap-4 lg:grid-cols-2">
                 <RecentSalesTable/>

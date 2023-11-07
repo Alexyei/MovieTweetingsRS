@@ -14,6 +14,15 @@ class UserEventController {
             next(error);
         }
     }
+
+    async eventsCount(req: Request, res: Response, next: NextFunction) {
+        try {
+            const data = await userEventService.eventsCount()
+            return res.status(200).json(data);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 const userEventController = new UserEventController()

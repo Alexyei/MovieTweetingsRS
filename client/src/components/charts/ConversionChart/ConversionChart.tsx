@@ -1,16 +1,16 @@
 "use client"
 
-import {Bar, BarChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts"
+import {Bar, BarChart, Rectangle, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts"
 import React from "react";
-import {EventTypeT} from "@/types/user_event.types";
+import {EventsCountT, } from "@/types/user_event.types";
 
 
-export function ConversionChart({data}: { data: { type: EventTypeT, no_buy: number, buy: number }[] }) {
+export function ConversionChart({data}: { data: EventsCountT }) {
     return (
-        <ResponsiveContainer width="100%" height={350}>
+        <ResponsiveContainer width="100%" height={450}>
             <BarChart data={data}>
                 <XAxis
-                    dataKey="type"
+                    dataKey="event"
                     fontSize={12}
                     tickLine={false}
                     axisLine={true}
@@ -32,16 +32,16 @@ export function ConversionChart({data}: { data: { type: EventTypeT, no_buy: numb
                             console.log(payload[0])
                             return (
                                 <div className="rounded-lg border bg-background p-2 shadow-sm">
-                                    <div className="grid grid-cols-2 gap-2 items-center">
+                                    <div className="grid grid-cols-[120px_auto] gap-1 items-center">
                                         <span className="text-[0.70rem] uppercase text-muted-foreground">Тип</span>
                                         <span
-                                            className="font-bold text-muted-foreground">{payload[0].payload.type.split("_")[0]}</span>
+                                            className="font-bold text-muted-foreground">{payload[0].payload.event.split("_")[0]}</span>
                                         <span
                                             className="text-[0.70rem] uppercase text-muted-foreground">Без покупки</span>
-                                        <span className="font-bold">{payload[0].payload.no_buy}</span>
+                                        <span className="font-bold text-primary">{payload[0].payload.no_buy}</span>
                                         <span
                                             className="text-[0.70rem] uppercase text-muted-foreground">С покупкой</span>
-                                        <span className="font-bold">{payload[0].payload.buy}</span>
+                                        <span className="font-bold text-destructive">{payload[0].payload.buy}</span>
                                     </div>
                                 </div>
                             )
@@ -50,6 +50,7 @@ export function ConversionChart({data}: { data: { type: EventTypeT, no_buy: numb
                         return null
                     }}
                 />
+                <ReferenceLine y={0} stroke="hsl(var(--foreground))" />
                 <Bar dataKey="no_buy" className={"fill-primary"} radius={[4, 4, 0, 0]}
                      activeBar={<Rectangle fill="hsl(var(--primary))" stroke="hsl(var(--foreground))"/>}/>
                 <Bar dataKey="buy" className={"fill-destructive"} radius={[4, 4, 0, 0]}
