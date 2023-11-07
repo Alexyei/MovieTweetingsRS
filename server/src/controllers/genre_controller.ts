@@ -30,6 +30,16 @@ class GenreController {
             next(error);
         }
     }
+
+    async userGenresCount(req: Request, res: Response, next: NextFunction) {
+        try {
+            const requestUserId = Number(req.params.userID)
+            const genreData = await genreService.userGenresCount(requestUserId)
+            return res.status(200).json(genreData);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 const genreController = new GenreController()

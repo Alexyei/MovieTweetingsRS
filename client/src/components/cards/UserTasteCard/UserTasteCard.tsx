@@ -70,6 +70,7 @@ function ExplicitChart({tasteData}:{tasteData: UserRatingsDataByGenresExtendedT}
             name:genre.name,
             ...genre.explicit
         }))
+            // .filter(genre=>genre.userCount > 0)
     }
 
     return <UserRatingsByGenresChart data={explicitData}/>
@@ -85,6 +86,7 @@ function ImplicitChart({tasteData}:{tasteData: UserRatingsDataByGenresExtendedT}
             name:genre.name,
             ...genre.implicit
         }))
+            // .filter(genre=>genre.userCount > 0)
     }
 
     return <UserRatingsByGenresChart data={implicitData}/>
@@ -114,9 +116,13 @@ export default function UserTasteCard({userID}:{userID:number}){
                             <TabsTrigger value="implicit">Implicit</TabsTrigger>
                         </TabsList>
                         <TabsContent value="explicit">
+                            <p>Средняя оценка пользователя: {tasteData.globalUser.explicit.userAvg.toFixed(2)}</p>
+                            <p>Количество оценок пользователя: {tasteData.globalUser.explicit.userCount}</p>
                             <ExplicitChart tasteData={tasteData}/>
                         </TabsContent>
                         <TabsContent value="implicit">
+                            <p>Средняя оценка пользователя: {tasteData.globalUser.implicit.userAvg.toFixed(2)}</p>
+                            <p>Количество оценок пользователя: {tasteData.globalUser.implicit.userCount}</p>
                             <ImplicitChart tasteData={tasteData}/>
                         </TabsContent>
                     </Tabs>

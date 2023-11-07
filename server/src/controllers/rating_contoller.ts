@@ -13,6 +13,17 @@ class RatingController {
             next(e);
         }
     }
+
+    async distribution(req: Request, res: Response, next: NextFunction) {
+        try {
+
+            const distribution = await ratingService.getRatingsDistribution();
+
+            return res.status(200).json(distribution);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 const ratingController = new RatingController()

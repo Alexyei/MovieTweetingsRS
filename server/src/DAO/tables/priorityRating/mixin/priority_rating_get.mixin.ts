@@ -44,6 +44,22 @@ class PriorityRatingGetDAO__mixin extends DAOMixinHelper{
         // return filtered.map(fr=>({authorId:fr.authorId,_avg:fr._avg.rating || 0}))
     }
 
+    async allWithTypesByUserID(userID:number){
+        const ratings = this._testDb ? await this._client.testRating.findMany({where: {authorId: userID}}) : await this._client.rating.findMany({where: {authorId: userID}})
+
+        const explicit = ratings.filter(r=>r.type=='EXPLICIT')
+        const implicit = ratings.filter(r=>r.type=='IMPLICIT')
+
+        const priority = ratings.filter(rating => {
+            if (rating.type == 'EXPLICIT') return true
+            return !ratings.find(r => (r.authorId == rating.authorId) &&(r.type == 'EXPLICIT') && (r.movieId == rating.movieId));
+        })
+
+        return {
+            explicit,implicit,priority
+        }
+    }
+
     async all(){
         // return this._client.$queryRaw<TestRating[] | Rating[]>(Prisma.sql`SELECT * FROM "${this.#tableName}" r WHERE type = 'EXPLICIT' OR (type = 'IMPLICIT' AND (SELECT COUNT(*) FROM "${this.#tableName}" WHERE "authorId" = r."authorId" AND "movieId" = r."movieId" AND type = 'EXPLICIT') = 0)`)
         const ratings = this._testDb ? await this._client.testRating.findMany() : await this._client.rating.findMany()
@@ -109,6 +125,7 @@ export function createPriorityRatingGetDAOMixin(client:PrismaClient,testDb:boole
     const mixin = new PriorityRatingGetDAO__mixin(client,testDb)
 
     return {
+        'allWithTypesByUserID':mixin.allWithTypesByUserID.bind(mixin),
         'getAvgRatings':mixin.getAvgRatings.bind(mixin),
         'all':mixin.all.bind(mixin),
         'getByUserId':mixin.getByUserId.bind(mixin),

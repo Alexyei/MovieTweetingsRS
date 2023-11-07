@@ -1,7 +1,7 @@
 import {getServerAPI} from "@/api/server_api";
 import ServerAdminRoute from "@/components/routes/ServerAdminRoute/ServerAdminRoute";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import {RatingChart} from "@/components/charts/RatingChart/RatingChart";
+
 import {ConversionChart} from "@/components/charts/ConversionChart/ConversionChart";
 import {ReactNode} from "react";
 import {CandlestickChart, Cookie, RussianRuble, Search, Users2} from "lucide-react";
@@ -10,6 +10,7 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import RecentSalesTable from "@/components/tables/RecentSales/RecentSales";
 import TopSalesTable from "@/components/tables/TopSales/TopSales";
+import RatingDistributionCard from "@/components/cards/RatingDistributionCard/RatingDistributionCard";
 
 
 function OverviewCard({title, description, value, icon}: {
@@ -37,48 +38,48 @@ function OverviewCard({title, description, value, icon}: {
 const api = getServerAPI()
 export default async function Page() {
 
-    const ratingsData = [
-        {
-            rating: 1,
-            count: 20008,
-        },
-        {
-            rating: 2,
-            count: 24008,
-        },
-        {
-            rating: 3,
-            count: 27008,
-        },
-        {
-            rating: 4,
-            count: 32008,
-        },
-        {
-            rating: 5,
-            count: 54008,
-        },
-        {
-            rating: 6,
-            count: 60008,
-        },
-        {
-            rating: 7,
-            count: 70008,
-        },
-        {
-            rating: 8,
-            count: 115008,
-        },
-        {
-            rating: 9,
-            count: 85008,
-        },
-        {
-            rating: 10,
-            count: 73008,
-        },
-    ]
+    // const ratingsData = [
+    //     {
+    //         rating: 1,
+    //         count: 20008,
+    //     },
+    //     {
+    //         rating: 2,
+    //         count: 24008,
+    //     },
+    //     {
+    //         rating: 3,
+    //         count: 27008,
+    //     },
+    //     {
+    //         rating: 4,
+    //         count: 32008,
+    //     },
+    //     {
+    //         rating: 5,
+    //         count: 54008,
+    //     },
+    //     {
+    //         rating: 6,
+    //         count: 60008,
+    //     },
+    //     {
+    //         rating: 7,
+    //         count: 70008,
+    //     },
+    //     {
+    //         rating: 8,
+    //         count: 115008,
+    //     },
+    //     {
+    //         rating: 9,
+    //         count: 85008,
+    //     },
+    //     {
+    //         rating: 10,
+    //         count: 73008,
+    //     },
+    // ]
     const conversionData = [
         {type: "GENRE_VIEW", no_buy: 100011, buy: 9789},
         {type: "DETAILS", no_buy: 42790, buy: 5678},
@@ -123,14 +124,15 @@ export default async function Page() {
                 </CardContent>
             </Card>
             <div className="grid w-full gap-4 lg:grid-cols-2">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Распределение оценок</CardTitle>
-                    </CardHeader>
-                    <CardContent className="pl-2">
-                        <RatingChart data={ratingsData}></RatingChart>
-                    </CardContent>
-                </Card>
+                {/*<Card>*/}
+                {/*    <CardHeader>*/}
+                {/*        <CardTitle>Распределение оценок</CardTitle>*/}
+                {/*    </CardHeader>*/}
+                {/*    <CardContent className="pl-2">*/}
+                {/*        <DistributionRatingChart data={ratingsData}></DistributionRatingChart>*/}
+                {/*    </CardContent>*/}
+                {/*</Card>*/}
+                <RatingDistributionCard/>
                 <Card>
                     <CardHeader>
                         <CardTitle>Конверсия</CardTitle>

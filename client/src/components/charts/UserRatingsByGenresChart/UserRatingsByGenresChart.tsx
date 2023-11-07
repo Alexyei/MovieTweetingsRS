@@ -29,9 +29,10 @@ const renderLegend = (props:any) => {
     }
 }
 export function UserRatingsByGenresChart({data}: { data: UserRatingsDataByGenresShortT}) {
+    const minWidth = data.genresData.length*65
     return (
         <ScrollArea className={"w-full pb-4 rounded-lg border bg-card text-card-foreground shadow-sm"}>
-        <div className={`min-w-[1800px]`}>
+        <div style={{minWidth:minWidth}} >
         <ResponsiveContainer width={"100%"} height={450}>
 
             <BarChart data={data.genresData}>
@@ -58,19 +59,19 @@ export function UserRatingsByGenresChart({data}: { data: UserRatingsDataByGenres
                         if (active && payload && payload.length) {
                             return (
                                 <div className="rounded-lg border bg-background p-2 shadow-sm">
-                                    <div className="grid grid-cols-[240px_auto] gap-2 items-center">
-                                        <span className="text-[0.70rem] uppercase text-muted-foreground">Отношение оценок пользователя по жанру к общему количеству (процент/всего) </span>
-                                        <span className="font-bold">{(payload[0].payload.userCount/data.globalUser.userCount).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})} / {data.globalUser.userCount}</span>
+                                    <div className="grid grid-cols-[200px_auto] gap-1 items-center">
+                                        <span className="text-[0.70rem] uppercase text-muted-foreground">Отношение оценок пользователя по жанру к общему количеству</span>
+                                        <span className="font-bold">{(payload[0].payload.userCount/data.globalUser.userCount).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})}</span>
                                         <span className="text-[0.70rem] uppercase text-muted-foreground">Количество оценок пользователя по жанру (значение/нормированное)</span>
-                                        <span className="font-bold">{payload[0].payload.userCount} / {payload[0].payload.userCountNorm.toFixed(2)}</span>
+                                        <span className="font-bold">{payload[0].payload.userCount} / <span className={"text-primary"}>{payload[0].payload.userCountNorm.toFixed(2)}</span></span>
                                         <span className="text-[0.70rem] uppercase text-muted-foreground  ">Средняя оценка по жанру (общая/пользователя)</span>
-                                        <span className="font-bold">{payload[0].payload.userAvg.toFixed(2)}/{payload[0].payload.allAvg.toFixed(2)}</span>
+                                        <span className="font-bold">{payload[0].payload.userAvg.toFixed(2)} / {payload[0].payload.allAvg.toFixed(2)}</span>
                                         <span className="text-[0.70rem] uppercase text-muted-foreground  ">Отличие средней оценки пользователя от общей по жанру (значение/нормированное)</span>
-                                        <span className="font-bold">{payload[0].payload.allDifAvg.toFixed(2)}/{payload[0].payload.allDifAvgNorm.toFixed(2)}</span>
-                                        <span className="text-[0.70rem] uppercase text-muted-foreground  ">Средняя оценка пользователя</span>
-                                        <span className="font-bold">{data.globalUser.userAvg.toFixed(2)}</span>
+                                        <span className="font-bold">{payload[0].payload.allDifAvg.toFixed(2)} / <span className={"text-destructive"}>{payload[0].payload.allDifAvgNorm.toFixed(2)}</span></span>
+                                        {/*<span className="text-[0.70rem] uppercase text-muted-foreground  ">Средняя оценка пользователя</span>*/}
+                                        {/*<span className="font-bold">{data.globalUser.userAvg.toFixed(2)}</span>*/}
                                         <span className="text-[0.70rem] uppercase text-muted-foreground  ">Отличие средней оценки пользователя по жанру от своей средней (значение/нормированное)</span>
-                                        <span className="font-bold">{payload[0].payload.userDifAvg.toFixed(2)}/{payload[0].payload.userDifAvgNorm.toFixed(2)}</span>
+                                        <span className="font-bold">{payload[0].payload.userDifAvg.toFixed(2)} / <span className={"text-green-500"}>{payload[0].payload.userDifAvgNorm.toFixed(2)}</span></span>
                                     </div>
 
                                 </div>

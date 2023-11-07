@@ -2,6 +2,38 @@ import {DAOMixinHelper} from "../../../dao_helper";
 import {PrismaClient} from "@prisma/client";
 
 class ExplicitRatingGetDAO__mixin extends DAOMixinHelper {
+    async getFromRange(gt:number, lte: number) {
+        let group = []
+        if (this._testDb) {
+            group = await this._client.testRating.groupBy({
+                by: ['type'],
+                where: {
+                    rating: {gt, lte},
+                },
+                _count: {
+                    authorId: true,
+                },
+            })
+        } else {
+            group = await this._client.rating.groupBy({
+                by: ['type'],
+                where: {
+                    rating: {gt, lte},
+                },
+                _count: {
+                    authorId: true,
+                },
+            })
+        }
+
+
+        return group.map(g => {
+            return {
+                type: g.type,
+                count:g._count.authorId,
+            }
+        })
+    }
     async getAvgAndCountByMovieIdsWithoutUser(userID:number, movieIds: string[]) {
         let group = []
         if (this._testDb) {
@@ -356,6 +388,8 @@ class ExplicitRatingGetDAO__mixin extends DAOMixinHelper {
             }
         }) : this._client.rating.findMany({where: {authorId: userId, type: 'EXPLICIT'}})
     }
+
+
 }
 
 
@@ -363,6 +397,7 @@ export function createExplicitRatingGetDAOMixin(client: PrismaClient, testDb: bo
     const mixin = new ExplicitRatingGetDAO__mixin(client, testDb)
 
     return {
+        'getFromRange':mixin.getFromRange.bind(mixin),
         'getAvgAndCountByMovieIdsWithoutUser': mixin.getAvgAndCountByMovieIdsWithoutUser.bind(mixin),
         'getAvgAndCountByMovieIdsForUser': mixin.getAvgAndCountByMovieIdsForUser.bind(mixin),
         'getAvgRatings': mixin.getAvgRatings.bind(mixin),

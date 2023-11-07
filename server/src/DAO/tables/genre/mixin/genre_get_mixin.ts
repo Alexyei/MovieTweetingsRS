@@ -34,6 +34,42 @@ class GenreGetDAO__mixin extends DAOMixinHelper {
         return result.sort((a, b) => b.moviesIDs.length - a.moviesIDs.length)
 
     }
+
+    // async getGenresWithMoviesCountByMoviesIDs(moviesIDs:string[]){
+    //     const genresWithMovies = this._testDb ? await this._client.testGenre.findMany({
+    //             where: {
+    //                 movies: {
+    //                     some:{
+    //                         id: {in: moviesIDs},
+    //                     }
+    //                 },
+    //             },
+    //             include: {
+    //                 movies: true,
+    //             },
+    //         }) :
+    //         await this._client.genre.findMany({
+    //             where: {
+    //                 movies: {
+    //                     some:{
+    //                         id: {in: moviesIDs},
+    //                     }
+    //                 },
+    //             },
+    //             include: {
+    //                 movies: true,
+    //             },
+    //         })
+    //
+    //     const genresWithMoviesCount = genresWithMovies.map((genre) => ({
+    //         id:genre.id,
+    //         name: genre.name,
+    //         moviesCount: genre.movies.length,
+    //     }));
+    //
+    //     return genresWithMoviesCount.sort((a, b) => b.moviesCount - a.moviesCount)
+    // }
+
     async getGenresWithMoviesCount(){
         const genresWithMovies = this._testDb ? await this._client.testGenre.findMany({
             where: {
@@ -104,6 +140,7 @@ export function createGenreGetDAOMixin(client: PrismaClient, testDb: boolean) {
     const mixin = new GenreGetDAO__mixin(client, testDb)
 
     return {
+        // 'getGenresWithMoviesCountByMoviesIDs':mixin.getGenresWithMoviesCountByMoviesIDs.bind(mixin),
         'getGenresWithMoviesIDs':mixin.getGenresWithMoviesIDs.bind(mixin),
         'getGenresWithMoviesCount': mixin.getGenresWithMoviesCount.bind(mixin),
         'getGenreDataByName':mixin.getGenreDataByName.bind(mixin)

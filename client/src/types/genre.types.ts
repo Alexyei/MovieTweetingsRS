@@ -74,3 +74,11 @@ export type UserRatingsDataByGenresShortT = {
         userCountNorm: number
     }[],
 }
+
+
+export type UserGenreCountT = {
+    id: number,
+    name: string,
+    collection: { purchased: number, liked: number },
+    ratings: { explicit: number, implicit: number, priority: number }
+}

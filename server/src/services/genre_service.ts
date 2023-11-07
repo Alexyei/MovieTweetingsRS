@@ -1,5 +1,6 @@
 import {getDAO} from "../DAO/DAO";
 import {ApiError} from "../exceptions/api_errors";
+import userService from "./user_service";
 
 const dao = getDAO(false);
 class GenreService {
@@ -55,6 +56,37 @@ class GenreService {
         }
     }
 
+    async userGenresCount(userID:number){
+        const userFilms = await userService.getUserFilms(userID)
+        const userRatings = await dao.priorityRating.allWithTypesByUserID(userID)
+
+
+
+        const purchasedFilms = await dao.movie.getFullMoviesDataByIds(userFilms.purchased.map(p=>p.id!))
+        const likedFilms= await dao.movie.getFullMoviesDataByIds(userFilms.liked.map(p=>p.id!))
+        const explicitFilms = await dao.movie.getFullMoviesDataByIds(userRatings.explicit.map(r=>r.movieId!))
+        const implicitFilms = await dao.movie.getFullMoviesDataByIds(userRatings.implicit.map(r=>r.movieId!))
+        const priorityFilms = await dao.movie.getFullMoviesDataByIds(userRatings.priority.map(r=>r.movieId!))
+
+        const genres = await dao.genre.getGenresWithMoviesCount()
+
+        return genres.map(genre=>{
+
+            return {
+                id: genre.id,
+                name: genre.name,
+                collection: {
+                    purchased: purchasedFilms.filter(m=>m.genres.some(g=>g.id==genre.id)).length,
+                    liked: likedFilms.filter(m=>m.genres.some(g=>g.id==genre.id)).length,
+                },
+                ratings: {
+                    explicit: explicitFilms.filter(m=>m.genres.some(g=>g.id==genre.id)).length,
+                    implicit: implicitFilms.filter(m=>m.genres.some(g=>g.id==genre.id)).length,
+                    priority: priorityFilms.filter(m=>m.genres.some(g=>g.id==genre.id)).length,
+                }
+            }
+        })
+    }
 }
 
 const genreService = new GenreService()
