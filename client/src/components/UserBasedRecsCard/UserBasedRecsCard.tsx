@@ -6,12 +6,12 @@ import UserBasedRecsAccordion from "@/components/accordions/UserBasedRecsAccordi
 
 const api = getServerAPI()
 
-export default async function UserBasedRecsCard({userID}:{userID:number}){
+export default async function UserBasedRecsCard({userID}: { userID: number }) {
     const recsResponse = await api.recs.CFNBRecommenderUserUser(userID)
     if (recsResponse.status != 200) return null;
 
     const recs = recsResponse.response
-    const moviesIDs = recs.map(rec=>rec.movieId)
+    const moviesIDs = recs.map(rec => rec.movieId)
 
     const moviesDataResponse = await api.movie.movies(moviesIDs)
 
@@ -19,12 +19,12 @@ export default async function UserBasedRecsCard({userID}:{userID:number}){
 
     const moviesData = moviesDataResponse.response
 
-    const recsData = recs.map(rec=> {
+    const recsData = recs.map(rec => {
         const movie = moviesData.find(m => m.id == rec.movieId)!
 
         return {
             movie,
-            predictedRating:rec.predictedRating,
+            predictedRating: rec.predictedRating,
             recommendedByUsers: rec.recommendedByUsers
         }
     })
@@ -36,11 +36,16 @@ export default async function UserBasedRecsCard({userID}:{userID:number}){
                 <CardTitle>User-based рекомендации</CardTitle>
             </CardHeader>
 
-            <CardContent >
-                <ScrollArea className=" rounded-lg border bg-card text-card-foreground shadow-sm">
-                    <UserBasedRecsAccordion recsData={recsData}/>
-                    <ScrollBar orientation="horizontal" />
-                </ScrollArea>
+            <CardContent>
+                {recsData.length != 0 ?
+                    <ScrollArea className=" rounded-lg border bg-card text-card-foreground shadow-sm">
+                        <UserBasedRecsAccordion recsData={recsData}/>
+                        <ScrollBar orientation="horizontal"/>
+                    </ScrollArea> : <div
+                        className={"font-bold flex items-center justify-center h-32 rounded-lg border bg-card text-card-foreground shadow-sm"}>
+                        Нет рекомендаций
+                    </div>
+                }
             </CardContent>
 
 

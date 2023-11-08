@@ -41,6 +41,26 @@ class UserEventController {
             next(error);
         }
     }
+    async recentPurchases(req: Request, res: Response, next: NextFunction){
+        try {
+            const data = await userEventService.recentPurchases(100)
+            return res.status(200).json(data);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+
+
+    async purchasesForMovie(req: Request, res: Response, next: NextFunction){
+        try {
+            const movieId = req.params.movieID
+            const data = await userEventService.getPurchasesForMovie(movieId)
+            return res.status(200).json(data);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 const userEventController = new UserEventController()

@@ -12,10 +12,14 @@ import {
     YAxis
 } from "recharts"
 import React from "react";
+import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area";
 
 export function RatingDistributionChart({distributionData}: { distributionData: { rating: number, count: number }[] }) {
+    const minWidth = distributionData.length*30
     return (
-        <div className={"w-full pt-4"}>
+        // <div className={"w-full pt-4"}>
+            <ScrollArea className={"w-full pt-4 pb-4 rounded-lg border bg-card text-card-foreground shadow-sm"}>
+                <div style={{minWidth:minWidth}} >
         <ResponsiveContainer width="100%" height={450}>
             <BarChart data={distributionData}>
                 <XAxis
@@ -58,6 +62,8 @@ export function RatingDistributionChart({distributionData}: { distributionData: 
                      activeBar={<Rectangle fill="hsl(var(--primary))" stroke="hsl(var(--foreground))"/>}/>
             </BarChart>
         </ResponsiveContainer></div>
+                <ScrollBar orientation={"horizontal"}></ScrollBar>
+            </ScrollArea>
     )
 }
 

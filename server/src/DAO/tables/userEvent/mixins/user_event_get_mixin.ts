@@ -143,6 +143,72 @@ class UserEventGetDAO__mixin extends DAOMixinHelper {
         return data.map(d=>({event:d.event,count:d._count.id}))
     }
 
+    async getRecentPurchases(take:number=10){
+        if (this._testDb) {
+            return this._client.testUserEvent.findMany({
+                where: {
+                    event: 'BUY',
+                },
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                select: {
+                    userId:true,
+                    movieId:true,
+                    createdAt:true
+                },
+                take
+            })
+        } else {
+            return this._client.userEvent.findMany({
+                where: {
+                    event: 'BUY',
+                },
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                select: {
+                    userId:true,
+                    movieId:true,
+                    createdAt:true
+                },
+                take
+            })
+        }
+    }
+
+    async getPurchasesForMovie(movieId:string){
+        if (this._testDb) {
+            return this._client.testUserEvent.findMany({
+                where: {
+                    event: 'BUY',
+                    movieId: movieId,
+                },
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                select: {
+                    userId:true,
+                    createdAt:true
+                },
+            })
+        } else {
+            return this._client.userEvent.findMany({
+                where: {
+                    event: 'BUY',
+                    movieId: movieId,
+                },
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                select: {
+                    userId:true,
+                    createdAt:true
+                },
+            })
+        }
+    }
+
     async getPurchasesForPeriod(gte:Date,lt:Date|null = null) {
         if (this._testDb) {
             return this._client.testUserEvent.count({
@@ -268,6 +334,8 @@ export function createUserEventGetDAOMixin(client: PrismaClient, testDb: boolean
     const mixin = new UserEventGetDAO__mixin(client, testDb)
 
     return {
+        'getPurchasesForMovie':mixin.getPurchasesForMovie.bind(mixin),
+        'getRecentPurchases':mixin.getRecentPurchases.bind(mixin),
         'getSessionsWithBuyForPeriod':mixin.getSessionsWithBuyForPeriod.bind(mixin),
         'getVisitorsForPeriod':mixin.getVisitorsForPeriod.bind(mixin),
         'getSessionsForPeriod':mixin.getSessionsForPeriod.bind(mixin),

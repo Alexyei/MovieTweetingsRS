@@ -14,7 +14,8 @@ import WatchBuyMovieButton from "@/components/WatchBuyMovieButton/WatchBuyMovieB
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: string } }){
-    const response = await api.movie.movie(params.id)
+    const movieID = params.id
+    const response = await api.movie.movie(movieID)
     if (response.status == 400){
         notFound()
     }
@@ -59,7 +60,7 @@ export default async function Page({params}: { params: { id: string } }){
                 </CardContent>
             </Card>
             <div className="grid  w-full gap-4 lg:grid-cols-2">
-                <MovieSalesTable/>
+                <MovieSalesTable movieID={movieID}/>
                 <MovieSimilarityTable/>
             </div>
         </ServerAdminRoute>

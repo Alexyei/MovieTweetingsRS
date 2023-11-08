@@ -10,3 +10,11 @@ export default async function userIDExistValidator(req: Request, res:Response, n
 
     next();
 }
+
+export async function movieIDExistValidator(req: Request, res:Response, next: NextFunction){
+    const movieID = req.params.movieID
+    const movie = await dao.movie.getMovieById(movieID)
+    if (movie == null) next(ApiError.BadRequest(`Фильм с id: ${movieID} не найден`));
+
+    next();
+}

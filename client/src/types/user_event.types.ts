@@ -5,3 +5,5 @@ export type EventsCountT = {event: string, buy: number, no_buy: number}[]
 export type PurchasesInfoT = {purchases: {value: number, diff: number}, visitors: {value: number, diff: number},sessions: {value: number, diff: number}, conversion: {value: number, diff: number}}
 
 export type BestSellerT = {movieId:string,count:number}
+export type RecentPurchasesT = {userId:number,movieId:string,createdAt: string}
+export type MoviePurchasesT = {userId:number,createdAt: string}

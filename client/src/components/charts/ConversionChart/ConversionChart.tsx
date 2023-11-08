@@ -3,11 +3,15 @@
 import {Bar, BarChart, Rectangle, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts"
 import React from "react";
 import {EventsCountT, } from "@/types/user_event.types";
+import {ScrollArea, ScrollBar} from "@/components/ui/scroll-area";
 
 
 export function ConversionChart({data}: { data: EventsCountT }) {
+    const minWidth = data.length*30
     return (
-        <ResponsiveContainer width="100%" height={450}>
+        <ScrollArea className={"w-full pb-4 rounded-lg border bg-card text-card-foreground shadow-sm"}>
+            <div style={{minWidth:minWidth}} >
+        <ResponsiveContainer width={"100%"} height={450}>
             <BarChart data={data}>
                 <XAxis
                     dataKey="event"
@@ -57,6 +61,9 @@ export function ConversionChart({data}: { data: EventsCountT }) {
                      activeBar={<Rectangle fill="hsl(var(--destructive))" stroke="hsl(var(--foreground))"/>}/>
             </BarChart>
         </ResponsiveContainer>
+            </div>
+            <ScrollBar orientation={"horizontal"}></ScrollBar>
+        </ScrollArea>
     )
 }
 

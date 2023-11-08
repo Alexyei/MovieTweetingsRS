@@ -51,10 +51,15 @@ export default async function ItemBasedRecsCard({userID}:{userID:number}){
             </CardHeader>
 
             <CardContent >
-                <ScrollArea className=" rounded-lg border bg-card text-card-foreground shadow-sm">
+                { recsData.length !=0 ?
+                <ScrollArea className={" rounded-lg border bg-card text-card-foreground shadow-sm"}>
                     <ItemBasedRecsAccordion recsData={recsData}/>
                     <ScrollBar orientation="horizontal" />
                 </ScrollArea>
+                    :<div className={"font-bold flex items-center justify-center h-32 rounded-lg border bg-card text-card-foreground shadow-sm"}>
+                        Нет рекомендаций
+                    </div>
+                }
             </CardContent>
 
 

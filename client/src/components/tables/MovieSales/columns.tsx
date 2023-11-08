@@ -27,7 +27,7 @@ export const columns: ColumnDef<MovieSalesT & {filterField:string}>[] = [
         cell: ({row}: any) => {
             const data = row.original
             const user = data.user as UserT
-            return userCell(user)
+            return userCell(user,false)
         }
     },
     {
