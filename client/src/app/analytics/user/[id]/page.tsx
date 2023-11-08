@@ -56,7 +56,7 @@ export default async function Page({params}: { params: { id: number } }){
             <UserGenresCountCard userID={userID}/>
             <div className="grid  w-full gap-4 lg:grid-cols-2">
                 <UserCollectionTable userID={userID}/>
-                <UserRatingTable/>
+                <UserRatingTable userID={userID}/>
             </div>
             <div className="grid  w-full gap-4 lg:grid-cols-2">
                 <UserLogsTable userID={userID}/>

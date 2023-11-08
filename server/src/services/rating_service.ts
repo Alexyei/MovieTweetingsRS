@@ -22,6 +22,15 @@ class RatingService {
 
         return acc
     }
+
+    async userRatings(userID:number){
+        const ratings = await dao.priorityRating.allWithTypesByUserID(userID)
+        return {
+            explicit: ratings.explicit.map(r=>({movieId:r.movieId,rating:r.rating,date:r.createdAt})),
+            implicit: ratings.implicit.map(r=>({movieId:r.movieId,rating:r.rating,date:r.createdAt})),
+            priority: ratings.priority.map(r=>({movieId:r.movieId,rating:r.rating,date:r.createdAt})),
+        }
+    }
 }
 
 const ratingService = new RatingService()

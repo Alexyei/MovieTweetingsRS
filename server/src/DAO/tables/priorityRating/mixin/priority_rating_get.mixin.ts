@@ -17,31 +17,6 @@ class PriorityRatingGetDAO__mixin extends DAOMixinHelper{
                 const _avg = (sum / userRatings.length) || 0
             return {authorId, _avg }
         })
-        // const ratings = this._testDb ?
-        //     await this._client.testRating.groupBy({
-        //         by: ['authorId', 'type'],
-        //         _avg: {
-        //             rating: true,
-        //         },
-        //         orderBy: {
-        //             authorId: 'asc',
-        //         },
-        // }) : await this._client.rating.groupBy({
-        //         by: ['authorId', 'type'],
-        //         _avg: {
-        //             rating: true,
-        //         },
-        //         orderBy: {
-        //             authorId: 'asc',
-        //         }})
-        //
-        // const filtered =ratings.filter(rating => {
-        //     if (rating.type == 'EXPLICIT') return true
-        //     return !ratings.find(r => (r.authorId == rating.authorId) &&(r.type == 'EXPLICIT'));
-        // })
-        // console.log(filtered.length, ratings.length)
-        //
-        // return filtered.map(fr=>({authorId:fr.authorId,_avg:fr._avg.rating || 0}))
     }
 
     async allWithTypesByUserID(userID:number){

@@ -4,7 +4,7 @@ import {MovieFullDataT} from "@/types/movie.types";
 
 import * as React from "react";
 import {
-    baseHeader,
+    baseHeader, dateCell, dateHeader,
 
     movieCell,
     movieHeader, ratingCell, similarityCell, typeSimilarityCell, userCollectionTypeCell, userRatingTypeCell,
@@ -12,7 +12,7 @@ import {
 } from "@/components/tables/BaseTable/base-columns";
 
 
-export type UserRatingT = { type:"EXPLICIT"|"IMPLICIT"|"PRIORITY",rating:number,movie: MovieFullDataT, }
+export type UserRatingT = { type:"EXPLICIT"|"IMPLICIT"|"PRIORITY",rating:number,movie: MovieFullDataT,date:string }
 
 
 
@@ -36,6 +36,11 @@ export const columns: ColumnDef<UserRatingT & {filterField:string}>[] = [
         accessorKey: "rating",
         header: baseHeader("Оценка"),
         cell: ratingCell
+    },
+    {
+        accessorKey: "date",
+        header: dateHeader,
+        cell: dateCell
     },
     {
         accessorKey: "filterField",

@@ -1,6 +1,7 @@
 import {ApiHelper} from "@/api/helpers/api_helper";
 import {fetchWrapperT} from "@/types/fetch.types";
-import {RatingDistributionT} from "@/types/rating.types";
+import {RatingDistributionT, UserRatingsT} from "@/types/rating.types";
+
 
 type RatePayloadT = {
     movieID: string,
@@ -16,6 +17,11 @@ class RatingApi extends ApiHelper {
         const URL = this._API_URL + '/rating/distribution'
         return this._fetchWrapper<{ status: 200, response: RatingDistributionT }, null>( URL, 'GET', null)
     }
+
+    async userRatings(userID: number) {
+        const URL = this._API_URL + '/rating/user-ratings/'+userID
+        return this._fetchWrapper<{ status: 200, response: UserRatingsT }, null>( URL, 'GET')
+    }
 }
 
 
@@ -24,6 +30,7 @@ export function createRatingApi(API_URL:string, fetchWrapper:fetchWrapperT){
 
     return {
         'rate': api.rate.bind(api),
-        'distribution':api.distribution.bind(api)
+        'distribution':api.distribution.bind(api),
+        'userRatings': api.userRatings.bind(api)
     }
 }

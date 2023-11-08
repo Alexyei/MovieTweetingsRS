@@ -24,6 +24,18 @@ class RatingController {
             next(e);
         }
     }
+
+    async userRatings(req: Request, res: Response, next: NextFunction) {
+        try {
+
+            const requestUserId = Number(req.params.userID)
+            const ratings = await ratingService.userRatings(requestUserId);
+
+            return res.status(200).json(ratings);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 const ratingController = new RatingController()

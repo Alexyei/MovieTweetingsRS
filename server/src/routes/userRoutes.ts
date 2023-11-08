@@ -14,5 +14,5 @@ export default function connectUserRoutes(router: Router) {
     router.post(`${prefix}/search`, adminMiddleware, userSearchValidation, requestValidationMiddleware, userController.search)
     router.post(`${prefix}/users`, adminMiddleware,userIDsValidation, requestValidationMiddleware, userController.usersData)
     router.get(`${prefix}/user-similarities/:userID`,adminMiddleware,userIDExistValidator, userController.similaritiesForUser);
-    router.get(`${prefix}/films/:userID`,authMiddleware,userIDExistValidator,  userController.getUserFilms);
+    router.get(`${prefix}/films/:userID`,adminMiddleware,userIDExistValidator,  userController.getUserFilms);
 }

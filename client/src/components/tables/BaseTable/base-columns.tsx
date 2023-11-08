@@ -73,6 +73,7 @@ export const movieCell = (movie: MovieFullDataT) => {
 }
 
 export const dateCell = ({ row }:any) => {
+    console.log(row.getValue("date"))
     const date = new Date(row.getValue("date"));
     // const date = row.getValue("date");
     return <div className="text-md font-bold text-center w-full">{date.toLocaleDateString()}</div>
