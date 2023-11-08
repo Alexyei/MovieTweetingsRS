@@ -1,16 +1,61 @@
+'use client'
 import {BaseTable} from "@/components/tables/BaseTable/BaseTable";
+import {columns} from "@/components/tables/UserCollection/columns";
+import {getClientAPI} from "@/api/client_api";
+import {useEffect, useState} from "react";
+import {MovieFullDataT} from "@/types/movie.types";
+import TableSkeleton from "@/components/tables/TableSkeleton/TableSkeleton";
 
-import {UserCollectionT,columns} from "@/components/tables/UserCollection/columns";
 
-async function getData(): Promise<UserCollectionT[]> {
-    return [
-        {type:"BUY", movie:{id:"12345",count_ratings:10,title:"Длинное название длинного фильма",mean_rating:7.7,year:2010,description:"dd",poster_path:null,genres:[{id:1,name:'Comedy'},{id:2,name:'Drama'}]}},
-        {type:"IN LIST",  movie:{id:"12345",count_ratings:10,title:"Длинное название длинного фильма",mean_rating:7.7,year:2010,description:"dd",poster_path:null,genres:[{id:1,name:'Comedy'},{id:3,name:'Action'}]}},
-    ]
+const api = getClientAPI()
+async function getData(userID:number) {
+    try {
+        const response = await api.user.userFilms(userID)
+
+        if (response.status != 200) return null
+
+        const films = response.response
+
+        const movieIds = Array.from(new Set([...films.liked.map(m=>m.id),...films.purchased.map(m=>m.id)]))
+
+
+        const movieDataResponse = await api.movie.movies(movieIds)
+
+        if (movieDataResponse.status != 200) return null
+        const movies = movieDataResponse.response
+
+        return [
+        ...films.liked.map(f=>{
+                return {
+                    type: "IN LIST" as "IN LIST",
+                    movie: movies.find(m=>m.id==f.id)!
+                }
+            }),
+            ...films.purchased.map(f=>{
+                return {
+                    type: "BUY" as "BUY",
+                    movie: movies.find(m=>m.id==f.id)!
+                }
+            })
+        ]
+
+    }catch (e) {
+        return null
+    }
 }
 
-export default async function UserCollectionTable() {
-    const data = await getData()
+export default function UserCollectionTable({userID}:{userID:number}) {
+    const [data,setData] = useState<{type: "IN LIST" | "BUY", movie: MovieFullDataT}[] | null>()
+    const [loading, setLoading] = useState(true)
+
+    useEffect(()=>{
+        getData(userID).then(data=>{
+            setData(data)
+        }).finally(()=>setLoading(false))
+    },[])
+
+    if (loading) return <TableSkeleton/>
+    if(data == null) return <TableSkeleton/>
 
     const dataWithFilterField = data.map(r=>({...r,
         filterField:[

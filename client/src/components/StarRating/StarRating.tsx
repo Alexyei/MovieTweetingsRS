@@ -14,7 +14,7 @@ const StarRating = ({movieId}: { movieId: string }) => {
 
     if (user.isLoading) return <Skeleton className="h-8 w-[150px]"/>
 
-    const userRating = user.userMovies.rated.filter(m => m.id == movieId)[0]?.rating || 0.5
+    const userRating = user.userMovies.rated.filter(m => m.id == movieId)[0]?.rating || 0
 
     const starWidth = 24
     function onPointerMoveEventHandler(event:React.PointerEvent<SVGSVGElement>,index:number){
@@ -63,6 +63,7 @@ const StarRating = ({movieId}: { movieId: string }) => {
     }
 
     return (
+        <div>
         <div ref={ref} className="flex space-x-2 w-auto" onPointerLeave={()=>setHoveredRating(0)}>
             {Array.from({length: 5}, (_, index) => {
                 return (<div key={index} className="relative h-6 w-6" >
@@ -71,6 +72,8 @@ const StarRating = ({movieId}: { movieId: string }) => {
 
                 </div>)
             })}
+        </div>
+            {userRating > 0 && <p>Ваша оценка: {userRating}</p>}
         </div>
     )
 }

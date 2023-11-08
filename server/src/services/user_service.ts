@@ -2,7 +2,8 @@ import {getDAO} from "../DAO/DAO";
 
 const dao = getDAO(false);
 class UserService {
-    async getUserFilms(userID:number) {
+    async getUserFilms(requestUserID:number, sessionUserID:number) {
+        const userID = requestUserID || sessionUserID
         const ratings = await dao.rating.getByUserId(userID)
         const events = await dao.userEvent.getUserEvents(userID)
 

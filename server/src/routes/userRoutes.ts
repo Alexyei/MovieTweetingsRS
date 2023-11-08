@@ -10,8 +10,9 @@ import movieController from "../controllers/movie_controller";
 export default function connectUserRoutes(router: Router) {
     const prefix = '/user'
     router.get(`${prefix}/films`,authMiddleware,  userController.getUserFilms);
-    router.post(`${prefix}/search`, userSearchValidation, requestValidationMiddleware, userController.search)
+
+    router.post(`${prefix}/search`, adminMiddleware, userSearchValidation, requestValidationMiddleware, userController.search)
     router.post(`${prefix}/users`, adminMiddleware,userIDsValidation, requestValidationMiddleware, userController.usersData)
     router.get(`${prefix}/user-similarities/:userID`,adminMiddleware,userIDExistValidator, userController.similaritiesForUser);
-
+    router.get(`${prefix}/films/:userID`,authMiddleware,userIDExistValidator,  userController.getUserFilms);
 }

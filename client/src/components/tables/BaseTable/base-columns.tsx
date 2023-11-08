@@ -29,7 +29,6 @@ export const movieHeader = baseHeader("Фильм")
 export const dateHeader = baseHeader("Дата")
 
 export const userCell = (user:UserT,fullHeight:boolean = true) => {
-
     return (
         <Link href={`/analytics/user/${user.id}` }
               className={`flex items-center hover:bg-secondary p-2 rounded-md pl-2 ${fullHeight ? "h-[120px]":""}`}>

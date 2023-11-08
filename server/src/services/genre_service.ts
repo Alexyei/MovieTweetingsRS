@@ -61,7 +61,7 @@ class GenreService {
     }
 
     async userGenresCount(userID:number){
-        const userFilms = await userService.getUserFilms(userID)
+        const userFilms = await userService.getUserFilms(NaN,userID)
         const userRatings = await dao.priorityRating.allWithTypesByUserID(userID)
 
 

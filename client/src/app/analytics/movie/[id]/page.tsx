@@ -61,7 +61,7 @@ export default async function Page({params}: { params: { id: string } }){
             </Card>
             <div className="grid  w-full gap-4 lg:grid-cols-2">
                 <MovieSalesTable movieID={movieID}/>
-                <MovieSimilarityTable/>
+                <MovieSimilarityTable movieID={movieID}/>
             </div>
         </ServerAdminRoute>
     )

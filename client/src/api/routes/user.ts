@@ -1,12 +1,13 @@
 import {ApiHelper} from "@/api/helpers/api_helper";
 import {fetchWrapperT} from "@/types/fetch.types";
 import {UserMoviesT, UserSimilarityT, UserT} from "@/types/user.types";
-import {MovieSimilarityT} from "@/types/movie.types";
 
 class UserApi extends ApiHelper {
 
-    async userFilms() {
-        const URL = this._API_URL + '/user/films/'
+    async userFilms(userID?:number) {
+        let URL = this._API_URL + '/user/films/'
+        if (userID)
+            URL += userID
         return this._fetchWrapper<{ status: 200, response: UserMoviesT }, null>( URL, 'GET')
     }
 
@@ -24,6 +25,7 @@ class UserApi extends ApiHelper {
         const URL = this._API_URL + '/user/user-similarities/'+userID
         return this._fetchWrapper<{ status: 200, response: UserSimilarityT[] }, null>( URL, 'GET')
     }
+
 }
 
 
