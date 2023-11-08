@@ -39,6 +39,12 @@ class UserSimilarityGetDAO__mixin extends DAOMixinHelper{
             take: take
         });
     }
+
+    async getSimilaritiesForUser(userID:number){
+        return this._testDb ? this._client.testUsersSimilarity.findMany(
+            {where: {source: userID},select:{target:true,similarity:true,type:true}}) :
+            this._client.usersSimilarity.findMany({where: {source: userID},select:{target:true,similarity:true,type:true}});
+    }
 }
 
 
@@ -49,5 +55,6 @@ export function createUserSimilarityGetDAOMixin(client:PrismaClient,testDb:boole
         'count':mixin.count.bind(mixin),
         'all':mixin.all.bind(mixin),
         'getCandidatesPairsByUserId':mixin.getCandidatesPairsByUserId.bind(mixin),
+        'getSimilarityForUser':mixin.getSimilaritiesForUser.bind(mixin)
     }
 }

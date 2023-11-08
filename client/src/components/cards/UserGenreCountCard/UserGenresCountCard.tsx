@@ -32,7 +32,6 @@ export default function UserGenresCountCard({userID}:{userID:number}){
     useEffect(()=>{
         getGenreCountData(userID).then(data=>{
             setCountData(data)
-            console.log(data)
         }).finally(()=>setLoading(false))
     },[])
 

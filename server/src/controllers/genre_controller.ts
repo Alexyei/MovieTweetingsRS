@@ -11,6 +11,15 @@ class GenreController {
         }
     }
 
+    async all(req: Request, res: Response, next: NextFunction) {
+        try {
+            const genres = await genreService.all();
+            return res.status(200).json(genres);
+        } catch (error) {
+            next(error);
+        }
+    }
+
     async genreData(req: Request, res: Response, next: NextFunction) {
         try {
             const genreName = req.params.name

@@ -33,6 +33,18 @@ class MovieController {
             next(error);
         }
     }
+
+    async similaritiesForMovie(req: Request, res: Response, next: NextFunction) {
+        try {
+
+            const requestMovieId = req.params.movieID
+            const movieSims = await movieService.getMovieSimilarities(requestMovieId)
+
+            return res.status(200).json(movieSims);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 const movieController = new MovieController()

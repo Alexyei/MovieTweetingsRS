@@ -61,7 +61,7 @@ export default function RecentSalesTable() {
     },[])
 
     if (loading) return <TableSkeleton/>
-    if(data == null || data.length == 0) return <TableSkeleton/>
+    if(data == null) return <TableSkeleton/>
 
     const dataWithFilterField = data.map(r=>({...r,
         filterField:[

@@ -44,7 +44,7 @@ export default function TopSalesTable() {
     },[])
 
     if (loading) return <TableSkeleton/>
-    if(data == null || data.length == 0) return <TableSkeleton/>
+    if(data == null) return <TableSkeleton/>
 
 
 

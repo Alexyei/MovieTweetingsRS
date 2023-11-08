@@ -109,6 +109,10 @@ class UserEventService {
     async getPurchasesForMovie(movieID:string){
         return dao.userEvent.getPurchasesForMovie(movieID)
     }
+
+    async getRecentUserEvents(userID:number,take:number){
+        return dao.userEvent.getRecentUserEvents(userID,take)
+    }
 }
 
 const userEventService = new UserEventService()

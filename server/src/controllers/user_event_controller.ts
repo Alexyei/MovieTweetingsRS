@@ -61,6 +61,16 @@ class UserEventController {
             next(error);
         }
     }
+
+    async resentUserEvents(req: Request, res: Response, next: NextFunction){
+        try {
+            const userId = Number(req.params.userID)
+            const data = await userEventService.getRecentUserEvents(userId,100)
+            return res.status(200).json(data);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 const userEventController = new UserEventController()

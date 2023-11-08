@@ -12,4 +12,4 @@ export type MovieFullDataT = {
 }
 
 export type MovieOrderingT =  "year asc" | "year desc" | "title asc" | "title desc"
-
+export type  MovieSimilarityT = {type: "OTIAI", target: string, similarity: number}

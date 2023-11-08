@@ -4,6 +4,8 @@ export type GenreT = {
     moviesCount: number,
 }
 
+export type ShortGenreT = Omit<GenreT, "moviesCount">
+
 export type UserRatingsDataByGenresT = {
     globalUser: {
         explicit: {

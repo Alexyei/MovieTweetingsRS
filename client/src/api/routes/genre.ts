@@ -1,6 +1,6 @@
 import {ApiHelper} from "@/api/helpers/api_helper";
 import {fetchWrapperT} from "@/types/fetch.types";
-import {GenreT, UserGenreCountT, UserRatingsDataByGenresT} from "@/types/genre.types";
+import {GenreT, ShortGenreT, UserGenreCountT, UserRatingsDataByGenresT} from "@/types/genre.types";
 
 
 class GenreApi extends ApiHelper {
@@ -8,6 +8,11 @@ class GenreApi extends ApiHelper {
     async genres() {
         const URL = this._API_URL + '/genre/genres/'
         return this._fetchWrapper<{ status: 200, response: GenreT[] }, null>( URL, 'GET')
+    }
+
+    async all() {
+        const URL = this._API_URL + '/genre/all/'
+        return this._fetchWrapper<{ status: 200, response: ShortGenreT[] }, null>( URL, 'GET')
     }
 
     async genreData(name: string) {
@@ -31,6 +36,7 @@ export function createGenreApi(API_URL:string, fetchWrapper:fetchWrapperT){
     const api = new GenreApi(API_URL,fetchWrapper)
 
     return {
+        'all':api.all.bind(api),
         'genres': api.genres.bind(api),
         'genreData': api.genreData.bind(api),
         'userRatingsDataByGenres':api.userRatingsDataByGenres.bind(api),

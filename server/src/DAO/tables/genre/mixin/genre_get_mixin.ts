@@ -133,6 +133,10 @@ class GenreGetDAO__mixin extends DAOMixinHelper {
             }
         }
     }
+
+    async all(){
+        return this._testDb ? await this._client.testGenre.findMany({}) :  await this._client.genre.findMany({})
+    }
 }
 
 
@@ -143,6 +147,7 @@ export function createGenreGetDAOMixin(client: PrismaClient, testDb: boolean) {
         // 'getGenresWithMoviesCountByMoviesIDs':mixin.getGenresWithMoviesCountByMoviesIDs.bind(mixin),
         'getGenresWithMoviesIDs':mixin.getGenresWithMoviesIDs.bind(mixin),
         'getGenresWithMoviesCount': mixin.getGenresWithMoviesCount.bind(mixin),
-        'getGenreDataByName':mixin.getGenreDataByName.bind(mixin)
+        'getGenreDataByName':mixin.getGenreDataByName.bind(mixin),
+        'all':mixin.all.bind(mixin)
     }
 }

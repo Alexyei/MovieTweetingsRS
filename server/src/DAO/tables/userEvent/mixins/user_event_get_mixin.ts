@@ -177,6 +177,44 @@ class UserEventGetDAO__mixin extends DAOMixinHelper {
         }
     }
 
+    async getRecentUserEvents(userID:number,take:number=10){
+        if (this._testDb) {
+            return this._client.testUserEvent.findMany({
+                where: {
+                    userId: userID
+                },
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                select: {
+                    userId:true,
+                    movieId:true,
+                    genreId:true,
+                    event:true,
+                    createdAt:true
+                },
+                take
+            })
+        } else {
+            return this._client.userEvent.findMany({
+                where: {
+                    userId: userID
+                },
+                orderBy: {
+                    createdAt: 'desc'
+                },
+                select: {
+                    userId:true,
+                    movieId:true,
+                    genreId:true,
+                    event:true,
+                    createdAt:true
+                },
+                take
+            })
+        }
+    }
+
     async getPurchasesForMovie(movieId:string){
         if (this._testDb) {
             return this._client.testUserEvent.findMany({
@@ -334,6 +372,7 @@ export function createUserEventGetDAOMixin(client: PrismaClient, testDb: boolean
     const mixin = new UserEventGetDAO__mixin(client, testDb)
 
     return {
+        'getRecentUserEvents':mixin.getRecentUserEvents.bind(mixin),
         'getPurchasesForMovie':mixin.getPurchasesForMovie.bind(mixin),
         'getRecentPurchases':mixin.getRecentPurchases.bind(mixin),
         'getSessionsWithBuyForPeriod':mixin.getSessionsWithBuyForPeriod.bind(mixin),

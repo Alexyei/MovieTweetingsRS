@@ -7,3 +7,5 @@ export type PurchasesInfoT = {purchases: {value: number, diff: number}, visitors
 export type BestSellerT = {movieId:string,count:number}
 export type RecentPurchasesT = {userId:number,movieId:string,createdAt: string}
 export type MoviePurchasesT = {userId:number,createdAt: string}
+
+export type UserEventT = {userId: number, movieId: string | null, genreId: number | null, event: EventTypeT, createdAt: string}

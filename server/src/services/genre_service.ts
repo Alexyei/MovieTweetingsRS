@@ -8,6 +8,10 @@ class GenreService {
         return await dao.genre.getGenresWithMoviesCount();
     }
 
+    async all(){
+        return await dao.genre.all();
+    }
+
     async genreData(genreName:string){
         if (!genreName || genreName.length > 30) throw ApiError.BadRequest('Недопустимое название жанра');
 

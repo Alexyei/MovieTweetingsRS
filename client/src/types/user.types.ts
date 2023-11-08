@@ -7,3 +7,5 @@ export type UserMoviesT = {
     liked: MovieIdT[],
     rated: MovieIdWithRatingT[]
 }
+
+export type UserSimilarityT = {type: "OTIAI", target: number, similarity: number}

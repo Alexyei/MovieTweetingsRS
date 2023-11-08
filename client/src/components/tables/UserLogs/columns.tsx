@@ -14,11 +14,11 @@ import {
     userHeader
 } from "@/components/tables/BaseTable/base-columns";
 import {EventTypeT} from "@/types/user_event.types";
-import {GenreT} from "@/types/genre.types";
+import {GenreT, ShortGenreT} from "@/types/genre.types";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type UserLogsT = {  movie: MovieFullDataT | null,genre:Omit<GenreT,"moviesCount"> | null,date:string,event:EventTypeT }
+export type UserLogsT = {  movie: MovieFullDataT | null,genre:ShortGenreT | null,date:string,event:EventTypeT }
 
 
 

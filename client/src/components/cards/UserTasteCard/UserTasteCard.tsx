@@ -41,16 +41,16 @@ async function getTasteData(userID:number){
 
         data.genresData.forEach((genre:any)=>{
             genre.explicit['userDifAvg']= genre.explicit.userAvg - data.globalUser.explicit.userAvg
-            genre.explicit['userDifAvgNorm']=genre.explicit['userDifAvg']/max.explicit.userDifAvg
+            genre.explicit['userDifAvgNorm']=genre.explicit['userDifAvg']/max.explicit.userDifAvg || 0
             genre.explicit['allDifAvg']=genre.explicit.userAvg - genre.explicit.allAvg
-            genre.explicit['allDifAvgNorm']=genre.explicit['allDifAvg']/max.explicit.allDifAvg
-            genre.explicit['userCountNorm']=genre.explicit.userCount/max.explicit.userCount
+            genre.explicit['allDifAvgNorm']=genre.explicit['allDifAvg']/max.explicit.allDifAvg || 0
+            genre.explicit['userCountNorm']=genre.explicit.userCount/max.explicit.userCount || 0
 
             genre.implicit['userDifAvg']=genre.implicit.userAvg - data.globalUser.implicit.userAvg
-            genre.implicit['userDifAvgNorm']=genre.implicit['userDifAvg']/max.implicit.userDifAvg
+            genre.implicit['userDifAvgNorm']=genre.implicit['userDifAvg']/max.implicit.userDifAvg || 0
             genre.implicit['allDifAvg']=genre.implicit.userAvg - genre.implicit.allAvg
-            genre.implicit['allDifAvgNorm']=genre.implicit['allDifAvg']/max.implicit.allDifAvg
-            genre.implicit['userCountNorm']=genre.implicit.userCount/max.implicit.userCount
+            genre.implicit['allDifAvgNorm']=genre.implicit['allDifAvg']/max.implicit.allDifAvg || 0
+            genre.implicit['userCountNorm']=genre.implicit.userCount/max.implicit.userCount || 0
         })
 
         return data as UserRatingsDataByGenresExtendedT

@@ -45,6 +45,10 @@ class UserService {
         return dao.user.getUsersDataByIds(userIDs)
     }
 
+    async getUserSimilarities(userID:number){
+        return dao.userSimilarity.getSimilarityForUser(userID)
+    }
+
 }
 
 const userService = new UserService()

@@ -6,7 +6,7 @@ import {
     EventTypeT,
     MoviePurchasesT,
     PurchasesInfoT,
-    RecentPurchasesT
+    RecentPurchasesT, UserEventT
 } from "@/types/user_event.types";
 import {MovieFullDataT} from "@/types/movie.types";
 
@@ -45,6 +45,11 @@ class UserEventApi extends ApiHelper {
         const URL = this._API_URL + '/log/purchases/'+movieID
         return this._fetchWrapper<{ status: 200, response: MoviePurchasesT[] }, null>( URL, 'GET')
     }
+
+    async recentUserEvents(userID: number) {
+        const URL = this._API_URL + '/log/recent-user-events/'+userID
+        return this._fetchWrapper<{ status: 200, response: UserEventT[] }, null>( URL, 'GET')
+    }
 }
 
 
@@ -57,6 +62,7 @@ export function createUserEventApi(API_URL:string, fetchWrapper:fetchWrapperT){
         'purchasesInfo': api.purchasesInfo.bind(api),
         'bestsellers': api.bestsellers.bind(api),
         'recentPurchases':api.recentPurchases.bind(api),
-        'moviePurchases':api.moviePurchases.bind(api)
+        'moviePurchases':api.moviePurchases.bind(api),
+        'recentUserEvents':api.recentUserEvents.bind(api)
     }
 }

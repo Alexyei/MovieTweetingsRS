@@ -11,6 +11,12 @@ class MoviesSimilarityGetDAO__mixin extends DAOMixinHelper{
         return this._testDb ? await this._client.testMoviesSimilarity.findMany() : await this._client.moviesSimilarity.findMany();
     }
 
+    async getSimilaritiesForMovie(movieID:string){
+        return this._testDb ? this._client.testMoviesSimilarity.findMany(
+                {where: {source: movieID},select:{target:true,similarity:true,type:true}}) :
+            this._client.moviesSimilarity.findMany({where: {source: movieID},select:{target:true,similarity:true,type:true}});
+    }
+
     async getCandidatesByTargetId(userMovieIds:string[], targetId:string,type:SimilarityType,take=100,min_sims = 0.2){
         if (this._testDb){
             return this._client.testMoviesSimilarity.findMany({
@@ -77,6 +83,7 @@ export function createMoviesSimilarityGetDAOMixin(client:PrismaClient,testDb:boo
     return {
         'count':mixin.count.bind(mixin),
         'all':mixin.all.bind(mixin),
+        'getSimilaritiesForMovie':mixin.getSimilaritiesForMovie.bind(mixin),
         'getCandidatesByTargetId':mixin.getCandidatesByTargetId.bind(mixin),
         'getAllCandidates':mixin.getAllCandidates.bind(mixin)
     }

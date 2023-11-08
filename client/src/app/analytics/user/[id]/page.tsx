@@ -59,7 +59,7 @@ export default async function Page({params}: { params: { id: number } }){
                 <UserRatingTable/>
             </div>
             <div className="grid  w-full gap-4 lg:grid-cols-2">
-                <UserLogsTable/>
+                <UserLogsTable userID={userID}/>
                 <UserSimilarityTable/>
             </div>
             <ItemBasedRecsCard userID={userID}/>
