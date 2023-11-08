@@ -1,9 +1,6 @@
 import {ApiHelper} from "@/api/helpers/api_helper";
 import {fetchWrapperT} from "@/types/fetch.types";
 import {UserMoviesT, UserT} from "@/types/user.types";
-import {SearchParamsT} from "@/components/MovieSearchPanel/MovieSearchPanel";
-import {MovieFullDataT} from "@/types/movie.types";
-
 
 class UserApi extends ApiHelper {
 
@@ -16,6 +13,11 @@ class UserApi extends ApiHelper {
         const URL = this._API_URL + '/user/search'
         return this._fetchWrapper<{ status: 200, response: UserT[] }, {searchInput:string}>( URL, 'POST', {searchInput: searchInput})
     }
+
+    async users(userIDs:number[]) {
+        const URL = this._API_URL + '/user/users'
+        return this._fetchWrapper<{ status: 200, response: UserT[] },{userIDs:number[]}>( URL, 'POST', {userIDs})
+    }
 }
 
 
@@ -24,6 +26,7 @@ export function createUserApi(API_URL:string, fetchWrapper:fetchWrapperT){
 
     return {
         'userFilms': api.userFilms.bind(api),
-        'search': api.search.bind(api)
+        'search': api.search.bind(api),
+        'users':api.users.bind(api),
     }
 }

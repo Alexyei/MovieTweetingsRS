@@ -26,19 +26,19 @@ export type SearchParamsT = {
 const api = getClientAPI()
 const  SearchPanelSkeleton = ({title}:{title:string})=>{
     return (
-        <Card >
+        <Card className={"flex flex-col"}>
             <CardHeader>
                 <CardTitle>
                     {title}
                 </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className={"flex flex-grow flex-col"}>
                 <div className="w-full">
                     <div className="flex items-center py-4 justify-between">
                         <Skeleton className="w-full h-8"/>
                     </div>
                 </div>
-                <Skeleton className="h-96 w-full rounded-md border"/>
+                <Skeleton className="flex-grow w-full rounded-md border"/>
                 <div className="flex items-center justify-end space-x-2 py-4">
                     <div className="flex-1 text-sm text-muted-foreground">
                         <Skeleton className="w-[120px] h-4"/>
@@ -48,37 +48,7 @@ const  SearchPanelSkeleton = ({title}:{title:string})=>{
         </Card>
     )
 }
-//TODO: sort types
 
-
-
-
-// function getGenres() {
-//     return new Promise<GenreT[]>((resolve, reject) => {
-//         setTimeout(() => resolve([
-//             {
-//                 id: 1,
-//                 name: "Comedy",
-//                 moviesCount: 1000,
-//             },
-//             {
-//                 id:2,
-//                 name: "Drama",
-//                 moviesCount: 1500
-//             },
-//             {
-//                 id:3,
-//                 name: "Action",
-//                 moviesCount: 500
-//             },
-//             {
-//                 id: 4,
-//                 name: "Sci-fi",
-//                 moviesCount:2000
-//             },
-//         ]),2000)
-//     })
-// }
 
 const moviesInResponse = 30
 
@@ -108,7 +78,6 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true, admin=f
                 setIsMounted(true)
             }
         })
-        // getGenres().then((gens)=>genres.current = gens).then(()=>setIsMounted(true))
     },[])
 
     useEffect(()=>{
@@ -145,14 +114,6 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true, admin=f
         }).finally(()=>{
             setIsLoading(false)
         })
-        // makeRequest(searchParams,current).then(({movies,total})=>{
-        //     setMovies(movies)
-        //     setTotal(total)
-        //     setCurrent(Math.min(total,moviesInResponse))
-        //     lastSearchParams.current = searchParams.current
-        // }).finally(()=>{
-        //     setIsLoading(false)
-        // })
     }
 
     function loadMore(){
@@ -171,13 +132,6 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true, admin=f
         }).finally(()=>{
             setIsLoading(false)
         })
-        // makeRequest(lastSearchParams,skip).then(({movies,total})=>{
-        //     setMovies(prev=>[...prev,...movies])
-        //     setTotal(total)
-        //     setSkip(prev=>Math.min(total,prev+moviesInResponse))
-        // }).finally(()=>{
-        //     setIsLoading(false)
-        // })
     }
 
 
@@ -197,13 +151,13 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true, admin=f
     if (!isMounted) return <SearchPanelSkeleton title={title}/>
 
     return (
-        <Card >
+        <Card className={"flex flex-col"}>
             <CardHeader>
                 <CardTitle>
                     {title}
                 </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className={"flex-grow flex flex-col"}>
                 <div className="w-full">
                     <div className="flex items-center py-4 justify-between">
                         <Search onInputChanged={onSearchInputChanged}/>
@@ -214,7 +168,7 @@ const MovieSearchPanel = ({title, initialValues={}, canSelectGenre=true, admin=f
                     </div>
                 </div>
                 {movies.length ?
-                <ScrollArea className="h-96 w-full rounded-md border ">
+                <ScrollArea className="h-96 flex-grow w-full rounded-md border ">
                     {/*<div className={"min-h-screen bg-yellow-300"}></div>*/}
 
                     <div className={"flex flex-wrap gap-4 p-4"}>

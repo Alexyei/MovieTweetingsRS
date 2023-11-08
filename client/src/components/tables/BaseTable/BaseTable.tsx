@@ -68,12 +68,12 @@ export function BaseTable<TData, TValue>({
 
 
     return (
-        <Card className={"overflow-x-auto"}>
+        <Card className={"overflow-x-auto flex flex-col"}>
             <CardHeader>
                 <CardTitle className={"px-1"}>{header}</CardTitle>
             </CardHeader>
-            <CardContent className={"px-2"}>
-                <div className={"w-full  px-1  "}>
+            <CardContent className={"flex-grow flex flex-col px-2"}>
+                <div className={"w-full  px-1  flex-grow flex flex-col"}>
                     <div className="flex items-center py-4 ">
                         {input ? input :
                         <Input
@@ -84,16 +84,8 @@ export function BaseTable<TData, TValue>({
                             }
                             className="max-w-sm "
                         />}
-                        {/*<Input*/}
-                        {/*    placeholder="Filter..."*/}
-                        {/*    value={filtering}*/}
-                        {/*    onChange={(event) =>*/}
-                        {/*        setFiltering(event.target.value)*/}
-                        {/*    }*/}
-                        {/*    className="max-w-sm"*/}
-                        {/*/>*/}
                     </div>
-                    <div className="rounded-md border ">
+                    <div className="rounded-md border flex-grow">
                         <Table >
                             <TableHeader>
                                 {table.getHeaderGroups().map((headerGroup) => (
@@ -158,6 +150,8 @@ export function BaseTable<TData, TValue>({
                             <ChevronRight className="h-4 w-4" />
                         </Button>
                     </div>
-                </div></CardContent></Card>
+                </div>
+            </CardContent>
+        </Card>
     )
 }

@@ -23,6 +23,24 @@ class UserEventController {
             next(error);
         }
     }
+
+    async purchasesInfo(req: Request, res: Response, next: NextFunction){
+        try {
+            const data = await userEventService.purchasesInfo()
+            return res.status(200).json(data);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async bestsellers(req: Request, res: Response, next: NextFunction){
+        try {
+            const data = await userEventService.bestsellers()
+            return res.status(200).json(data);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 const userEventController = new UserEventController()

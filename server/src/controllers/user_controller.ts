@@ -21,6 +21,16 @@ class UserController {
             next(error);
         }
     }
+
+    async usersData(req: Request, res: Response, next: NextFunction) {
+        try {
+            const {userIDs} = req.body;
+            const users = await userService.getUsersData(userIDs);
+            return res.status(200).json(users);
+        } catch (error) {
+            next(error);
+        }
+    }
 }
 
 const userController = new UserController()

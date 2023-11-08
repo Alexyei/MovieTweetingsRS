@@ -41,6 +41,10 @@ class UserService {
         return [...results,...users]
     }
 
+    async getUsersData(userIDs:number[]){
+        return dao.user.getUsersDataByIds(userIDs)
+    }
+
 }
 
 const userService = new UserService()

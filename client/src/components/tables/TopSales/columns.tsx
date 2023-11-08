@@ -15,20 +15,11 @@ import {
 } from "@/components/tables/BaseTable/base-columns";
 
 
-export type TopSalesT = { user: UserT, movie: MovieFullDataT,count:number }
+export type TopSalesT = { movie: MovieFullDataT,count:number }
 
 
 
 export const columns: ColumnDef<TopSalesT & {filterField:string}>[] = [
-    {
-        accessorKey: "user.login",
-        header: userHeader,
-        cell: ({row}: any) => {
-            const data = row.original
-            const user = data.user as UserT
-            return userCell(user)
-        }
-    },
     {
         accessorKey: "movie.title",
         header: movieHeader,

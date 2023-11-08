@@ -1,20 +1,55 @@
+'use client'
 import {BaseTable} from "@/components/tables/BaseTable/BaseTable";
 import {columns} from "@/components/tables/TopSales/columns";
-import {TopSalesT} from "@/components/tables/TopSales/columns";
+import {getClientAPI} from "@/api/client_api";
+import {useEffect, useState} from "react";
+import {MovieFullDataT} from "@/types/movie.types";
+import TableSkeleton from "@/components/tables/TableSkeleton/TableSkeleton";
 
-async function getData(): Promise<TopSalesT[]> {
-    return [
-        {user:{id:1,login:"длинный_логин",email:"Длинное_email@email.ru",role:"USER"}, count: 150, movie:{id:"12345",count_ratings:10,title:"Длинное название длинного фильма",mean_rating:7.7,year:2010,description:"dd",poster_path:null,genres:[{id:1,name:'Comedy'},{id:2,name:'Drama'}]}},
-        {user:{id:1,login:"длинный_логин",email:"Длинное_email@email.ru",role:"USER"}, count: 17, movie:{id:"12345",count_ratings:10,title:"Длинное название длинного фильма",mean_rating:7.7,year:2010,description:"dd",poster_path:null,genres:[{id:1,name:'Comedy'},{id:3,name:'Action'}]}},
-    ]
+
+const api = getClientAPI()
+async function getData() {
+    try {
+        const response = await api.userEvent.bestsellers()
+
+        if (response.status != 200) return null
+
+        const bestsellers = response.response
+
+        const movieIds = bestsellers.map(b=>b.movieId)
+
+        const movieDataResponse = await api.movie.movies(movieIds)
+
+        if (movieDataResponse.status != 200) return null
+        const movies = movieDataResponse.response
+        return bestsellers.map(b=>{
+            return {
+                count:b.count,
+                movie: movies.find(m=>m.id==b.movieId)!
+            }
+        })
+
+    }catch (e) {
+        return null
+    }
 }
-export default async function TopSalesTable() {
-    const data = await getData()
+export default function TopSalesTable() {
+    const [data,setData] = useState<{count: number, movie: MovieFullDataT}[] | null>()
+    const [loading, setLoading] = useState(true)
+
+    useEffect(()=>{
+        getData().then(data=>{
+            setData(data)
+        }).finally(()=>setLoading(false))
+    },[])
+
+    if (loading) return <TableSkeleton/>
+    if(data == null || data.length == 0) return <TableSkeleton/>
+
+
 
     const dataWithFilterField = data.map(r=>({...r,
         filterField:[
-            r.user.login,
-            r.user.email,
             r.movie.year,
             r.movie.title,
             r.count,
@@ -23,7 +58,7 @@ export default async function TopSalesTable() {
 
     return (
         // <div className="container mx-auto py-10">
-        <BaseTable header={"Топ продаж"} filterPlaceholder={"Пользователь, фильм..."} columns={columns} data={dataWithFilterField} />
+        <BaseTable header={"Топ продаж"} filterPlaceholder={"Фильм..."} columns={columns} data={dataWithFilterField} />
         // </div>
     )
 }

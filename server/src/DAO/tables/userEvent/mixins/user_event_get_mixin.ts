@@ -4,7 +4,7 @@ import {PrismaClient} from "@prisma/client";
 
 class UserEventGetDAO__mixin extends DAOMixinHelper {
 
-    async getPurchasesForUser(userId: number, take: number = 10) {
+    async getPurchasesForUser(userId: number|undefined, take: number = 10) {
         let purchases = []
         if (this._testDb) {
             purchases = await this._client.testUserEvent.groupBy({
@@ -142,6 +142,125 @@ class UserEventGetDAO__mixin extends DAOMixinHelper {
 
         return data.map(d=>({event:d.event,count:d._count.id}))
     }
+
+    async getPurchasesForPeriod(gte:Date,lt:Date|null = null) {
+        if (this._testDb) {
+            return this._client.testUserEvent.count({
+                where: {
+                    event: 'BUY',
+                    createdAt:{
+                        gte,
+                        lt: lt? lt: undefined
+                    }
+                },
+            })
+        } else {
+            return this._client.userEvent.count({
+                where: {
+                    event: 'BUY',
+                    createdAt:{
+                        gte,
+                        lt: lt? lt: undefined
+                    }
+                },
+            })
+        }
+    }
+
+    async getSessionsForPeriod(gte:Date,lt:Date|null = null) {
+        // count не работает с distinct в prisma
+        const data = this._testDb ?
+            await this._client.testUserEvent.findMany({
+                where: {
+                    createdAt:{
+                        gte,
+                        lt: lt? lt: undefined
+                    }
+                },
+                distinct: ['sessionId'],
+                select: {
+                    sessionId:true
+                }
+            })
+        :
+            await this._client.userEvent.findMany({
+                where: {
+                    createdAt:{
+                        gte,
+                        lt: lt? lt: undefined
+                    }
+                },
+                distinct: ['sessionId'],
+                select: {
+                    sessionId:true
+                }
+            })
+        return data.length
+    }
+
+    async getVisitorsForPeriod(gte:Date,lt:Date|null = null) {
+        const data = this._testDb ?
+            await this._client.testUserEvent.findMany({
+                where: {
+                    createdAt:{
+                        gte,
+                        lt: lt? lt: undefined
+                    }
+                },
+                distinct: ['userId'],
+                select: {
+                    userId: true
+                }
+            })
+        :
+            await this._client.userEvent.findMany({
+                where: {
+                    createdAt:{
+                        gte,
+                        lt: lt? lt: undefined
+                    }
+                },
+                distinct: ['userId'],
+                select: {
+                    userId: true
+                }
+            })
+        return data.length
+
+    }
+
+    async getSessionsWithBuyForPeriod(gte:Date,lt:Date|null = null) {
+        const data = this._testDb ?
+            await this._client.testUserEvent.findMany({
+                where: {
+                    event: 'BUY',
+                    createdAt:{
+                        gte,
+                        lt: lt? lt: undefined
+                    }
+                },
+                distinct: ['sessionId'],
+                select: {
+                    sessionId:true
+                }
+            })
+        :
+            await this._client.userEvent.findMany({
+                where: {
+                    event: 'BUY',
+                    createdAt:{
+                        gte,
+                        lt: lt? lt: undefined
+                    }
+                },
+                distinct: ['sessionId'],
+                select: {
+                    sessionId:true
+                }
+            })
+
+        return data.length
+    }
 }
 
 
@@ -149,6 +268,10 @@ export function createUserEventGetDAOMixin(client: PrismaClient, testDb: boolean
     const mixin = new UserEventGetDAO__mixin(client, testDb)
 
     return {
+        'getSessionsWithBuyForPeriod':mixin.getSessionsWithBuyForPeriod.bind(mixin),
+        'getVisitorsForPeriod':mixin.getVisitorsForPeriod.bind(mixin),
+        'getSessionsForPeriod':mixin.getSessionsForPeriod.bind(mixin),
+        'getPurchasesForPeriod':mixin.getPurchasesForPeriod.bind(mixin),
         'getSessionsWithBuy':mixin.getSessionsWithBuy.bind(mixin),
         'getCountBySessionIDs':mixin.getCountBySessionIDs.bind(mixin),
         'getPurchasesForUser': mixin.getPurchasesForUser.bind(mixin),

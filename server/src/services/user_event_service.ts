@@ -59,6 +59,48 @@ class UserEventService {
 
         return results
     }
+
+    async purchasesInfo(){
+        const oneMonthAgo = new Date();
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+        const twoMonthAgo = new Date();
+        twoMonthAgo.setMonth(twoMonthAgo.getMonth() - 2);
+
+        const purchasesOneMonthAgo = await dao.userEvent.getPurchasesForPeriod(oneMonthAgo)
+        const purchasesTwoMonthAgo = await dao.userEvent.getPurchasesForPeriod(twoMonthAgo,oneMonthAgo)
+
+        const visitorsOneMonthAgo = await dao.userEvent.getVisitorsForPeriod(oneMonthAgo)
+        const visitorsTwoMonthAgo = await dao.userEvent.getVisitorsForPeriod(twoMonthAgo,oneMonthAgo)
+
+        const sessionsOneMonthAgo = await dao.userEvent.getSessionsForPeriod(oneMonthAgo)
+        const sessionsTwoMonthAgo = await dao.userEvent.getSessionsForPeriod(twoMonthAgo,oneMonthAgo)
+
+        const sessionsWithBuyOneMonthAgo = await dao.userEvent.getSessionsWithBuyForPeriod(oneMonthAgo)
+        const sessionsWithBuyTwoMonthAgo = await dao.userEvent.getSessionsWithBuyForPeriod(twoMonthAgo,oneMonthAgo)
+
+        return {
+            purchases: {
+                value: purchasesOneMonthAgo,
+                diff: purchasesOneMonthAgo/purchasesTwoMonthAgo,
+            },
+            visitors: {
+                value: visitorsOneMonthAgo,
+                diff: visitorsOneMonthAgo/visitorsTwoMonthAgo,
+            },
+            sessions: {
+                value: sessionsOneMonthAgo,
+                diff: sessionsOneMonthAgo/sessionsTwoMonthAgo,
+            },
+            conversion: {
+                value: sessionsWithBuyOneMonthAgo/sessionsOneMonthAgo,
+                diff: (sessionsWithBuyOneMonthAgo/sessionsOneMonthAgo)/(sessionsWithBuyTwoMonthAgo/sessionsTwoMonthAgo),
+            }
+        }
+    }
+
+    async bestsellers(){
+        return dao.userEvent.getPurchasesForUser(undefined,100)
+    }
 }
 
 const userEventService = new UserEventService()
