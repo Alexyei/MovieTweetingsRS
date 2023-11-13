@@ -35,7 +35,6 @@ function OverviewCard({title, description, value, icon}: {
 }
 export default async function OverviewCardPanel(){
     const data =  await getPurchasesInfoData()
-
     if (!data) return null
 
 
@@ -56,7 +55,7 @@ export default async function OverviewCardPanel(){
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                         <OverviewCard title={"Посетителей за месяц"} value={data.visitors.value.toString()}
                                            description={`${data.visitors.diff > 0 ? '+':''}${data.visitors.diff.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})} с прошлого месяца`}
-                                           icon={<Users2 className="h-6 w-6 text-muted-foreground" strokeWidth={2}/>}/>
+                                           icon={<Users2 className="h-6 w-6 text-muted-foreground" strokeWidth={2}/>}/> 
                         <OverviewCard title={"Конверсия"} value={`${data.conversion.value.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})}`}
                                       description={`${data.conversion.diff > 0 ? '+':''}${data.conversion.diff.toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})} с прошлого месяца`}
                                            icon={<RussianRuble className="h-6 w-6 text-muted-foreground"

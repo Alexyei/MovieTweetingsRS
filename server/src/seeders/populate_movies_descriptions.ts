@@ -7,7 +7,7 @@ import fs from "fs";
 import {Readable} from "stream";
 import {finished} from "stream/promises";
 import {createPinoLogger} from "../logger/pino_basic_logger.js";
-
+import fetch from "node-fetch";
 const prisma = new PrismaClient();
 config();
 const logger = createPinoLogger("movie_description")

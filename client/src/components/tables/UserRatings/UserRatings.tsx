@@ -29,11 +29,13 @@ async function getData(userID:number) {
 
         const allRatings= [
         ...ratings.explicit.map(r=>({type:'EXPLICIT' as 'EXPLICIT',rating:r.rating,date:r.date,movie: movies.find(m=>m.id==r.movieId)!})),
-        ...ratings.explicit.map(r=>({type:'IMPLICIT' as 'IMPLICIT',rating:r.rating,date:r.date,movie: movies.find(m=>m.id==r.movieId)!})),
+        ...ratings.implicit.map(r=>({type:'IMPLICIT' as 'IMPLICIT',rating:r.rating,date:r.date,movie: movies.find(m=>m.id==r.movieId)!})),
         ...ratings.priority.map(r=>({type:'PRIORITY' as 'PRIORITY',rating:r.rating,date:r.date,movie: movies.find(m=>m.id==r.movieId)!})),
         ]
 
         allRatings.sort((a,b)=>b.date.localeCompare(a.date))
+
+        return allRatings
 
     }catch (e) {
         return null

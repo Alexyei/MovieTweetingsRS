@@ -2,6 +2,7 @@ import path from "path";
 import fs from "fs";
 import {readJson, writeJson} from "../utils/json";
 import {getDAO} from "../DAO/DAO";
+import { RatingType } from "@prisma/client";
 
 const dao = getDAO(false)
 export async function backupMoviesSimilarity(){
@@ -42,5 +43,15 @@ export async function loadUsersSimilarity(){
     console.log(`success load from ${filename}`)
 }
 
+export async function loadImplicitRatings(){
+    const filename = path.join(__dirname,'./output/implicit_ratings.json')
+    if (!fs.existsSync(filename)) {
+        console.log(`not found ${filename}`)
+        return;
+    }
+    const ratings = readJson(filename)
+    await dao.rating.deleteByType()
+    await dao.rating.saveMany(ratings.map((r:any)=>({type:RatingType.IMPLICIT,authorId:Number(r.user_id),movieId:r.movie_id,rating:r.rating})))
+}
 
 

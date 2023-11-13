@@ -78,22 +78,25 @@ class UserEventService {
         const sessionsWithBuyOneMonthAgo = await dao.userEvent.getSessionsWithBuyForPeriod(oneMonthAgo)
         const sessionsWithBuyTwoMonthAgo = await dao.userEvent.getSessionsWithBuyForPeriod(twoMonthAgo,oneMonthAgo)
 
+        const conversionOneMonthAgo = sessionsOneMonthAgo? sessionsWithBuyOneMonthAgo/sessionsOneMonthAgo: 0
+        const conversionTwoMonthAgo = sessionsTwoMonthAgo? sessionsWithBuyTwoMonthAgo/sessionsTwoMonthAgo: 0
+
         return {
             purchases: {
                 value: purchasesOneMonthAgo,
-                diff: purchasesOneMonthAgo/purchasesTwoMonthAgo,
+                diff: purchasesTwoMonthAgo ? purchasesOneMonthAgo/purchasesTwoMonthAgo: (purchasesOneMonthAgo ? 1:0),
             },
             visitors: {
                 value: visitorsOneMonthAgo,
-                diff: visitorsOneMonthAgo/visitorsTwoMonthAgo,
+                diff: visitorsTwoMonthAgo ? visitorsOneMonthAgo/visitorsTwoMonthAgo: (visitorsOneMonthAgo ? 1:0),
             },
             sessions: {
                 value: sessionsOneMonthAgo,
-                diff: sessionsOneMonthAgo/sessionsTwoMonthAgo,
+                diff: sessionsTwoMonthAgo ? sessionsOneMonthAgo/sessionsTwoMonthAgo : (sessionsOneMonthAgo ? 1:0),
             },
             conversion: {
-                value: sessionsWithBuyOneMonthAgo/sessionsOneMonthAgo,
-                diff: (sessionsWithBuyOneMonthAgo/sessionsOneMonthAgo)/(sessionsWithBuyTwoMonthAgo/sessionsTwoMonthAgo),
+                value: conversionOneMonthAgo,
+                diff: conversionTwoMonthAgo ? conversionOneMonthAgo/conversionTwoMonthAgo : (conversionOneMonthAgo ?1:0),
             }
         }
     }

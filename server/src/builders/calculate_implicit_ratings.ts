@@ -8,10 +8,10 @@ const prisma = new PrismaClient();
 // const w4 = 5;
 
 export const eventsParams = {
-    "BUY": {weight: 100},
-    "MORE_DETAILS": {weight: 30, maxCount: 10},
+    "BUY": {weight: 900},
+    "MORE_DETAILS": {weight: 30, maxCount: 15},
     "DETAILS": {weight: 15, maxCount: 30},
-    "GENRE_VIEW": {weight: 1, maxCount: 50}
+    "GENRE_VIEW": {weight: 1, maxCount: 15}
 } as any
 
 //Альтернативный вариант метода

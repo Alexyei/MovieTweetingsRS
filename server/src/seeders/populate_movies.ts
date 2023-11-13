@@ -1,7 +1,7 @@
 import {PrismaClient} from "@prisma/client";
 import ProgressBar from "progress";
 import {createPinoLogger} from "../logger/pino_basic_logger.js";
-
+import fetch from "node-fetch";
 const logger = createPinoLogger("movie")
 const prisma = new PrismaClient()
 

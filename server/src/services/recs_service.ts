@@ -41,7 +41,7 @@ class RecsService {
 
         const recommender = new ItemItemRecommender(false)
 
-        return recommender.recommendItems(requestedUserID,take,2,)
+        return recommender.recommendItems(requestedUserID,take,2,100,0)
     }
 
     async CFNBRecommenderUserUser(userID:number, sessionUserID:number, take:number){

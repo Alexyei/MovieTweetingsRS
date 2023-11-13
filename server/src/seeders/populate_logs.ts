@@ -134,6 +134,9 @@ const films = {
         , '2250912']
 }
 
+const minFilmsInCategory = Math.min(films.action.length,films.drama.length,films.comedy.length)
+console.log(minFilmsInCategory)
+
 function getGenreId(name:'drama' | 'action' | 'comedy'){
     return genres.find((genre)=>genre.name == name)!.id
 }
@@ -164,13 +167,26 @@ class User {
     private _favouriteList: string[]
     private _boughtList: string[]
     private readonly _likes: { drama: number, comedy: number, action: number }
+    private _avaibleMovies: {[index: string]:string[]}
 
-    constructor(userId: number, sessionId: number, likes: { drama: number, comedy: number, action: number }) {
+    constructor(userId: number, sessionId: number, likes: { drama: number, comedy: number, action: number },moviesAvaible:number) {
         this._userId = userId;
         this._sessionId = userId;
         this._favouriteList = []
         this._boughtList = []
         this._likes = likes
+        this._avaibleMovies = {}
+        this.generateAvaibleFIlms(moviesAvaible)
+    }
+
+    private generateAvaibleFIlms(moviesAvaible:number){
+        for (const [key, value] of Object.entries(this._likes)) {
+            if (value==0) continue;
+
+            const moviesCount = Math.round(value/100*moviesAvaible)
+            //sort изменяет исходный массив
+            this._avaibleMovies[key]=films[key as keyof typeof films].sort(() => .5 - Math.random()).slice(0,moviesCount)
+        }
     }
 
     public addToBoughtList(movieId: string) {
@@ -193,7 +209,7 @@ class User {
         return this._favouriteList.some(id => id == movieId)
     }
 
-    get sessionId(): number {
+    get sessionId() {
         // сессии имитирую различные устройства одного пользователя
         if (random.range(100) >= 90) {
             this._sessionId += 1;
@@ -202,8 +218,12 @@ class User {
         return this._sessionId;
     }
 
-    get userId(): number {
+    get userId() {
         return this._userId;
+    }
+
+    get avaibleMovies(){
+        return this._avaibleMovies
     }
 
     get likes() {
@@ -245,26 +265,35 @@ function getRandomMovie(genre:'drama' | 'action' | 'comedy') {
     return moviesInGenre[randomMovie]
 }
 
+function getRandomUserAvaibleMovie(user:User,genre:'drama' | 'action' | 'comedy') {
+    const moviesInGenre = user.avaibleMovies[genre];
+
+    const randomMovie = random.range(moviesInGenre.length);
+    return moviesInGenre[randomMovie]
+}
+
 async function saveUserEvent(userId: number, sessionId: number, event: TypeEvent, movieId: string | null, genreId: number | null) {
     let data = {userId, sessionId, event} as any
     if (movieId != null)
         data = {...data, movieId}
     else
         data = {...data, genreId}
+    data.sessionId = sessionId.toString()
 
     return prisma.userEvent.create({
         data
     });
 }
 
-async function populate(number_of_events = 20000) {
+//20000
+async function populate(number_of_events = 6000) {
     const users = [
-        new User(400001, createSession(), {action: 20, drama: 30, comedy: 50}),
-        new User(400002, createSession(), {action: 60, drama: 20, comedy: 20}),
-        new User(400003, createSession(), {action: 20, drama: 50, comedy: 30}),
-        new User(400004, createSession(), {action: 100, drama: 0, comedy: 0}),
-        new User(400005, createSession(), {action: 0, drama: 100, comedy: 0}),
-        new User(400006, createSession(), {action: 0, drama: 0, comedy: 100}),
+        new User(400001, createSession(), {action: 20, drama: 30, comedy: 50},minFilmsInCategory),
+        new User(400002, createSession(), {action: 60, drama: 20, comedy: 20},minFilmsInCategory),
+        new User(400003, createSession(), {action: 20, drama: 50, comedy: 30},minFilmsInCategory),
+        new User(400004, createSession(), {action: 100, drama: 0, comedy: 0},minFilmsInCategory),
+        new User(400005, createSession(), {action: 0, drama: 100, comedy: 0},minFilmsInCategory),
+        new User(400006, createSession(), {action: 0, drama: 0, comedy: 100},minFilmsInCategory),
     ]
 
     const progressBar = new ProgressBar(":bar :current/:total", {total: number_of_events});
@@ -281,7 +310,9 @@ async function populate(number_of_events = 20000) {
             continue
         }
 
-        const randomMovieId = getRandomMovie(randomGenre);
+        // const randomMovieId = getRandomMovie(randomGenre);
+        //доступные фильмы введены для того, чтобы оценки распредлялись равномерно. Когда у пользователя несколько жанров у него больше фильмов, и следовательно его оценки будут ниже, чем у пользователя с одной категорией.
+        const randomMovieId = getRandomUserAvaibleMovie(randomUser,randomGenre);
 
         if (randomEvent === "BUY"){
             if (!randomUser.checkInBoughtList(randomMovieId)){
@@ -327,130 +358,7 @@ async function flushDB() {
 }
 
 export function populateLogs(){
-    checkAllFilmsExists().then(() => addUsers([400001, 400002, 400003, 400004, 400005, 400006])).then(flushDB).then(()=>populate())
+    checkAllFilmsExists()
+    .then(() => addUsers([400001, 400002, 400003, 400004, 400005, 400006]))
+    .then(flushDB).then(()=>populate())
 }
-
-// class User {
-//     private sessionId: number;
-//     public userId: number;
-//     private readonly likes: { drama: number; comedy: number; action: number };
-//     // public events: { [p: number]: any[] };
-//     public purchasedFilms: any[];
-//
-//     constructor(user_id: number, action: number, drama: number, comedy: number) {
-//         this.sessionId = random.range(1000000);
-//         this.userId = user_id;
-//         this.likes = {action: action, drama: drama, comedy: comedy};
-//         // this.events = { [this.sessionId]: [] };
-//         this.purchasedFilms = []
-//
-//     }
-//
-//     get_session_id() {
-//         // сессии имитирую различные устройства одного пользователя
-//         if (random.range(100) >= 90) {
-//             this.sessionId += 1;
-//             // this.events[this.sessionId] = [];
-//         }
-//
-//         return this.sessionId;
-//     }
-//
-//     select_genre() {
-//         return sample(this.likes) as 'drama' | 'action' | 'comedy';
-//     }
-// }
-
-
-// function select_film(user: User) {
-//     const genre = user.select_genre()
-//     const interested_films = films[genre];
-//     let film_id = '';
-//     while (film_id === '') {
-//         const film_candidate = interested_films[random.range(interested_films.length)];
-//
-//         const hasSameElements = interested_films.every(element => user.purchasedFilms.includes(element));
-//         // console.log(hasSameElements)
-//         // if (!user.events[user.sessionId].includes(film_candidate)) {
-//         //     film_id = film_candidate;
-//         // }
-//         if (!user.purchasedFilms.includes(film_candidate)) {
-//             film_id = film_candidate;
-//         }
-//     }
-//
-//     return film_id;
-// }
-
-// function select_action() {
-//     // вероятности в процентах
-//     const actions = {
-//         [TypeEvent.GENRE_VIEW]: 15,
-//         [TypeEvent.DETAILS]: 50,
-//         [TypeEvent.MORE_DETAILS]: 20,
-//         [TypeEvent.ADD_TO_FAVORITES_LIST]: 10,
-//         [TypeEvent.REMOVE_FROM_FAVORITES_LIST]: 4,
-//         [TypeEvent.BUY]: 1
-//     };
-//
-//     return sample(actions) as keyof typeof actions;
-// }
-
-
-
-// async function populate() {
-//     const number_of_events = 20000
-//     console.log("Generating Data");
-//     const users = [
-//         new User(400001, 20, 30, 50),
-//         new User(400002, 50, 20, 40),
-//         new User(400003, 20, 30, 50),
-//         new User(400004, 100, 0, 0),
-//         new User(400005, 0, 100, 0),
-//         new User(400006, 0, 0, 100),
-//     ]
-//     console.log("Simulating " + users.length + " visitors");
-//
-//     const progressBar = new ProgressBar(":bar :current/:total", {total: number_of_events});
-//
-//     for (let i = 0; i < number_of_events; i++) {
-//         const randomUserId = random.range(users.length);
-//         const user = users[randomUserId];
-//         const selectedAction = select_action();
-//         const selectedFilm = select_film(user);
-//
-//         if (selectedAction === "BUY") {
-//             // if (!user.events[user.sessionId]) {
-//             //     user.events[user.sessionId] = [];
-//             // }
-//             // user.events[user.sessionId].push(selectedFilm);
-//             user.purchasedFilms.push(selectedFilm)
-//         }
-//         logger.log('info', "user id " + user.userId + " selects film " + selectedFilm + " and " + selectedAction);
-//
-//
-//         const userEvent = await prisma.userEvent.create({
-//             data: {
-//                 movieId: selectedFilm,
-//                 event: selectedAction,
-//                 sessionId: user.get_session_id(),
-//                 userId: user.userId
-//             }
-//         })
-//         logger.log('info', userEvent);
-//         progressBar.tick()
-//
-//         // logger.log('info',"users\n");
-//         // for (const u of users) {
-//         //     logger.log('info',"user with id " + u.userId);
-//         //     for (const [key, value] of Object.entries(u.events)) {
-//         //         if (value.length > 0) {
-//         //             logger.log('info',key + ": " + value.join(", "));
-//         //         }
-//         //     }
-//         // }
-//     }
-//
-// }
-
-
