@@ -56,7 +56,7 @@ export const movieCell = (movie: MovieFullDataT) => {
               className={"grid grid-cols-[auto_1fr] gap-3 items-center hover:bg-secondary p-2 rounded-md"}>
             <MovieCard link={false} movie={movie} hover={false} className={`w-20`}></MovieCard>
             <div className={"w-[150px] "}>
-                <h4 className={"text-primary scroll-m-20 text-sm font-semibold tracking-tight line-clamp-3 leading-none mb-2"}>{movie.title}</h4>
+                <h4 className={"text-primary scroll-m-20 text-sm font-semibold tracking-tight line-clamp-3 leading-none pb-1  mb-1"}>{movie.title}</h4>
                 <div className={"flex items-center mb-1 text-foreground"}>
                     <Star className={"h-3 w-3 fill-foreground  mr-1"}/>
                     <p className={"text-xs  leading-none line-clamp-5 mr-1"}>{movie.mean_rating.toFixed(1)} / 10.0</p>

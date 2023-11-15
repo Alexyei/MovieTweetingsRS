@@ -37,9 +37,8 @@ export class  BuilderRunner extends BaseRunner {
             runner: ()=>buildSimilarityForMoviesOtiaiByChunksWithWorkers(800,11,0.2,2).then()
         },
         {
-            //0.0 20
             args: ['sim','otiai','m','cwc'],
-            runner: ()=>buildSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(1550,4,0.05,10).then()
+            runner: ()=>buildSimilarityForMoviesOtiaiByChunksWithWorkersAsyncConveyor(1550,4,0.05,16).then()
         },
         {
             args: ['sim','otiai','u'],
