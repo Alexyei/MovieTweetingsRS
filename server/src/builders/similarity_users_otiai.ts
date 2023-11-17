@@ -5,7 +5,7 @@ import {getSimilarityCalculator} from "../similarity/calculator";
 const dao = getDAO(false)
 const similarityCalculator = getSimilarityCalculator().users.otiai
 async function flushDB(){
-    await dao.movieSimilarity.deleteByType(SimilarityType.OTIAI)
+    await dao.userSimilarity.deleteByType(SimilarityType.OTIAI)
 }
 
 async function getRatings(){

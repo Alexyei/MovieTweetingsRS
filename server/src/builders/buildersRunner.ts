@@ -54,7 +54,7 @@ export class  BuilderRunner extends BaseRunner {
         },
         {
             args: ['sim','otiai','u','cwc'],
-            runner: ()=>buildSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(3000,11,0.2,2).then()
+            runner: ()=>buildSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(3000,4,0.05,5).then()
         },
     ]
 

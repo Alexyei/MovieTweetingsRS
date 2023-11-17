@@ -19,7 +19,8 @@
     "bui_om_sim": "npm run script build sim otiai m",
     "bui_ou_sim": "npm run script build sim otiai u",
     "bui_omc_sim": "npm run script build sim otiai m c",
-    "bui_omcwc_sim": "npm run script build sim otiai m cwc"
+    "bui_omcwc_sim": "npm run script build sim otiai m cwc",
+    "bui_oucwc_sim": "npm run script build sim otiai u cwc"
   },
   "keywords": [],
   "author": "",

@@ -59,7 +59,6 @@ export class UserUserRecommender extends BaseRecommender {
         const simsUserIds = Array.from(new Set(candidatesPairs.filter(p=>p.similarity>=min_sims).map(p=>p.target)))
 
         const simsUserRatings = await this._dao.priorityRating.getByUserIds(simsUserIds)
-
         //нормализовать оценки пользователей
         let userRatingsNormalized = simsUserRatings.map(r=>{
             const uRatings = simsUserRatings.filter(ur=>ur.authorId == r.authorId).map(ur=>ur.rating)
@@ -81,13 +80,10 @@ export class UserUserRecommender extends BaseRecommender {
         // overlap - количество схожих пользователей посмотревших рекомендуемый фильм
         // при расчёте сходств используется ДРУГОЙ overlap (количество ОБЩИХ фильмов между пользователями)
         let {userRatings,userRatingsNormalized,userMeanRating,candidatesPairs,simsUserIds} = await this.#prepareData(userId,ncandidates,min_sims)
-
         // удаляем те фильмы которые встречаются меньше n раз
         userRatingsNormalized = userRatingsNormalized.filter(r=>userRatingsNormalized.filter(rr=>r.movieId==rr.movieId).length >= overlap)
-
         // Из списка фильмов удаляем уже просмотренные пользователем фильмы
         userRatingsNormalized = userRatingsNormalized.filter(r=>!userRatings.find(rr=>rr.movieId == r.movieId))
-        
         return  {userRatings,userRatingsNormalized,userMeanRating,candidatesPairs,simsUserIds}
     }
     
@@ -110,6 +106,7 @@ export class UserUserRecommender extends BaseRecommender {
 
                 sourcesInfo.push({id:source.authorId,similarity:similarity,rating:source.rating})
             }
+            
             recommendations.push({target,sources: sourcesInfo, predictedRating:Math.max(Math.min(numerator/denominator + userMeanRating,this._max_rating),this._min_rating)})
         }
         

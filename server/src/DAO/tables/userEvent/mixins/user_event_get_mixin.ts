@@ -109,6 +109,22 @@ class UserEventGetDAO__mixin extends DAOMixinHelper {
         }
     }
 
+    async getBuyEvents(){
+        if (this._testDb) {
+            return this._client.testUserEvent.findMany({
+                where: {
+                    event: 'BUY',
+                },
+            })
+        } else {
+            return this._client.userEvent.findMany({
+                where: {
+                    event: 'BUY',
+                },
+            })
+        }
+    }
+
     async getCountBySessionIDs(sessionIDs: string[], include: boolean = true) {
         const data = this._testDb ?
             await this._client.testUserEvent.groupBy({
@@ -383,5 +399,6 @@ export function createUserEventGetDAOMixin(client: PrismaClient, testDb: boolean
         'getCountBySessionIDs':mixin.getCountBySessionIDs.bind(mixin),
         'getPurchasesForUser': mixin.getPurchasesForUser.bind(mixin),
         'getUserEvents': mixin.getUserEvents.bind(mixin),
+        'getBuyEvents':mixin.getBuyEvents.bind(mixin),
     }
 }

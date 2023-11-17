@@ -49,7 +49,7 @@ class RecsService {
 
         const recommender = new UserUserRecommender(false)
 
-        return recommender.recommendItems(requestedUserID,take,1,)
+        return recommender.recommendItems(requestedUserID,take,2,100,0.1)
     }
 }
 
