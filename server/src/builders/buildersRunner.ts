@@ -1,4 +1,5 @@
 import {BaseRunner} from "../scripts/base_runner";
+import { buildAssociationRules } from "./association_rules";
 import {buildImplicitRatings} from "./calculate_implicit_ratings";
 import {buildImplicitRatingsWithTimeDecay} from "./calculate_implicit_ratings_timedecay";
 import {
@@ -23,6 +24,10 @@ export class  BuilderRunner extends BaseRunner {
         {
             args: ['imp','ratings','time'],
             runner: ()=>buildImplicitRatingsWithTimeDecay().then()
+        },
+        {
+            args: ['ar',],
+            runner: ()=>buildAssociationRules(0.01,0)
         },
         {
             args: ['sim','otiai','m'],
@@ -54,18 +59,19 @@ export class  BuilderRunner extends BaseRunner {
         },
         {
             args: ['sim','otiai','u','cwc'],
-            runner: ()=>buildSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(3000,4,0.05,5).then()
+            runner: ()=>buildSimilarityForUsersOtiaiByChunksWithWorkersAsyncConveyor(3000,4,0.05,10).then()
         },
     ]
 
     showHint() {
         console.log('Доступные параметры:');
+        console.log('ar - Расчёт ассоциативных правил');
         console.log('imp ratings - Генерация неявных оценок');
         console.log('imp ratings time - Генерация неявных оценок (временное затухание)');
-        console.log('sim otiai movies - срасчёт сходства Отиаи для элементов')
-        console.log('sim otiai movies chunk - срасчёт сходства Отиаи для элементов по частям')
-        console.log('sim otiai movies chunk workers - срасчёт сходства Отиаи для элементов по частям (с распаралеливанием)')
-        console.log('sim otiai users - срасчёт сходства Отиаи для пользователей')
+        console.log('sim otiai movies - Расчёт  сходства Отиаи для элементов')
+        console.log('sim otiai movies chunk - Расчёт  сходства Отиаи для элементов по частям')
+        console.log('sim otiai movies chunk workers - Расчёт сходства Отиаи для элементов по частям (с распаралеливанием)')
+        console.log('sim otiai users - Расчёт сходства Отиаи для пользователей')
         console.log('help - Справка по параметрам');
     }
 }
