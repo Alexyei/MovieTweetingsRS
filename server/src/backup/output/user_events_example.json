@@ -1,0 +1,7842 @@
+[
+  {
+    "id": 96,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400003",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "794776"
+  },
+  {
+    "id": 135,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400001",
+    "content_id": "2937696",
+    "event": "buy",
+    "session_id": "885441"
+  },
+  {
+    "id": 362,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400001",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "885444"
+  },
+  {
+    "id": 616,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400001",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "885445"
+  },
+  {
+    "id": 711,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "42460"
+  },
+  {
+    "id": 808,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400006",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "42462"
+  },
+  {
+    "id": 1228,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400002",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "403981"
+  },
+  {
+    "id": 1276,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400001",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "885459"
+  },
+  {
+    "id": 1387,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400001",
+    "content_id": "3774114",
+    "event": "buy",
+    "session_id": "885462"
+  },
+  {
+    "id": 1438,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400002",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "403981"
+  },
+  {
+    "id": 1502,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400005",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "441029"
+  },
+  {
+    "id": 1579,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400005",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "441029"
+  },
+  {
+    "id": 1665,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400003",
+    "content_id": "3521164",
+    "event": "buy",
+    "session_id": "794807"
+  },
+  {
+    "id": 1839,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400003",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "794812"
+  },
+  {
+    "id": 2011,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400002",
+    "content_id": "3393786",
+    "event": "buy",
+    "session_id": "403985"
+  },
+  {
+    "id": 2071,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400006",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "42484"
+  },
+  {
+    "id": 2085,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400006",
+    "content_id": "1700841",
+    "event": "buy",
+    "session_id": "42485"
+  },
+  {
+    "id": 2098,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400004",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "933519"
+  },
+  {
+    "id": 2114,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400001",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "885473"
+  },
+  {
+    "id": 2218,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400002",
+    "content_id": "3040964",
+    "event": "buy",
+    "session_id": "403990"
+  },
+  {
+    "id": 2250,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400003",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "794819"
+  },
+  {
+    "id": 2325,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400006",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "42487"
+  },
+  {
+    "id": 2362,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400002",
+    "content_id": "2948356",
+    "event": "buy",
+    "session_id": "403992"
+  },
+  {
+    "id": 2415,
+    "created": "2023-07-11 20:59:50+03",
+    "user_id": "400004",
+    "content_id": "2034800",
+    "event": "buy",
+    "session_id": "933526"
+  },
+  {
+    "id": 2464,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400001",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "885478"
+  },
+  {
+    "id": 2861,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "933538"
+  },
+  {
+    "id": 2903,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400003",
+    "content_id": "2823054",
+    "event": "buy",
+    "session_id": "794827"
+  },
+  {
+    "id": 2968,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "933538"
+  },
+  {
+    "id": 3104,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "3300542",
+    "event": "buy",
+    "session_id": "933540"
+  },
+  {
+    "id": 3161,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400005",
+    "content_id": "3774114",
+    "event": "buy",
+    "session_id": "441058"
+  },
+  {
+    "id": 3215,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400006",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "42499"
+  },
+  {
+    "id": 3273,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400005",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "441059"
+  },
+  {
+    "id": 3443,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400005",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "441061"
+  },
+  {
+    "id": 3493,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400002",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "404011"
+  },
+  {
+    "id": 3507,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400006",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "42500"
+  },
+  {
+    "id": 3616,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "933553"
+  },
+  {
+    "id": 3717,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400006",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "42509"
+  },
+  {
+    "id": 3744,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400003",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "794843"
+  },
+  {
+    "id": 3782,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400003",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "794844"
+  },
+  {
+    "id": 3853,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400005",
+    "content_id": "3774114",
+    "event": "buy",
+    "session_id": "441067"
+  },
+  {
+    "id": 3865,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400002",
+    "content_id": "1608290",
+    "event": "buy",
+    "session_id": "404017"
+  },
+  {
+    "id": 3918,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400003",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "794847"
+  },
+  {
+    "id": 4014,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400003",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "794850"
+  },
+  {
+    "id": 4074,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400002",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "404023"
+  },
+  {
+    "id": 4150,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400002",
+    "content_id": "1431045",
+    "event": "buy",
+    "session_id": "404024"
+  },
+  {
+    "id": 4232,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400005",
+    "content_id": "3553976",
+    "event": "buy",
+    "session_id": "441081"
+  },
+  {
+    "id": 4306,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400002",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "404026"
+  },
+  {
+    "id": 4323,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "933562"
+  },
+  {
+    "id": 4361,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "933564"
+  },
+  {
+    "id": 4448,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400006",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "42516"
+  },
+  {
+    "id": 4538,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "933570"
+  },
+  {
+    "id": 4594,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "933571"
+  },
+  {
+    "id": 4630,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400004",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "933573"
+  },
+  {
+    "id": 4847,
+    "created": "2023-07-11 20:59:51+03",
+    "user_id": "400005",
+    "content_id": "2140479",
+    "event": "buy",
+    "session_id": "441090"
+  },
+  {
+    "id": 5125,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400004",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "933583"
+  },
+  {
+    "id": 5168,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400005",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "441093"
+  },
+  {
+    "id": 5169,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "0918940",
+    "event": "buy",
+    "session_id": "794867"
+  },
+  {
+    "id": 5171,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400004",
+    "content_id": "1628841",
+    "event": "buy",
+    "session_id": "933583"
+  },
+  {
+    "id": 5181,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400006",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "42519"
+  },
+  {
+    "id": 5201,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "794868"
+  },
+  {
+    "id": 5374,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "794871"
+  },
+  {
+    "id": 5381,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "794872"
+  },
+  {
+    "id": 5555,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "794875"
+  },
+  {
+    "id": 5610,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "794875"
+  },
+  {
+    "id": 5646,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "794875"
+  },
+  {
+    "id": 5708,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400004",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "933594"
+  },
+  {
+    "id": 5954,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "1355644",
+    "event": "buy",
+    "session_id": "794876"
+  },
+  {
+    "id": 6198,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400005",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "441110"
+  },
+  {
+    "id": 6269,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400002",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "404058"
+  },
+  {
+    "id": 6479,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400002",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "404062"
+  },
+  {
+    "id": 6508,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400005",
+    "content_id": "3416532",
+    "event": "buy",
+    "session_id": "441116"
+  },
+  {
+    "id": 6727,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400001",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "885557"
+  },
+  {
+    "id": 6826,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "794897"
+  },
+  {
+    "id": 7138,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400002",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "404070"
+  },
+  {
+    "id": 7213,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400006",
+    "content_id": "1700841",
+    "event": "buy",
+    "session_id": "42560"
+  },
+  {
+    "id": 7378,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400001",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "885566"
+  },
+  {
+    "id": 7404,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400006",
+    "content_id": "4651520",
+    "event": "buy",
+    "session_id": "42563"
+  },
+  {
+    "id": 7476,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400006",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "42565"
+  },
+  {
+    "id": 7675,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400003",
+    "content_id": "2250912",
+    "event": "buy",
+    "session_id": "794910"
+  },
+  {
+    "id": 7742,
+    "created": "2023-07-11 20:59:52+03",
+    "user_id": "400005",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "441137"
+  },
+  {
+    "id": 7892,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400006",
+    "content_id": "2823054",
+    "event": "buy",
+    "session_id": "42567"
+  },
+  {
+    "id": 7932,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400005",
+    "content_id": "4846340",
+    "event": "buy",
+    "session_id": "441140"
+  },
+  {
+    "id": 7979,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400002",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "404083"
+  },
+  {
+    "id": 7992,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400001",
+    "content_id": "4048272",
+    "event": "buy",
+    "session_id": "885574"
+  },
+  {
+    "id": 8006,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400002",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "404083"
+  },
+  {
+    "id": 8080,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400002",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "404083"
+  },
+  {
+    "id": 8185,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "42571"
+  },
+  {
+    "id": 8241,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400006",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "42572"
+  },
+  {
+    "id": 8531,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400005",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "441153"
+  },
+  {
+    "id": 8608,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400004",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "933638"
+  },
+  {
+    "id": 8739,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400004",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "933643"
+  },
+  {
+    "id": 8772,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400006",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "42578"
+  },
+  {
+    "id": 8789,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400005",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "441157"
+  },
+  {
+    "id": 8826,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400004",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "933643"
+  },
+  {
+    "id": 8861,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400001",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "885584"
+  },
+  {
+    "id": 9044,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400006",
+    "content_id": "4651520",
+    "event": "buy",
+    "session_id": "42583"
+  },
+  {
+    "id": 9137,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400002",
+    "content_id": "4901306",
+    "event": "buy",
+    "session_id": "404098"
+  },
+  {
+    "id": 9253,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400005",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "441165"
+  },
+  {
+    "id": 9370,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400002",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "404103"
+  },
+  {
+    "id": 9406,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400001",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "885594"
+  },
+  {
+    "id": 9562,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400003",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "794941"
+  },
+  {
+    "id": 9643,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400003",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "794942"
+  },
+  {
+    "id": 9737,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400004",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "933656"
+  },
+  {
+    "id": 9942,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400002",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "404119"
+  },
+  {
+    "id": 10001,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400006",
+    "content_id": "1985949",
+    "event": "buy",
+    "session_id": "42601"
+  },
+  {
+    "id": 10121,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400001",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "885603"
+  },
+  {
+    "id": 10175,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400005",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "441180"
+  },
+  {
+    "id": 10271,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400002",
+    "content_id": "4846340",
+    "event": "buy",
+    "session_id": "404121"
+  },
+  {
+    "id": 10345,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400002",
+    "content_id": "3553976",
+    "event": "buy",
+    "session_id": "404123"
+  },
+  {
+    "id": 10467,
+    "created": "2023-07-11 20:59:53+03",
+    "user_id": "400001",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "885609"
+  },
+  {
+    "id": 10787,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400001",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "885614"
+  },
+  {
+    "id": 11155,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400004",
+    "content_id": "2948356",
+    "event": "buy",
+    "session_id": "933678"
+  },
+  {
+    "id": 11672,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400005",
+    "content_id": "4550098",
+    "event": "buy",
+    "session_id": "441204"
+  },
+  {
+    "id": 11820,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400004",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "933689"
+  },
+  {
+    "id": 11831,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400003",
+    "content_id": "4651520",
+    "event": "buy",
+    "session_id": "794977"
+  },
+  {
+    "id": 11844,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400002",
+    "content_id": "2543164",
+    "event": "buy",
+    "session_id": "404149"
+  },
+  {
+    "id": 12045,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400001",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "885630"
+  },
+  {
+    "id": 12147,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400006",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "42642"
+  },
+  {
+    "id": 12265,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400001",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "885632"
+  },
+  {
+    "id": 12343,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400006",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "42643"
+  },
+  {
+    "id": 12414,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400004",
+    "content_id": "1628841",
+    "event": "buy",
+    "session_id": "933701"
+  },
+  {
+    "id": 12438,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400006",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "42644"
+  },
+  {
+    "id": 12554,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400003",
+    "content_id": "1679335",
+    "event": "buy",
+    "session_id": "794990"
+  },
+  {
+    "id": 12694,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400004",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "933706"
+  },
+  {
+    "id": 12746,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400004",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "933706"
+  },
+  {
+    "id": 12856,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400003",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "794996"
+  },
+  {
+    "id": 12974,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400005",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "441228"
+  },
+  {
+    "id": 12989,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400006",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "42649"
+  },
+  {
+    "id": 13096,
+    "created": "2023-07-11 20:59:54+03",
+    "user_id": "400002",
+    "content_id": "3416532",
+    "event": "buy",
+    "session_id": "404168"
+  },
+  {
+    "id": 13511,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400006",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "42659"
+  },
+  {
+    "id": 13523,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400003",
+    "content_id": "4034228",
+    "event": "buy",
+    "session_id": "795002"
+  },
+  {
+    "id": 13785,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400002",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "404177"
+  },
+  {
+    "id": 14002,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400002",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "404181"
+  },
+  {
+    "id": 14053,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400003",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "795010"
+  },
+  {
+    "id": 14147,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400002",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "404183"
+  },
+  {
+    "id": 14224,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400003",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "795015"
+  },
+  {
+    "id": 14419,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400004",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "933736"
+  },
+  {
+    "id": 14437,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400005",
+    "content_id": "2140479",
+    "event": "buy",
+    "session_id": "441256"
+  },
+  {
+    "id": 14777,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400001",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "885671"
+  },
+  {
+    "id": 14857,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400005",
+    "content_id": "1083452",
+    "event": "buy",
+    "session_id": "441259"
+  },
+  {
+    "id": 14968,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400001",
+    "content_id": "2140479",
+    "event": "buy",
+    "session_id": "885675"
+  },
+  {
+    "id": 15023,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400003",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "795025"
+  },
+  {
+    "id": 15137,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400002",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "404198"
+  },
+  {
+    "id": 15160,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400001",
+    "content_id": "4276820",
+    "event": "buy",
+    "session_id": "885678"
+  },
+  {
+    "id": 15221,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400004",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "933742"
+  },
+  {
+    "id": 15281,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400006",
+    "content_id": "2937696",
+    "event": "buy",
+    "session_id": "42693"
+  },
+  {
+    "id": 15285,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400006",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "42693"
+  },
+  {
+    "id": 15334,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400005",
+    "content_id": "2582782",
+    "event": "buy",
+    "session_id": "441269"
+  },
+  {
+    "id": 15392,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400005",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "441270"
+  },
+  {
+    "id": 15419,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400002",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "404204"
+  },
+  {
+    "id": 15660,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400006",
+    "content_id": "1608290",
+    "event": "buy",
+    "session_id": "42704"
+  },
+  {
+    "id": 15682,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400004",
+    "content_id": "4094724",
+    "event": "buy",
+    "session_id": "933748"
+  },
+  {
+    "id": 15744,
+    "created": "2023-07-11 20:59:55+03",
+    "user_id": "400005",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "441275"
+  },
+  {
+    "id": 15962,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400001",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "885692"
+  },
+  {
+    "id": 16027,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400002",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "404218"
+  },
+  {
+    "id": 16220,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400002",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "404220"
+  },
+  {
+    "id": 16370,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400005",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "441286"
+  },
+  {
+    "id": 16424,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400006",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "42715"
+  },
+  {
+    "id": 16627,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400005",
+    "content_id": "2674426",
+    "event": "buy",
+    "session_id": "441291"
+  },
+  {
+    "id": 16734,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400005",
+    "content_id": "3040964",
+    "event": "buy",
+    "session_id": "441293"
+  },
+  {
+    "id": 16753,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400002",
+    "content_id": "1083452",
+    "event": "buy",
+    "session_id": "404226"
+  },
+  {
+    "id": 16815,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400006",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "42721"
+  },
+  {
+    "id": 16841,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400006",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "42722"
+  },
+  {
+    "id": 16874,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400003",
+    "content_id": "4651520",
+    "event": "buy",
+    "session_id": "795060"
+  },
+  {
+    "id": 16974,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400003",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "795063"
+  },
+  {
+    "id": 16977,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400006",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "42724"
+  },
+  {
+    "id": 17153,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "441306"
+  },
+  {
+    "id": 17205,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400005",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "441306"
+  },
+  {
+    "id": 17372,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400003",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "795076"
+  },
+  {
+    "id": 17491,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400006",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "42732"
+  },
+  {
+    "id": 17606,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400002",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "404238"
+  },
+  {
+    "id": 17661,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400002",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "404238"
+  },
+  {
+    "id": 17710,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400004",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "933790"
+  },
+  {
+    "id": 18038,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400005",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "441321"
+  },
+  {
+    "id": 18169,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400004",
+    "content_id": "2250912",
+    "event": "buy",
+    "session_id": "933798"
+  },
+  {
+    "id": 18205,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400002",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "404249"
+  },
+  {
+    "id": 18234,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400002",
+    "content_id": "4196776",
+    "event": "buy",
+    "session_id": "404249"
+  },
+  {
+    "id": 18389,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400001",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "885736"
+  },
+  {
+    "id": 18501,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400003",
+    "content_id": "2241351",
+    "event": "buy",
+    "session_id": "795098"
+  },
+  {
+    "id": 18542,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400004",
+    "content_id": "3498820",
+    "event": "buy",
+    "session_id": "933807"
+  },
+  {
+    "id": 18608,
+    "created": "2023-07-11 20:59:56+03",
+    "user_id": "400005",
+    "content_id": "2140479",
+    "event": "buy",
+    "session_id": "441333"
+  },
+  {
+    "id": 18645,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400003",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "795099"
+  },
+  {
+    "id": 18660,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400004",
+    "content_id": "3896198",
+    "event": "buy",
+    "session_id": "933808"
+  },
+  {
+    "id": 18833,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400006",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "42754"
+  },
+  {
+    "id": 18917,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400003",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "795100"
+  },
+  {
+    "id": 19163,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400003",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "795104"
+  },
+  {
+    "id": 19284,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400001",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "885750"
+  },
+  {
+    "id": 19396,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400005",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "441347"
+  },
+  {
+    "id": 19424,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400005",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "441348"
+  },
+  {
+    "id": 19554,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400004",
+    "content_id": "2948356",
+    "event": "buy",
+    "session_id": "933825"
+  },
+  {
+    "id": 19664,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400004",
+    "content_id": "1628841",
+    "event": "buy",
+    "session_id": "933826"
+  },
+  {
+    "id": 19870,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400005",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "441363"
+  },
+  {
+    "id": 19995,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400002",
+    "content_id": "4276820",
+    "event": "buy",
+    "session_id": "404283"
+  },
+  {
+    "id": 20018,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400004",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "933829"
+  },
+  {
+    "id": 20082,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400004",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "933829"
+  },
+  {
+    "id": 20203,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400003",
+    "content_id": "4846340",
+    "event": "buy",
+    "session_id": "795111"
+  },
+  {
+    "id": 20449,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400006",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "42779"
+  },
+  {
+    "id": 20677,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400005",
+    "content_id": "2241351",
+    "event": "buy",
+    "session_id": "441370"
+  },
+  {
+    "id": 20820,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400002",
+    "content_id": "2547584",
+    "event": "buy",
+    "session_id": "404304"
+  },
+  {
+    "id": 20929,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400004",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "933839"
+  },
+  {
+    "id": 20941,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400001",
+    "content_id": "4048272",
+    "event": "buy",
+    "session_id": "885773"
+  },
+  {
+    "id": 21027,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400001",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "885774"
+  },
+  {
+    "id": 21146,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400005",
+    "content_id": "2547584",
+    "event": "buy",
+    "session_id": "441380"
+  },
+  {
+    "id": 21148,
+    "created": "2023-07-11 20:59:57+03",
+    "user_id": "400003",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "795126"
+  },
+  {
+    "id": 21342,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400002",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "404318"
+  },
+  {
+    "id": 21379,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "885779"
+  },
+  {
+    "id": 21595,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400004",
+    "content_id": "4094724",
+    "event": "buy",
+    "session_id": "933849"
+  },
+  {
+    "id": 21635,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400005",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "441382"
+  },
+  {
+    "id": 21656,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400006",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "42803"
+  },
+  {
+    "id": 21715,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "885791"
+  },
+  {
+    "id": 21847,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400005",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "441383"
+  },
+  {
+    "id": 21992,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400003",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "795138"
+  },
+  {
+    "id": 22018,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400002",
+    "content_id": "2241351",
+    "event": "buy",
+    "session_id": "404331"
+  },
+  {
+    "id": 22101,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400003",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "795139"
+  },
+  {
+    "id": 22108,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400005",
+    "content_id": "4276820",
+    "event": "buy",
+    "session_id": "441389"
+  },
+  {
+    "id": 22294,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400002",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "404334"
+  },
+  {
+    "id": 22605,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400003",
+    "content_id": "4901306",
+    "event": "buy",
+    "session_id": "795150"
+  },
+  {
+    "id": 22878,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "885816"
+  },
+  {
+    "id": 22989,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "1608290",
+    "event": "buy",
+    "session_id": "885817"
+  },
+  {
+    "id": 22992,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400004",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "933870"
+  },
+  {
+    "id": 23042,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "885819"
+  },
+  {
+    "id": 23081,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "3498820",
+    "event": "buy",
+    "session_id": "885820"
+  },
+  {
+    "id": 23134,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400006",
+    "content_id": "1489889",
+    "event": "buy",
+    "session_id": "42826"
+  },
+  {
+    "id": 23338,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400005",
+    "content_id": "3544112",
+    "event": "buy",
+    "session_id": "441414"
+  },
+  {
+    "id": 23377,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "885826"
+  },
+  {
+    "id": 23439,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400002",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "404355"
+  },
+  {
+    "id": 23517,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400002",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "404358"
+  },
+  {
+    "id": 23535,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "1179933",
+    "event": "buy",
+    "session_id": "885829"
+  },
+  {
+    "id": 23607,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "885830"
+  },
+  {
+    "id": 23643,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400003",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "795165"
+  },
+  {
+    "id": 23888,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400001",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "885832"
+  },
+  {
+    "id": 23935,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400002",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "404366"
+  },
+  {
+    "id": 23984,
+    "created": "2023-07-11 20:59:58+03",
+    "user_id": "400002",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "404366"
+  },
+  {
+    "id": 24075,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400002",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "404367"
+  },
+  {
+    "id": 24091,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400006",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "42841"
+  },
+  {
+    "id": 24190,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400005",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "441427"
+  },
+  {
+    "id": 24220,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400002",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "404369"
+  },
+  {
+    "id": 24232,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400003",
+    "content_id": "3416532",
+    "event": "buy",
+    "session_id": "795173"
+  },
+  {
+    "id": 24312,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400003",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "795173"
+  },
+  {
+    "id": 24382,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400005",
+    "content_id": "2582782",
+    "event": "buy",
+    "session_id": "441430"
+  },
+  {
+    "id": 24453,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400004",
+    "content_id": "3748528",
+    "event": "buy",
+    "session_id": "933886"
+  },
+  {
+    "id": 24516,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400006",
+    "content_id": "1679335",
+    "event": "buy",
+    "session_id": "42846"
+  },
+  {
+    "id": 24627,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400003",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "795177"
+  },
+  {
+    "id": 24636,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400004",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "933891"
+  },
+  {
+    "id": 24749,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "933891"
+  },
+  {
+    "id": 24827,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400005",
+    "content_id": "3741834",
+    "event": "buy",
+    "session_id": "441436"
+  },
+  {
+    "id": 25235,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400005",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "441442"
+  },
+  {
+    "id": 25252,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400006",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "42860"
+  },
+  {
+    "id": 25285,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400001",
+    "content_id": "3263904",
+    "event": "buy",
+    "session_id": "885853"
+  },
+  {
+    "id": 25327,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400006",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "42861"
+  },
+  {
+    "id": 25328,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400006",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "42861"
+  },
+  {
+    "id": 25505,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400003",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "795191"
+  },
+  {
+    "id": 25523,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400003",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "795191"
+  },
+  {
+    "id": 25691,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400006",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "42872"
+  },
+  {
+    "id": 25750,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400001",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "885862"
+  },
+  {
+    "id": 25848,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400003",
+    "content_id": "1700841",
+    "event": "buy",
+    "session_id": "795195"
+  },
+  {
+    "id": 25925,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400001",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "885865"
+  },
+  {
+    "id": 26159,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400005",
+    "content_id": "4034228",
+    "event": "buy",
+    "session_id": "441453"
+  },
+  {
+    "id": 26249,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400003",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "795200"
+  },
+  {
+    "id": 26316,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400001",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "885872"
+  },
+  {
+    "id": 26605,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400001",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "885878"
+  },
+  {
+    "id": 26612,
+    "created": "2023-07-11 20:59:59+03",
+    "user_id": "400004",
+    "content_id": "4196776",
+    "event": "buy",
+    "session_id": "933919"
+  },
+  {
+    "id": 26741,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400003",
+    "content_id": "1679335",
+    "event": "buy",
+    "session_id": "795207"
+  },
+  {
+    "id": 26812,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400001",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "885882"
+  },
+  {
+    "id": 26930,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400002",
+    "content_id": "5700672",
+    "event": "buy",
+    "session_id": "404404"
+  },
+  {
+    "id": 26962,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400001",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "885884"
+  },
+  {
+    "id": 27070,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400002",
+    "content_id": "0918940",
+    "event": "buy",
+    "session_id": "404406"
+  },
+  {
+    "id": 27124,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400003",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "795218"
+  },
+  {
+    "id": 27187,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400005",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "441476"
+  },
+  {
+    "id": 27196,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400005",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "441477"
+  },
+  {
+    "id": 27201,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400005",
+    "content_id": "3544112",
+    "event": "buy",
+    "session_id": "441477"
+  },
+  {
+    "id": 27374,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400005",
+    "content_id": "2582782",
+    "event": "buy",
+    "session_id": "441480"
+  },
+  {
+    "id": 27380,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400001",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "885892"
+  },
+  {
+    "id": 27545,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400002",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "404416"
+  },
+  {
+    "id": 27715,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400006",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "42917"
+  },
+  {
+    "id": 27812,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400001",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "885898"
+  },
+  {
+    "id": 28349,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400002",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "404432"
+  },
+  {
+    "id": 28442,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400004",
+    "content_id": "3393786",
+    "event": "buy",
+    "session_id": "933948"
+  },
+  {
+    "id": 28701,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400003",
+    "content_id": "2543164",
+    "event": "buy",
+    "session_id": "795242"
+  },
+  {
+    "id": 28707,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400001",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "885911"
+  },
+  {
+    "id": 28717,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "441504"
+  },
+  {
+    "id": 28775,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400004",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "933956"
+  },
+  {
+    "id": 29076,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400002",
+    "content_id": "3498820",
+    "event": "buy",
+    "session_id": "404446"
+  },
+  {
+    "id": 29186,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400001",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "885917"
+  },
+  {
+    "id": 29196,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400001",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "885917"
+  },
+  {
+    "id": 29288,
+    "created": "2023-07-11 21:00:00+03",
+    "user_id": "400005",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "441513"
+  },
+  {
+    "id": 29353,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400001",
+    "content_id": "2140479",
+    "event": "buy",
+    "session_id": "885919"
+  },
+  {
+    "id": 29500,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "933971"
+  },
+  {
+    "id": 29628,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400002",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "404459"
+  },
+  {
+    "id": 29793,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400006",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "42937"
+  },
+  {
+    "id": 30008,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400002",
+    "content_id": "3544112",
+    "event": "buy",
+    "session_id": "404462"
+  },
+  {
+    "id": 30028,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "2034800",
+    "event": "buy",
+    "session_id": "933980"
+  },
+  {
+    "id": 30065,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400006",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "42939"
+  },
+  {
+    "id": 30076,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400005",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "441524"
+  },
+  {
+    "id": 30085,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400002",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "404464"
+  },
+  {
+    "id": 30155,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "933982"
+  },
+  {
+    "id": 30224,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400005",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "441527"
+  },
+  {
+    "id": 30258,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "933984"
+  },
+  {
+    "id": 30286,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "3300542",
+    "event": "buy",
+    "session_id": "933987"
+  },
+  {
+    "id": 30335,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400001",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "885935"
+  },
+  {
+    "id": 30365,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400002",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "404467"
+  },
+  {
+    "id": 30514,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400003",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "795265"
+  },
+  {
+    "id": 30546,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "933988"
+  },
+  {
+    "id": 30720,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "933991"
+  },
+  {
+    "id": 30780,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "933992"
+  },
+  {
+    "id": 30849,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400005",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "441536"
+  },
+  {
+    "id": 31051,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400005",
+    "content_id": "0490215",
+    "event": "buy",
+    "session_id": "441540"
+  },
+  {
+    "id": 31137,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400003",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "795272"
+  },
+  {
+    "id": 31241,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "934001"
+  },
+  {
+    "id": 31263,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400006",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "42958"
+  },
+  {
+    "id": 31333,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400003",
+    "content_id": "4048272",
+    "event": "buy",
+    "session_id": "795276"
+  },
+  {
+    "id": 31426,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400005",
+    "content_id": "4846340",
+    "event": "buy",
+    "session_id": "441549"
+  },
+  {
+    "id": 31438,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400006",
+    "content_id": "2823054",
+    "event": "buy",
+    "session_id": "42959"
+  },
+  {
+    "id": 31570,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400006",
+    "content_id": "1985949",
+    "event": "buy",
+    "session_id": "42962"
+  },
+  {
+    "id": 31616,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400004",
+    "content_id": "4630562",
+    "event": "buy",
+    "session_id": "934010"
+  },
+  {
+    "id": 31682,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400006",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "42963"
+  },
+  {
+    "id": 31739,
+    "created": "2023-07-11 21:00:01+03",
+    "user_id": "400005",
+    "content_id": "2140479",
+    "event": "buy",
+    "session_id": "441550"
+  },
+  {
+    "id": 32052,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400003",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "795283"
+  },
+  {
+    "id": 32064,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400005",
+    "content_id": "3040964",
+    "event": "buy",
+    "session_id": "441559"
+  },
+  {
+    "id": 32091,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "934015"
+  },
+  {
+    "id": 32114,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400003",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "795284"
+  },
+  {
+    "id": 32116,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400004",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "934016"
+  },
+  {
+    "id": 32142,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400001",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "885961"
+  },
+  {
+    "id": 32164,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400004",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "934016"
+  },
+  {
+    "id": 32244,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "42970"
+  },
+  {
+    "id": 32289,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400002",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "404504"
+  },
+  {
+    "id": 32336,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400001",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "885962"
+  },
+  {
+    "id": 32541,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400006",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "42974"
+  },
+  {
+    "id": 32553,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400005",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "441569"
+  },
+  {
+    "id": 32595,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400001",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "885966"
+  },
+  {
+    "id": 32661,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400002",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "404508"
+  },
+  {
+    "id": 32795,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400006",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "42980"
+  },
+  {
+    "id": 32803,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400001",
+    "content_id": "3896198",
+    "event": "buy",
+    "session_id": "885969"
+  },
+  {
+    "id": 32884,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400006",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "42980"
+  },
+  {
+    "id": 33037,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400006",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "42982"
+  },
+  {
+    "id": 33079,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400006",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "42983"
+  },
+  {
+    "id": 33083,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400003",
+    "content_id": "2241351",
+    "event": "buy",
+    "session_id": "795301"
+  },
+  {
+    "id": 33121,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400004",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "934027"
+  },
+  {
+    "id": 33281,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400004",
+    "content_id": "4094724",
+    "event": "buy",
+    "session_id": "934028"
+  },
+  {
+    "id": 33469,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400005",
+    "content_id": "1179933",
+    "event": "buy",
+    "session_id": "441582"
+  },
+  {
+    "id": 34045,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400002",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "404529"
+  },
+  {
+    "id": 34153,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400005",
+    "content_id": "3263904",
+    "event": "buy",
+    "session_id": "441592"
+  },
+  {
+    "id": 34178,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400006",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "43008"
+  },
+  {
+    "id": 34256,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400002",
+    "content_id": "4651520",
+    "event": "buy",
+    "session_id": "404530"
+  },
+  {
+    "id": 34264,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400006",
+    "content_id": "4624424",
+    "event": "buy",
+    "session_id": "43011"
+  },
+  {
+    "id": 34402,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400003",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "795335"
+  },
+  {
+    "id": 34541,
+    "created": "2023-07-11 21:00:02+03",
+    "user_id": "400003",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "795337"
+  },
+  {
+    "id": 34628,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400006",
+    "content_id": "2823054",
+    "event": "buy",
+    "session_id": "43016"
+  },
+  {
+    "id": 34657,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400003",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "795338"
+  },
+  {
+    "id": 34804,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400001",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "886000"
+  },
+  {
+    "id": 34947,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400004",
+    "content_id": "3300542",
+    "event": "buy",
+    "session_id": "934057"
+  },
+  {
+    "id": 35082,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400005",
+    "content_id": "1083452",
+    "event": "buy",
+    "session_id": "441613"
+  },
+  {
+    "id": 35154,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400005",
+    "content_id": "2582782",
+    "event": "buy",
+    "session_id": "441614"
+  },
+  {
+    "id": 35198,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400004",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "934061"
+  },
+  {
+    "id": 35245,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400002",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "404546"
+  },
+  {
+    "id": 35410,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400006",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "43024"
+  },
+  {
+    "id": 35474,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "43025"
+  },
+  {
+    "id": 35554,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400006",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "43027"
+  },
+  {
+    "id": 35576,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400006",
+    "content_id": "1985949",
+    "event": "buy",
+    "session_id": "43027"
+  },
+  {
+    "id": 35597,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400003",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "795357"
+  },
+  {
+    "id": 35687,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400001",
+    "content_id": "3741834",
+    "event": "buy",
+    "session_id": "886014"
+  },
+  {
+    "id": 35741,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400003",
+    "content_id": "3741834",
+    "event": "buy",
+    "session_id": "795359"
+  },
+  {
+    "id": 35795,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400004",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "934066"
+  },
+  {
+    "id": 35856,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400005",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "441624"
+  },
+  {
+    "id": 35886,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "934067"
+  },
+  {
+    "id": 35902,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400006",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "43030"
+  },
+  {
+    "id": 36424,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400001",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "886033"
+  },
+  {
+    "id": 36537,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400003",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "795374"
+  },
+  {
+    "id": 36612,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400005",
+    "content_id": "1083452",
+    "event": "buy",
+    "session_id": "441642"
+  },
+  {
+    "id": 36705,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "441644"
+  },
+  {
+    "id": 36802,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400006",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "43044"
+  },
+  {
+    "id": 36844,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400002",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "404574"
+  },
+  {
+    "id": 36957,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400006",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "43046"
+  },
+  {
+    "id": 36982,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400004",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "934086"
+  },
+  {
+    "id": 36994,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400001",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "886043"
+  },
+  {
+    "id": 37019,
+    "created": "2023-07-11 21:00:03+03",
+    "user_id": "400004",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "934086"
+  },
+  {
+    "id": 37590,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400001",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "886055"
+  },
+  {
+    "id": 37670,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400004",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "934098"
+  },
+  {
+    "id": 37682,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400001",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "886056"
+  },
+  {
+    "id": 37701,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400004",
+    "content_id": "1431045",
+    "event": "buy",
+    "session_id": "934099"
+  },
+  {
+    "id": 37784,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400005",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "441668"
+  },
+  {
+    "id": 37832,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400002",
+    "content_id": "3544112",
+    "event": "buy",
+    "session_id": "404592"
+  },
+  {
+    "id": 37849,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400001",
+    "content_id": "1985949",
+    "event": "buy",
+    "session_id": "886059"
+  },
+  {
+    "id": 37928,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400006",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "43058"
+  },
+  {
+    "id": 38019,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400005",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "441670"
+  },
+  {
+    "id": 38028,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400005",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "441670"
+  },
+  {
+    "id": 38120,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400002",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "404598"
+  },
+  {
+    "id": 38136,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400002",
+    "content_id": "3544112",
+    "event": "buy",
+    "session_id": "404598"
+  },
+  {
+    "id": 38497,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400002",
+    "content_id": "4624424",
+    "event": "buy",
+    "session_id": "404603"
+  },
+  {
+    "id": 38658,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400004",
+    "content_id": "3393786",
+    "event": "buy",
+    "session_id": "934117"
+  },
+  {
+    "id": 38815,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400005",
+    "content_id": "3774114",
+    "event": "buy",
+    "session_id": "441686"
+  },
+  {
+    "id": 38946,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400005",
+    "content_id": "3263904",
+    "event": "buy",
+    "session_id": "441689"
+  },
+  {
+    "id": 38981,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400004",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "934123"
+  },
+  {
+    "id": 39170,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400004",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "934128"
+  },
+  {
+    "id": 39192,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400003",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "795421"
+  },
+  {
+    "id": 39216,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400001",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "886078"
+  },
+  {
+    "id": 39219,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400001",
+    "content_id": "3774114",
+    "event": "buy",
+    "session_id": "886078"
+  },
+  {
+    "id": 39282,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400006",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "43075"
+  },
+  {
+    "id": 39329,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400001",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "886080"
+  },
+  {
+    "id": 39505,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400002",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "404614"
+  },
+  {
+    "id": 39773,
+    "created": "2023-07-11 21:00:04+03",
+    "user_id": "400004",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "934141"
+  },
+  {
+    "id": 39941,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400001",
+    "content_id": "4846340",
+    "event": "buy",
+    "session_id": "886093"
+  },
+  {
+    "id": 39994,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "43081"
+  },
+  {
+    "id": 40018,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400006",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "43082"
+  },
+  {
+    "id": 40114,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400004",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "934147"
+  },
+  {
+    "id": 40221,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400001",
+    "content_id": "1179933",
+    "event": "buy",
+    "session_id": "886100"
+  },
+  {
+    "id": 40228,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400001",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "886100"
+  },
+  {
+    "id": 40295,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400002",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "404625"
+  },
+  {
+    "id": 40437,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400005",
+    "content_id": "3263904",
+    "event": "buy",
+    "session_id": "441712"
+  },
+  {
+    "id": 40732,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400003",
+    "content_id": "2937696",
+    "event": "buy",
+    "session_id": "795448"
+  },
+  {
+    "id": 40895,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400005",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "441719"
+  },
+  {
+    "id": 40919,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400005",
+    "content_id": "0490215",
+    "event": "buy",
+    "session_id": "441720"
+  },
+  {
+    "id": 41117,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400001",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "886120"
+  },
+  {
+    "id": 41127,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400002",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "404637"
+  },
+  {
+    "id": 41145,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400004",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "934164"
+  },
+  {
+    "id": 41170,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400002",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "404638"
+  },
+  {
+    "id": 41644,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400004",
+    "content_id": "5700672",
+    "event": "buy",
+    "session_id": "934173"
+  },
+  {
+    "id": 41688,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400004",
+    "content_id": "3498820",
+    "event": "buy",
+    "session_id": "934174"
+  },
+  {
+    "id": 41760,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400002",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "404648"
+  },
+  {
+    "id": 41839,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400006",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "43111"
+  },
+  {
+    "id": 41873,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400002",
+    "content_id": "4094724",
+    "event": "buy",
+    "session_id": "404649"
+  },
+  {
+    "id": 42029,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400006",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "43114"
+  },
+  {
+    "id": 42292,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400006",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "43118"
+  },
+  {
+    "id": 42303,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400003",
+    "content_id": "4624424",
+    "event": "buy",
+    "session_id": "795479"
+  },
+  {
+    "id": 42315,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "43118"
+  },
+  {
+    "id": 42330,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400005",
+    "content_id": "4034228",
+    "event": "buy",
+    "session_id": "441743"
+  },
+  {
+    "id": 42416,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400005",
+    "content_id": "0490215",
+    "event": "buy",
+    "session_id": "441745"
+  },
+  {
+    "id": 42439,
+    "created": "2023-07-11 21:00:05+03",
+    "user_id": "400005",
+    "content_id": "4846340",
+    "event": "buy",
+    "session_id": "441745"
+  },
+  {
+    "id": 42624,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400002",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "404661"
+  },
+  {
+    "id": 43483,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400006",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "43138"
+  },
+  {
+    "id": 43570,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400006",
+    "content_id": "4139124",
+    "event": "buy",
+    "session_id": "43142"
+  },
+  {
+    "id": 43620,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400003",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "795503"
+  },
+  {
+    "id": 43710,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400001",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "886160"
+  },
+  {
+    "id": 43775,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400006",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "43145"
+  },
+  {
+    "id": 43796,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400001",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "886164"
+  },
+  {
+    "id": 43893,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "43149"
+  },
+  {
+    "id": 43899,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400001",
+    "content_id": "1355644",
+    "event": "buy",
+    "session_id": "886165"
+  },
+  {
+    "id": 43928,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400004",
+    "content_id": "4196776",
+    "event": "buy",
+    "session_id": "934211"
+  },
+  {
+    "id": 44218,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400002",
+    "content_id": "3416532",
+    "event": "buy",
+    "session_id": "404691"
+  },
+  {
+    "id": 44275,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400004",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "934215"
+  },
+  {
+    "id": 44318,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400004",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "934216"
+  },
+  {
+    "id": 44448,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400003",
+    "content_id": "3553976",
+    "event": "buy",
+    "session_id": "795515"
+  },
+  {
+    "id": 44479,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400004",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "934220"
+  },
+  {
+    "id": 44493,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400004",
+    "content_id": "3393786",
+    "event": "buy",
+    "session_id": "934220"
+  },
+  {
+    "id": 44720,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400003",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "795524"
+  },
+  {
+    "id": 44778,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400003",
+    "content_id": "2547584",
+    "event": "buy",
+    "session_id": "795525"
+  },
+  {
+    "id": 44884,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400001",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "886180"
+  },
+  {
+    "id": 44962,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400005",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "441783"
+  },
+  {
+    "id": 44986,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400002",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "404699"
+  },
+  {
+    "id": 45151,
+    "created": "2023-07-11 21:00:06+03",
+    "user_id": "400005",
+    "content_id": "2674426",
+    "event": "buy",
+    "session_id": "441783"
+  },
+  {
+    "id": 45159,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400005",
+    "content_id": "3263904",
+    "event": "buy",
+    "session_id": "441783"
+  },
+  {
+    "id": 45160,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "43169"
+  },
+  {
+    "id": 45360,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "43170"
+  },
+  {
+    "id": 45483,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400002",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "404707"
+  },
+  {
+    "id": 45485,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400006",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "43172"
+  },
+  {
+    "id": 45506,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400002",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "404708"
+  },
+  {
+    "id": 45719,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400002",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "404714"
+  },
+  {
+    "id": 45880,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400006",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "43181"
+  },
+  {
+    "id": 45949,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400002",
+    "content_id": "2582782",
+    "event": "buy",
+    "session_id": "404718"
+  },
+  {
+    "id": 45952,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400005",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "441798"
+  },
+  {
+    "id": 46079,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400002",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "404718"
+  },
+  {
+    "id": 46367,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400004",
+    "content_id": "4630562",
+    "event": "buy",
+    "session_id": "934244"
+  },
+  {
+    "id": 46490,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400004",
+    "content_id": "2948356",
+    "event": "buy",
+    "session_id": "934246"
+  },
+  {
+    "id": 46521,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400001",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "886200"
+  },
+  {
+    "id": 46530,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400002",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "404722"
+  },
+  {
+    "id": 46537,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400006",
+    "content_id": "1679335",
+    "event": "buy",
+    "session_id": "43190"
+  },
+  {
+    "id": 46812,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400003",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "795575"
+  },
+  {
+    "id": 46829,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400004",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "934252"
+  },
+  {
+    "id": 46872,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400006",
+    "content_id": "4901306",
+    "event": "buy",
+    "session_id": "43197"
+  },
+  {
+    "id": 46963,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400003",
+    "content_id": "1985949",
+    "event": "buy",
+    "session_id": "795577"
+  },
+  {
+    "id": 46990,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400003",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "795577"
+  },
+  {
+    "id": 47046,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400002",
+    "content_id": "2250912",
+    "event": "buy",
+    "session_id": "404730"
+  },
+  {
+    "id": 47306,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400005",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "441816"
+  },
+  {
+    "id": 47527,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400005",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "441820"
+  },
+  {
+    "id": 47675,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400001",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "886219"
+  },
+  {
+    "id": 47738,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400002",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "404740"
+  },
+  {
+    "id": 47828,
+    "created": "2023-07-11 21:00:07+03",
+    "user_id": "400005",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "441825"
+  },
+  {
+    "id": 47918,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400002",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "404745"
+  },
+  {
+    "id": 48047,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400006",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "43222"
+  },
+  {
+    "id": 48223,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400004",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "934275"
+  },
+  {
+    "id": 48344,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400002",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "404751"
+  },
+  {
+    "id": 48600,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400003",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "795605"
+  },
+  {
+    "id": 48806,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400005",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "441838"
+  },
+  {
+    "id": 48818,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400006",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "43235"
+  },
+  {
+    "id": 48908,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400003",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "795612"
+  },
+  {
+    "id": 49080,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "43237"
+  },
+  {
+    "id": 49123,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400001",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "886244"
+  },
+  {
+    "id": 49192,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400006",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "43239"
+  },
+  {
+    "id": 49527,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400006",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "43242"
+  },
+  {
+    "id": 49651,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400006",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "43244"
+  },
+  {
+    "id": 49672,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400001",
+    "content_id": "4901306",
+    "event": "buy",
+    "session_id": "886256"
+  },
+  {
+    "id": 49938,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "441847"
+  },
+  {
+    "id": 50000,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400006",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "43252"
+  },
+  {
+    "id": 50083,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400006",
+    "content_id": "4901306",
+    "event": "buy",
+    "session_id": "43256"
+  },
+  {
+    "id": 50130,
+    "created": "2023-07-11 21:00:08+03",
+    "user_id": "400001",
+    "content_id": "3521164",
+    "event": "buy",
+    "session_id": "886263"
+  },
+  {
+    "id": 50624,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400006",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "43261"
+  },
+  {
+    "id": 50656,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400002",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "404783"
+  },
+  {
+    "id": 50699,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400004",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "934307"
+  },
+  {
+    "id": 50738,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400005",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "441862"
+  },
+  {
+    "id": 50808,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400002",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "404784"
+  },
+  {
+    "id": 50810,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400004",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "934308"
+  },
+  {
+    "id": 50813,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400003",
+    "content_id": "1179933",
+    "event": "buy",
+    "session_id": "795644"
+  },
+  {
+    "id": 50959,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400005",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "441870"
+  },
+  {
+    "id": 50990,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400001",
+    "content_id": "4048272",
+    "event": "buy",
+    "session_id": "886281"
+  },
+  {
+    "id": 51073,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400005",
+    "content_id": "4276820",
+    "event": "buy",
+    "session_id": "441871"
+  },
+  {
+    "id": 51101,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400002",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "404785"
+  },
+  {
+    "id": 51348,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400002",
+    "content_id": "4846340",
+    "event": "buy",
+    "session_id": "404788"
+  },
+  {
+    "id": 51688,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400005",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "441882"
+  },
+  {
+    "id": 51825,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400004",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "934326"
+  },
+  {
+    "id": 51922,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400004",
+    "content_id": "4196776",
+    "event": "buy",
+    "session_id": "934326"
+  },
+  {
+    "id": 52327,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "43282"
+  },
+  {
+    "id": 52435,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400003",
+    "content_id": "4901306",
+    "event": "buy",
+    "session_id": "795678"
+  },
+  {
+    "id": 52688,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400001",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "886311"
+  },
+  {
+    "id": 52690,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400006",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "43290"
+  },
+  {
+    "id": 52741,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400005",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "441897"
+  },
+  {
+    "id": 52749,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400006",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "43290"
+  },
+  {
+    "id": 52766,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400004",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "934345"
+  },
+  {
+    "id": 52771,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400005",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "441898"
+  },
+  {
+    "id": 52793,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400001",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "886312"
+  },
+  {
+    "id": 52809,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400006",
+    "content_id": "1608290",
+    "event": "buy",
+    "session_id": "43293"
+  },
+  {
+    "id": 52899,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400006",
+    "content_id": "1489889",
+    "event": "buy",
+    "session_id": "43294"
+  },
+  {
+    "id": 52951,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400002",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "404810"
+  },
+  {
+    "id": 52971,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "934348"
+  },
+  {
+    "id": 53254,
+    "created": "2023-07-11 21:00:09+03",
+    "user_id": "400004",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "934349"
+  },
+  {
+    "id": 53338,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400002",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "404819"
+  },
+  {
+    "id": 53413,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400002",
+    "content_id": "2823054",
+    "event": "buy",
+    "session_id": "404819"
+  },
+  {
+    "id": 53429,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400005",
+    "content_id": "2543164",
+    "event": "buy",
+    "session_id": "441906"
+  },
+  {
+    "id": 53446,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400001",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "886323"
+  },
+  {
+    "id": 53509,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400003",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "795699"
+  },
+  {
+    "id": 53557,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400005",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "441908"
+  },
+  {
+    "id": 53558,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400004",
+    "content_id": "3896198",
+    "event": "buy",
+    "session_id": "934353"
+  },
+  {
+    "id": 53604,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400005",
+    "content_id": "3040964",
+    "event": "buy",
+    "session_id": "441910"
+  },
+  {
+    "id": 53685,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400006",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "43305"
+  },
+  {
+    "id": 53998,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400002",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "404827"
+  },
+  {
+    "id": 54055,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400006",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "43314"
+  },
+  {
+    "id": 54176,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400003",
+    "content_id": "3553976",
+    "event": "buy",
+    "session_id": "795711"
+  },
+  {
+    "id": 54248,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400002",
+    "content_id": "0803096",
+    "event": "buy",
+    "session_id": "404830"
+  },
+  {
+    "id": 54253,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400006",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "43318"
+  },
+  {
+    "id": 54618,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400001",
+    "content_id": "1489889",
+    "event": "buy",
+    "session_id": "886345"
+  },
+  {
+    "id": 54665,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400006",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "43327"
+  },
+  {
+    "id": 54705,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400001",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "886346"
+  },
+  {
+    "id": 54755,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400005",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "441930"
+  },
+  {
+    "id": 54857,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400005",
+    "content_id": "2547584",
+    "event": "buy",
+    "session_id": "441930"
+  },
+  {
+    "id": 54982,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400006",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "43332"
+  },
+  {
+    "id": 55049,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400002",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "404844"
+  },
+  {
+    "id": 55146,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400005",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "441935"
+  },
+  {
+    "id": 55295,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400002",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "404850"
+  },
+  {
+    "id": 55484,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400006",
+    "content_id": "1679335",
+    "event": "buy",
+    "session_id": "43344"
+  },
+  {
+    "id": 55647,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "441942"
+  },
+  {
+    "id": 55690,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400005",
+    "content_id": "0490215",
+    "event": "buy",
+    "session_id": "441942"
+  },
+  {
+    "id": 55922,
+    "created": "2023-07-11 21:00:10+03",
+    "user_id": "400004",
+    "content_id": "3896198",
+    "event": "buy",
+    "session_id": "934396"
+  },
+  {
+    "id": 56159,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400006",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "43353"
+  },
+  {
+    "id": 56186,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "4550098",
+    "event": "buy",
+    "session_id": "441949"
+  },
+  {
+    "id": 56474,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400001",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "886376"
+  },
+  {
+    "id": 56641,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400004",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "934409"
+  },
+  {
+    "id": 56665,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "1083452",
+    "event": "buy",
+    "session_id": "441961"
+  },
+  {
+    "id": 56754,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400006",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "43361"
+  },
+  {
+    "id": 56841,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400004",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "934411"
+  },
+  {
+    "id": 56934,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400004",
+    "content_id": "3300542",
+    "event": "buy",
+    "session_id": "934413"
+  },
+  {
+    "id": 57001,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400006",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "43362"
+  },
+  {
+    "id": 57041,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400006",
+    "content_id": "1608290",
+    "event": "buy",
+    "session_id": "43363"
+  },
+  {
+    "id": 57073,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "441973"
+  },
+  {
+    "id": 57232,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400002",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "404877"
+  },
+  {
+    "id": 57338,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400006",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "43369"
+  },
+  {
+    "id": 57446,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "0490215",
+    "event": "buy",
+    "session_id": "441978"
+  },
+  {
+    "id": 57540,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400006",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "43373"
+  },
+  {
+    "id": 57547,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400001",
+    "content_id": "3774114",
+    "event": "buy",
+    "session_id": "886399"
+  },
+  {
+    "id": 57617,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400006",
+    "content_id": "1489889",
+    "event": "buy",
+    "session_id": "43379"
+  },
+  {
+    "id": 57620,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400003",
+    "content_id": "3263904",
+    "event": "buy",
+    "session_id": "795763"
+  },
+  {
+    "id": 57665,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "3416532",
+    "event": "buy",
+    "session_id": "441983"
+  },
+  {
+    "id": 57718,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "441984"
+  },
+  {
+    "id": 57749,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400003",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "795764"
+  },
+  {
+    "id": 57770,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400004",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "934427"
+  },
+  {
+    "id": 57918,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400003",
+    "content_id": "4034228",
+    "event": "buy",
+    "session_id": "795772"
+  },
+  {
+    "id": 57954,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "3553976",
+    "event": "buy",
+    "session_id": "441988"
+  },
+  {
+    "id": 58009,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400004",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "934431"
+  },
+  {
+    "id": 58020,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400002",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "404892"
+  },
+  {
+    "id": 58208,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "441993"
+  },
+  {
+    "id": 58260,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400003",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "795779"
+  },
+  {
+    "id": 58316,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400002",
+    "content_id": "4276820",
+    "event": "buy",
+    "session_id": "404900"
+  },
+  {
+    "id": 58317,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400001",
+    "content_id": "4094724",
+    "event": "buy",
+    "session_id": "886411"
+  },
+  {
+    "id": 58351,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "441996"
+  },
+  {
+    "id": 58377,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400006",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "43392"
+  },
+  {
+    "id": 58388,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400005",
+    "content_id": "4034228",
+    "event": "buy",
+    "session_id": "441997"
+  },
+  {
+    "id": 58417,
+    "created": "2023-07-11 21:00:11+03",
+    "user_id": "400004",
+    "content_id": "3300542",
+    "event": "buy",
+    "session_id": "934437"
+  },
+  {
+    "id": 58718,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400002",
+    "content_id": "1679335",
+    "event": "buy",
+    "session_id": "404907"
+  },
+  {
+    "id": 58737,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400002",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "404908"
+  },
+  {
+    "id": 58913,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400006",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "43402"
+  },
+  {
+    "id": 58915,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400006",
+    "content_id": "1489889",
+    "event": "buy",
+    "session_id": "43402"
+  },
+  {
+    "id": 59124,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400002",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "404910"
+  },
+  {
+    "id": 59220,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400001",
+    "content_id": "2582782",
+    "event": "buy",
+    "session_id": "886423"
+  },
+  {
+    "id": 59353,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400003",
+    "content_id": "4651520",
+    "event": "buy",
+    "session_id": "795798"
+  },
+  {
+    "id": 59395,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400004",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "934459"
+  },
+  {
+    "id": 59490,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400003",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "795799"
+  },
+  {
+    "id": 59522,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400003",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "795800"
+  },
+  {
+    "id": 59532,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400004",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "934459"
+  },
+  {
+    "id": 59799,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400003",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "795803"
+  },
+  {
+    "id": 59859,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400001",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "886432"
+  },
+  {
+    "id": 59884,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400006",
+    "content_id": "1489889",
+    "event": "buy",
+    "session_id": "43414"
+  },
+  {
+    "id": 59900,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400006",
+    "content_id": "4048272",
+    "event": "buy",
+    "session_id": "43414"
+  },
+  {
+    "id": 59929,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400004",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "934467"
+  },
+  {
+    "id": 60059,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400004",
+    "content_id": "3896198",
+    "event": "buy",
+    "session_id": "934470"
+  },
+  {
+    "id": 60085,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400001",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "886435"
+  },
+  {
+    "id": 60154,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400003",
+    "content_id": "4630562",
+    "event": "buy",
+    "session_id": "795808"
+  },
+  {
+    "id": 60189,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400003",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "795810"
+  },
+  {
+    "id": 60208,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400004",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "934471"
+  },
+  {
+    "id": 60263,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400006",
+    "content_id": "4139124",
+    "event": "buy",
+    "session_id": "43421"
+  },
+  {
+    "id": 60557,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400002",
+    "content_id": "4630562",
+    "event": "buy",
+    "session_id": "404935"
+  },
+  {
+    "id": 60789,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400001",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "886446"
+  },
+  {
+    "id": 60854,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400001",
+    "content_id": "3553976",
+    "event": "buy",
+    "session_id": "886446"
+  },
+  {
+    "id": 60930,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400004",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "934487"
+  },
+  {
+    "id": 60955,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400005",
+    "content_id": "4034228",
+    "event": "buy",
+    "session_id": "442053"
+  },
+  {
+    "id": 61032,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400004",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "934490"
+  },
+  {
+    "id": 61046,
+    "created": "2023-07-11 21:00:12+03",
+    "user_id": "400002",
+    "content_id": "2823054",
+    "event": "buy",
+    "session_id": "404949"
+  },
+  {
+    "id": 61205,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400004",
+    "content_id": "2948356",
+    "event": "buy",
+    "session_id": "934493"
+  },
+  {
+    "id": 61237,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400003",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "795824"
+  },
+  {
+    "id": 61331,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400006",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "43442"
+  },
+  {
+    "id": 61490,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400006",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "43445"
+  },
+  {
+    "id": 61677,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400005",
+    "content_id": "4276820",
+    "event": "buy",
+    "session_id": "442063"
+  },
+  {
+    "id": 61757,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400004",
+    "content_id": "3498820",
+    "event": "buy",
+    "session_id": "934506"
+  },
+  {
+    "id": 61914,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400002",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "404960"
+  },
+  {
+    "id": 61964,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400002",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "404960"
+  },
+  {
+    "id": 62073,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400001",
+    "content_id": "4048272",
+    "event": "buy",
+    "session_id": "886461"
+  },
+  {
+    "id": 62297,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400004",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "934513"
+  },
+  {
+    "id": 62300,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400003",
+    "content_id": "0918940",
+    "event": "buy",
+    "session_id": "795839"
+  },
+  {
+    "id": 62336,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400004",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "934513"
+  },
+  {
+    "id": 62423,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400004",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "934515"
+  },
+  {
+    "id": 62524,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400004",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "934517"
+  },
+  {
+    "id": 62806,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400005",
+    "content_id": "2582782",
+    "event": "buy",
+    "session_id": "442081"
+  },
+  {
+    "id": 62953,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400002",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "404976"
+  },
+  {
+    "id": 63002,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400003",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "795845"
+  },
+  {
+    "id": 63286,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400004",
+    "content_id": "2948356",
+    "event": "buy",
+    "session_id": "934531"
+  },
+  {
+    "id": 63324,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400003",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "795852"
+  },
+  {
+    "id": 63454,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400003",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "795854"
+  },
+  {
+    "id": 63493,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400002",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "404983"
+  },
+  {
+    "id": 63516,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400004",
+    "content_id": "1431045",
+    "event": "buy",
+    "session_id": "934533"
+  },
+  {
+    "id": 63550,
+    "created": "2023-07-11 21:00:13+03",
+    "user_id": "400003",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "795855"
+  },
+  {
+    "id": 63755,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400002",
+    "content_id": "1355644",
+    "event": "buy",
+    "session_id": "404986"
+  },
+  {
+    "id": 63921,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400003",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "795858"
+  },
+  {
+    "id": 63957,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400001",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "886492"
+  },
+  {
+    "id": 64248,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400005",
+    "content_id": "1355644",
+    "event": "buy",
+    "session_id": "442099"
+  },
+  {
+    "id": 64256,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400002",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "404989"
+  },
+  {
+    "id": 64296,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400005",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "442101"
+  },
+  {
+    "id": 64380,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400004",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "934547"
+  },
+  {
+    "id": 64446,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400005",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "442104"
+  },
+  {
+    "id": 64579,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400002",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "404993"
+  },
+  {
+    "id": 64600,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400004",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "934550"
+  },
+  {
+    "id": 64857,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400005",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "442112"
+  },
+  {
+    "id": 65094,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400006",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "43491"
+  },
+  {
+    "id": 65214,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400001",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "886516"
+  },
+  {
+    "id": 65290,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400003",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "795879"
+  },
+  {
+    "id": 65347,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400001",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "886517"
+  },
+  {
+    "id": 65492,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400004",
+    "content_id": "0918940",
+    "event": "buy",
+    "session_id": "934560"
+  },
+  {
+    "id": 65651,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400001",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "886524"
+  },
+  {
+    "id": 65775,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "934568"
+  },
+  {
+    "id": 66052,
+    "created": "2023-07-11 21:00:14+03",
+    "user_id": "400003",
+    "content_id": "3521164",
+    "event": "buy",
+    "session_id": "795885"
+  },
+  {
+    "id": 66200,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400006",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "43507"
+  },
+  {
+    "id": 66204,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400001",
+    "content_id": "2543164",
+    "event": "buy",
+    "session_id": "886530"
+  },
+  {
+    "id": 66274,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400001",
+    "content_id": "3748528",
+    "event": "buy",
+    "session_id": "886533"
+  },
+  {
+    "id": 66316,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400004",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "934575"
+  },
+  {
+    "id": 66489,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400004",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "934575"
+  },
+  {
+    "id": 66533,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400006",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "43515"
+  },
+  {
+    "id": 66748,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400005",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "442141"
+  },
+  {
+    "id": 66848,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400005",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "442144"
+  },
+  {
+    "id": 66935,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400003",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "795898"
+  },
+  {
+    "id": 67135,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400005",
+    "content_id": "3544112",
+    "event": "buy",
+    "session_id": "442155"
+  },
+  {
+    "id": 67195,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400004",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "934581"
+  },
+  {
+    "id": 67240,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400003",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "795905"
+  },
+  {
+    "id": 67302,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400002",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "405045"
+  },
+  {
+    "id": 67466,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400004",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "934585"
+  },
+  {
+    "id": 67571,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400005",
+    "content_id": "2241351",
+    "event": "buy",
+    "session_id": "442164"
+  },
+  {
+    "id": 67594,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400001",
+    "content_id": "3521164",
+    "event": "buy",
+    "session_id": "886554"
+  },
+  {
+    "id": 67804,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400005",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "442169"
+  },
+  {
+    "id": 67822,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400004",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "934593"
+  },
+  {
+    "id": 67923,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400004",
+    "content_id": "3748528",
+    "event": "buy",
+    "session_id": "934594"
+  },
+  {
+    "id": 68232,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400002",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "405058"
+  },
+  {
+    "id": 68242,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400003",
+    "content_id": "2140479",
+    "event": "buy",
+    "session_id": "795917"
+  },
+  {
+    "id": 68295,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400005",
+    "content_id": "1083452",
+    "event": "buy",
+    "session_id": "442177"
+  },
+  {
+    "id": 68373,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "442180"
+  },
+  {
+    "id": 68723,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400004",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "934611"
+  },
+  {
+    "id": 68749,
+    "created": "2023-07-11 21:00:15+03",
+    "user_id": "400006",
+    "content_id": "4624424",
+    "event": "buy",
+    "session_id": "43550"
+  },
+  {
+    "id": 68955,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400005",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "442183"
+  },
+  {
+    "id": 68963,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "442183"
+  },
+  {
+    "id": 69066,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400002",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "405077"
+  },
+  {
+    "id": 69101,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400006",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "43554"
+  },
+  {
+    "id": 69219,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400004",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "934618"
+  },
+  {
+    "id": 69367,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400003",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "795934"
+  },
+  {
+    "id": 69493,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400004",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "934622"
+  },
+  {
+    "id": 69555,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400002",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "405082"
+  },
+  {
+    "id": 69698,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400003",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "795936"
+  },
+  {
+    "id": 69737,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400004",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "934625"
+  },
+  {
+    "id": 69804,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400003",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "795938"
+  },
+  {
+    "id": 69885,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400003",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "795939"
+  },
+  {
+    "id": 69989,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "934626"
+  },
+  {
+    "id": 70011,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400004",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "934626"
+  },
+  {
+    "id": 70278,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400005",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "442206"
+  },
+  {
+    "id": 70396,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400004",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "934628"
+  },
+  {
+    "id": 70474,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400001",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "886605"
+  },
+  {
+    "id": 70489,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400001",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "886605"
+  },
+  {
+    "id": 70494,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400002",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "405102"
+  },
+  {
+    "id": 70512,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400001",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "886606"
+  },
+  {
+    "id": 70869,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400006",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "43577"
+  },
+  {
+    "id": 70896,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400004",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "934636"
+  },
+  {
+    "id": 71137,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400006",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "43581"
+  },
+  {
+    "id": 71162,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "43581"
+  },
+  {
+    "id": 71255,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400003",
+    "content_id": "4094724",
+    "event": "buy",
+    "session_id": "795965"
+  },
+  {
+    "id": 71269,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400002",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "405115"
+  },
+  {
+    "id": 71323,
+    "created": "2023-07-11 21:00:16+03",
+    "user_id": "400001",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "886620"
+  },
+  {
+    "id": 71354,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400004",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "934646"
+  },
+  {
+    "id": 71427,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400004",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "934646"
+  },
+  {
+    "id": 71511,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400003",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "795969"
+  },
+  {
+    "id": 71570,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400003",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "795970"
+  },
+  {
+    "id": 71579,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400004",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "934650"
+  },
+  {
+    "id": 71595,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400001",
+    "content_id": "1700841",
+    "event": "buy",
+    "session_id": "886628"
+  },
+  {
+    "id": 71673,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400006",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "43592"
+  },
+  {
+    "id": 71705,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400006",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "43592"
+  },
+  {
+    "id": 71766,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400004",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "934652"
+  },
+  {
+    "id": 71886,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400001",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "886636"
+  },
+  {
+    "id": 71918,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400005",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "442237"
+  },
+  {
+    "id": 72065,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400002",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "405132"
+  },
+  {
+    "id": 72357,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400002",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "405141"
+  },
+  {
+    "id": 72427,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400004",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "934656"
+  },
+  {
+    "id": 72494,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400003",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "795989"
+  },
+  {
+    "id": 72537,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400004",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "934658"
+  },
+  {
+    "id": 72656,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400002",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "405152"
+  },
+  {
+    "id": 72664,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400004",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "934660"
+  },
+  {
+    "id": 72751,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400006",
+    "content_id": "1700841",
+    "event": "buy",
+    "session_id": "43611"
+  },
+  {
+    "id": 73275,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400005",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "442259"
+  },
+  {
+    "id": 73296,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400003",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "796000"
+  },
+  {
+    "id": 73542,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400006",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "43626"
+  },
+  {
+    "id": 73595,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400001",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "886659"
+  },
+  {
+    "id": 73707,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400003",
+    "content_id": "1355644",
+    "event": "buy",
+    "session_id": "796007"
+  },
+  {
+    "id": 73938,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400002",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "405168"
+  },
+  {
+    "id": 73952,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400006",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "43632"
+  },
+  {
+    "id": 73967,
+    "created": "2023-07-11 21:00:17+03",
+    "user_id": "400001",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "886665"
+  },
+  {
+    "id": 74081,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400001",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "886665"
+  },
+  {
+    "id": 74202,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400006",
+    "content_id": "4034354",
+    "event": "buy",
+    "session_id": "43636"
+  },
+  {
+    "id": 74459,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400003",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "796022"
+  },
+  {
+    "id": 74816,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400002",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "405189"
+  },
+  {
+    "id": 74934,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400003",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "796029"
+  },
+  {
+    "id": 75007,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400003",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "796031"
+  },
+  {
+    "id": 75091,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400001",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "886686"
+  },
+  {
+    "id": 75126,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400006",
+    "content_id": "4048272",
+    "event": "buy",
+    "session_id": "43653"
+  },
+  {
+    "id": 75514,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400001",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "886691"
+  },
+  {
+    "id": 75736,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400002",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "405203"
+  },
+  {
+    "id": 75816,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "442293"
+  },
+  {
+    "id": 76097,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400001",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "886707"
+  },
+  {
+    "id": 76144,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400006",
+    "content_id": "1489889",
+    "event": "buy",
+    "session_id": "43664"
+  },
+  {
+    "id": 76199,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400003",
+    "content_id": "2547584",
+    "event": "buy",
+    "session_id": "796058"
+  },
+  {
+    "id": 76325,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400004",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "934723"
+  },
+  {
+    "id": 76428,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400002",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "405218"
+  },
+  {
+    "id": 76475,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400006",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "43673"
+  },
+  {
+    "id": 76478,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400006",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "43673"
+  },
+  {
+    "id": 76502,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400004",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "934725"
+  },
+  {
+    "id": 76536,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400006",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "43674"
+  },
+  {
+    "id": 76737,
+    "created": "2023-07-11 21:00:18+03",
+    "user_id": "400004",
+    "content_id": "2948356",
+    "event": "buy",
+    "session_id": "934725"
+  },
+  {
+    "id": 76771,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400003",
+    "content_id": "4550098",
+    "event": "buy",
+    "session_id": "796065"
+  },
+  {
+    "id": 76976,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400001",
+    "content_id": "4034228",
+    "event": "buy",
+    "session_id": "886721"
+  },
+  {
+    "id": 76983,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400006",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "43679"
+  },
+  {
+    "id": 77051,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400004",
+    "content_id": "4196776",
+    "event": "buy",
+    "session_id": "934727"
+  },
+  {
+    "id": 77095,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400005",
+    "content_id": "4846340",
+    "event": "buy",
+    "session_id": "442316"
+  },
+  {
+    "id": 77364,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400005",
+    "content_id": "1179933",
+    "event": "buy",
+    "session_id": "442320"
+  },
+  {
+    "id": 77519,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400005",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "442329"
+  },
+  {
+    "id": 77590,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400004",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "934737"
+  },
+  {
+    "id": 77632,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400006",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "43683"
+  },
+  {
+    "id": 77794,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400001",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "886735"
+  },
+  {
+    "id": 77831,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "43686"
+  },
+  {
+    "id": 77909,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400003",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "796083"
+  },
+  {
+    "id": 77917,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400003",
+    "content_id": "0490215",
+    "event": "buy",
+    "session_id": "796084"
+  },
+  {
+    "id": 78034,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400006",
+    "content_id": "2937696",
+    "event": "buy",
+    "session_id": "43688"
+  },
+  {
+    "id": 78139,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400003",
+    "content_id": "2547584",
+    "event": "buy",
+    "session_id": "796090"
+  },
+  {
+    "id": 78200,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400003",
+    "content_id": "1679335",
+    "event": "buy",
+    "session_id": "796090"
+  },
+  {
+    "id": 78385,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400003",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "796092"
+  },
+  {
+    "id": 78735,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400001",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "886751"
+  },
+  {
+    "id": 78766,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400006",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "43699"
+  },
+  {
+    "id": 78902,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400001",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "886754"
+  },
+  {
+    "id": 78991,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400001",
+    "content_id": "4034228",
+    "event": "buy",
+    "session_id": "886755"
+  },
+  {
+    "id": 79189,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400004",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "934764"
+  },
+  {
+    "id": 79250,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400001",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "886763"
+  },
+  {
+    "id": 79392,
+    "created": "2023-07-11 21:00:19+03",
+    "user_id": "400002",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "405271"
+  },
+  {
+    "id": 79454,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400002",
+    "content_id": "5700672",
+    "event": "buy",
+    "session_id": "405273"
+  },
+  {
+    "id": 79660,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400004",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "934773"
+  },
+  {
+    "id": 79778,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400005",
+    "content_id": "2671706",
+    "event": "buy",
+    "session_id": "442362"
+  },
+  {
+    "id": 79841,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400001",
+    "content_id": "4550098",
+    "event": "buy",
+    "session_id": "886773"
+  },
+  {
+    "id": 80061,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400006",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "43722"
+  },
+  {
+    "id": 80253,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400003",
+    "content_id": "4624424",
+    "event": "buy",
+    "session_id": "796130"
+  },
+  {
+    "id": 80321,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400002",
+    "content_id": "3385516",
+    "event": "buy",
+    "session_id": "405286"
+  },
+  {
+    "id": 80579,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400003",
+    "content_id": "3741834",
+    "event": "buy",
+    "session_id": "796140"
+  },
+  {
+    "id": 80602,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400003",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "796140"
+  },
+  {
+    "id": 80756,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400002",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "405294"
+  },
+  {
+    "id": 80829,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400002",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "405295"
+  },
+  {
+    "id": 80896,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400002",
+    "content_id": "1473832",
+    "event": "buy",
+    "session_id": "405296"
+  },
+  {
+    "id": 81046,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400002",
+    "content_id": "2660888",
+    "event": "buy",
+    "session_id": "405298"
+  },
+  {
+    "id": 81138,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400005",
+    "content_id": "2674426",
+    "event": "buy",
+    "session_id": "442388"
+  },
+  {
+    "id": 81211,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400001",
+    "content_id": "3416532",
+    "event": "buy",
+    "session_id": "886796"
+  },
+  {
+    "id": 81251,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400003",
+    "content_id": "1355644",
+    "event": "buy",
+    "session_id": "796146"
+  },
+  {
+    "id": 81284,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400005",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "442388"
+  },
+  {
+    "id": 81294,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400001",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "886796"
+  },
+  {
+    "id": 81361,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400006",
+    "content_id": "1711525",
+    "event": "buy",
+    "session_id": "43733"
+  },
+  {
+    "id": 81433,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400004",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "934803"
+  },
+  {
+    "id": 81592,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400003",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "796150"
+  },
+  {
+    "id": 81633,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "43738"
+  },
+  {
+    "id": 81833,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400002",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "405310"
+  },
+  {
+    "id": 81886,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400002",
+    "content_id": "2937696",
+    "event": "buy",
+    "session_id": "405310"
+  },
+  {
+    "id": 81997,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400004",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "934809"
+  },
+  {
+    "id": 82057,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400006",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "43751"
+  },
+  {
+    "id": 82078,
+    "created": "2023-07-11 21:00:20+03",
+    "user_id": "400006",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "43751"
+  },
+  {
+    "id": 82099,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "43752"
+  },
+  {
+    "id": 82144,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400004",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "934810"
+  },
+  {
+    "id": 82189,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400004",
+    "content_id": "2034800",
+    "event": "buy",
+    "session_id": "934810"
+  },
+  {
+    "id": 82336,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400002",
+    "content_id": "2582782",
+    "event": "buy",
+    "session_id": "405323"
+  },
+  {
+    "id": 82510,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "442406"
+  },
+  {
+    "id": 82576,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400003",
+    "content_id": "0918940",
+    "event": "buy",
+    "session_id": "796162"
+  },
+  {
+    "id": 82601,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400003",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "796162"
+  },
+  {
+    "id": 82661,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400005",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "442407"
+  },
+  {
+    "id": 82829,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400005",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "442408"
+  },
+  {
+    "id": 83221,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400003",
+    "content_id": "4630562",
+    "event": "buy",
+    "session_id": "796169"
+  },
+  {
+    "id": 83296,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400005",
+    "content_id": "3040964",
+    "event": "buy",
+    "session_id": "442415"
+  },
+  {
+    "id": 83303,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400006",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "43773"
+  },
+  {
+    "id": 83398,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "934831"
+  },
+  {
+    "id": 83484,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400005",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "442419"
+  },
+  {
+    "id": 83553,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400004",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "934838"
+  },
+  {
+    "id": 83704,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400002",
+    "content_id": "1292566",
+    "event": "buy",
+    "session_id": "405342"
+  },
+  {
+    "id": 83854,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400006",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "43781"
+  },
+  {
+    "id": 83905,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400004",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "934843"
+  },
+  {
+    "id": 84248,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400004",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "934850"
+  },
+  {
+    "id": 84267,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400006",
+    "content_id": "1700841",
+    "event": "buy",
+    "session_id": "43789"
+  },
+  {
+    "id": 84305,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "43789"
+  },
+  {
+    "id": 84553,
+    "created": "2023-07-11 21:00:21+03",
+    "user_id": "400005",
+    "content_id": "1972591",
+    "event": "buy",
+    "session_id": "442430"
+  },
+  {
+    "id": 84842,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400005",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "442434"
+  },
+  {
+    "id": 84874,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400004",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "934863"
+  },
+  {
+    "id": 84878,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400002",
+    "content_id": "4094724",
+    "event": "buy",
+    "session_id": "405370"
+  },
+  {
+    "id": 84892,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400006",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "43798"
+  },
+  {
+    "id": 84942,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400006",
+    "content_id": "1700841",
+    "event": "buy",
+    "session_id": "43799"
+  },
+  {
+    "id": 84959,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400005",
+    "content_id": "2241351",
+    "event": "buy",
+    "session_id": "442438"
+  },
+  {
+    "id": 85028,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400004",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "934865"
+  },
+  {
+    "id": 85051,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400006",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "43800"
+  },
+  {
+    "id": 85143,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400004",
+    "content_id": "4094724",
+    "event": "buy",
+    "session_id": "934866"
+  },
+  {
+    "id": 85209,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400006",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "43805"
+  },
+  {
+    "id": 85289,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400005",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "442442"
+  },
+  {
+    "id": 85311,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400001",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "886853"
+  },
+  {
+    "id": 85557,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400004",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "934874"
+  },
+  {
+    "id": 85619,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400006",
+    "content_id": "5247022",
+    "event": "buy",
+    "session_id": "43814"
+  },
+  {
+    "id": 85620,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400002",
+    "content_id": "2387499",
+    "event": "buy",
+    "session_id": "405386"
+  },
+  {
+    "id": 85916,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400006",
+    "content_id": "4438848",
+    "event": "buy",
+    "session_id": "43818"
+  },
+  {
+    "id": 86071,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400002",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "405393"
+  },
+  {
+    "id": 86313,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400003",
+    "content_id": "1619029",
+    "event": "buy",
+    "session_id": "796219"
+  },
+  {
+    "id": 86463,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400002",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "405399"
+  },
+  {
+    "id": 86481,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400003",
+    "content_id": "4698684",
+    "event": "buy",
+    "session_id": "796222"
+  },
+  {
+    "id": 86518,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400005",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "442467"
+  },
+  {
+    "id": 86841,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400003",
+    "content_id": "3640424",
+    "event": "buy",
+    "session_id": "796229"
+  },
+  {
+    "id": 86918,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400004",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "934888"
+  },
+  {
+    "id": 87017,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400004",
+    "content_id": "4630562",
+    "event": "buy",
+    "session_id": "934889"
+  },
+  {
+    "id": 87126,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400002",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "405411"
+  },
+  {
+    "id": 87169,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400005",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "442477"
+  },
+  {
+    "id": 87201,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400002",
+    "content_id": "2034800",
+    "event": "buy",
+    "session_id": "405412"
+  },
+  {
+    "id": 87223,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400005",
+    "content_id": "1083452",
+    "event": "buy",
+    "session_id": "442478"
+  },
+  {
+    "id": 87349,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400004",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "934894"
+  },
+  {
+    "id": 87373,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400004",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "934894"
+  },
+  {
+    "id": 87438,
+    "created": "2023-07-11 21:00:22+03",
+    "user_id": "400006",
+    "content_id": "1860213",
+    "event": "buy",
+    "session_id": "43848"
+  },
+  {
+    "id": 87528,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400005",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "442484"
+  },
+  {
+    "id": 87556,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400001",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "886892"
+  },
+  {
+    "id": 87636,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400002",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "405420"
+  },
+  {
+    "id": 87645,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400003",
+    "content_id": "2404435",
+    "event": "buy",
+    "session_id": "796242"
+  },
+  {
+    "id": 87692,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400001",
+    "content_id": "4624424",
+    "event": "buy",
+    "session_id": "886894"
+  },
+  {
+    "id": 87720,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400004",
+    "content_id": "5700672",
+    "event": "buy",
+    "session_id": "934897"
+  },
+  {
+    "id": 87910,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400004",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "934899"
+  },
+  {
+    "id": 87995,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400006",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "43856"
+  },
+  {
+    "id": 87999,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400006",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "43857"
+  },
+  {
+    "id": 88010,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400004",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "934900"
+  },
+  {
+    "id": 88049,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400004",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "934901"
+  },
+  {
+    "id": 88131,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400001",
+    "content_id": "3110958",
+    "event": "buy",
+    "session_id": "886898"
+  },
+  {
+    "id": 88188,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400003",
+    "content_id": "5700672",
+    "event": "buy",
+    "session_id": "796256"
+  },
+  {
+    "id": 88239,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400003",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "796257"
+  },
+  {
+    "id": 88311,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400005",
+    "content_id": "1355644",
+    "event": "buy",
+    "session_id": "442501"
+  },
+  {
+    "id": 88364,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400006",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "43861"
+  },
+  {
+    "id": 88373,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400002",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "405430"
+  },
+  {
+    "id": 88480,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400001",
+    "content_id": "1289401",
+    "event": "buy",
+    "session_id": "886903"
+  },
+  {
+    "id": 88483,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400005",
+    "content_id": "4172430",
+    "event": "buy",
+    "session_id": "442503"
+  },
+  {
+    "id": 88543,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400006",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "43864"
+  },
+  {
+    "id": 88623,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400005",
+    "content_id": "4550098",
+    "event": "buy",
+    "session_id": "442506"
+  },
+  {
+    "id": 88654,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400001",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "886903"
+  },
+  {
+    "id": 88675,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400006",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "43866"
+  },
+  {
+    "id": 88703,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400006",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "43869"
+  },
+  {
+    "id": 88723,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400006",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "43870"
+  },
+  {
+    "id": 88798,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400005",
+    "content_id": "2543164",
+    "event": "buy",
+    "session_id": "442510"
+  },
+  {
+    "id": 89255,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400002",
+    "content_id": "1211837",
+    "event": "buy",
+    "session_id": "405442"
+  },
+  {
+    "id": 89260,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400001",
+    "content_id": "3748528",
+    "event": "buy",
+    "session_id": "886916"
+  },
+  {
+    "id": 89351,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400001",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "886918"
+  },
+  {
+    "id": 89513,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400004",
+    "content_id": "3498820",
+    "event": "buy",
+    "session_id": "934926"
+  },
+  {
+    "id": 89541,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400005",
+    "content_id": "1860357",
+    "event": "buy",
+    "session_id": "442516"
+  },
+  {
+    "id": 89601,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400002",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "405452"
+  },
+  {
+    "id": 89609,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400001",
+    "content_id": "1355644",
+    "event": "buy",
+    "session_id": "886925"
+  },
+  {
+    "id": 89869,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400002",
+    "content_id": "2823054",
+    "event": "buy",
+    "session_id": "405454"
+  },
+  {
+    "id": 89879,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400002",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "405455"
+  },
+  {
+    "id": 90132,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400004",
+    "content_id": "2975590",
+    "event": "buy",
+    "session_id": "934934"
+  },
+  {
+    "id": 90168,
+    "created": "2023-07-11 21:00:23+03",
+    "user_id": "400003",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "796301"
+  },
+  {
+    "id": 90394,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400004",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "934942"
+  },
+  {
+    "id": 90430,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400003",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "796306"
+  },
+  {
+    "id": 90473,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400003",
+    "content_id": "3315342",
+    "event": "buy",
+    "session_id": "796306"
+  },
+  {
+    "id": 90573,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "934944"
+  },
+  {
+    "id": 90736,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400006",
+    "content_id": "4901306",
+    "event": "buy",
+    "session_id": "43914"
+  },
+  {
+    "id": 90798,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400006",
+    "content_id": "4501244",
+    "event": "buy",
+    "session_id": "43915"
+  },
+  {
+    "id": 91184,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400003",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "796314"
+  },
+  {
+    "id": 91229,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400005",
+    "content_id": "4513674",
+    "event": "buy",
+    "session_id": "442547"
+  },
+  {
+    "id": 91321,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400003",
+    "content_id": "2709768",
+    "event": "buy",
+    "session_id": "796317"
+  },
+  {
+    "id": 91354,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400002",
+    "content_id": "3731562",
+    "event": "buy",
+    "session_id": "405473"
+  },
+  {
+    "id": 91463,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400005",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "442550"
+  },
+  {
+    "id": 91481,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400006",
+    "content_id": "4139124",
+    "event": "buy",
+    "session_id": "43924"
+  },
+  {
+    "id": 91609,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400006",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "43924"
+  },
+  {
+    "id": 91751,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400002",
+    "content_id": "3949660",
+    "event": "buy",
+    "session_id": "405482"
+  },
+  {
+    "id": 91900,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400002",
+    "content_id": "2543164",
+    "event": "buy",
+    "session_id": "405486"
+  },
+  {
+    "id": 91936,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400004",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "934963"
+  },
+  {
+    "id": 91949,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400005",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "442561"
+  },
+  {
+    "id": 92069,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400005",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "442563"
+  },
+  {
+    "id": 92075,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400003",
+    "content_id": "4116284",
+    "event": "buy",
+    "session_id": "796331"
+  },
+  {
+    "id": 92305,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400004",
+    "content_id": "2250912",
+    "event": "buy",
+    "session_id": "934972"
+  },
+  {
+    "id": 92360,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400005",
+    "content_id": "2140479",
+    "event": "buy",
+    "session_id": "442567"
+  },
+  {
+    "id": 92500,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400003",
+    "content_id": "3741834",
+    "event": "buy",
+    "session_id": "796339"
+  },
+  {
+    "id": 92538,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400004",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "934976"
+  },
+  {
+    "id": 92542,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400001",
+    "content_id": "2025690",
+    "event": "buy",
+    "session_id": "886969"
+  },
+  {
+    "id": 92699,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400003",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "796341"
+  },
+  {
+    "id": 92709,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400006",
+    "content_id": "4624424",
+    "event": "buy",
+    "session_id": "43934"
+  },
+  {
+    "id": 92738,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400005",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "442575"
+  },
+  {
+    "id": 92847,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400006",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "43935"
+  },
+  {
+    "id": 92850,
+    "created": "2023-07-11 21:00:24+03",
+    "user_id": "400005",
+    "content_id": "3263904",
+    "event": "buy",
+    "session_id": "442576"
+  },
+  {
+    "id": 93024,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400003",
+    "content_id": "3553442",
+    "event": "buy",
+    "session_id": "796349"
+  },
+  {
+    "id": 93599,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400003",
+    "content_id": "4651520",
+    "event": "buy",
+    "session_id": "796358"
+  },
+  {
+    "id": 93686,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400003",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "796360"
+  },
+  {
+    "id": 93704,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400004",
+    "content_id": "4425200",
+    "event": "buy",
+    "session_id": "934996"
+  },
+  {
+    "id": 93712,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "405514"
+  },
+  {
+    "id": 93800,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "405515"
+  },
+  {
+    "id": 93830,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400004",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "934999"
+  },
+  {
+    "id": 93877,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "1608290",
+    "event": "buy",
+    "session_id": "405517"
+  },
+  {
+    "id": 94005,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "3498820",
+    "event": "buy",
+    "session_id": "405518"
+  },
+  {
+    "id": 94275,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400004",
+    "content_id": "3410834",
+    "event": "buy",
+    "session_id": "935007"
+  },
+  {
+    "id": 94295,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "3470600",
+    "event": "buy",
+    "session_id": "405525"
+  },
+  {
+    "id": 94466,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400001",
+    "content_id": "3874544",
+    "event": "buy",
+    "session_id": "886997"
+  },
+  {
+    "id": 94568,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400005",
+    "content_id": "4052882",
+    "event": "buy",
+    "session_id": "442598"
+  },
+  {
+    "id": 94704,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400005",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "442599"
+  },
+  {
+    "id": 94875,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400004",
+    "content_id": "1386697",
+    "event": "buy",
+    "session_id": "935016"
+  },
+  {
+    "id": 94907,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400004",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "935016"
+  },
+  {
+    "id": 94944,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400005",
+    "content_id": "3741834",
+    "event": "buy",
+    "session_id": "442602"
+  },
+  {
+    "id": 94963,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400004",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "935017"
+  },
+  {
+    "id": 95152,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400005",
+    "content_id": "3040964",
+    "event": "buy",
+    "session_id": "442605"
+  },
+  {
+    "id": 95156,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "2381991",
+    "event": "buy",
+    "session_id": "405543"
+  },
+  {
+    "id": 95168,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "2034800",
+    "event": "buy",
+    "session_id": "405543"
+  },
+  {
+    "id": 95236,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "2094766",
+    "event": "buy",
+    "session_id": "405546"
+  },
+  {
+    "id": 95319,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "2241351",
+    "event": "buy",
+    "session_id": "405549"
+  },
+  {
+    "id": 95324,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400006",
+    "content_id": "4901306",
+    "event": "buy",
+    "session_id": "43980"
+  },
+  {
+    "id": 95485,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400002",
+    "content_id": "2267968",
+    "event": "buy",
+    "session_id": "405556"
+  },
+  {
+    "id": 95496,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400006",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "43982"
+  },
+  {
+    "id": 95575,
+    "created": "2023-07-11 21:00:25+03",
+    "user_id": "400006",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "43984"
+  },
+  {
+    "id": 95687,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400006",
+    "content_id": "4136084",
+    "event": "buy",
+    "session_id": "43985"
+  },
+  {
+    "id": 95724,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400005",
+    "content_id": "4550098",
+    "event": "buy",
+    "session_id": "442620"
+  },
+  {
+    "id": 95854,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400001",
+    "content_id": "1083452",
+    "event": "buy",
+    "session_id": "887017"
+  },
+  {
+    "id": 95864,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400001",
+    "content_id": "2547584",
+    "event": "buy",
+    "session_id": "887018"
+  },
+  {
+    "id": 95962,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400003",
+    "content_id": "1219827",
+    "event": "buy",
+    "session_id": "796390"
+  },
+  {
+    "id": 96224,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400006",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "43995"
+  },
+  {
+    "id": 96431,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400006",
+    "content_id": "0475290",
+    "event": "buy",
+    "session_id": "43998"
+  },
+  {
+    "id": 96611,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400004",
+    "content_id": "2948356",
+    "event": "buy",
+    "session_id": "935038"
+  },
+  {
+    "id": 96726,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400003",
+    "content_id": "2119532",
+    "event": "buy",
+    "session_id": "796405"
+  },
+  {
+    "id": 97182,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400003",
+    "content_id": "2277860",
+    "event": "buy",
+    "session_id": "796411"
+  },
+  {
+    "id": 97465,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400002",
+    "content_id": "2005151",
+    "event": "buy",
+    "session_id": "405595"
+  },
+  {
+    "id": 97623,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400002",
+    "content_id": "3416532",
+    "event": "buy",
+    "session_id": "405600"
+  },
+  {
+    "id": 97658,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400006",
+    "content_id": "1985949",
+    "event": "buy",
+    "session_id": "44020"
+  },
+  {
+    "id": 98159,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400001",
+    "content_id": "3544112",
+    "event": "buy",
+    "session_id": "887059"
+  },
+  {
+    "id": 98239,
+    "created": "2023-07-11 21:00:26+03",
+    "user_id": "400005",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "442666"
+  },
+  {
+    "id": 98648,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400006",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "44035"
+  },
+  {
+    "id": 98712,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400005",
+    "content_id": "4572514",
+    "event": "buy",
+    "session_id": "442672"
+  },
+  {
+    "id": 98798,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400001",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "887070"
+  },
+  {
+    "id": 98888,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400005",
+    "content_id": "5512872",
+    "event": "buy",
+    "session_id": "442674"
+  },
+  {
+    "id": 98923,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400002",
+    "content_id": "1878870",
+    "event": "buy",
+    "session_id": "405618"
+  },
+  {
+    "id": 99126,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400003",
+    "content_id": "4975722",
+    "event": "buy",
+    "session_id": "796443"
+  },
+  {
+    "id": 99247,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400005",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "442681"
+  },
+  {
+    "id": 99248,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400005",
+    "content_id": "4276820",
+    "event": "buy",
+    "session_id": "442681"
+  },
+  {
+    "id": 99452,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400004",
+    "content_id": "3381008",
+    "event": "buy",
+    "session_id": "935081"
+  },
+  {
+    "id": 99619,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400002",
+    "content_id": "1489889",
+    "event": "buy",
+    "session_id": "405627"
+  },
+  {
+    "id": 99842,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400005",
+    "content_id": "3783958",
+    "event": "buy",
+    "session_id": "442690"
+  },
+  {
+    "id": 99872,
+    "created": "2023-07-11 21:00:27+03",
+    "user_id": "400004",
+    "content_id": "2869728",
+    "event": "buy",
+    "session_id": "935090"
+  }
+]

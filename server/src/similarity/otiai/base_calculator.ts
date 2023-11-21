@@ -1,7 +1,7 @@
 import {RatingT, UserAvgRatingT} from "../../types/rating.types";
 import {MovieSimilarityT, UserSimilarityT} from "../../types/similarity.types";
 import ProgressBar from "progress";
-import {createPinoLogger} from "../../logger/pino_basic_logger.js";
+import {createPinoLogger} from "../../logger/pino_basic_logger";
 import {Worker} from "worker_threads";
 
 type simCalculatedCallbackT<idT extends string | number> = (sims: idT extends string ? MovieSimilarityT[] : UserSimilarityT[]) => Promise<any>

@@ -3,6 +3,9 @@ import {MovieT} from "../../../../types/movie.types";
 import {PrismaClient} from "@prisma/client";
 
 class UserEventGetDAO__mixin extends DAOMixinHelper {
+    async all(){
+        return this._testDb ? this._client.testUserEvent.findMany() : this._client.userEvent.findMany();
+    }
 
     async getPurchasesForUser(userId: number|undefined, take: number = 10) {
         let purchases = []
@@ -388,6 +391,7 @@ export function createUserEventGetDAOMixin(client: PrismaClient, testDb: boolean
     const mixin = new UserEventGetDAO__mixin(client, testDb)
 
     return {
+        'all':mixin.all.bind(mixin),
         'getRecentUserEvents':mixin.getRecentUserEvents.bind(mixin),
         'getPurchasesForMovie':mixin.getPurchasesForMovie.bind(mixin),
         'getRecentPurchases':mixin.getRecentPurchases.bind(mixin),

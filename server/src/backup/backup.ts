@@ -55,3 +55,33 @@ export async function loadImplicitRatings(){
 }
 
 
+export async function backupUserEvents(){
+    const events =  await dao.userEvent.all()
+    const filename = path.join(__dirname,'./output/user_events.json')
+    writeJson(filename,events)
+    console.log(`success saved in ${filename}`)
+}
+
+export async function loadUserEvents(){
+    const filename = path.join(__dirname,'./output/user_events.json')
+    if (!fs.existsSync(filename)) {
+        console.log(`not found ${filename}`)
+        return;
+    }
+    const events = readJson(filename)
+    await dao.userEvent.deleteAll()
+    await dao.userEvent.saveMany(events,false)
+    console.log(`success load from ${filename}`)
+}
+
+export async function loadExampleUserEvents(){
+    const filename = path.join(__dirname,'./output/user_events_example.json')
+    if (!fs.existsSync(filename)) {
+        console.log(`not found ${filename}`)
+        return;
+    }
+    const events = readJson(filename)
+    await dao.userEvent.deleteAll()
+    await dao.userEvent.saveMany(events.map((e:any)=>({userId:Number(e.user_id),movieId:e.content_id,genreId:null,event:'BUY',sessionId:e.session_id})),false)
+    console.log(`success load from ${filename}`)
+}

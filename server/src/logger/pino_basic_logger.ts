@@ -4,12 +4,12 @@ import pretty from "pino-pretty";
 
 export function createPinoLogger(loggerName: string){
     // Поток для записи ошибок в файл error.log
-    const errorStream = pino.destination({dest:`./src/logger/output/${loggerName}_error.log`});
-
+    const errorStream = pino.destination({dest:`./src/logger/output/${loggerName}_error.log`,sync:true});
+    
 // Поток для записи других сообщений в файл info.log
-    const infoStream = pino.destination({dest:`./src/logger/output/${loggerName}_info.log`,append: false});
+    const infoStream = pino.destination({dest:`./src/logger/output/${loggerName}_info.log`,append: false,sync:true});
     // const infoStream = fs.createWriteStream(`./src/logger/output/${loggerName}_info.log`,{flags: 'a'});
-
+    
     const streams = [
         {stream: pretty()},
         { level: 'error' as LevelWithSilent, stream: errorStream },

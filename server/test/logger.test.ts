@@ -1,4 +1,4 @@
-import {createPinoLogger} from "../src/logger/pino_basic_logger.js";
+import {createPinoLogger} from "../src/logger/pino_basic_logger";
 
 test('two logger',()=>{
     const loggerA = createPinoLogger("A")

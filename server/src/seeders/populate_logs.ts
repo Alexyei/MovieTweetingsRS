@@ -2,14 +2,14 @@ import {PrismaClient, TypeEvent} from "@prisma/client";
 import ProgressBar from "progress";
 import random_gen from "random-seed"
 import {sample} from "../utils/random";
-import {createPinoLogger} from "../logger/pino_basic_logger.js";
+import {createPinoLogger} from "../logger/pino_basic_logger";
 
 const logger = createPinoLogger("logs")
 const prisma = new PrismaClient()
 const random = random_gen.create('0')
 const genres = [{name: 'comedy', id: 80}, {name: 'drama', id: 87}, {name: 'action', id: 81}]
 
-const films = {
+export const films = {
     'comedy': [
         '0475290'
         , '1289401'
@@ -135,12 +135,12 @@ const films = {
 }
 
 const minFilmsInCategory = Math.min(films.action.length,films.drama.length,films.comedy.length)
-console.log(minFilmsInCategory)
+
 
 function getGenreId(name:'drama' | 'action' | 'comedy'){
     return genres.find((genre)=>genre.name == name)!.id
 }
-async function checkAllFilmsExists() {
+export async function checkAllFilmsExists() {
     for (const key of Object.keys(films)) {
         const ids = films[key as keyof typeof films]
         const movies = await prisma.movie.findMany({
@@ -151,7 +151,7 @@ async function checkAllFilmsExists() {
     }
 }
 
-async function addUsers(ids: number[]) {
+export async function addUsers(ids: number[]) {
     for (let id of ids) {
         await prisma.user.upsert({
             where: {id},
@@ -161,7 +161,7 @@ async function addUsers(ids: number[]) {
     }
 }
 
-class User {
+export class User {
     private _sessionId: number;
     private readonly _userId: number;
     private _favouriteList: string[]
@@ -211,7 +211,7 @@ class User {
 
     get sessionId() {
         // сессии имитирую различные устройства одного пользователя
-        if (random.range(100) >= 90) {
+        if (random.range(100) >= 70) {
             this._sessionId += 1;
         }
 
@@ -231,7 +231,7 @@ class User {
     }
 }
 
-function createSession() {
+export function createSession() {
     return random.range(1000000)
 }
 
@@ -272,7 +272,7 @@ function getRandomUserAvaibleMovie(user:User,genre:'drama' | 'action' | 'comedy'
     return moviesInGenre[randomMovie]
 }
 
-async function saveUserEvent(userId: number, sessionId: number, event: TypeEvent, movieId: string | null, genreId: number | null) {
+export async function saveUserEvent(userId: number, sessionId: number, event: TypeEvent, movieId: string | null, genreId: number | null) {
     let data = {userId, sessionId, event} as any
     if (movieId != null)
         data = {...data, movieId}

@@ -21,6 +21,7 @@ async function flushDB(){
 export async function saveRules(rules: any[]) {
     
     console.log(rules)
+    console.log(Array.from(new Set(rules.map(r=>r.source))).map(s=>rules.filter(r=>r.source == s).length).filter(c=>c>5).length)
     console.log(rules.length)
     // return prisma.rating.createMany(
     //     {
@@ -48,7 +49,7 @@ function calculateSupport(elementCount:number,all:number){
     return elementCount/all
 }
 
-function calculateConfidence(elementCount:number, groupCount:number){
+function calculateConfidence(groupCount:number,elementCount:number){
     return groupCount/elementCount
 }
 
