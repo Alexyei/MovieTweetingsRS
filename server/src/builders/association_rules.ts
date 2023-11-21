@@ -1,4 +1,5 @@
 import { getDAO } from "../DAO/DAO";
+import { AssociationRuleT } from "../types/recommendations.types";
 import { combinations } from "../utils/array";
 
 
@@ -15,18 +16,14 @@ type GroupItemSetWithSupportT = (GroupItemSetT[0] & {support:number})[]
 const dao = getDAO(false)
 
 async function flushDB(){
-
+    await dao.associationRule.deleteAll()
 }
 
-export async function saveRules(rules: any[]) {
-    
-    console.log(rules)
-    console.log(Array.from(new Set(rules.map(r=>r.source))).map(s=>rules.filter(r=>r.source == s).length).filter(c=>c>5).length)
-    console.log(rules.length)
-    // return prisma.rating.createMany(
-    //     {
-    //         data: ratings
-    //     })
+export async function saveRules(rules: AssociationRuleT[]) {
+    await dao.associationRule.saveMany(rules)
+    // console.log(rules)
+    // console.log(Array.from(new Set(rules.map(r=>r.source))).map(s=>rules.filter(r=>r.source == s).length).filter(c=>c>5).length)
+    // console.log(rules.length)
 }
 
 async function getBuyEvents(){
@@ -115,20 +112,6 @@ function calculateAssociationRules(groupItemSet:GroupItemSetWithSupportT,oneItem
     return rules
 }
 
-
-//            def calculate_association_rules(one_itemsets, two_itemsets, N):
-//     timestamp = datetime.now()
-
-//     rules = []
-//     for source, source_freq in one_itemsets.items():
-//         for key, group_freq in two_itemsets.items():
-//             if source.issubset(key):
-//                 target = key.difference(source)
-//                 support = group_freq / N
-//                 confidence = group_freq / source_freq
-//                 rules.append((timestamp, next(iter(source)), next(iter(target)),
-//                               confidence, support))
-//     return rules
 async function build(min_support:number,min_confidence:number){
     const events = await getBuyEvents()
     const transactions = await getTransactions(events)

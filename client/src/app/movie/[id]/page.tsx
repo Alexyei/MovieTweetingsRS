@@ -8,12 +8,13 @@ import LikeUnlikeButton from "@/components/LikeUnlikeButton/LikeUnlikeButton";
 import StarRating from "@/components/StarRating/StarRating";
 import {getServerAPI} from "@/api/server_api";
 import {MovieFullDataT} from "@/types/movie.types";
+import AssociationRulesSlider from "@/components/AssociationRulesSlider/AssociationRulesSlider";
 
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: string } }) {
-
-    const response = await api.movie.movie(params.id)
+    const movieID = params.id
+    const response = await api.movie.movie(movieID)
     if (response.status == 400){
         notFound()
     }
@@ -28,6 +29,7 @@ export default async function Page({params}: { params: { id: string } }) {
     }
 
     return (
+        <>
         <Card>
             <CardHeader><CardTitle>{movie.title}</CardTitle></CardHeader>
             <CardContent className="space-y-4">
@@ -69,5 +71,6 @@ export default async function Page({params}: { params: { id: string } }) {
                 </div>
             </CardContent>
         </Card>
+        <AssociationRulesSlider title={"С этим фильмом смотрят"} movieID={movieID}/></>
     )
 }

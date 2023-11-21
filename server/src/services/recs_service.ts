@@ -1,14 +1,9 @@
-import bcrypt from "bcrypt";
 import {config} from "dotenv";
 import {getDAO} from "../DAO/DAO";
-import {UserRole} from "@prisma/client";
-import {UserDataT, UserDataWithPasswordT} from "../types/user.types";
-import {ApiError} from "../exceptions/api_errors";
-import {SessionData} from "express-session";
 import {PopularityRecommender} from "../recommenders/popularity_recommender";
 import {ItemItemRecommender} from "../recommenders/cf_nb_item_item_recommender";
 import {UserUserRecommender} from "../recommenders/cf_nb_user_user_recommender";
-import {flushTestDB} from "../utils/test";
+import { AssociationRuleRecommender } from "../recommenders/association_rules_recommender";
 
 config()
 const dao = getDAO(false);
@@ -50,6 +45,13 @@ class RecsService {
         const recommender = new UserUserRecommender(false)
 
         return recommender.recommendItems(requestedUserID,take,2,100,0.1)
+    }
+
+    async associationRules(movieID:string, take:number|undefined){
+
+        const recommender = new AssociationRuleRecommender()
+
+        return recommender.recommendItems(movieID,take)
     }
 }
 

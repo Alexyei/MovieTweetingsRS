@@ -10,7 +10,8 @@ export default async function RecsSlider({title,type}:{title:string,type:RecsTyp
         'pops':api.recs.popularityRecommenderPops,
         'bestsellers':api.recs.popularityRecommenderBestSellers,
         'item-item':api.recs.CFNBRecommenderItemItem,
-        'user-user':api.recs.CFNBRecommenderUserUser
+        'user-user':api.recs.CFNBRecommenderUserUser,
+        
     }
 
     const response = await fetchMethods[type]()

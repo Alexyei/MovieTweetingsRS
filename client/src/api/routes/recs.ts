@@ -1,7 +1,7 @@
 import {ApiHelper} from "@/api/helpers/api_helper";
 import {fetchWrapperT} from "@/types/fetch.types";
-import {MovieFullDataT} from "@/types/movie.types";
 import {
+    AssociationRuleT,
     CFNBRecsItemItemT,
     CFNBRecsUserUserT,
     PopularityRecsBestsellersT,
@@ -45,6 +45,12 @@ class RecsApi extends ApiHelper {
 
         return this._fetchWrapper<{ status: 200, response: CFNBRecsUserUserT[] }, null>( URL, 'GET')
     }
+
+    async associationRules(movieID: string, take?:number) {
+        let URL = this._API_URL + '/rec/association-rules/'+movieID
+        if (take !=null) URL +=`?take=${take}`
+        return this._fetchWrapper<{ status: 200, response: AssociationRuleT[] }, null>( URL, 'GET')
+    }
 }
 
 
@@ -56,6 +62,7 @@ export function createRecsApi(API_URL:string, fetchWrapper:fetchWrapperT){
         'popularityRecommenderBestSellers': api.popularityRecommenderBestSellers.bind(api),
         'CFNBRecommenderItemItem': api.CFNBRecommenderItemItem.bind(api),
         'CFNBRecommenderUserUser': api.CFNBRecommenderUserUser.bind(api),
+        'associationRules':api.associationRules.bind(api)
 
     }
 }

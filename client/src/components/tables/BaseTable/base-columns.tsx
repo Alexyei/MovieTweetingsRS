@@ -84,6 +84,16 @@ export const similarityCell = ({ row }:any) => {
     return <div className="text-md font-bold text-center  w-full">{similarity.toFixed(2)}</div>
 }
 
+export const confidenceCell = ({ row }:any) => {
+    const confidence = row.getValue("confidence");
+    return <div className="text-md font-bold text-center  w-full">{confidence.toFixed(2)}</div>
+}
+
+export const supportCell = ({ row }:any) => {
+    const support = row.getValue("support");
+    return <div className="text-md font-bold text-center  w-full">{support.toFixed(2)}</div>
+}
+
 export const userEventCell = ({ row }:any) => {
     const event = row.getValue("event")
     return <div className={`text-md font-bold text-center ${event == 'BUY' ? 'text-primary': ""} ${event.startsWith('REMOVE') ? 'text-destructive': ''}`}>{event.split("_")[0]}</div>

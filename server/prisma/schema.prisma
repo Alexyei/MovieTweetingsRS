@@ -23,16 +23,18 @@ model User {
 }
 
 model Movie {
-  id          String             @id
-  title       String
-  year        Int
-  description String?
-  poster_path String?
-  genres      Genre[]
-  ratings     Rating[]
-  events      UserEvent[]
-  sources     MoviesSimilarity[] @relation("SourceRelation")
-  targets     MoviesSimilarity[] @relation("TargetRelation")
+  id                     String             @id
+  title                  String
+  year                   Int
+  description            String?
+  poster_path            String?
+  genres                 Genre[]
+  ratings                Rating[]
+  events                 UserEvent[]
+  sources                MoviesSimilarity[] @relation("SourceRelation")
+  targets                MoviesSimilarity[] @relation("TargetRelation")
+  sourcesAssociationRule AssociationRule[]  @relation("SourceRelation")
+  targetsAssociationRule AssociationRule[]  @relation("TargetRelation")
 }
 
 model Genre {
@@ -95,6 +97,19 @@ model UsersSimilarity {
   @@unique([source, target, type])
 }
 
+model AssociationRule {
+  id          Int      @id @default(autoincrement())
+  sourceMovie Movie    @relation("SourceRelation", fields: [source], references: [id])
+  source      String
+  targetMovie Movie    @relation("TargetRelation", fields: [target], references: [id])
+  target      String
+  support     Float
+  confidence  Float
+  createdAt   DateTime @default(now())
+
+  @@unique([source, target])
+}
+
 // --------------------------------TESTING--------------------------------
 
 model TestUser {
@@ -120,6 +135,21 @@ model TestMovie {
   events      TestUserEvent[]
   sources     TestMoviesSimilarity[] @relation("SourceRelation")
   targets     TestMoviesSimilarity[] @relation("TargetRelation")
+  sourcesAssociationRule TestAssociationRule[]  @relation("SourceRelation")
+  targetsAssociationRule TestAssociationRule[]  @relation("TargetRelation")
+}
+
+model TestAssociationRule {
+  id          Int      @id @default(autoincrement())
+  sourceMovie TestMovie    @relation("SourceRelation", fields: [source], references: [id])
+  source      String
+  targetMovie TestMovie    @relation("TargetRelation", fields: [target], references: [id])
+  target      String
+  support     Float
+  confidence  Float
+  createdAt   DateTime @default(now())
+
+  @@unique([source, target])
 }
 
 model TestGenre {

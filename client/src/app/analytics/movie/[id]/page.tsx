@@ -6,11 +6,9 @@ import {notFound} from "next/navigation";
 import {MovieFullDataT} from "@/types/movie.types";
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import MovieCard from "@/components/MovieCard/MovieCard";
-import LikeUnlikeButton from "@/components/LikeUnlikeButton/LikeUnlikeButton";
 import Link from "next/link";
 import {Badge} from "@/components/ui/badge";
-import StarRating from "@/components/StarRating/StarRating";
-import WatchBuyMovieButton from "@/components/WatchBuyMovieButton/WatchBuyMovieButton";
+import AssociationRulesTable from "@/components/tables/AssociationRules/MovieSimilarity";
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: string } }){
@@ -62,6 +60,9 @@ export default async function Page({params}: { params: { id: string } }){
             <div className="grid  w-full gap-4 lg:grid-cols-2">
                 <MovieSalesTable movieID={movieID}/>
                 <MovieSimilarityTable movieID={movieID}/>
+            </div>
+            <div className="grid  w-full gap-4 lg:grid-cols-2">
+                <AssociationRulesTable movieID={movieID}/>
             </div>
         </ServerAdminRoute>
     )

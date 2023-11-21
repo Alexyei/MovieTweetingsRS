@@ -6,7 +6,7 @@
   "scripts": {
     "script": "ts-node src/scripts/scriptsRunner.ts",
     "studio": "npx prisma studio",
-    "migrate": "npx prisma migrate dev --name=userEvent",
+    "migrate": "npx prisma migrate dev --name=associationRules",
     "migratePrepare": "npx prisma migrate dev --name=type_unique --create-only",
     "test": "jest --silent --runInBand",
     "dev": "nodemon src/app.ts",

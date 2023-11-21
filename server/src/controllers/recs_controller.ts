@@ -53,6 +53,17 @@ class RecsController {
             next(e);
         }
     }
+
+    async associationRules(req: Request, res: Response, next: NextFunction){
+        try {
+            const take = Number(req.query.take) || undefined
+            const requestMovieId = req.params.movieID
+            const recs = await recsService.associationRules(requestMovieId,take);
+            return res.json(recs);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 const recsController = new RecsController()
