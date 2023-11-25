@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
 import {buttonVariants} from "@/components/ui/button";
+import { Comp1 } from '@/components/temp/server';
+import { Comp2 } from '@/components/temp/client';
+
+
 
 export default function NotFound() {
     return (
@@ -9,6 +13,8 @@ export default function NotFound() {
                 <CardHeader>
                     <CardTitle>404</CardTitle>
                     <CardDescription>Страница не найдена</CardDescription>
+                    {/* <Comp1/>
+                    <Comp2/> */}
                 </CardHeader>
                 <CardContent>
                     <Link href={"/"} className={buttonVariants({ variant: "default" })}>Вернуться на главную</Link>

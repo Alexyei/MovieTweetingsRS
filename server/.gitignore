@@ -4,3 +4,4 @@ node_modules
 src/public/images/posters
 src/logger/output/
 .idea/
+src/backup/output/**

@@ -34,7 +34,7 @@ export default async function Page({params}: { params: { id: string } }) {
             <CardHeader><CardTitle>{movie.title}</CardTitle></CardHeader>
             <CardContent className="space-y-4">
                 <div className="grid gap-5 sm:grid-cols-[300px_1fr] mx-auto">
-                    <div className="relative">
+                    <div className="relative max-w-[300px]">
                         <MovieCard link={false} className="w-full max-w-[300px]  justify-self-center" movie={movie}
                                    hover={false}/>
                         <div className="absolute top-4 right-4">
