@@ -45,8 +45,8 @@ export class  BackupRunner extends BaseRunner {
         console.log('events - сделать резервную копию действий пользователей');
         console.log('simm load - загрузить резервную копию сходства элементов');
         console.log('simu load - загрузить резервную копию сходства пользователей');
-        console.log('irate load - загрузить контрольные неявные оценки');
         console.log('events load - загрузить резервную копию действий пользователей');
+        console.log('irate load - загрузить контрольные неявные оценки');
         console.log('events load example - загрузить контрольные действия пользователей');
         console.log('help - Справка по параметрам');
     }

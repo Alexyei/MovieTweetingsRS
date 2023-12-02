@@ -22,7 +22,7 @@ const runners = [
 
 function showHint() {
     console.log('Доступные основные параметры:');
-    console.log('populate <name> - Запустить сидер');
+    console.log('populate <name> - Запустить сеятель');
     console.log('build  <name> - Запустить построитель');
     console.log('backup <name> - Сделать резервную копию таблицы из БД');
     console.log('<main_parametr> help - Справка по основному параметру');

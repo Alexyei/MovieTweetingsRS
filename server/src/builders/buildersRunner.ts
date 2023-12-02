@@ -68,10 +68,14 @@ export class  BuilderRunner extends BaseRunner {
         console.log('ar - Расчёт ассоциативных правил');
         console.log('imp ratings - Генерация неявных оценок');
         console.log('imp ratings time - Генерация неявных оценок (временное затухание)');
-        console.log('sim otiai movies - Расчёт  сходства Отиаи для элементов')
-        console.log('sim otiai movies chunk - Расчёт  сходства Отиаи для элементов по частям')
-        console.log('sim otiai movies chunk workers - Расчёт сходства Отиаи для элементов по частям (с распаралеливанием)')
-        console.log('sim otiai users - Расчёт сходства Отиаи для пользователей')
+        console.log('sim otiai m - Расчёт  сходства Отиаи для элементов')
+        console.log('sim otiai m c - Расчёт  сходства Отиаи для элементов по частям')
+        console.log('sim otiai m cw - Расчёт сходства Отиаи для элементов по частям (с распаралеливанием)')
+        console.log('sim otiai m cwc - Расчёт сходства Отиаи для элементов по частям (с распаралеливанием и конвейером)')
+        console.log('sim otiai u - Расчёт сходства Отиаи для пользователей')
+        console.log('sim otiai u c - Расчёт  сходства Отиаи для пользователей по частям')
+        console.log('sim otiai u cw - Расчёт сходства Отиаи для пользователей по частям (с распаралеливанием)')
+        console.log('sim otiai u cwc - Расчёт сходства Отиаи для пользователей по частям (с распаралеливанием и конвейером)')
         console.log('help - Справка по параметрам');
     }
 }
