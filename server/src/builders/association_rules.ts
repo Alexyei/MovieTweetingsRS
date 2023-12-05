@@ -21,9 +21,6 @@ async function flushDB(){
 
 export async function saveRules(rules: AssociationRuleT[]) {
     await dao.associationRule.saveMany(rules)
-    // console.log(rules)
-    // console.log(Array.from(new Set(rules.map(r=>r.source))).map(s=>rules.filter(r=>r.source == s).length).filter(c=>c>5).length)
-    // console.log(rules.length)
 }
 
 async function getBuyEvents(){

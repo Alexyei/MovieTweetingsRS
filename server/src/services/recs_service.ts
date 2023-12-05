@@ -44,7 +44,7 @@ class RecsService {
 
         const recommender = new UserUserRecommender(false)
 
-        return recommender.recommendItems(requestedUserID,take,2,100,0.1)
+        return recommender.recommendItems(requestedUserID,take,2,100,0.05)
     }
 
     async associationRules(movieID:string, take:number|undefined){
