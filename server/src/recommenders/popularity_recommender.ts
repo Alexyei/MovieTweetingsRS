@@ -17,10 +17,8 @@ export class PopularityRecommender extends BaseRecommender {
         // const moviesData = await dao.movie.getMoviesDataByIds(movieIds)
 
         return popItems.map(movie=>{
-            // const movieData = moviesData.find(m=>m.id == movie.movieId)!
             return {
                 movieId: movie.movieId,
-                // poster_path: movieData.poster_path,
                 usersCount: movie.usersCount,
                 predictedRating: movie.predictedRating
             }
@@ -38,11 +36,9 @@ export class PopularityRecommender extends BaseRecommender {
 
         return popItems.map(m=>{
             const score = predictedScore.find(movie=>m.movieId==movie.movieId)!
-            // const data = moviesData.find(movie=>m.movieId==movie.id)!
 
             return {
                 purchasesCount: m.count,
-                // poster_path: data.poster_path,
                 ...score
             }
         }).sort((a,b) => {
