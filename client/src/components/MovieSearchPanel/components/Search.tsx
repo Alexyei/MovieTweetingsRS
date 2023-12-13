@@ -1,3 +1,4 @@
+'use client'
 import {useDeferredValue, useEffect, useRef, useState} from "react";
 import {Input} from "@/components/ui/input";
 

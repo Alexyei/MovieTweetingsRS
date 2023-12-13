@@ -8,7 +8,7 @@ import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import MovieCard from "@/components/MovieCard/MovieCard";
 import Link from "next/link";
 import {Badge} from "@/components/ui/badge";
-import AssociationRulesTable from "@/components/tables/AssociationRules/MovieSimilarity";
+import AssociationRulesTable from "@/components/tables/AssociationRules/AssociationRules";
 
 const api = getServerAPI()
 export default async function Page({params}: { params: { id: string } }){
