@@ -61,6 +61,8 @@ const StarRating = ({movieId}: { movieId: string }) => {
 
         return "text-primary"
     }
+    
+    if (user.isLoading || (user.user == null)) return null;
 
     return (
         <div>

@@ -180,7 +180,7 @@ export function UserDataProvider({children}: UserDataProviderProps) {
 
 
     useEffect(() => {
-        loadUser().then(() => loadUserMovies()).then(() => setLoading(false))
+        loadUser().then(() => loadUserMovies()).finally(() => setLoading(false))
     }, [])
 
     return <UserDataContext.Provider

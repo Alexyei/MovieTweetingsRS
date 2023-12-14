@@ -48,6 +48,7 @@ const LikeUnlikeButton = ({movieId}:{movieId:string})=>{
         setLoading(false)
     }
 
+    if (user.isLoading || (user.user == null)) return null;
     return (
         <Button disabled={loading} variant="outline" size="icon">
             { liked ?
