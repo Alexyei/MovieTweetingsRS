@@ -60,12 +60,12 @@ export function UserRatingsByGenresChart({data}: { data: UserRatingsDataByGenres
                             return (
                                 <div className="rounded-lg border bg-background p-2 shadow-sm">
                                     <div className="grid grid-cols-[200px_auto] gap-1 items-center">
-                                        <span className="text-[0.70rem] uppercase text-muted-foreground">Отношение оценок пользователя по жанру к общему количеству</span>
+                                        <span className="text-[0.70rem] uppercase text-muted-foreground">Отношение оценок пользователя по жанру к общему количеству оценок</span>
                                         <span className="font-bold">{(payload[0].payload.userCount/data.globalUser.userCount || 0).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2})}</span>
                                         <span className="text-[0.70rem] uppercase text-muted-foreground">Количество оценок пользователя по жанру (значение/нормированное)</span>
                                         <span className="font-bold">{payload[0].payload.userCount} / <span className={"text-primary"}>{payload[0].payload.userCountNorm.toFixed(2)}</span></span>
                                         <span className="text-[0.70rem] uppercase text-muted-foreground  ">Средняя оценка по жанру (общая/пользователя)</span>
-                                        <span className="font-bold">{payload[0].payload.userAvg.toFixed(2)} / {payload[0].payload.allAvg.toFixed(2)}</span>
+                                        <span className="font-bold">{payload[0].payload.allAvg.toFixed(2)} / {payload[0].payload.userAvg.toFixed(2)}</span>
                                         <span className="text-[0.70rem] uppercase text-muted-foreground  ">Отличие средней оценки пользователя от общей по жанру (значение/нормированное)</span>
                                         <span className="font-bold">{payload[0].payload.allDifAvg.toFixed(2)} / <span className={"text-destructive"}>{payload[0].payload.allDifAvgNorm.toFixed(2)}</span></span>
                                         {/*<span className="text-[0.70rem] uppercase text-muted-foreground  ">Средняя оценка пользователя</span>*/}
