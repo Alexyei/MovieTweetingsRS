@@ -21,7 +21,7 @@ export const columns: ColumnDef<ItemBasedTableT & {filterField:string}>[] = [
 
     {
         accessorKey: "movie.title",
-        header: baseHeader("Оценка пользователя"),
+        header: baseHeader("Фильм"),
         cell: ({row}: any) => {
             const data = row.original
             const movie = data.movie as MovieFullDataT
