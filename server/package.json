@@ -10,6 +10,7 @@
     "migratePrepare": "npx prisma migrate dev --name=type_unique --create-only",
     "test": "jest --silent --runInBand",
     "dev": "nodemon src/app.ts",
+    "start": "ts-node src/app.ts",
     "popm": "npm run script pop movies",
     "popmd": "npm run script pop descriptions",
     "popr": "npm run script pop ratings",

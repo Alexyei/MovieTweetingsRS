@@ -29,7 +29,6 @@ class UserService {
         let take = 10
         const id = Number(searchInput)
         if (!isNaN(id)){
-            console.log(id)
             const user = await dao.user.getUserByID(id)
             if (user){
                 results.push(user)
