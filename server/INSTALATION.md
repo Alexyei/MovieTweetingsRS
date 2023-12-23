@@ -38,6 +38,7 @@
    параметры *chunkSize* и *maxThread*. maxThread - количество потоков. chunkSize - размер обрабатываемой части исходной таблицы оценок одним потоком.
 3. Выполнить команду `npm script build sim otiai m cwc`
 4. Выполнить команду `npm script build sim otiai u cwc`
+5. Выполнить команду `npm script build ar`
 
 ## Выполнение расчётов на GPU
 https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#installdriver-windows
