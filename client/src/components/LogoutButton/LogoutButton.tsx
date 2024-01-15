@@ -8,11 +8,11 @@ import {useUserData} from "@/context/UserDataContext";
 const LogoutButton = ()=>{
     const [disabled, setDisabled] = useState(false)
     const user = useUserData()
-    // const router = useRouter()
+    const router = useRouter()
     async function logoutHandler(){
         // try {
             await user.logout()
-
+            router.refresh()
         // }catch (err) {
         //     console.log(err)
         // }finally {

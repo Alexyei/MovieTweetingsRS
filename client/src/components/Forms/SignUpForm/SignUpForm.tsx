@@ -55,7 +55,8 @@ const SignUpForm = () => {
 
         if (response.status == 201){
             // router.refresh()
-            router.back()
+            router.push("/")
+            router.refresh()
         }else{
                 const message = response.response.message
                 toast({

@@ -43,7 +43,8 @@ const SignInForm = () => {
         // const response = await api.authAPI.signIn(values)
 
         if (response.status == 200){
-            router.back()
+            router.push("/")
+            router.refresh()
         }else{
             const message = response.response.message
             toast({

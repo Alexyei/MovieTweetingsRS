@@ -58,6 +58,7 @@ class PriorityRatingGetDAO__mixin extends DAOMixinHelper{
         const ratings = this._testDb ? await this._client.testRating.findMany({where:{},distinct: ['authorId'],orderBy: {authorId:'asc'}}) : await this._client.rating.findMany({where:{},distinct: ['authorId'],orderBy: {authorId:'asc'}})
         return ratings.map(mid=>mid.authorId);
     }
+    
     async getByUserId(userId:number){
         // return this._client.$queryRaw<TestRating[] | Rating[]>(Prisma.sql`SELECT * FROM "${this.#tableName}" r WHERE (type = 'EXPLICIT' AND "authorId" = ${userId}) OR (type = 'IMPLICIT' AND "authorId" = ${userId} AND NOT EXISTS (SELECT * FROM "${this.#tableName}" WHERE "authorId" = r."authorId" AND "movieId" = r."movieId" AND type = 'EXPLICIT'))`)
 
